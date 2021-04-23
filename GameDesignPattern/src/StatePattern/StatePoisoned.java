@@ -1,6 +1,5 @@
 package StatePattern;
 
-import java.time.LocalDate;
 
 public class StatePoisoned implements CharacterState{
 	private State state;
@@ -11,6 +10,9 @@ public class StatePoisoned implements CharacterState{
 	
 	public void process() {
 		this.state.setTurnos(this.state.getTurnos()-1);
+		if(this.state.getTurnos() == 0) {
+			standard();
+		}
 	}
 	public void paralyzed() {
 		
@@ -19,6 +21,9 @@ public class StatePoisoned implements CharacterState{
 		
 	}
 	public void confused() {
+		
+	}
+	public void furious() {
 		
 	}
 	public void standard() {

@@ -12,6 +12,9 @@ public class StateConfused implements CharacterState{
 		// Paralyzed
 		System.out.println("Estas confundido, tu ataque puede fallar este turno");
 		this.state.setTurnos(this.state.getTurnos()-1);
+		if(this.state.getTurnos() == 0) {
+			standard();
+		}
 	}
 	public void paralyzed() {
 		
@@ -22,12 +25,15 @@ public class StateConfused implements CharacterState{
 	public void confused() {
 		
 	}
-	
+	public void furious() {
+		
+	}
 	public void standard() {
 		// TODO Auto-generated method stub
 		System.out.println("El jugador ya no esta confundido");
 		this.state.setStateCharacter(this.state.getStandard());
 	}
+	
 	
 	
 }

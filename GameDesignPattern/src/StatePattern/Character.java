@@ -3,6 +3,7 @@ package StatePattern;
 public class Character {
 	String nombre;
 	int vida = 10;
+	int damage = 10;
 	State state;
 	public Character(String nombre) {
 		this.nombre = nombre;
@@ -27,5 +28,10 @@ public class Character {
 	public void setState(State state) {
 		this.state = state;
 	}
-	
+	public int getDamage() {
+		return damage;
+	}
+	public void setDamage(int dano) {
+		this.damage = dano;
+	}
 }

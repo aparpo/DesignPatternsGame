@@ -6,6 +6,7 @@ public class State {
 	private StatePoisoned Poisoned = new StatePoisoned(this);
 	private StateConfused Confused = new StateConfused(this);
 	private StateStandard Standard = new StateStandard(this);
+	private StateFurious furious = new StateFurious(this);
 	//private CharacterStateTransition stateCharacter;
 	int turnos;
 	private Character player = new Character();
@@ -82,6 +83,14 @@ public class State {
 
 	public void setTurnos(int turnos) {
 		this.turnos = turnos;
+	}
+
+	public StateFurious getFurious() {
+		return furious;
+	}
+
+	public void setFurious(StateFurious furious) {
+		this.furious = furious;
 	}
 	
 }

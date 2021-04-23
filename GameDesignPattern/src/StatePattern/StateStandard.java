@@ -5,12 +5,14 @@ public class StateStandard implements CharacterState{
 	public StateStandard() {}
 	public StateStandard(State state) {
 		this.state = state;
-		this.state.setTurnos(this.state.getTurnos()-1);
 	}
 	
 	
 	public void process() {
 		this.state.setTurnos(this.state.getTurnos()-1);
+		if(this.state.getTurnos() == 0) {
+			standard();
+		}
 	}
 	
 	public void paralyzed() {
@@ -21,6 +23,10 @@ public class StateStandard implements CharacterState{
 	}
 	public void confused() {
 		this.state.setStateCharacter(this.state.getConfused());
+	}
+	public void furious() {
+		this.state.getFurious().setDamageUpdate(true);
+		this.state.setStateCharacter(this.state.getFurious());
 	}
 	public void standard() {
 

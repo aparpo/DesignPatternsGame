@@ -11,6 +11,9 @@ public class StateParalyzed implements CharacterState{
 		// Paralyzed
 		System.out.println("Estas paralizado, no puedes hacer nada este turno");
 		this.state.setTurnos(this.state.getTurnos()-1);
+		if(this.state.getTurnos() == 0) {
+			standard();
+		}
 	}
 	public void paralyzed() {
 		
@@ -19,6 +22,9 @@ public class StateParalyzed implements CharacterState{
 		
 	}
 	public void confused() {
+		
+	}
+	public void furious() {
 		
 	}
 	public void standard() {
