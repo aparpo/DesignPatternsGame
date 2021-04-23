@@ -2,7 +2,12 @@ package StatePattern;
 
 public class State {
 	private CharacterState state;
-	private CharacterStateTransition stateCharacter;
+	private StateParalyzed Paralyzed= new StateParalyzed(this);
+	private StatePoisoned Poisoned = new StatePoisoned(this);
+	private StateConfused Confused = new StateConfused(this);
+	private StateStandard Standard = new StateStandard(this);
+	//private CharacterStateTransition stateCharacter;
+	int turnos;
 	private Character player = new Character();
 	
 	public void process() {
@@ -11,16 +16,11 @@ public class State {
 	
 	public State(Character player) {
 		this.player = player;
-		this.state = new StandardState(this);
-	}
-	public void changeState(CharacterState newState) {
-		if(newState instanceof StatePoisoned) {
-			this.state = new StatePoisoned(this);
-		}else if(newState instanceof StateParalyzed){
-			this.state = new StateParalyzed(this);
-		}else if(newState instanceof StateConfused) {
-			this.state = new StateConfused(this);
-		}
+		this.state = new StateStandard(this);
+		this.Paralyzed = new StateParalyzed(this);
+		this.Poisoned = new StatePoisoned(this);
+		this.Confused = new StateConfused(this);
+		this.Standard = new StateStandard(this);
 	}
 	
 	
@@ -32,7 +32,7 @@ public class State {
 		this.state = state;
 	}
 
-	public void setStateCharacter(CharacterStateTransition stateCharacter) {
+	public void setStateCharacter(CharacterState stateCharacter) {
 		this.state = stateCharacter;
 	}
 	
@@ -44,4 +44,44 @@ public class State {
 		this.player = player;
 	}
 
+	public StateParalyzed getParalyzed() {
+		return Paralyzed;
+	}
+
+	public void setParalyzed(StateParalyzed paralyzed) {
+		Paralyzed = paralyzed;
+	}
+
+	public StatePoisoned getPoisoned() {
+		return Poisoned;
+	}
+
+	public void setPoisoned(StatePoisoned poisoned) {
+		Poisoned = poisoned;
+	}
+
+	public StateConfused getConfused() {
+		return Confused;
+	}
+
+	public void setConfused(StateConfused confused) {
+		Confused = confused;
+	}
+
+	public StateStandard getStandard() {
+		return Standard;
+	}
+
+	public void setStandard(StateStandard standard) {
+		Standard = standard;
+	}
+
+	public int getTurnos() {
+		return turnos;
+	}
+
+	public void setTurnos(int turnos) {
+		this.turnos = turnos;
+	}
+	
 }

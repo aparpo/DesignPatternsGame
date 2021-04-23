@@ -5,7 +5,7 @@ public class test {
 		Character erick = new Character("Erick");
 		//erick.setState(new State(erick));
 		//erick.getState().setStatePoisoned();
-		erick.getState().changeState(new StatePoisoned());
+		//erick.getState().changeState(new StatePoisoned());
 		erick.getState().process();
 		erick.getState().process();
 		System.out.println(erick.getVida());
