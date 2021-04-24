@@ -2,7 +2,7 @@ package decoratorPattern;
 
 import java.util.List;
 
-public class Stats implements Item{
+public class Stats implements Item{ //Componente base 
 	
 	private int life=0;
 	private int maxLife=0;

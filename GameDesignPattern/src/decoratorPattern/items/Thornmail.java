@@ -4,7 +4,7 @@ import decoratorPattern.Item;
 import decoratorPattern.PassiveItemDecorator;
 import decoratorPattern.Stats;
 
-public class Thornmail extends PassiveItemDecorator{
+public class Thornmail extends PassiveItemDecorator{ //Aumenta pasivamente la defensa
 	public Thornmail(Item equipment) {
 		super(equipment, "Thornmail", 0, 5, 0, 20, 0);
 	}

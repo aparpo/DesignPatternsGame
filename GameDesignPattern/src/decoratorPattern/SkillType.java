@@ -1,5 +1,5 @@
 package decoratorPattern;
 
-public enum SkillType {
+public enum SkillType { //Naturaleza de la habilidad
 	PHYSICAL, MAGIC;
 }

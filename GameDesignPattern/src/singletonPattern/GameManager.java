@@ -7,7 +7,7 @@ import decoratorPattern.Action;
 
 public class GameManager {
 	private static GameManager manager = new GameManager();
-	private List<Action> actions = new ArrayList<Action>();
+	private List<Action> actions = new ArrayList<Action>(); //Buffer de acciones durante un turno
 	private GameManager() {}
 
 	public static GameManager getManager() {

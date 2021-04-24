@@ -9,7 +9,7 @@ import decoratorPattern.ActiveItemDecorator;
 import decoratorPattern.Item;
 import singletonPattern.GameManager;
 
-public class Shield extends ActiveItemDecorator{
+public class Shield extends ActiveItemDecorator{ //Defiende de habilidades fisicas
 
 	public Shield(Item equipment) {
 		super(equipment, "Shield", "Shield", 0, 0, 0, 10, 0);

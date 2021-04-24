@@ -4,7 +4,7 @@ import decoratorPattern.Item;
 import decoratorPattern.PassiveItemDecorator;
 import decoratorPattern.Stats;
 
-public class VampiricSword extends PassiveItemDecorator{
+public class VampiricSword extends PassiveItemDecorator{ 
 
 	public VampiricSword(Item equipment) {
 		super(equipment, "Vampiric Sword", 0, 0, 20, 0, 0);

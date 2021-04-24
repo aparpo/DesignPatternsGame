@@ -9,7 +9,7 @@ import decoratorPattern.Stats;
 import decoratorPattern.UsableItemDecorator;
 import singletonPattern.GameManager;
 
-public class Potion extends UsableItemDecorator{
+public class Potion extends UsableItemDecorator{ //Cura 50 de vida 
 	
 	public Potion(Item equipment, int amount) {
 		super(equipment, "Potion", "Use potion", 0, 0, 0, 0, 0, amount);
@@ -26,7 +26,7 @@ public class Potion extends UsableItemDecorator{
 				heal = user.getEquipment().getMaxLife() - user.getEquipment().getLife();
 			}
 			Stats variation = new Stats(heal, 0, 0, 0, 0);
-			GameManager.getManager().getActions().add(new Action(variation, ActionType.NEUTRAL, SkillType.MAGIC, user));
+			GameManager.getManager().getActions().add(new Action(variation, ActionType.NEUTRAL, SkillType.MAGIC, user, user));
 			amount--;	
 		}
 		

@@ -1,6 +1,6 @@
 package decoratorPattern;
 
-public abstract class UsableItemDecorator extends ActiveItemDecorator {
+public abstract class UsableItemDecorator extends ActiveItemDecorator { //Objeto con activa que se puede usar un numero finito de veces
 	protected int amount;
 	
 	public UsableItemDecorator(Item equipment, String name, String skillName, int life, int maxLife, int attack, int defense, int speed, int amount) {

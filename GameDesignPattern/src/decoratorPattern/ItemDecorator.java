@@ -28,11 +28,11 @@ public abstract class ItemDecorator implements Item{
 		return equipment.isThereAny(list);
 	}*/
 	
-	public void applyStats(Stats variation) {
+	public void applyStats(Stats variation) { //Solo se aplican en el componente base
 		equipment.applyStats(variation);
 	}
 	
-	public void backToNormal() {
+	public void backToNormal() { //Solo se aplica en el componente base
 		equipment.backToNormal();
 	}
 	
