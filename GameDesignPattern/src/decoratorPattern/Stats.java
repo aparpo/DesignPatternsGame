@@ -24,6 +24,7 @@ public class Stats implements Item{ //Componente base
 		this.speed = speed;
 	}
 	
+
 	public void applyStats(Stats variation) { //Aplicar una variacion de estadisticas
 		life+=variation.getLife();
 		maxLife+=variation.getMaxLife();
@@ -32,13 +33,30 @@ public class Stats implements Item{ //Componente base
 		speed+=variation.getSpeed();
 	}
 	
+
 	public void backToNormal() { //Devolver al estado basico todas las estadisticas menos la vida actual
 		maxLife=0;
 		attack = 0;
 		defense = 0;
 		speed = 0;
 	}
+	
+	public Item isThereAny(Item model){
+		return null; //Se ha llegado al final y no se ha encontrado un model
+		
+	}
+	
 
+	public List<ActiveItemDecorator> areThereAnyActives(List<ActiveItemDecorator> list){
+		return list; //Se ha llegado al final y se devuelve la lista de los encontrados
+	}
+	
+
+	public List<PassiveItemDecorator> areThereAnyPassives(List<PassiveItemDecorator> list){
+		return list; //Se ha llegado al final y se devuelve la lista de los encontrados
+	}
+	
+	
 	public int getLife() {
 		return life;
 	}
@@ -75,6 +93,8 @@ public class Stats implements Item{ //Componente base
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+
+	
 
 
 

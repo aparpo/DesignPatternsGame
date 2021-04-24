@@ -1,14 +1,15 @@
 package base;
 
-import decoratorPattern.Item;
+import decoratorPattern.*;
 
 public abstract class Character {
 	protected String name;
-	protected Item equipment;
+	protected Item equipment = new Stats();
 	public Item getEquipment() {
 		return equipment;
 	}
 	public void setEquipment(Item equipment) {
+		System.out.println("Actual equipment"+equipment.getClass());
 		this.equipment = equipment;
 	}
 	public String getName() {

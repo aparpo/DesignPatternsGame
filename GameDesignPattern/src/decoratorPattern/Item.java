@@ -15,5 +15,7 @@ public interface Item { //Interfaz general
 	public void applyStats(Stats variation); //Suma de estadisticas
 	public void backToNormal(); //Valores por defecto
 	
-	//public <T extends Item> List<T> isThereAny(List<T> list);
+	public Item isThereAny(Item model);
+	public List<ActiveItemDecorator> areThereAnyActives(List<ActiveItemDecorator> list);
+	public List<PassiveItemDecorator> areThereAnyPassives(List<PassiveItemDecorator> list);
 }

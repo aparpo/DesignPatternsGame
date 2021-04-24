@@ -3,7 +3,7 @@ package decoratorPattern;
 import java.util.List;
 
 public abstract class ItemDecorator implements Item{
-	Item equipment;
+	protected Item equipment;
 	protected int life=0;
 	protected int maxLife=0;
 	protected int attack=0;
@@ -13,6 +13,7 @@ public abstract class ItemDecorator implements Item{
 	protected String name;
 	
 	public ItemDecorator(Item equipment, String name,  int life, int maxLife, int attack, int defense, int speed) {
+		this.equipment = equipment;
 		this.life = life;
 		this.maxLife = maxLife;
 		this.attack = attack;
@@ -21,12 +22,29 @@ public abstract class ItemDecorator implements Item{
 		this.name = name;
 	}
 	
-	/*public <T extends Item> List<T> isThereAny(List<T> list){
-		if(this instanceof T) {
-			list.add((T) this);
+	public Item isThereAny(Item model){
+		if(this.getClass() == model.getClass()) {
+			return this;
+		}else {
+			return equipment.isThereAny(model);	
 		}
-		return equipment.isThereAny(list);
-	}*/
+		
+	}
+	
+	public List<ActiveItemDecorator> areThereAnyActives(List<ActiveItemDecorator> list){
+		if(this instanceof ActiveItemDecorator) {
+			list.add((ActiveItemDecorator) this);
+		}
+		
+		return equipment.areThereAnyActives(list);
+	}
+	public List<PassiveItemDecorator> areThereAnyPassives(List<PassiveItemDecorator> list){
+		if(this instanceof PassiveItemDecorator) {
+			list.add((PassiveItemDecorator) this);
+		}
+		
+		return equipment.areThereAnyPassives(list);
+	}
 	
 	public void applyStats(Stats variation) { //Solo se aplican en el componente base
 		equipment.applyStats(variation);
@@ -49,6 +67,7 @@ public abstract class ItemDecorator implements Item{
 		this.life = life;
 	}
 	public int getAttack() {
+		System.out.println("Recursivo: "+equipment.getClass());
 		return equipment.getAttack()+attack;
 	}
 	public void setAttack(int attack) {
