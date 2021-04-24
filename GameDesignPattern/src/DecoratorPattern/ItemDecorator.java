@@ -1,11 +1,38 @@
 package DecoratorPattern;
 
+import java.util.List;
+
 public abstract class ItemDecorator implements Item{
 	Item equipment;
-	int life;
-	int attack;
-	int defense;
-	int speed;
+	protected int life=0;
+	protected int maxLife=0;
+	protected int attack=0;
+	protected int defense=0;
+	protected int speed=0;
+	protected String desc;
+	protected String name;
+	
+	public ItemDecorator(Item equipment) {
+		super();
+		this.equipment = equipment;
+	}
+	
+	public ItemDecorator(Item equipment, String name,  int life, int maxLife, int attack, int defense, int speed) {
+		this(equipment);
+		this.life = life;
+		this.maxLife = maxLife;
+		this.attack = attack;
+		this.defense = defense;
+		this.speed = speed;
+		this.name = name;
+	}
+	
+	/*public <T extends Item> List<T> isThereAny(List<T> list){
+		if(this instanceof T) {
+			list.add((T) this);
+		}
+		return equipment.isThereAny(list);
+	}*/
 	
 	public Item getEquipment() {
 		return equipment;
@@ -36,6 +63,20 @@ public abstract class ItemDecorator implements Item{
 	}
 	public void setSpeed(int speed) {
 		this.speed = speed;
+	}
+	public int getMaxLife() {
+		return equipment.getMaxLife()+maxLife;
+	}
+	public void setMaxLife(int maxLife) {
+		this.maxLife = maxLife;
+	}
+
+	public String getDesc() {
+		return equipment.getDesc()+desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 	
 }
