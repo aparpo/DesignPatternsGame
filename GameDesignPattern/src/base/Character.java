@@ -3,8 +3,8 @@ package base;
 import decoratorPattern.Item;
 
 public abstract class Character {
-	private String name;
-	private Item equipment;
+	protected String name;
+	protected Item equipment;
 	public Item getEquipment() {
 		return equipment;
 	}

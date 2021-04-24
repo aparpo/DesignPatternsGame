@@ -9,10 +9,10 @@ import decoratorPattern.ActiveItemDecorator;
 import decoratorPattern.Item;
 import singletonPattern.GameManager;
 
-public class Shield extends ActiveItemDecorator{ //Defiende de habilidades fisicas
+public class Shield extends ActiveItemDecorator{ //Defiende de la primera habilidad leve recibida
 
 	public Shield(Item equipment) {
-		super(equipment, "Shield", "Shield", 0, 0, 0, 10, 0);
+		super(equipment, "Shield", "Shield", 0, 0, 0, 5, 0);
 	}
 
 	@Override
@@ -24,7 +24,7 @@ public class Shield extends ActiveItemDecorator{ //Defiende de habilidades fisic
 				//Si va a recibir menos de 10 de daño, no le afecta la habilidad
 				if(actions.get(i).getVariation().getLife()>-10) {
 					actions.remove(i);
-					break;
+					break; //Solo funciona con la primera
 				}
 			}
 		}

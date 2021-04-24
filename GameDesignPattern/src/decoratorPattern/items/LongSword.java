@@ -1,12 +1,7 @@
 package decoratorPattern.items;
 
 import base.Character;
-import decoratorPattern.Action;
-import decoratorPattern.ActionType;
-import decoratorPattern.ActiveItemDecorator;
-import decoratorPattern.Item;
-import decoratorPattern.SkillType;
-import decoratorPattern.Stats;
+import decoratorPattern.*;
 import singletonPattern.GameManager;
 
 public class LongSword extends ActiveItemDecorator{ //Ataque basico con espada
