@@ -12,13 +12,7 @@ public abstract class ItemDecorator implements Item{
 	protected String desc;
 	protected String name;
 	
-	public ItemDecorator(Item equipment) {
-		super();
-		this.equipment = equipment;
-	}
-	
 	public ItemDecorator(Item equipment, String name,  int life, int maxLife, int attack, int defense, int speed) {
-		this(equipment);
 		this.life = life;
 		this.maxLife = maxLife;
 		this.attack = attack;
@@ -33,6 +27,14 @@ public abstract class ItemDecorator implements Item{
 		}
 		return equipment.isThereAny(list);
 	}*/
+	
+	public void applyStats(Stats variation) {
+		equipment.applyStats(variation);
+	}
+	
+	public void backToNormal() {
+		equipment.backToNormal();
+	}
 	
 	public Item getEquipment() {
 		return equipment;

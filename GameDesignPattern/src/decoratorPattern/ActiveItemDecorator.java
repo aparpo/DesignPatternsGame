@@ -1,22 +1,27 @@
 package decoratorPattern;
 
+import base.Character;
 public abstract class ActiveItemDecorator extends ItemDecorator {
-	String action;
 	
-	public ActiveItemDecorator(Item equipment) {
-		super(equipment);
-	}
+	private String skillname;
 	
-	public ActiveItemDecorator(Item equipment, String name, int life, int maxLife, int attack, int defense, int speed) {
+	public ActiveItemDecorator(Item equipment, String name, String skillName, int life, int maxLife, int attack, int defense, int speed) {
 		super(equipment, name, life, maxLife, attack, defense, speed);
+		this.skillname = skillName;
+	}
+	
+	public abstract void useSkill(Character user, Character target);
+
+	public String getSkillname() {
+		return skillname;
 	}
 
-	public String getAction() {
-		return action;
+	public void setSkillname(String skillname) {
+		this.skillname = skillname;
 	}
 
-	public void setAction(String action) {
-		this.action = action;
-	}
+	
+
+	
 	
 }

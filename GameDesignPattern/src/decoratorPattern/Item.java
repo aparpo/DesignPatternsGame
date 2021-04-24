@@ -10,6 +10,8 @@ public interface Item {
 	public int getDefense();
 	public int getSpeed();
 	public String getDesc();
+	public void applyStats(Stats variation);
+	public void backToNormal();
 	
 	//public <T extends Item> List<T> isThereAny(List<T> list);
 }

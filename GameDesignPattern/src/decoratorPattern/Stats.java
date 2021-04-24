@@ -2,7 +2,7 @@ package decoratorPattern;
 
 import java.util.List;
 
-public class Equipment implements Item{
+public class Stats implements Item{
 	
 	private int life=0;
 	private int maxLife=0;
@@ -11,17 +11,32 @@ public class Equipment implements Item{
 	private int speed=0;
 	private String desc;
 	
-	public Equipment() {
+	public Stats() {
 		super();
 	}
 	
-	public Equipment(int life, int maxLife, int attack, int defense, int speed) {
+	public Stats(int life, int maxLife, int attack, int defense, int speed) {
 		super();
 		this.life = life;
 		this.maxLife = maxLife;
 		this.attack = attack;
 		this.defense = defense;
 		this.speed = speed;
+	}
+	
+	public void applyStats(Stats variation) { //Aplicar una variacion de estadisticas
+		life+=variation.getLife();
+		maxLife+=variation.getMaxLife();
+		attack+=variation.getAttack();
+		defense+=variation.getDefense();
+		speed+=variation.getSpeed();
+	}
+	
+	public void backToNormal() { //Devolver al estado basico todas las estadisticas menos la vida actual
+		maxLife=0;
+		attack = 0;
+		defense = 0;
+		speed = 0;
 	}
 
 	public int getLife() {
