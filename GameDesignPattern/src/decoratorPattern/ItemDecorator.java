@@ -1,5 +1,6 @@
 package decoratorPattern;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ItemDecorator implements Item{
@@ -44,6 +45,10 @@ public abstract class ItemDecorator implements Item{
 		}
 		
 		return equipment.areThereAnyPassives(list);//Llamada recursiva
+	}
+	
+	public void usePassiveItems() {
+		List<PassiveItemDecorator> list = new ArrayList<PassiveItemDecorator>();
 	}
 	
 	public void applyStats(Stats variation) { //Solo se aplican en el componente base
