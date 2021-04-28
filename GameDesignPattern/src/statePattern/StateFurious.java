@@ -12,11 +12,11 @@ public class StateFurious implements CharacterState{
 		// TODO Auto-generated method stub
 		if(damageUpdate) {
 			damageUpdate = false;
-			//this.state.getPlayer().setDamage(this.state.getPlayer().getDamage()*2);
+			this.state.getPlayer().setDamage(this.state.getPlayer().getDamage()*2);
 		}
 		this.state.setTurnos(this.state.getTurnos()-1);
 		if(this.state.getTurnos() == 0) {
-			//this.state.getPlayer().setDamage(this.state.getPlayer().getDamage()/2);
+			this.state.getPlayer().setDamage(this.state.getPlayer().getDamage()/2);
 			if(Math.random()*1== 1) {
 				confused();
 			}else {

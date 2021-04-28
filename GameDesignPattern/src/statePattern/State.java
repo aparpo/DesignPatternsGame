@@ -1,5 +1,5 @@
 package statePattern;
-import base.Character;
+
 public class State {
 	private CharacterState state;
 	private StateParalyzed Paralyzed= new StateParalyzed(this);
@@ -9,7 +9,7 @@ public class State {
 	private StateFurious furious = new StateFurious(this);
 	//private CharacterStateTransition stateCharacter;
 	int turnos;
-	private Character player;
+	private Character player = new Character();
 	
 	public void process() {
 		this.state.process();

@@ -7,7 +7,7 @@ import singletonPattern.GameManager;
 public class Bow extends ActiveItemDecorator{ //El ataque con arco hace mas daño pero puede fallar
 
 	public Bow(Item equipment) {
-		super(equipment, "Bow", "Shoot Arrow", 0, 0, 5, 0, 0, ActionType.OFFENSIVE, SkillType.PHYSICAL);
+		super(equipment, "Bow", "Shoot Arrow", 0, 0, 5, 0, 0);
 	}
 
 	@Override
@@ -24,7 +24,7 @@ public class Bow extends ActiveItemDecorator{ //El ataque con arco hace mas daño
 		
 		Stats variation = new Stats(-aux, 0, 0, 0, 0); //Actualizar vida actual
 		
-		GameManager.getManager().getActions().add(new Action(variation, actionType, skillType,user, target));
+		GameManager.getManager().getActions().add(new Action(variation, ActionType.OFFENSIVE, SkillType.PHYSICAL,user, target));
 	}
 
 }

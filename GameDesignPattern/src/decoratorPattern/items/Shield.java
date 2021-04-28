@@ -7,13 +7,12 @@ import decoratorPattern.Action;
 import decoratorPattern.ActionType;
 import decoratorPattern.ActiveItemDecorator;
 import decoratorPattern.Item;
-import decoratorPattern.SkillType;
 import singletonPattern.GameManager;
 
 public class Shield extends ActiveItemDecorator{ //Defiende de la primera habilidad leve recibida
 
 	public Shield(Item equipment) {
-		super(equipment, "Shield", "Shield", 0, 0, 0, 5, 0, ActionType.DEFENSIVE, SkillType.PHYSICAL);
+		super(equipment, "Shield", "Shield", 0, 0, 0, 5, 0);
 	}
 
 	@Override
