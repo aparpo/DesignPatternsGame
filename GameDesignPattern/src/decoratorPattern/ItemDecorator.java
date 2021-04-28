@@ -91,6 +91,14 @@ public abstract class ItemDecorator implements Item{
 		this.maxLife = maxLife;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getDesc() {
 		return equipment.getDesc()+desc;
 	}

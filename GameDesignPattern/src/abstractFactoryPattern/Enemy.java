@@ -13,6 +13,16 @@ public class Enemy {
 		this.weapon = weapon;
 	}
 	
+	public static Stats levelStats(Stats stats, Level level) {
+		stats.setLife(stats.getLife() * level.getComplexFactor());
+		stats.setMaxLife(stats.getMaxLife() * level.getComplexFactor());
+		stats.setAttack(stats.getAttack() * level.getComplexFactor());
+		stats.setDefense(stats.getDefense() * level.getComplexFactor());
+		stats.setSpeed(stats.getSpeed() * level.getComplexFactor());
+		
+		return stats;
+	}
+	
 	public String getName() {
 		return name;
 	}

@@ -24,7 +24,11 @@ public class Stats implements Item{ //Componente base
 		this.speed = speed;
 	}
 	
-
+	public String toString() {
+		return "(Life: " + life + ", Att: " + attack + ", Def: " + defense + ", Speed: " + speed + ")";
+		
+	}
+	
 	public void applyStats(Stats variation) { //Aplicar una variacion de estadisticas
 		life+=variation.getLife();
 		maxLife+=variation.getMaxLife();

@@ -29,5 +29,4 @@ public class Shield extends ActiveItemDecorator{ //Defiende de la primera habili
 			}
 		}
 	}
-
 }

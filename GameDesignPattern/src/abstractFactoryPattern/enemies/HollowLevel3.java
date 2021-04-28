@@ -1,12 +1,12 @@
 package abstractFactoryPattern.enemies;
-import decoratorPattern.ActiveItemDecorator;
+import abstractFactoryPattern.Level;
 import decoratorPattern.Stats;
+import decoratorPattern.items.LongSword;
 
 public class HollowLevel3 extends Hollow{
-
-	public HollowLevel3(String name, Stats stats, ActiveItemDecorator weapon, String hollowType) {
-		super(name, stats, weapon, hollowType);
-		
+static Stats hollowLevel3Stats = levelStats(hollowStats, Level.LEVEL3);
+	
+	public HollowLevel3() {
+		super("Hollow", hollowLevel3Stats , new LongSword(hollowLevel3Stats), "Balder Knight");
 	}
-
 }
