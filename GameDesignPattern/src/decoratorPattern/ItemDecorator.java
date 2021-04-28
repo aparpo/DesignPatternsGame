@@ -23,7 +23,7 @@ public abstract class ItemDecorator implements Item{
 	}
 	
 	public Item isThereAny(Item model){
-		if(this.getClass() == model.getClass()) {
+		if(this.getClass() == model.getClass()) { //Si son de la misma clase devuelve el objeto
 			return this;
 		}else {
 			return equipment.isThereAny(model);	
@@ -32,18 +32,18 @@ public abstract class ItemDecorator implements Item{
 	}
 	
 	public List<ActiveItemDecorator> areThereAnyActives(List<ActiveItemDecorator> list){
-		if(this instanceof ActiveItemDecorator) {
+		if(this instanceof ActiveItemDecorator) { //Si es un objeto con activa lo añade a la lista
 			list.add((ActiveItemDecorator) this);
 		}
 		
-		return equipment.areThereAnyActives(list);
+		return equipment.areThereAnyActives(list); //Llamada recursiva
 	}
 	public List<PassiveItemDecorator> areThereAnyPassives(List<PassiveItemDecorator> list){
-		if(this instanceof PassiveItemDecorator) {
+		if(this instanceof PassiveItemDecorator) {//Si es un objeto con pasiva lo añade a la lista
 			list.add((PassiveItemDecorator) this);
 		}
 		
-		return equipment.areThereAnyPassives(list);
+		return equipment.areThereAnyPassives(list);//Llamada recursiva
 	}
 	
 	public void applyStats(Stats variation) { //Solo se aplican en el componente base
@@ -67,7 +67,6 @@ public abstract class ItemDecorator implements Item{
 		this.life = life;
 	}
 	public int getAttack() {
-		System.out.println("Recursivo: "+equipment.getClass());
 		return equipment.getAttack()+attack;
 	}
 	public void setAttack(int attack) {

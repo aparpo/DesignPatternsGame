@@ -22,7 +22,7 @@ public class Bow extends ActiveItemDecorator{ //El ataque con arco hace mas daño
 			aux = 0;
 		}
 		
-		Stats variation = new Stats(target.getEquipment().getLife() - aux, 0, 0, 0, 0); //Actualizar vida actual
+		Stats variation = new Stats(-aux, 0, 0, 0, 0); //Actualizar vida actual
 		
 		GameManager.getManager().getActions().add(new Action(variation, ActionType.OFFENSIVE, SkillType.PHYSICAL,user, target));
 	}
