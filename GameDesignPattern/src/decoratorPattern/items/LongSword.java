@@ -16,7 +16,7 @@ public class LongSword extends ActiveItemDecorator{ //Ataque basico con espada
 		if(aux <= 0) { //La defensa es mayor que el ataque
 			aux = 0; //La vida que se resta al objetivo es cero
 		}
-		Stats variation = new Stats(target.getEquipment().getLife() - aux, 0, 0, 0, 0); //Actualizar vida actual
+		Stats variation = new Stats( -aux, 0, 0, 0, 0); //Actualizar vida actual
 		
 		GameManager.getManager().getActions().add(new Action(variation, ActionType.OFFENSIVE, SkillType.PHYSICAL,user, target));
 	}

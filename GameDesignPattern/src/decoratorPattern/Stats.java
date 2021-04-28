@@ -93,9 +93,4 @@ public class Stats implements Item{ //Componente base
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-
-	
-
-
-
 }
