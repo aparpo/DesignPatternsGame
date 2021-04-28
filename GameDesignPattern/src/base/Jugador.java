@@ -1,9 +1,11 @@
 package base;
 
+import decoratorPattern.Item;
+
 public class Jugador extends Character{
-	public Jugador() {}
-	
-	public Jugador(String name) {
-		this.setName(name);
+
+	public Jugador(String name, Item equipment) {
+		super(name, equipment);
 	}
+	
 }

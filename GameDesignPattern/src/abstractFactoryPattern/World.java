@@ -1,13 +1,14 @@
 package abstractFactoryPattern;
 
-public enum Level {
-	LEVEL1(1), LEVEL2(2), LEVEL3(3), LEVEL4(4), LEVEL5(5), BOSS(10);
+public enum World {
+	WORLD1(1), WORLD2(2), WORLD3(3), WORLD4(4), WORLD5(5), BOSS(10);
 	
 	private Integer complexFactor;
 	public Integer getComplexFactor() {
 		return complexFactor;
 	}
-	private Level(Integer complexFactor) {
+	
+	private World(Integer complexFactor) {
 		this.complexFactor = complexFactor;
 	}
 }
