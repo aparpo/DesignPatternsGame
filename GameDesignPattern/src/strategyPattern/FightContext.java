@@ -1,4 +1,5 @@
 package strategyPattern;
+import abstractFactoryPattern.Enemy;
 
 public class FightContext {
 	private BehaviourStrategy behaviourStrategy;
@@ -17,8 +18,8 @@ public class FightContext {
 		this.behaviourStrategy = behaviourStrategy;
 	}
 	
-	public void applyStrategy() {
-		this.behaviourStrategy.doAction();
+	public void doAction(Enemy enemy) {
+		this.behaviourStrategy.doAction(enemy);
 	}
 	
 }

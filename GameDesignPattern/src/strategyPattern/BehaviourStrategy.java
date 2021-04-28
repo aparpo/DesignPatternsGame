@@ -1,5 +1,6 @@
 package strategyPattern;
+import abstractFactoryPattern.Enemy;
 
 public interface BehaviourStrategy {
-	public void doAction();
+	public void doAction(Enemy enemy);
 }

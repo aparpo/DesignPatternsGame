@@ -1,20 +1,21 @@
 package strategyPattern;
+import abstractFactoryPattern.Enemy;
 
 public abstract class Actions implements EnemyBehaviourStrategy{
 
-	public void attack(int damageDealt) {
+	public void attack(Enemy enemy) {
 		
 	}
 
-	public void defend(int damageReduced) {
+	public void defend(Enemy enemy) {
 		
 	}
 
-	public void useItem() {
+	public void useItem(Enemy enemy) {
 		
 	}
 
-	public void run() {
+	public void run(Enemy enemy) {
 		
 	}
 	
