@@ -1,5 +1,5 @@
 package strategyPattern;
 
 public interface ActionStrategy {
-	public void decision();
+	public void decision(Character user, Character player);
 }
