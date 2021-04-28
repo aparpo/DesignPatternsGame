@@ -2,11 +2,11 @@ package strategyPattern;
 
 public abstract class Actions implements EnemyBehaviourStrategy{
 
-	public void attack() {
+	public void attack(int damageDealt) {
 		
 	}
 
-	public void defend() {
+	public void defend(int damageReduced) {
 		
 	}
 
