@@ -28,4 +28,6 @@ public abstract class Character {
 		this.name = name;
 	}
 	
+	public abstract void decision();
+	
 }
