@@ -7,8 +7,7 @@ public abstract class Character {
 	protected Equipment equipment = new Stats();
 	
 	public Character(String name) {
-		this.name = name;
-		
+		this.name = name;		
 	}
 
 	public Equipment getEquipment() {
@@ -16,7 +15,7 @@ public abstract class Character {
 	}
 	
 	public void setEquipment(Equipment equipment) {
-		System.out.println("Actual equipment"+equipment.getClass());
+		System.out.println("Actual equipment" + equipment.getClass());
 		this.equipment = equipment;
 	}
 	

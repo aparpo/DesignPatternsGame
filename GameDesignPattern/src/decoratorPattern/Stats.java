@@ -3,7 +3,6 @@ package decoratorPattern;
 import java.util.List;
 
 public class Stats implements Equipment{ //Componente base 
-	
 	private int life=0;
 	private int maxLife=0;
 	private int attack=0;
@@ -37,7 +36,6 @@ public class Stats implements Equipment{ //Componente base
 		speed+=variation.getSpeed();
 	}
 	
-
 	public void backToNormal() { //Devolver al estado basico todas las estadisticas menos la vida actual
 		maxLife=0;
 		attack = 0;
@@ -49,17 +47,14 @@ public class Stats implements Equipment{ //Componente base
 		return null; //Se ha llegado al final y no se ha encontrado un model
 		
 	}
-	
 
 	public List<ActiveItemDecorator> areThereAnyActives(List<ActiveItemDecorator> list){
 		return list; //Se ha llegado al final y se devuelve la lista de los encontrados
 	}
-	
 
 	public List<PassiveItemDecorator> areThereAnyPassives(List<PassiveItemDecorator> list){
 		return list; //Se ha llegado al final y se devuelve la lista de los encontrados
 	}
-	
 	
 	public int getLife() {
 		return life;

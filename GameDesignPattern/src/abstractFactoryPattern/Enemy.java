@@ -1,9 +1,11 @@
 package abstractFactoryPattern;
 import decoratorPattern.*;
+import strategyPattern.*;
 import base.Character;
 
 public class Enemy extends Character{
-
+	protected BehaviourStrategy behaviour;
+	
 	public Enemy(String name) {
 		super(name);
 	}
@@ -12,14 +14,14 @@ public class Enemy extends Character{
 		
 	}
 
-	public Stats levelStats(Stats stats, World level) {
+	public Stats levelStats(Stats stats, World world) {
 		Stats modifiedStats = new Stats();
 		
-		modifiedStats.setMaxLife(stats.getMaxLife() * level.getComplexFactor());
-		modifiedStats.setLife(stats.getLife() * level.getComplexFactor());
-		modifiedStats.setAttack(stats.getAttack() * level.getComplexFactor());
-		modifiedStats.setDefense(stats.getDefense() * level.getComplexFactor());
-		modifiedStats.setSpeed(stats.getSpeed() * level.getComplexFactor());
+		modifiedStats.setMaxLife(stats.getMaxLife() * world.getComplexFactor());
+		modifiedStats.setLife(stats.getLife() * world.getComplexFactor());
+		modifiedStats.setAttack(stats.getAttack() * world.getComplexFactor());
+		modifiedStats.setDefense(stats.getDefense() * world.getComplexFactor());
+		modifiedStats.setSpeed(stats.getSpeed() * world.getComplexFactor());
 		
 		return modifiedStats;
 	}
