@@ -3,8 +3,8 @@ package decoratorPattern;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ItemDecorator implements Item{
-	protected Item equipment;
+public abstract class ItemDecorator implements Equipment{
+	protected Equipment equipment;
 	protected int life=0;
 	protected int maxLife=0;
 	protected int attack=0;
@@ -13,7 +13,7 @@ public abstract class ItemDecorator implements Item{
 	protected String desc;
 	protected String name;
 	
-	public ItemDecorator(Item equipment, String name,  int life, int maxLife, int attack, int defense, int speed) {
+	public ItemDecorator(Equipment equipment, String name,  int life, int maxLife, int attack, int defense, int speed) {
 		this.equipment = equipment;
 		this.life = life;
 		this.maxLife = maxLife;
@@ -23,7 +23,7 @@ public abstract class ItemDecorator implements Item{
 		this.name = name;
 	}
 	
-	public Item isThereAny(Item model){
+	public Equipment isThereAny(Equipment model){
 		if(this.getClass() == model.getClass()) { //Si son de la misma clase devuelve el objeto
 			return this;
 		}else {
@@ -59,10 +59,10 @@ public abstract class ItemDecorator implements Item{
 		equipment.backToNormal();
 	}
 	
-	public Item getEquipment() {
+	public Equipment getEquipment() {
 		return equipment;
 	}
-	public void setEquipment(Item equipment) {
+	public void setEquipment(Equipment equipment) {
 		this.equipment = equipment;
 	}
 	public int getLife() {

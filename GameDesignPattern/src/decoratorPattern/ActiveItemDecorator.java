@@ -7,7 +7,7 @@ public abstract class ActiveItemDecorator extends ItemDecorator { //Objetos que 
 	protected ActionType actionType;
 	protected SkillType skillType;
 	
-	public ActiveItemDecorator(Item equipment, String name, String skillName, int life, int maxLife, int attack, int defense, int speed,
+	public ActiveItemDecorator(Equipment equipment, String name, String skillName, int life, int maxLife, int attack, int defense, int speed,
 			ActionType actionType, SkillType skillType) {
 		super(equipment, name, life, maxLife, attack, defense, speed);
 		this.skillname = skillName;

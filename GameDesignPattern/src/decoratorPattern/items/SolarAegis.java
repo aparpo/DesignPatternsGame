@@ -8,7 +8,7 @@ import singletonPattern.GameManager;
 
 public class SolarAegis extends ActiveItemDecorator{ //Devuelve daño de un ataque
 
-	public SolarAegis(Item equipment) {
+	public SolarAegis(Equipment equipment) {
 		super(equipment, "Solar Aegis", "Aegis desire", 0, 0, 0, 20, 0, ActionType.DEFENSIVE, SkillType.PHYSICAL);
 	}
 

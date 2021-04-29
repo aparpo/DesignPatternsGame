@@ -3,7 +3,7 @@ package decoratorPattern.items;
 import base.Character;
 import decoratorPattern.Action;
 import decoratorPattern.ActionType;
-import decoratorPattern.Item;
+import decoratorPattern.Equipment;
 import decoratorPattern.SkillType;
 import decoratorPattern.Stats;
 import decoratorPattern.UsableItemDecorator;
@@ -11,7 +11,7 @@ import singletonPattern.GameManager;
 
 public class Potion extends UsableItemDecorator{ //Cura 50 de vida 
 	
-	public Potion(Item equipment, int amount) {
+	public Potion(Equipment equipment, int amount) {
 		super(equipment, "Potion", "Use potion", 0, 0, 0, 0, 0,ActionType.NEUTRAL, SkillType.MAGIC, amount);
 	}
 

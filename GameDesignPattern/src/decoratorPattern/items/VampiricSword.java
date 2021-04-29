@@ -1,12 +1,12 @@
 package decoratorPattern.items;
 
-import decoratorPattern.Item;
+import decoratorPattern.Equipment;
 import decoratorPattern.PassiveItemDecorator;
 import decoratorPattern.Stats;
 
 public class VampiricSword extends PassiveItemDecorator{ 
 
-	public VampiricSword(Item equipment) {
+	public VampiricSword(Equipment equipment) {
 		super(equipment, "Vampiric Sword", 0, 0, 20, 0, 0);
 	}
 	

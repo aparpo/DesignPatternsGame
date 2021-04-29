@@ -2,7 +2,7 @@ package decoratorPattern;
 
 import java.util.List;
 
-public class Stats implements Item{ //Componente base 
+public class Stats implements Equipment{ //Componente base 
 	
 	private int life=0;
 	private int maxLife=0;
@@ -45,7 +45,7 @@ public class Stats implements Item{ //Componente base
 		speed = 0;
 	}
 	
-	public Item isThereAny(Item model){
+	public Equipment isThereAny(Equipment model){
 		return null; //Se ha llegado al final y no se ha encontrado un model
 		
 	}

@@ -2,7 +2,7 @@ package decoratorPattern;
 
 public abstract class PassiveItemDecorator extends ItemDecorator { //Objetos con una habilidad pasiva
 
-	public PassiveItemDecorator(Item equipment, String name, int life, int maxLife, int attack, int defense, int speed) {
+	public PassiveItemDecorator(Equipment equipment, String name, int life, int maxLife, int attack, int defense, int speed) {
 		super(equipment, name, life, maxLife, attack, defense, speed);
 	}
 	

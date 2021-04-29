@@ -4,7 +4,7 @@ import decoratorPattern.*;
 
 public class DemonSpear extends PassiveItemDecorator{ 
 
-	public DemonSpear(Item equipment) {
+	public DemonSpear(Equipment equipment) {
 		super(equipment, "Demon Spear", 0, 0, 20, 0, 0);
 	}
 	

@@ -6,7 +6,7 @@ import singletonPattern.GameManager;
 
 public class LongSword extends ActiveItemDecorator{ //Ataque basico con espada
 
-	public LongSword(Item equipment) {
+	public LongSword(Equipment equipment) {
 		super(equipment, "Long Sword", "Sword Attack", 0, 0, 10, 0, 0, ActionType.OFFENSIVE, SkillType.PHYSICAL);
 	}
 

@@ -4,18 +4,18 @@ import decoratorPattern.*;
 
 public abstract class Character {
 	protected String name;
-	protected Item equipment = new Stats();
+	protected Equipment equipment = new Stats();
 	
 	public Character(String name) {
 		this.name = name;
 		
 	}
 
-	public Item getEquipment() {
+	public Equipment getEquipment() {
 		return equipment;
 	}
 	
-	public void setEquipment(Item equipment) {
+	public void setEquipment(Equipment equipment) {
 		System.out.println("Actual equipment"+equipment.getClass());
 		this.equipment = equipment;
 	}

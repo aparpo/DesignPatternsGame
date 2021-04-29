@@ -2,7 +2,7 @@ package decoratorPattern;
 
 import java.util.List;
 
-public interface Item { //Interfaz general 
+public interface Equipment { //Interfaz general 
 	
 	public int getLife();
 	public void setLife(int life);
@@ -15,7 +15,7 @@ public interface Item { //Interfaz general
 	public void applyStats(Stats variation); //Suma de estadisticas
 	public void backToNormal(); //Valores por defecto
 	
-	public Item isThereAny(Item model);
+	public Equipment isThereAny(Equipment model);
 	public List<ActiveItemDecorator> areThereAnyActives(List<ActiveItemDecorator> list);
 	public List<PassiveItemDecorator> areThereAnyPassives(List<PassiveItemDecorator> list);
 }
