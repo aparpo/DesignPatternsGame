@@ -7,7 +7,7 @@ public class Hollow extends Enemy{
 	
 	public Hollow(World level) {
 		super("Hollow");
-		//this.equipment = new BaseEquipment(this.equipment, "Base Equipment", levelStats(hollowBaseStats, level));	
+		this.equipment = new BaseEquipment(this.equipment, "Base Equipment", levelStats(hollowBaseStats, level));	
 	}
 	
 }
