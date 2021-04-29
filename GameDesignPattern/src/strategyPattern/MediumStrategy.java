@@ -28,7 +28,6 @@ public class MediumStrategy implements ActionStrategy{
 	public void attack(Character user, Character player ) {
 		List<ActiveItemDecorator> list = new ArrayList<ActiveItemDecorator>();
 		list = user.getEquipment().areThereAnyActives(list);
-		list = user.getEquipment().areThereAnyActives(list);
 		list.get(objectType(ActionType.OFFENSIVE, user)).useSkill(user, player);
 	}
 	public void defense(Character user, Character player) {

@@ -11,6 +11,8 @@ public class GameManager {
 	private static GameManager manager = new GameManager();
 	private List<Action> actions = new ArrayList<Action>(); //Buffer de acciones durante un turno
 	private List<Character> characters = new ArrayList<Character>();
+	//la factoria
+	//puntero a jugador
 	
 	private GameManager() {}
 
@@ -25,9 +27,18 @@ public class GameManager {
 	public void turn() {
 		orderBySpeed(); //ordenar a los personajes por su velocidad
 		
+		//do actions
 		for(int i = 0; i < characters.size();i++) {
 			characters.get(i).decision(); 
 		}
+		
+		//resolver por orden
+		
+		//pasar a los estados
+		
+		//process de los estados
+		
+		//comprobar
 		
 		
 	}

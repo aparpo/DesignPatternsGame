@@ -6,9 +6,9 @@ public abstract class Character {
 	protected String name;
 	protected Item equipment = new Stats();
 	
-	public Character(String name, Item equipment) {
+	public Character(String name) {
 		this.name = name;
-		this.equipment = equipment;
+		
 	}
 
 	public Item getEquipment() {
