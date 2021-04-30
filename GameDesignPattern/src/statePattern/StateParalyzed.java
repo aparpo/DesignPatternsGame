@@ -1,36 +1,37 @@
 package statePattern;
 
-public class StateParalyzed implements CharacterState{
+import decoratorPattern.Action;
+
+public class StateParalyzed extends AbstractState implements CharacterState{
 	private State state;
 	public StateParalyzed() {}
 	public StateParalyzed(State state) {
 		this.state = state;
 	}
-
-	public void process() {
-		// Paralyzed
-		System.out.println("Estas paralizado, no puedes hacer nada este turno");
-		this.state.setTurnos(this.state.getTurnos()-1);
-		if(this.state.getTurnos() == 0) {
+	
+	public void process(States suggestion) {
+		if(suggestion == States.STANDARD || this.state.getTurnos() <= 0) {
 			standard();
+		}else if(suggestion == States.PARALYZED) {
+			this.state.setTurnos(this.state.getTurnos()+1);
 		}
 	}
-	public void paralyzed() {
-		
+	
+	public Action effect(Action action) {
+		if((int) Math.random()*1 == 0) {
+			action.getVariation().setAttack(0);
+			action.getVariation().setLife(0);
+			action.getVariation().setDefense(0);
+			action.getVariation().setMaxLife(0);
+			action.getVariation().setSpeed(0);
+		}
+		return action;
 	}
-	public void poisoned() {
-		
-	}
-	public void confused() {
-		
-	}
-	public void furious() {
-		
-	}
-	public void standard() {
-		// TODO Auto-generated method stub
+	
+	protected void standard() {
 		System.out.println("El jugador ya no esta paralizado");
-		this.state.setStateCharacter(this.state.getStandard());
+		this.state.setState(this.state.getPossibleState(States.STANDARD));
 	}
+	
 	
 }

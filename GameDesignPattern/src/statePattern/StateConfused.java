@@ -2,7 +2,7 @@ package statePattern;
 
 import decoratorPattern.Action;
 
-public class StateConfused implements CharacterState{
+public class StateConfused extends AbstractState implements CharacterState{
 	
 	private State state;
 	
@@ -16,10 +16,8 @@ public class StateConfused implements CharacterState{
 		if(suggestion == States.STANDARD) {
 			standard();
 		}else if(suggestion == States.CONFUSED) {
-			this.state.setTurnos(this.state.getTurnos()+1);
+			confused();
 		}
-		
-		//else
 		
 		if(this.state.getTurnos() <= 0) {
 			standard();
@@ -38,12 +36,13 @@ public class StateConfused implements CharacterState{
 		return action;
 	}
 	
-	public void standard() {
-		// TODO Auto-generated method stub
+	protected void standard() {
 		System.out.println("El jugador ya no esta confundido");
 		this.state.setState(this.state.getPossibleState(States.STANDARD));
 	}
-	
+	protected void confused() {
+		this.state.setTurnos(this.state.getTurnos()+1);
+	}
 	
 	
 	

@@ -1,34 +1,40 @@
 package statePattern;
 
-public class StateStandard implements CharacterState{
+import decoratorPattern.Action;
+
+public class StateStandard extends AbstractState implements CharacterState{
 	private State state;
 	public StateStandard() {}
 	public StateStandard(State state) {
 		this.state = state;
 	}
-	
-	
-	public void process() {
-		this.state.setTurnos(this.state.getTurnos()-1);
-		if(this.state.getTurnos() == 0) {
-			standard();
+	public void process(States suggestion) {
+		if(suggestion != States.STANDARD) {
+			this.state.setState(this.state.getPossibleState(suggestion));
 		}
+		
+	}
+	public Action effect(Action action) {
+		return action;
 	}
 	
-	public void paralyzed() {
-		this.state.setStateCharacter(this.state.getParalyzed());
+	
+	protected void paralyzed() {
+		System.out.println("El jugador esta paralizado");
+		this.state.setState(this.state.getPossibleState(States.PARALYZED));
 	}
-	public void poisoned() {
-		this.state.setStateCharacter(this.state.getPoisoned());
+	protected void poisoned() {
+		System.out.println("El jugador esta envenenado");
+		this.state.setState(this.state.getPossibleState(States.POISONED));
 	}
-	public void confused() {
-		this.state.setStateCharacter(this.state.getConfused());
+	protected void confused() {
+		System.out.println("El jugador esta confundido");
+		this.state.setState(this.state.getPossibleState(States.CONFUSED));
 	}
-	public void furious() {
-		this.state.getFurious().setDamageUpdate(true);
-		this.state.setStateCharacter(this.state.getFurious());
+	protected void furious() {
+		System.out.println("El jugador esta furioso");
+		this.state.setState(this.state.getPossibleState(States.FURIOUS));
 	}
-	public void standard() {
 
-	}
+
 }

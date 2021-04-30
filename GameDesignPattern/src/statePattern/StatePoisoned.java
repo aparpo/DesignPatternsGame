@@ -1,35 +1,34 @@
 package statePattern;
 
+import decoratorPattern.Action;
+import decoratorPattern.ActionType;
+import decoratorPattern.SkillType;
+import decoratorPattern.Stats;
 
-public class StatePoisoned implements CharacterState{
+public class StatePoisoned extends AbstractState implements CharacterState{
 	private State state;
 	public StatePoisoned() {}
 	public StatePoisoned(State state) {
 		this.state = state;
 	}
 	
-	public void process() {
-		this.state.setTurnos(this.state.getTurnos()-1);
-		if(this.state.getTurnos() == 0) {
+	public void process(States suggestion) {
+		if(suggestion == States.STANDARD || this.state.getTurnos() <= 0) {
 			standard();
+		}else if(suggestion == States.POISONED) {
+			this.state.setTurnos(this.state.getTurnos()+1);
 		}
 	}
-	public void paralyzed() {
+	
+	public Action effect(Action action) {
 		
+		Action veneno = new Action(new Stats(-2,0,0,0,0), ActionType.NEUTRAL,SkillType.MAGIC, action.getUser(),action.getUser());
+		return action;
 	}
-	public void poisoned() {
-		
-	}
-	public void confused() {
-		
-	}
-	public void furious() {
-		
-	}
-	public void standard() {
-		// TODO Auto-generated method stub
+
+	protected void standard() {
 		System.out.println("El jugador ya no esta envenenado");
-		this.state.setStateCharacter(this.state.getStandard());
+		this.state.setState(this.state.getPossibleState(States.STANDARD));
 	}
 	
 }
