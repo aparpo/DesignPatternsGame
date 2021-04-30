@@ -1,38 +1,49 @@
 package statePattern;
 
+import decoratorPattern.Action;
+
 public class StateConfused implements CharacterState{
+	
 	private State state;
+	
 	public StateConfused() {}
 	public StateConfused(State state) {
 		this.state = state;
-		this.state.setTurnos(2);
+		//this.state.setTurnos(2);
 	}
 	
-	public void process() {
-		// Paralyzed
-		System.out.println("Estas confundido, tu ataque puede fallar este turno");
-		this.state.setTurnos(this.state.getTurnos()-1);
-		if(this.state.getTurnos() == 0) {
+	public void process(States suggestion) {
+		if(suggestion == States.STANDARD) {
+			standard();
+		}else if(suggestion == States.CONFUSED) {
+			this.state.setTurnos(this.state.getTurnos()+1);
+		}
+		
+		//else
+		
+		if(this.state.getTurnos() <= 0) {
 			standard();
 		}
 	}
-	public void paralyzed() {
+	
+	@Override
+	public Action effect(Action action) {
+		System.out.println("Estas confundido, tu ataque puede fallar este turno");
+		this.state.setTurnos(this.state.getTurnos()-1);
 		
+		//Cambia el objetivo al usuario con un 60% de probabilidad
+		if(Math.random() < 0.6) { 
+			action.setTarget(action.getUser());
+		}
+		return action;
 	}
-	public void poisoned() {
-		
-	}
-	public void confused() {
-		
-	}
-	public void furious() {
-		
-	}
+	
 	public void standard() {
 		// TODO Auto-generated method stub
 		System.out.println("El jugador ya no esta confundido");
-		this.state.setStateCharacter(this.state.getStandard());
+		this.state.setState(this.state.getPossibleState(States.STANDARD));
 	}
+	
 	
 	
 	

@@ -1,9 +1,11 @@
 package base;
 
 import decoratorPattern.*;
+import statePattern.*;
 
 public abstract class Character {
 	protected String name;
+	protected State state;
 	protected Equipment equipment = new Stats();
 	
 	public Character(String name) {
