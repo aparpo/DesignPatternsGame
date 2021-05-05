@@ -4,15 +4,13 @@ import base.Action;
 
 public class StateConfused extends AbstractState implements CharacterState{
 	
-	private State state;
-	
 	public StateConfused() {}
 	public StateConfused(State state) {
-		this.state = state;
+		super(state);
 		//this.state.setTurnos(2);
 	}
 	
-	public void process(States suggestion) {
+	public void process() {
 		if(suggestion == States.STANDARD) {
 			standard();
 		}else if(suggestion == States.CONFUSED) {

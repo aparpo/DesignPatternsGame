@@ -4,14 +4,14 @@ import base.Action;
 
 public class StateFurious extends AbstractState implements CharacterState{
 	boolean damageUpdate;
-	private State state;
+	
 	public StateFurious() {}
 	public StateFurious(State state) {
-		this.state = state;
-		this.state.setTurnos(1);
+		super(state);
+		//this.state.setTurnos(1);
 	}
 	
-	public void process(States suggestion) {		
+	public void process() {		
 		if(suggestion == States.STANDARD) {
 			standard();
 		}else if(this.state.getTurnos() <= 0) {

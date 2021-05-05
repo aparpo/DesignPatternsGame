@@ -7,13 +7,14 @@ import base.Stats;
 import singletonPattern.GameManager;
 
 public class StatePoisoned extends AbstractState implements CharacterState{
-	private State state;
+
+	
 	public StatePoisoned() {}
 	public StatePoisoned(State state) {
-		this.state = state;
+		super(state);
 	}
 	
-	public void process(States suggestion) {
+	public void process() {
 		if(suggestion == States.STANDARD || this.state.getTurnos() <= 0) {
 			standard();
 		}else if(suggestion == States.POISONED) {

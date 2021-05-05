@@ -11,8 +11,8 @@ public class State {
 
 	private int turnos;
 	
-	public void process(States suggestion) {
-		this.state.process(suggestion);
+	public void process() {
+		this.state.process();
 	}
 	
 	public State() {
@@ -49,6 +49,10 @@ public class State {
 	
 	public Action effect(Action action) {
 		return state.effect(action);
+	}
+	
+	public void setSuggestion(States suggestion) {
+		state.setSuggestion(suggestion);
 	}
 
 	

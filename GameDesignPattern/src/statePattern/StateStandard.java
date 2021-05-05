@@ -3,12 +3,13 @@ package statePattern;
 import base.Action;
 
 public class StateStandard extends AbstractState implements CharacterState{
-	private State state;
+
+	
 	public StateStandard() {}
 	public StateStandard(State state) {
-		this.state = state;
+		super(state);
 	}
-	public void process(States suggestion) {
+	public void process() {
 		if(suggestion != States.STANDARD) {
 			this.state.setState(this.state.getPossibleState(suggestion));
 		}

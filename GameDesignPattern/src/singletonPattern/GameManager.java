@@ -27,34 +27,10 @@ public class GameManager {
 	public void turn() {
 		orderBySpeed(); //ordenar a los personajes por su velocidad
 		
-		//Calcular las estadisticas modificadas este turno
-		for(int i = 0; i < characters.size();i++) {
-			characters.get(i).applyStats(characters.get(i).modifyStats()); 
-		}
+		combat(); //Hacer calculos de combate
 		
-		//do actions
-		for(int i = 0; i < characters.size();i++) {
-			characters.get(i).decision(); 
-		}
+		prepareNext(); //Preparar el proximo turno
 		
-		//aplicar los efectos del estado de cada personaje a las acciones que ha lanzado
-		for(int i = 0; i < actions.size(); i++) {
-			actions.get(i).getUser().StatusEffect(actions.get(i));
-		}
-		
-		//resolver por orden
-		for(int i = 0; i < actions.size(); i++) {
-			actions.get(i).getTarget().applyStats(actions.get(i).getVariation());
-		}
-		
-		//pasar a los estados
-		
-		for(int i = 0; i < characters.size();i++) {
-			characters.get(i); 
-		}
-		//process de los estados
-		
-		//comprobar
 		
 		
 	}
@@ -75,6 +51,51 @@ public class GameManager {
 		
 		characters = aux;
 	}
+	
+	private void combat() {
+		//Calcular las estadisticas modificadas este turno
+		for(int i = 0; i < characters.size();i++) {
+			characters.get(i).applyStats(characters.get(i).modifyStats()); 
+		}
+		
+		//Pedir las acciones a cada personaje y almacenarlas en el buffer para tratarlas
+		for(int i = 0; i < characters.size();i++) {
+			characters.get(i).decision(); 
+		}
+		
+		//Aplicar los efectos del estado de cada personaje a las acciones que ha lanzado
+		for(int i = 0; i < actions.size(); i++) {
+			actions.get(i).getUser().StatusEffect(actions.get(i));
+		}
+		
+		//Resolver por orden
+		for(int i = 0; i < actions.size(); i++) {
+			if(actions.get(i).getUser().isAlive()) { //El actor sigue vivo
+				actions.get(i).getTarget().applyStats(actions.get(i).getVariation());
+			}
+		}
+	}
+	
+	private void prepareNext() {
+		//process de los estados
+		for(int i = 0; i < characters.size();i++) {
+			characters.get(i).getState().process();
+		}
+		
+		//Preparar el siguiente turno
+		for(int i = 0; i < characters.size(); i++) {
+			characters.get(i).backToNormal();
+		}
+		
+		//Eliminar a los muertos de la lista
+		for(int i = 0; i < characters.size();i++) {
+			if(!characters.get(i).isAlive()) {
+				characters.remove(i);
+			}
+		}
+	}
+	
+	
 
 	public List<Action> getActions() {
 		return actions;

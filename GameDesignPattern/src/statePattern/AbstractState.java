@@ -3,7 +3,16 @@ package statePattern;
 import base.Action;
 
 public abstract class AbstractState implements CharacterState{
-	public abstract void process(States suggestion);
+	
+	protected State state;
+	protected States suggestion = null; //proximo estado recomendado
+	
+	public AbstractState() {}
+	public AbstractState(State state) {
+		this.state = state;
+	}
+	
+	public abstract void process();
 	public abstract Action effect(Action action);
 	
 	
@@ -22,5 +31,17 @@ public abstract class AbstractState implements CharacterState{
 	}
 	protected  void furious() throws Exception {
 		throw(new Exception("Transicion ilegal"));
+	}
+	public State getState() {
+		return state;
+	}
+	public void setState(State state) {
+		this.state = state;
+	}
+	public States getSuggestion() {
+		return suggestion;
+	}
+	public void setSuggestion(States suggestion) {
+		this.suggestion = suggestion;
 	}
 }

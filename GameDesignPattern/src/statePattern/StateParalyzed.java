@@ -3,13 +3,14 @@ package statePattern;
 import base.Action;
 
 public class StateParalyzed extends AbstractState implements CharacterState{
-	private State state;
+	
+	
 	public StateParalyzed() {}
 	public StateParalyzed(State state) {
-		this.state = state;
+		super(state);
 	}
 	
-	public void process(States suggestion) {
+	public void process() {
 		if(suggestion == States.STANDARD || this.state.getTurnos() <= 0) {
 			standard();
 		}else if(suggestion == States.PARALYZED) {
