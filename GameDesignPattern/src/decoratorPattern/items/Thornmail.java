@@ -1,8 +1,8 @@
 package decoratorPattern.items;
 
+import base.Stats;
 import decoratorPattern.Equipment;
 import decoratorPattern.PassiveItemDecorator;
-import decoratorPattern.Stats;
 
 public class Thornmail extends PassiveItemDecorator{ //Aumenta pasivamente la defensa
 	public Thornmail(Equipment equipment) {

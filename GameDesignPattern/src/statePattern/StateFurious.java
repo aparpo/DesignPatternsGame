@@ -1,6 +1,6 @@
 package statePattern;
 
-import decoratorPattern.Action;
+import base.Action;
 
 public class StateFurious extends AbstractState implements CharacterState{
 	boolean damageUpdate;

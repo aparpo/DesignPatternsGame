@@ -1,5 +1,6 @@
 package abstractFactoryPattern.enemies.hollow;
 import abstractFactoryPattern.*;
+import base.Stats;
 import decoratorPattern.*;
 
 public class Hollow extends Enemy{

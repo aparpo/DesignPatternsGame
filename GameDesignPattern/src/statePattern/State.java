@@ -2,6 +2,7 @@ package statePattern;
 
 import java.util.ArrayList;
 import java.util.List;
+import base.*;
 
 public class State {
 	private CharacterState state;
@@ -21,6 +22,7 @@ public class State {
 		this.possibleStates.add(new StateFurious(this));
 		this.possibleStates.add(new StateParalyzed(this));
 		this.possibleStates.add(new StatePoisoned(this));
+		this.turnos = 0;
 	}
 	
 	
@@ -30,6 +32,7 @@ public class State {
 
 	public void setState(CharacterState state) {
 		this.state = state;
+		this.turnos = 2;
 	}
 	
 	public CharacterState getPossibleState(States desired) {
@@ -42,6 +45,10 @@ public class State {
 
 	public void setTurnos(int turnos) {
 		this.turnos = turnos;
+	}
+	
+	public Action effect(Action action) {
+		return state.effect(action);
 	}
 
 	

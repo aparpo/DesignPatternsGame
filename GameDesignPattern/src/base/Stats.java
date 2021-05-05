@@ -1,6 +1,10 @@
-package decoratorPattern;
+package base;
 
 import java.util.List;
+
+import decoratorPattern.ActiveItemDecorator;
+import decoratorPattern.Equipment;
+import decoratorPattern.PassiveItemDecorator;
 
 public class Stats implements Equipment{ //Componente base 
 	private int life=0;

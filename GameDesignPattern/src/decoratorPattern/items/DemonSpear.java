@@ -1,5 +1,6 @@
 package decoratorPattern.items;
 
+import base.Stats;
 import decoratorPattern.*;
 
 public class DemonSpear extends PassiveItemDecorator{ 

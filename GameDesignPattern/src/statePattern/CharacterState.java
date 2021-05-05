@@ -1,6 +1,6 @@
 package statePattern;
 
-import decoratorPattern.Action;
+import base.Action;
 
 public interface CharacterState {
 	public void process(States suggestion);

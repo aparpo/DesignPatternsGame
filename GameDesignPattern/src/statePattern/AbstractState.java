@@ -1,6 +1,6 @@
 package statePattern;
 
-import decoratorPattern.Action;
+import base.Action;
 
 public abstract class AbstractState implements CharacterState{
 	public abstract void process(States suggestion);

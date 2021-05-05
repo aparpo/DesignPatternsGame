@@ -3,6 +3,8 @@ package decoratorPattern;
 import java.util.ArrayList;
 import java.util.List;
 
+import base.Stats;
+
 public abstract class ItemDecorator implements Equipment{
 	protected Equipment equipment;
 	protected int life=0;

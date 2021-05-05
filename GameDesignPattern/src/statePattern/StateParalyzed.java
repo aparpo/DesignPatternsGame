@@ -1,6 +1,6 @@
 package statePattern;
 
-import decoratorPattern.Action;
+import base.Action;
 
 public class StateParalyzed extends AbstractState implements CharacterState{
 	private State state;
@@ -19,11 +19,8 @@ public class StateParalyzed extends AbstractState implements CharacterState{
 	
 	public Action effect(Action action) {
 		if((int) Math.random()*1 == 0) {
-			action.getVariation().setAttack(0);
+			action.getVariation().backToNormal();
 			action.getVariation().setLife(0);
-			action.getVariation().setDefense(0);
-			action.getVariation().setMaxLife(0);
-			action.getVariation().setSpeed(0);
 		}
 		return action;
 	}

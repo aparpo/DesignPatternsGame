@@ -2,6 +2,8 @@ package decoratorPattern;
 
 import java.util.List;
 
+import base.Stats;
+
 public interface Equipment { //Interfaz general 
 	
 	public int getLife();

@@ -2,12 +2,12 @@ package decoratorPattern.items;
 
 import java.util.List;
 
+import base.Action;
+import base.ActionType;
 import base.Character;
-import decoratorPattern.Action;
-import decoratorPattern.ActionType;
+import base.SkillType;
 import decoratorPattern.ActiveItemDecorator;
 import decoratorPattern.Equipment;
-import decoratorPattern.SkillType;
 import singletonPattern.GameManager;
 
 public class Shield extends ActiveItemDecorator{ //Defiende de la primera habilidad leve recibida

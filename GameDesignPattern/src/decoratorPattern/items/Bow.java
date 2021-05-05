@@ -1,6 +1,10 @@
 package decoratorPattern.items;
 
+import base.Action;
+import base.ActionType;
 import base.Character;
+import base.SkillType;
+import base.Stats;
 import decoratorPattern.*;
 import singletonPattern.GameManager;
 

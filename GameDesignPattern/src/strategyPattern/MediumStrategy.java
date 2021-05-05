@@ -2,8 +2,8 @@ package strategyPattern;
 import java.util.ArrayList;
 import java.util.List;
 
+import base.ActionType;
 import base.Character;
-import decoratorPattern.ActionType;
 import decoratorPattern.ActiveItemDecorator;
 public class MediumStrategy implements ActionStrategy{
 	public void decision(Character user, Character player) {

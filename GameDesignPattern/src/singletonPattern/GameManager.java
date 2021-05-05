@@ -2,9 +2,9 @@ package singletonPattern;
 
 import java.util.ArrayList;
 import java.util.List;
-import base.Character;
 
-import decoratorPattern.Action;
+import base.*;
+import base.Character;
 
 public class GameManager {
 	
@@ -27,15 +27,31 @@ public class GameManager {
 	public void turn() {
 		orderBySpeed(); //ordenar a los personajes por su velocidad
 		
+		//Calcular las estadisticas modificadas este turno
+		for(int i = 0; i < characters.size();i++) {
+			characters.get(i).applyStats(characters.get(i).modifyStats()); 
+		}
+		
 		//do actions
 		for(int i = 0; i < characters.size();i++) {
 			characters.get(i).decision(); 
 		}
 		
+		//aplicar los efectos del estado de cada personaje a las acciones que ha lanzado
+		for(int i = 0; i < actions.size(); i++) {
+			actions.get(i).getUser().StatusEffect(actions.get(i));
+		}
+		
 		//resolver por orden
+		for(int i = 0; i < actions.size(); i++) {
+			actions.get(i).getTarget().applyStats(actions.get(i).getVariation());
+		}
 		
 		//pasar a los estados
 		
+		for(int i = 0; i < characters.size();i++) {
+			characters.get(i); 
+		}
 		//process de los estados
 		
 		//comprobar

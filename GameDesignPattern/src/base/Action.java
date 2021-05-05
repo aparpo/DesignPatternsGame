@@ -1,6 +1,4 @@
-package decoratorPattern;
-
-import base.Character;
+package base;
 
 public class Action {
 	private Stats variation; //variacion de las estadisticas como consecuencia de la accion

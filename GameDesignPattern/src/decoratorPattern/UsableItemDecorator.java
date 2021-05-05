@@ -1,5 +1,8 @@
 package decoratorPattern;
 
+import base.ActionType;
+import base.SkillType;
+
 public abstract class UsableItemDecorator extends ActiveItemDecorator { //Objeto con activa que se puede usar un numero finito de veces
 	protected int amount;
 	

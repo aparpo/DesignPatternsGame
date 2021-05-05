@@ -1,6 +1,8 @@
 package decoratorPattern;
 
+import base.ActionType;
 import base.Character;
+import base.SkillType;
 public abstract class ActiveItemDecorator extends ItemDecorator { //Objetos que dotan al personaje de habilidades activas
 	
 	private String skillname; //Nombre de la habilidad

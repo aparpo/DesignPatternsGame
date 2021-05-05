@@ -1,9 +1,10 @@
 package statePattern;
 
-import decoratorPattern.Action;
-import decoratorPattern.ActionType;
-import decoratorPattern.SkillType;
-import decoratorPattern.Stats;
+import base.Action;
+import base.ActionType;
+import base.SkillType;
+import base.Stats;
+import singletonPattern.GameManager;
 
 public class StatePoisoned extends AbstractState implements CharacterState{
 	private State state;
@@ -21,8 +22,7 @@ public class StatePoisoned extends AbstractState implements CharacterState{
 	}
 	
 	public Action effect(Action action) {
-		
-		Action veneno = new Action(new Stats(-2,0,0,0,0), ActionType.NEUTRAL,SkillType.MAGIC, action.getUser(),action.getUser());
+		GameManager.getManager().getActions().add(new Action(new Stats(-2,0,0,0,0), ActionType.NEUTRAL,SkillType.MAGIC, action.getUser(),action.getUser()));
 		return action;
 	}
 
