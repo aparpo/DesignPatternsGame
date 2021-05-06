@@ -1,11 +1,11 @@
 package strategyPattern;
 import java.util.ArrayList;
 import java.util.List;
-
 import base.ActionType;
 import base.Character;
 import base.Enemy;
 import decoratorPattern.ActiveItemDecorator;
+
 public class MediumStrategy implements StrategyTemplate{
 
 	public void attack(Enemy user, Character player ) {
