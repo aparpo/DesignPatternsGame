@@ -3,6 +3,7 @@ package decoratorPattern.items;
 import base.Action;
 import base.ActionType;
 import base.Character;
+import base.EquipmentTier;
 import base.SkillType;
 import base.Stats;
 import decoratorPattern.*;
@@ -11,7 +12,7 @@ import singletonPattern.GameManager;
 public class LongSword extends ActiveItemDecorator{ //Ataque basico con espada
 
 	public LongSword(Equipment equipment) {
-		super(equipment, "Long Sword", "Sword Attack", 0, 0, 10, 0, 0, ActionType.OFFENSIVE, SkillType.PHYSICAL);
+		super(equipment, "Long Sword", "Sword Attack", 0, 0, 10, 0, 0, ActionType.OFFENSIVE, SkillType.PHYSICAL, EquipmentTier.B);
 	}
 
 	@Override

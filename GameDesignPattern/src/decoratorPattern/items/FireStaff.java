@@ -3,6 +3,7 @@ package decoratorPattern.items;
 import base.Action;
 import base.ActionType;
 import base.Character;
+import base.EquipmentTier;
 import base.SkillType;
 import base.Stats;
 import decoratorPattern.*;
@@ -12,7 +13,7 @@ import singletonPattern.GameManager;
 public class FireStaff extends ActiveItemDecorator{ //Ataque basico magico, ignora la defensa
 
 	public FireStaff(Equipment equipment) {
-		super(equipment, "Fire Staff", "Fire ball", 0, 0, 10, 0, 0,ActionType.OFFENSIVE, SkillType.MAGIC);
+		super(equipment, "Fire Staff", "Fire ball", 0, 0, 10, 0, 0,ActionType.OFFENSIVE, SkillType.MAGIC, EquipmentTier.B);
 	}
 
 	@Override

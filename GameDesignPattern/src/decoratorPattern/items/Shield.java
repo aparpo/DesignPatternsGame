@@ -5,6 +5,7 @@ import java.util.List;
 import base.Action;
 import base.ActionType;
 import base.Character;
+import base.EquipmentTier;
 import base.SkillType;
 import decoratorPattern.ActiveItemDecorator;
 import decoratorPattern.Equipment;
@@ -13,7 +14,7 @@ import singletonPattern.GameManager;
 public class Shield extends ActiveItemDecorator{ //Defiende de la primera habilidad leve recibida
 
 	public Shield(Equipment equipment) {
-		super(equipment, "Shield", "Shield", 0, 0, 0, 5, 0, ActionType.DEFENSIVE, SkillType.PHYSICAL);
+		super(equipment, "Shield", "Shield", 0, 0, 0, 5, 0, ActionType.DEFENSIVE, SkillType.PHYSICAL, EquipmentTier.S);
 	}
 
 	@Override

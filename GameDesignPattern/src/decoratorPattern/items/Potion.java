@@ -3,6 +3,7 @@ package decoratorPattern.items;
 import base.Action;
 import base.ActionType;
 import base.Character;
+import base.EquipmentTier;
 import base.SkillType;
 import base.Stats;
 import decoratorPattern.Equipment;
@@ -12,7 +13,7 @@ import singletonPattern.GameManager;
 public class Potion extends UsableItemDecorator{ //Cura 50 de vida 
 	
 	public Potion(Equipment equipment, int amount) {
-		super(equipment, "Potion", "Use potion", 0, 0, 0, 0, 0,ActionType.NEUTRAL, SkillType.MAGIC, amount);
+		super(equipment, "Potion", "Use potion", 0, 0, 0, 0, 0,ActionType.NEUTRAL, SkillType.MAGIC,EquipmentTier.A, amount);
 	}
 
 	@Override
