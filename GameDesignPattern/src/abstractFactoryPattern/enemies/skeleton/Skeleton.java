@@ -1,5 +1,6 @@
 package abstractFactoryPattern.enemies.skeleton;
 import abstractFactoryPattern.*;
+import base.Enemy;
 import base.Stats;
 import decoratorPattern.*;
 

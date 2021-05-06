@@ -1,8 +1,7 @@
-package abstractFactoryPattern;
+package base;
+import abstractFactoryPattern.World;
 import decoratorPattern.*;
 import strategyPattern.*;
-import base.Character;
-import base.Stats;
 
 public class Enemy extends Character{
 	protected BehaviourStrategy behaviour;

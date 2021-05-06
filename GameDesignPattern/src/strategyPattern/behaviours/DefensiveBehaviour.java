@@ -1,6 +1,7 @@
 package strategyPattern.behaviours;
 import java.util.Random;
-import abstractFactoryPattern.Enemy;
+
+import base.Enemy;
 import strategyPattern.Actions;
 
 public class DefensiveBehaviour extends Actions{

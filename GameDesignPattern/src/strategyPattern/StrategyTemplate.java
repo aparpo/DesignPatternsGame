@@ -1,6 +1,6 @@
 package strategyPattern;
-import abstractFactoryPattern.Enemy;
 import base.Character;
+import base.Enemy;
 public interface StrategyTemplate {
 	public int worthAttack(Character enemy, Character player);
 	public int worthDefense(Character enemy, Character player);

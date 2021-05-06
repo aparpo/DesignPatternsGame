@@ -1,5 +1,5 @@
 package strategyPattern;
-import abstractFactoryPattern.Enemy;
+import base.Enemy;
 
 public class FightContext {
 	private BehaviourStrategy behaviourStrategy;

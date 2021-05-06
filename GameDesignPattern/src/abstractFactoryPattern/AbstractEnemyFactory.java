@@ -1,5 +1,7 @@
 package abstractFactoryPattern;
 
+import base.Enemy;
+
 public interface AbstractEnemyFactory {
 	public Enemy createHollow();
 	public Enemy createSkeleton();

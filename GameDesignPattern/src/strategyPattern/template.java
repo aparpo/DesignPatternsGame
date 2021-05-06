@@ -1,7 +1,7 @@
 package strategyPattern;
 
-import abstractFactoryPattern.Enemy;
 import base.Character;
+import base.Enemy;
 
 public abstract class template {
 	public void doAction(Enemy enemy, Character player) {

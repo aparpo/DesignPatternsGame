@@ -1,7 +1,8 @@
 package strategyPattern.behaviours;
 import java.util.Random;
+
+import base.Enemy;
 import strategyPattern.Actions;
-import abstractFactoryPattern.Enemy;
 
 public class BalancedBehaviour extends Actions{
 	Random rand = new Random();
