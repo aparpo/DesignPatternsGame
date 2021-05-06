@@ -6,7 +6,7 @@ import base.Stats;
 
 public class Enemy extends Character{
 	protected BehaviourStrategy behaviour;
-	
+	protected StrategyTemplate strategy;
 	public Enemy(String name) {
 		super(name);
 	}
@@ -25,5 +25,8 @@ public class Enemy extends Character{
 		modifiedStats.setSpeed(stats.getSpeed() * world.getComplexFactor());
 		
 		return modifiedStats;
+	}
+	public StrategyTemplate getTemplate() {
+		return strategy;
 	}
 }

@@ -2,35 +2,18 @@ package strategyPattern;
 import java.util.ArrayList;
 import java.util.List;
 
+import abstractFactoryPattern.Enemy;
 import base.ActionType;
 import base.Character;
 import decoratorPattern.ActiveItemDecorator;
-public class MediumStrategy implements ActionStrategy{
-	public void decision(Character user, Character player) {
-		int possibilityAttack = worthAttack(user, player);
-		int possibilityDefense = worthDefense(user, player);
-		int possibilityNeutral = possibleNeutral(user);
-		int total = possibilityAttack + possibilityDefense  + possibilityNeutral;
-		int eleccion = (int) Math.random()*total;
-		if(oneShotWithooutPassiveItems(user, player)) {
-			attack(user, player);
-		}else {
-			if(eleccion < possibilityAttack) {
-				attack(user, player);
-			}else if(eleccion < possibilityAttack + possibilityDefense) {
-				defense(user, player);
-			}else if(eleccion < possibilityAttack + possibilityDefense  + possibilityNeutral) {
-				neutral(user, player);
-			}
-		}
-		
-	}
-	public void attack(Character user, Character player ) {
+public class MediumStrategy implements StrategyTemplate{
+
+	public void attack(Enemy user, Character player ) {
 		List<ActiveItemDecorator> list = new ArrayList<ActiveItemDecorator>();
 		list = user.getEquipment().areThereAnyActives(list);
 		list.get(objectType(ActionType.OFFENSIVE, user)).useSkill(user, player);
 	}
-	public void defense(Character user, Character player) {
+	public void defense(Enemy user, Character player) {
 		List<ActiveItemDecorator> list = new ArrayList<ActiveItemDecorator>();
 		list = user.getEquipment().areThereAnyActives(list);
 		list = user.getEquipment().areThereAnyActives(list);
@@ -42,6 +25,7 @@ public class MediumStrategy implements ActionStrategy{
 		list = user.getEquipment().areThereAnyActives(list);
 		list.get(objectType(ActionType.NEUTRAL, user)).useSkill(user, player);
 	}
+	
 	public int worthDefense(Character user, Character player) {
 		
 		if( objectType(ActionType.DEFENSIVE, user) == -1) {
@@ -79,9 +63,11 @@ public class MediumStrategy implements ActionStrategy{
 			return 0;
 		}
 	}
+	
 	public boolean oneShotWithooutPassiveItems(Character user, Character player) {
 		return user.getEquipment().getAttack()-player.getEquipment().getDefense() < 0;
 	}
+	
 	public int objectType(ActionType style, Character user) {
 		List<ActiveItemDecorator> list = new ArrayList<ActiveItemDecorator>(); 
 		list = user.getEquipment().areThereAnyActives(list);
@@ -92,4 +78,5 @@ public class MediumStrategy implements ActionStrategy{
 		}
 		return -1;
 	}
+	
 }
