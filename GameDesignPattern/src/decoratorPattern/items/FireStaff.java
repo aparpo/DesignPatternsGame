@@ -8,6 +8,9 @@ import singletonPattern.GameManager;
 
 public class FireStaff extends ActiveItemDecorator{ //Ataque basico magico, ignora la defensa
 
+	public FireStaff() {
+		super();
+	}
 	public FireStaff(Item equipment) {
 		super(equipment, "Fire Staff", "Fire ball", 0, 0, 10, 0, 0,ActionType.OFFENSIVE, SkillType.MAGIC, Tier.B);
 	}

@@ -6,6 +6,7 @@ import base.ActionType;
 import base.Enemy;
 import base.Player;
 import decoratorPattern.ActiveItemDecorator;
+import decoratorPattern.items.Potion;
 import singletonPattern.GameManager;
 import strategyPattern.DecisionTemplate;
 
@@ -13,17 +14,11 @@ public class DefensiveStrategy extends DecisionTemplate{
 
 	
 	protected int worthAttack(Enemy user, Player player) {
-		int worth = 0;
+		int worth = 1;
 		
 		//Va a hacer mas daño que su oponente
 		if(user.getEquipment().getAttack() > player.getEquipment().getAttack()) worth++;
 		
-		//Va a hacer bastante daño a su oponente
-		if(user.getEquipment().getAttack() > player.getEquipment().getDefense()) worth++;
-		
-		
-		//Hay al menos dos aliados mas en el bando enemigo con vida
-		if(GameManager.getManager().getCharacters().size() > 3) worth++;
 		return worth;
 	}
 
@@ -36,14 +31,24 @@ public class DefensiveStrategy extends DecisionTemplate{
 		
 		//Tiene poco ataque comparado con su defensa
 		if(user.getEquipment().getDefense() > user.getEquipment().getAttack()) worth++;
+		
 		//Si su armadura cubre todo el daño
 		if(user.getEquipment().getAttack() < player.getEquipment().getDefense()) worth++;
+		
+		//Si es el ultimo del bando enemigo con vida
+		if(GameManager.getManager().getCharacters().size()==2) worth +=2;
 		return worth;
 	}
 
 	
 	protected int worthNeutral(Enemy user, Player player) {
-		return 1;
+		int worth = 0;
+		
+		if(user.getEquipment().isThereAny(new Potion())==null) return worth; //No quedan pociones para curarse
+		//Le queda poca vida
+		if(user.getEquipment().getLife() < user.getEquipment().getMaxLife()*0.5) worth++;
+		
+		return worth;
 	}
 
 	@Override

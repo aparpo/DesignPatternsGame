@@ -1,17 +1,18 @@
 package base;
 import abstractFactoryPattern.World;
 import decoratorPattern.*;
+import singletonPattern.GameManager;
 import strategyPattern.*;
 
 public class Enemy extends Character{
-	protected BehaviourStrategy behaviour;
-	protected StrategyTemplate strategy;
+	
+	private DecisionTemplate behaviour;
 	public Enemy(String name) {
 		super(name);
 	}
 
 	public void decision() {
-		
+		behaviour.decision(this, GameManager.getManager().getPlayer());
 	}
 
 	public Stats levelStats(Stats stats, World world) {
@@ -25,7 +26,12 @@ public class Enemy extends Character{
 		
 		return modifiedStats;
 	}
-	public StrategyTemplate getTemplate() {
-		return strategy;
+
+	public DecisionTemplate getBehaviour() {
+		return behaviour;
+	}
+
+	public void setBehaviour(DecisionTemplate behaviour) {
+		this.behaviour = behaviour;
 	}
 }

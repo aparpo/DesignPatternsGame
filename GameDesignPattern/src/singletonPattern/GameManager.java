@@ -12,7 +12,7 @@ public class GameManager {
 	private List<Action> actions = new ArrayList<Action>(); //Buffer de acciones durante un turno
 	private List<Character> characters = new ArrayList<Character>();
 	//la factoria
-	//puntero a jugador
+	private Player player;
 	
 	private GameManager() {}
 
@@ -29,10 +29,7 @@ public class GameManager {
 		
 		combat(); //Hacer calculos de combate
 		
-		prepareNext(); //Preparar el proximo turno
-		
-		
-		
+		prepareNext(); //Preparar el proximo turno		
 	}
 	
 	private void orderBySpeed() {
@@ -114,5 +111,13 @@ public class GameManager {
 
 	public void setCharacters(List<Character> characters) {
 		this.characters = characters;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 }

@@ -7,6 +7,9 @@ import singletonPattern.GameManager;
 
 public class Potion extends UsableItemDecorator{ //Cura 50 de vida 
 	
+	public Potion() {
+		super();
+	}
 	public Potion(Item equipment, int amount) {
 		super(equipment, "Potion", "Use potion", 0, 0, 0, 0, 0,ActionType.NEUTRAL, SkillType.MAGIC,Tier.C, amount);
 	}

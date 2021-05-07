@@ -16,6 +16,10 @@ public class Antidote extends UsableItemDecorator{ //Cura 50 de vida
 	public Antidote(Item equipment, int amount) {
 		super(equipment, "Antidore", "Use antidote", 0, 0, 0, 0, 0,ActionType.NEUTRAL, SkillType.MAGIC,Tier.C, amount);
 	}
+	
+	public Antidote() {
+		super();
+	}
 
 	@Override
 	public void useSkill(Character user, Character target) {

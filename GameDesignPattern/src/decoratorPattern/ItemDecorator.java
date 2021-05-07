@@ -16,6 +16,9 @@ public abstract class ItemDecorator implements Item{
 	protected String name;
 	protected Tier tier;
 	
+	public ItemDecorator() {
+		super();
+	}
 	public ItemDecorator(Item equipment, String name,  int life, int maxLife, int attack, int defense, int speed, Tier tier) {
 		this.equipment = equipment;
 		this.life = life;

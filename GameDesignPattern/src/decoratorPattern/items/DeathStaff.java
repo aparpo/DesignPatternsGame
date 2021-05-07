@@ -7,6 +7,9 @@ import singletonPattern.GameManager;
 
 public class DeathStaff extends ActiveItemDecorator{ //Mata al enemigo a cambio de ponerte un estado negativo
 
+	public DeathStaff() {
+		super();
+	}
 	public DeathStaff(Item equipment) {
 		super(equipment, "Death Staff", "Kill", 0, 0, 10, 0, 0,ActionType.OFFENSIVE, SkillType.MAGIC, Tier.S);
 	}

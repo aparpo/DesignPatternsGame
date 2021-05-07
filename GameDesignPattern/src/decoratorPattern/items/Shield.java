@@ -9,6 +9,9 @@ import singletonPattern.GameManager;
 
 public class Shield extends ActiveItemDecorator{ //Defiende de la primera habilidad leve recibida
 
+	public Shield() {
+		super();
+	}
 	public Shield(Item equipment) {
 		super(equipment, "Shield", "Shield", 0, 0, 0, 5, 0, ActionType.DEFENSIVE, SkillType.PHYSICAL, Tier.C);
 	}

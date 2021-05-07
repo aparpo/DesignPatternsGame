@@ -10,6 +10,9 @@ import statePattern.States;
 
 public class ElectricShield extends ActiveItemDecorator{ //Paraliza a los atacantes
 
+	public ElectricShield() {
+		super();
+	}
 	public ElectricShield(Item equipment) {
 		super(equipment, "Electric Shield", "Static field", 0, 0, 0, 20, -2, ActionType.DEFENSIVE, SkillType.MAGIC, Tier.B);
 	}

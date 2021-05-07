@@ -3,7 +3,8 @@ package strategyPattern.normalStrategies;
 import java.util.List;
 
 import base.*;
-import decoratorPattern.ActiveItemDecorator;
+import decoratorPattern.*;
+import decoratorPattern.items.*;
 import singletonPattern.GameManager;
 import strategyPattern.*;
 
@@ -44,6 +45,8 @@ public class AgressiveStrategy extends DecisionTemplate{
 	@Override
 	protected int worthNeutral(Enemy user, Player player) {
 		int worth = 0;
+		
+		if(user.getEquipment().isThereAny(new Potion())==null) return worth; //No quedan pociones para curarse
 		//Le queda poca vida
 		if(user.getEquipment().getLife() < user.getEquipment().getMaxLife()*0.5) worth++;
 		

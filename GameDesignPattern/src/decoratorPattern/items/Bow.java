@@ -8,6 +8,10 @@ import singletonPattern.GameManager;
 
 public class Bow extends ActiveItemDecorator{ //El ataque con arco hace mas daño pero puede fallar
 
+	public Bow() {
+		super();
+	}
+	
 	public Bow(Item equipment) {
 		super(equipment, "Bow", "Shoot Arrow", 0, 0, 5, 0, 0, ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.C);
 	}

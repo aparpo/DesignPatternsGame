@@ -8,6 +8,9 @@ import statePattern.States;
 
 public class RatCrossbow extends ActiveItemDecorator{ //Ataque que envenena
 
+	public RatCrossbow() {
+		super();
+	}
 	public RatCrossbow(Item equipment) {
 		super(equipment, "Rat Crossbow", "Poisson sting", 0, 0, 10, 0, 0, ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.B);
 	}

@@ -4,15 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import decoratorPattern.*;
+import singletonPattern.GameManager;
 import statePattern.*;
 
 public abstract class Character {
 	protected String name;
 	protected State state;
-	protected Item equipment = new Stats();
+	protected Item equipment;
 	
 	public Character(String name) {
+		super();
 		this.name = name;
+		this.state = new State();
+		this.equipment = new Stats();
 	}
 
 	public abstract void decision();

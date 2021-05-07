@@ -3,13 +3,14 @@ import abstractFactoryPattern.*;
 import base.Enemy;
 import base.Stats;
 import decoratorPattern.*;
+import decoratorPattern.items.*;
 
-public class Skeleton extends Enemy{
-	protected final Stats skeletonBaseStats = new Stats(200, 200, 80, 30 ,40);
-	protected String skeletonName;
+public abstract class Skeleton extends Enemy{ //Clase modelo, a eliminar al acabar el patron
 	
-	public Skeleton(String skeletonName) {
+	public Skeleton() {
 		super("Skeleton");
-		this.skeletonName = skeletonName;
+		this.equipment = new RegularItem(equipment,"custom",100, 100, 50, 30 ,2); //vida, vidaMax, ataque,defensa,velocidad
+		this.equipment =  new Bow(equipment);
+		this.equipment = new Shield(equipment);
 	}
 }
