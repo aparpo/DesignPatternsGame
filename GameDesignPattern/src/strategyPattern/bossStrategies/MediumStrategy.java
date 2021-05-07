@@ -1,4 +1,4 @@
-package strategyPattern;
+package strategyPattern.bossStrategies;
 import java.util.ArrayList;
 import java.util.List;
 import base.ActionType;
@@ -6,8 +6,9 @@ import base.Character;
 import base.Enemy;
 import base.Player;
 import decoratorPattern.ActiveItemDecorator;
+import strategyPattern.DecisionTemplate;
 
-public class MediumStrategy extends DecisionTemplate implements StrategyTemplate{
+public class MediumStrategy extends DecisionTemplate{
 
 	public void attack(Enemy user, Character player, List<ActiveItemDecorator> skills) {
 		skills.get(objectType(ActionType.OFFENSIVE, user)).useSkill(user, player);
@@ -19,7 +20,7 @@ public class MediumStrategy extends DecisionTemplate implements StrategyTemplate
 
 	}
 	//Funcion que comprueba que tan "rentable" es defender (no tiene en cuenta objetos al contrario del HardStrategy)
-	public int worthDefend(Character user, Character player) {
+	protected int worthDefend(Enemy user, Player player) {
 		
 		if( objectType(ActionType.DEFENSIVE, user) == -1) {
 			return 0;
@@ -38,7 +39,7 @@ public class MediumStrategy extends DecisionTemplate implements StrategyTemplate
 		
 	}
 	//Funcion que comprueba que tan "rentable" es atacar (no tiene en cuenta objetos al contrario del HardStrategy)
-	public int worthAttack(Character user, Character player) {
+	protected int worthAttack(Enemy user, Player player) {
 		if( objectType(ActionType.OFFENSIVE, user) == -1) {
 			return 0;
 		}else { 
@@ -54,7 +55,7 @@ public class MediumStrategy extends DecisionTemplate implements StrategyTemplate
 			return i;
 		}
 	}
-	protected int worthNeutral(Character enemy, Character player) {
+	protected int worthNeutral(Enemy user, Player player) {
 		return 1;
 	}
 	public int possibleNeutral(Character user) {
@@ -96,5 +97,6 @@ public class MediumStrategy extends DecisionTemplate implements StrategyTemplate
 		}
 		
 	}
+	
 	
 }

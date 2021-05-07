@@ -19,18 +19,18 @@ public abstract class DecisionTemplate {
 	//Se analiza la situacion y se devuelve un array de enteros con la prioridad de cada accion.
 	//0. Prioridad de ataque 1. Prioridad de defensa 2. Prioridad de accion neutral 3+. Otros parametros de interes 
 	//Por defecto con los metodos abstractos de la clase. Susceptible de cambio para analisis mas complejos (jefes) 
-	protected int[] analize(Character enemy, Character player) {
+	protected int[] analize(Enemy user, Player player) {
 		int[] options = new int[3];
-		options[0] = worthAttack(enemy,  player);
-		options[1] = worthDefend(enemy,  player);
-		options[2] = worthNeutral(enemy,  player);
+		options[0] = worthAttack(user,  player);
+		options[1] = worthDefend(user,  player);
+		options[2] = worthNeutral(user,  player);
 		return options;
 	}
 	
 	//Devuelven un entero con la prioridad de la acción, cero si no es posible o inutil
-	protected abstract int worthAttack(Character enemy, Character player);
-	protected abstract int worthDefend(Character enemy, Character player);
-	protected abstract int worthNeutral(Character enemy, Character player);
+	protected abstract int worthAttack(Enemy user, Player player);
+	protected abstract int worthDefend(Enemy user, Player player);
+	protected abstract int worthNeutral(Enemy user, Player player);
 	
 	//Devuelve la lista con las habilidades del personaje. Por defecto todas. Susceptible de filtrado previo.
 	protected List<ActiveItemDecorator> getSkills(Enemy user){

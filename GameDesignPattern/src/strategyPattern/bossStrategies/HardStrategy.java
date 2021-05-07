@@ -1,4 +1,4 @@
-package strategyPattern;
+package strategyPattern.bossStrategies;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,11 +9,12 @@ import base.Enemy;
 import base.EquipmentTier;
 import base.Player;
 import decoratorPattern.ActiveItemDecorator;
+import strategyPattern.DecisionTemplate;
 
-public class HardStrategy extends DecisionTemplate implements StrategyTemplate{
+public class HardStrategy extends DecisionTemplate{
 
 	//Funcion que comprueba que tan "rentable" es atacar
-	public int worthAttack(Character enemy, Character player) {
+	protected int worthAttack(Enemy enemy, Player player) {
 		int probability = -1;
 		int tierListEnemyItem = 0;
 		int posBestActiveItem = 0;
@@ -98,7 +99,7 @@ public class HardStrategy extends DecisionTemplate implements StrategyTemplate{
 	}
 	
 	//Funcion que comprueba que tan "rentable" es defender
-	public int worthDefend(Character enemy, Character player) {
+	protected int worthDefend(Enemy enemy, Player player) {
 		int probability = -1;
 		int tierListEnemyItem = 0;
 		int posBestActiveItem = -1;
@@ -174,7 +175,7 @@ public class HardStrategy extends DecisionTemplate implements StrategyTemplate{
 			return i + tierListEnemyItem - tierListPlayerItem;
 		}
 	}
-	protected int worthNeutral(Character user, Character player) {
+	protected int worthNeutral(Enemy enemy, Player player) {
 		return 1;
 	}
 	
@@ -291,4 +292,5 @@ public class HardStrategy extends DecisionTemplate implements StrategyTemplate{
 		}
 		return tier;
 	}
+
 }
