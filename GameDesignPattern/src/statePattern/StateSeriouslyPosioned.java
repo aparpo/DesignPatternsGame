@@ -15,15 +15,17 @@ public class StateSeriouslyPosioned extends AbstractState implements CharacterSt
 	public void process() {
 		if(suggestion == States.STANDARD) {
 			standard();
-		}else if(this.state.getTurnos() <= 0) {
+		}else if(this.state.getTurns() <= 0) {
 			poisoned();
 		}
+		suggestion = null;
 		
 	}
 
 	
 	public Action effect(Action action) {
-		GameManager.getManager().getActions().add(new Action(new Stats((int)(action.getTarget().getEquipment().getMaxLife()*0.1),0,0,0,0), ActionType.NEUTRAL,SkillType.MAGIC, action.getUser(),action.getUser()));
+		GameManager.getManager().getActions().add(new Action(new Stats((int)(action.getTarget().getEquipment().getMaxLife()*0.1),0,0,0,0), 
+				ActionType.NEUTRAL,SkillType.MAGIC, null,action.getUser()));
 		return action;
 	}
 	protected void standard() {
@@ -32,8 +34,8 @@ public class StateSeriouslyPosioned extends AbstractState implements CharacterSt
 	}
 	protected void poisoned() {
 		System.out.println("El jugador ya no esta seriamente envenenado, pero sigue envenenado");
-		this.state.setTurnos(this.state.getTurnos()+1);
 		this.state.setState(this.state.getPossibleState(States.POISONED));
+		this.state.setTurns(1);
 	}
 
 }

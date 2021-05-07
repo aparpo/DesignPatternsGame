@@ -8,13 +8,15 @@ public class StateSeriouslyParalyzed extends AbstractState implements CharacterS
 	public void process() {
 		if(suggestion == States.STANDARD) {
 			standard();
-		}else if(this.state.getTurnos() <= 0) {
+		}else if(this.state.getTurns() <= 0) {
 			paralyzed();
 		}
+		suggestion = null;
 	}
 
 	
 	public Action effect(Action action) {
+		//Devuelve una accion inutilizada
 		action.getVariation().backToNormal();
 		action.getVariation().setLife(0);
 		return action;
@@ -25,7 +27,7 @@ public class StateSeriouslyParalyzed extends AbstractState implements CharacterS
 	}
 	protected void paralyzed() {
 		System.out.println("El jugador ya no esta seriamente paralizado, pero sigue paralizado");
-		this.state.setTurnos(this.state.getTurnos()+1);
 		this.state.setState(this.state.getPossibleState(States.PARALYZED));
+		this.state.setTurns(1);
 	}
 }

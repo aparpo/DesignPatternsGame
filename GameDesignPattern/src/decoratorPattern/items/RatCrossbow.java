@@ -4,11 +4,12 @@ import base.*;
 import base.Character;
 import decoratorPattern.*;
 import singletonPattern.GameManager;
+import statePattern.States;
 
-public class LongSword extends ActiveItemDecorator{ //Ataque basico con espada
+public class RatCrossbow extends ActiveItemDecorator{ //Ataque que envenena
 
-	public LongSword(Item equipment) {
-		super(equipment, "Long Sword", "Sword Attack", 0, 0, 10, 0, 0, ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.C);
+	public RatCrossbow(Item equipment) {
+		super(equipment, "Rat Crossbow", "Poisson sting", 0, 0, 10, 0, 0, ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.B);
 	}
 
 	@Override
@@ -20,6 +21,7 @@ public class LongSword extends ActiveItemDecorator{ //Ataque basico con espada
 		Stats variation = new Stats( -aux, 0, 0, 0, 0); //Actualizar vida actual
 		
 		GameManager.getManager().getActions().add(new Action(variation, actionType, skillType,user, target));
+		user.getState().setSuggestion(States.POISONED); //Intento de envenenamiento
 	}
 
 }

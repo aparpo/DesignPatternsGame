@@ -65,7 +65,10 @@ public class GameManager {
 		
 		//Aplicar los efectos del estado de cada personaje a las acciones que ha lanzado
 		for(int i = 0; i < actions.size(); i++) {
-			actions.get(i).getUser().StatusEffect(actions.get(i));
+			if(actions.get(i).getUser()!=null) { //Eventos sin usuario directo (ej: envenenamiento)
+				actions.get(i).getUser().StatusEffect(actions.get(i));
+			}
+			
 		}
 		
 		//Resolver por orden

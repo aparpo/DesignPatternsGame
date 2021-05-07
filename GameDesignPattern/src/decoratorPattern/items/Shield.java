@@ -2,19 +2,15 @@ package decoratorPattern.items;
 
 import java.util.List;
 
-import base.Action;
-import base.ActionType;
+import base.*;
 import base.Character;
-import base.EquipmentTier;
-import base.SkillType;
-import decoratorPattern.ActiveItemDecorator;
-import decoratorPattern.Equipment;
+import decoratorPattern.*;
 import singletonPattern.GameManager;
 
 public class Shield extends ActiveItemDecorator{ //Defiende de la primera habilidad leve recibida
 
-	public Shield(Equipment equipment) {
-		super(equipment, "Shield", "Shield", 0, 0, 0, 5, 0, ActionType.DEFENSIVE, SkillType.PHYSICAL, EquipmentTier.S);
+	public Shield(Item equipment) {
+		super(equipment, "Shield", "Shield", 0, 0, 0, 5, 0, ActionType.DEFENSIVE, SkillType.PHYSICAL, Tier.C);
 	}
 
 	@Override
@@ -25,7 +21,7 @@ public class Shield extends ActiveItemDecorator{ //Defiende de la primera habili
 			if(actions.get(i).getActionType()==ActionType.OFFENSIVE && actions.get(i).getTarget() ==user) {
 				//Si va a recibir menos de 10 de daño, no le afecta la habilidad
 				if(actions.get(i).getVariation().getLife()>-10) {
-					actions.remove(i);
+					actions.get(i).getVariation().setLife(0);
 					break; //Solo funciona con la primera
 				}
 			}

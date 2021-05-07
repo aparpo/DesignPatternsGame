@@ -35,13 +35,13 @@ public class HardStrategy extends DecisionTemplate{
 				
 				//Despues comprobamos que el tier que es el item, siempre teniendo en cuenta que no haya ya uno tier s, en ese caso no hace falta
 				if(tierListEnemyItem < 3) {
-					if(list.get(i).getEquipmentTier() == EquipmentTier.S) {
+					if(list.get(i).getEquipmentTier() == Tier.S) {
 						tierListEnemyItem = 3;
 						posBestActiveItem = i;
-					}else if(list.get(i).getEquipmentTier() == EquipmentTier.A && tierListEnemyItem < 2) {
+					}else if(list.get(i).getEquipmentTier() == Tier.A && tierListEnemyItem < 2) {
 						tierListEnemyItem = 2;
 						posBestActiveItem = i;
-					}else if(list.get(i).getEquipmentTier() == EquipmentTier.B && tierListEnemyItem < 1) {
+					}else if(list.get(i).getEquipmentTier() == Tier.B && tierListEnemyItem < 1) {
 						tierListEnemyItem = 1;
 						posBestActiveItem = i;
 					}
@@ -61,13 +61,13 @@ public class HardStrategy extends DecisionTemplate{
 				//Despues comprobamos que el tier que es el item, siempre teniendo en cuenta que no haya ya uno tier s, en ese caso no hace falta
 				if(tierListPlayerItem < 3) {
 					//Despues almacenamos la defensa del mejor objeto defensivo, dando por hecho que lo normal es que use lo mejor que tenga
-					if(listPlayer.get(i).getEquipmentTier() == EquipmentTier.S) {
+					if(listPlayer.get(i).getEquipmentTier() == Tier.S) {
 						tierListPlayerItem = 2;
 						extraDefensePlayer = listPlayer.get(i).getDefense();
-					}else if(listPlayer.get(i).getEquipmentTier() == EquipmentTier.A && tierListPlayerItem < 2) {
+					}else if(listPlayer.get(i).getEquipmentTier() == Tier.A && tierListPlayerItem < 2) {
 						tierListPlayerItem = 1;
 						extraDefensePlayer = listPlayer.get(i).getDefense();
-					}else if(listPlayer.get(i).getEquipmentTier() == EquipmentTier.B && tierListPlayerItem < 1) {
+					}else if(listPlayer.get(i).getEquipmentTier() == Tier.B && tierListPlayerItem < 1) {
 						tierListPlayerItem = 0;
 						extraDefensePlayer = listPlayer.get(i).getDefense();
 					}else {
@@ -113,13 +113,13 @@ public class HardStrategy extends DecisionTemplate{
 				probability = 0;				
 				//Despues comprobamos que el tier que es el item, siempre teniendo en cuenta que no haya ya uno tier s, en ese caso no hace falta
 				if(tierListEnemyItem < 3) {
-					if(list.get(i).getEquipmentTier() == EquipmentTier.S) {
+					if(list.get(i).getEquipmentTier() == Tier.S) {
 						tierListEnemyItem = 3;
 						posBestActiveItem = i;
-					}else if(list.get(i).getEquipmentTier() == EquipmentTier.A && tierListEnemyItem < 2) {
+					}else if(list.get(i).getEquipmentTier() == Tier.A && tierListEnemyItem < 2) {
 						tierListEnemyItem = 2;
 						posBestActiveItem = i;
-					}else if(list.get(i).getEquipmentTier() == EquipmentTier.B && tierListEnemyItem < 1) {
+					}else if(list.get(i).getEquipmentTier() == Tier.B && tierListEnemyItem < 1) {
 						tierListEnemyItem = 1;
 						posBestActiveItem = i;
 					}
@@ -139,13 +139,13 @@ public class HardStrategy extends DecisionTemplate{
 				//Despues comprobamos que el tier que es el item, siempre teniendo en cuenta que no haya ya uno tier s, en ese caso no hace falta
 				if(tierListPlayerItem < 3) {
 					//Despues almacenamos la defensa del mejor objeto defensivo, dando por hecho que lo normal es que use lo mejor que tenga
-					if(listPlayer.get(i).getEquipmentTier() == EquipmentTier.S) {
+					if(listPlayer.get(i).getEquipmentTier() == Tier.S) {
 						tierListPlayerItem = 2;
 						extraAttackPlayer = listPlayer.get(i).getAttack();
-					}else if(listPlayer.get(i).getEquipmentTier() == EquipmentTier.A && tierListPlayerItem < 2) {
+					}else if(listPlayer.get(i).getEquipmentTier() == Tier.A && tierListPlayerItem < 2) {
 						tierListPlayerItem = 1;
 						extraAttackPlayer = listPlayer.get(i).getAttack();
-					}else if(listPlayer.get(i).getEquipmentTier() == EquipmentTier.B && tierListPlayerItem < 1) {
+					}else if(listPlayer.get(i).getEquipmentTier() == Tier.B && tierListPlayerItem < 1) {
 						tierListPlayerItem = 0;
 						extraAttackPlayer = listPlayer.get(i).getAttack();
 					}else {
@@ -183,7 +183,7 @@ public class HardStrategy extends DecisionTemplate{
 		int[]attacks = new int[3];
 		int savedAttacks = 0;
 		boolean haveDeathStaff = false;
-		EquipmentTier bestTier = bestOffensiveItemTier(skills);
+		Tier bestTier = bestOffensiveItemTier(skills);
 		//Recorremos el array buscando objetos ofensivos y del mejor tier
 		for(int i =0; i < skills.size(); i++) {
 			if(skills.get(i).getActionType() == ActionType.OFFENSIVE) {
@@ -210,7 +210,7 @@ public class HardStrategy extends DecisionTemplate{
 	public void defense(Enemy user, Character player, List<ActiveItemDecorator> skills) {
 		int[]defenses = new int[3];
 		int savedDefenses = 0;
-		EquipmentTier bestTier = bestDefensiveItemTier(skills);
+		Tier bestTier = bestDefensiveItemTier(skills);
 		for(int i =0; i < skills.size(); i++) {
 			if(skills.get(i).getActionType() == ActionType.DEFENSIVE) {
 				if(skills.get(i).getEquipmentTier() == bestTier) {
@@ -245,24 +245,24 @@ public class HardStrategy extends DecisionTemplate{
 
 	
 	// Esta funcion devuelve cual es el tier del objeto defensivo con mejor tier
-	public EquipmentTier bestDefensiveItemTier(List<ActiveItemDecorator> list) {
-		EquipmentTier tier = null;
+	public Tier bestDefensiveItemTier(List<ActiveItemDecorator> list) {
+		Tier tier = null;
 		int tierValue = 0;
 		//Recorre la lista buscando el tier mas alto
 		for(int i =0; i < list.size(); i++) {
 			if(list.get(i).getActionType() == ActionType.DEFENSIVE) {
-				if(list.get(i).getEquipmentTier() == EquipmentTier.S) {
-					tier = EquipmentTier.S;
+				if(list.get(i).getEquipmentTier() == Tier.S) {
+					tier = Tier.S;
 					break;
-				}else if(list.get(i).getEquipmentTier() == EquipmentTier.A && tierValue < 3) {
+				}else if(list.get(i).getEquipmentTier() == Tier.A && tierValue < 3) {
 					tierValue =3;
-					tier = EquipmentTier.A;
-				}else if(list.get(i).getEquipmentTier() == EquipmentTier.B && tierValue < 2) {
+					tier = Tier.A;
+				}else if(list.get(i).getEquipmentTier() == Tier.B && tierValue < 2) {
 					tierValue =2;
-					tier = EquipmentTier.B;
-				}else if(list.get(i).getEquipmentTier() == EquipmentTier.C && tierValue < 1) {
+					tier = Tier.B;
+				}else if(list.get(i).getEquipmentTier() == Tier.C && tierValue < 1) {
 					tierValue =1;
-					tier = EquipmentTier.C;
+					tier = Tier.C;
 				}
 			}
 		}
@@ -270,23 +270,23 @@ public class HardStrategy extends DecisionTemplate{
 	}
 	
 	// Esta funcion devuelve cual es el tier del objeto ofensivo con mejor tier
-	public EquipmentTier bestOffensiveItemTier(List<ActiveItemDecorator> list) {
-		EquipmentTier tier = null;
+	public Tier bestOffensiveItemTier(List<ActiveItemDecorator> list) {
+		Tier tier = null;
 		int tierValue = 0;
 		for(int i =0; i < list.size(); i++) {
 			if(list.get(i).getActionType() == ActionType.OFFENSIVE) {
-				if(list.get(i).getEquipmentTier() == EquipmentTier.S) {
-					tier = EquipmentTier.S;
+				if(list.get(i).getEquipmentTier() == Tier.S) {
+					tier = Tier.S;
 					break;
-				}else if(list.get(i).getEquipmentTier() == EquipmentTier.A && tierValue < 3) {
+				}else if(list.get(i).getEquipmentTier() == Tier.A && tierValue < 3) {
 					tierValue =3;
-					tier = EquipmentTier.A;
-				}else if(list.get(i).getEquipmentTier() == EquipmentTier.B && tierValue < 2) {
+					tier = Tier.A;
+				}else if(list.get(i).getEquipmentTier() == Tier.B && tierValue < 2) {
 					tierValue =2;
-					tier = EquipmentTier.B;
-				}else if(list.get(i).getEquipmentTier() == EquipmentTier.C && tierValue < 1) {
+					tier = Tier.B;
+				}else if(list.get(i).getEquipmentTier() == Tier.C && tierValue < 1) {
 					tierValue =1;
-					tier = EquipmentTier.C;
+					tier = Tier.C;
 				}
 			}
 		}

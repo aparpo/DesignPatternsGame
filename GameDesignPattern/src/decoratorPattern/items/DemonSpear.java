@@ -1,12 +1,12 @@
 package decoratorPattern.items;
 
-import base.Stats;
+import base.*;
 import decoratorPattern.*;
 
 public class DemonSpear extends PassiveItemDecorator{ 
 
-	public DemonSpear(Equipment equipment) {
-		super(equipment, "Demon Spear", 0, 0, 20, 0, 0);
+	public DemonSpear(Item equipment) {
+		super(equipment, "Demon Spear", 0, 0, 20, 0, 0, Tier.S);
 	}
 	
 

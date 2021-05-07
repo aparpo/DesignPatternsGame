@@ -9,10 +9,10 @@ import statePattern.*;
 public abstract class Character {
 	protected String name;
 	protected State state;
-	protected Equipment equipment = new Stats();
+	protected Item equipment = new Stats();
 	
 	public Character(String name) {
-		this.name = name;		
+		this.name = name;
 	}
 
 	public abstract void decision();
@@ -46,11 +46,11 @@ public abstract class Character {
 		return false;
 	}
 	
-	public Equipment getEquipment() {
+	public Item getEquipment() {
 		return equipment;
 	}
 	
-	public void setEquipment(Equipment equipment) {
+	public void setEquipment(Item equipment) {
 		System.out.println("Actual equipment" + equipment.getClass());
 		this.equipment = equipment;
 	}

@@ -1,19 +1,14 @@
 package decoratorPattern.items;
 
-import base.Action;
-import base.ActionType;
+import base.*;
 import base.Character;
-import base.EquipmentTier;
-import base.SkillType;
-import base.Stats;
-import decoratorPattern.Equipment;
-import decoratorPattern.UsableItemDecorator;
+import decoratorPattern.*;
 import singletonPattern.GameManager;
 
 public class Potion extends UsableItemDecorator{ //Cura 50 de vida 
 	
-	public Potion(Equipment equipment, int amount) {
-		super(equipment, "Potion", "Use potion", 0, 0, 0, 0, 0,ActionType.NEUTRAL, SkillType.MAGIC,EquipmentTier.A, amount);
+	public Potion(Item equipment, int amount) {
+		super(equipment, "Potion", "Use potion", 0, 0, 0, 0, 0,ActionType.NEUTRAL, SkillType.MAGIC,Tier.C, amount);
 	}
 
 	@Override
@@ -21,13 +16,13 @@ public class Potion extends UsableItemDecorator{ //Cura 50 de vida
 		if(amount > 0) { //Quedan pociones
 			int heal;
 			//Asegurar que no se cura por encima de su vida maxima
-			if(user.getEquipment().getLife()<= user.getEquipment().getMaxLife()-50) {
+			if(target.getEquipment().getLife()<= target.getEquipment().getMaxLife()-50) {
 				heal = 50;
 			}else {
-				heal = user.getEquipment().getMaxLife() - user.getEquipment().getLife();
+				heal = target.getEquipment().getMaxLife() - target.getEquipment().getLife();
 			}
 			Stats variation = new Stats(heal, 0, 0, 0, 0);
-			GameManager.getManager().getActions().add(new Action(variation, actionType, skillType, user, user));
+			GameManager.getManager().getActions().add(new Action(variation, actionType, skillType, user, target));
 			amount--;	
 		}
 		

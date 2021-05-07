@@ -1,23 +1,21 @@
 package decoratorPattern;
 
-import base.ActionType;
+import base.*;
 import base.Character;
-import base.EquipmentTier;
-import base.SkillType;
+
 public abstract class ActiveItemDecorator extends ItemDecorator { //Objetos que dotan al personaje de habilidades activas
 	
 	private String skillname; //Nombre de la habilidad
 	protected ActionType actionType;
 	protected SkillType skillType;
-	protected EquipmentTier equipmentTier;
 	
-	public ActiveItemDecorator(Equipment equipment, String name, String skillName, int life, int maxLife, int attack, int defense, int speed,
-			ActionType actionType, SkillType skillType, EquipmentTier equipmentTier) {
-		super(equipment, name, life, maxLife, attack, defense, speed);
+	
+	public ActiveItemDecorator(Item equipment, String name, String skillName, int life, int maxLife, int attack, int defense, int speed,
+			ActionType actionType, SkillType skillType, Tier tier) {
+		super(equipment, name, life, maxLife, attack, defense, speed, tier);
 		this.skillname = skillName;
 		this.setActionType(actionType);
 		this.setSkillType(skillType);
-		this.setEquipmentTier(equipmentTier);
 	}
 	
 	public abstract void useSkill(Character user, Character target); //Efecto de la habilidad
@@ -44,14 +42,6 @@ public abstract class ActiveItemDecorator extends ItemDecorator { //Objetos que 
 
 	public void setActionType(ActionType actionType) {
 		this.actionType = actionType;
-	}
-
-	public EquipmentTier getEquipmentTier() {
-		return equipmentTier;
-	}
-
-	public void setEquipmentTier(EquipmentTier equipmentTier) {
-		this.equipmentTier = equipmentTier;
 	}
 
 	

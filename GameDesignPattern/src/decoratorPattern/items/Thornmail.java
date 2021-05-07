@@ -1,12 +1,13 @@
 package decoratorPattern.items;
 
 import base.Stats;
-import decoratorPattern.Equipment;
+import decoratorPattern.Item;
 import decoratorPattern.PassiveItemDecorator;
+import decoratorPattern.Tier;
 
 public class Thornmail extends PassiveItemDecorator{ //Aumenta pasivamente la defensa
-	public Thornmail(Equipment equipment) {
-		super(equipment, "Thornmail", 0, 5, 0, 20, 0);
+	public Thornmail(Item equipment) {
+		super(equipment, "Thornmail", 0, 5, 0, 20, -1,Tier.B);
 	}
 	
 	@Override

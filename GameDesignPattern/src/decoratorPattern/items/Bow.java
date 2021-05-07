@@ -1,18 +1,15 @@
 package decoratorPattern.items;
 
-import base.Action;
-import base.ActionType;
+import base.*;
 import base.Character;
-import base.EquipmentTier;
-import base.SkillType;
-import base.Stats;
+
 import decoratorPattern.*;
 import singletonPattern.GameManager;
 
 public class Bow extends ActiveItemDecorator{ //El ataque con arco hace mas daño pero puede fallar
 
-	public Bow(Equipment equipment) {
-		super(equipment, "Bow", "Shoot Arrow", 0, 0, 5, 0, 0, ActionType.OFFENSIVE, SkillType.PHYSICAL, EquipmentTier.A);
+	public Bow(Item equipment) {
+		super(equipment, "Bow", "Shoot Arrow", 0, 0, 5, 0, 0, ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.C);
 	}
 
 	@Override
