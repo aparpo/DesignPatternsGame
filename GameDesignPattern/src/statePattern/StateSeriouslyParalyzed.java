@@ -19,6 +19,7 @@ public class StateSeriouslyParalyzed extends AbstractState implements CharacterS
 		//Devuelve una accion inutilizada
 		action.getVariation().backToNormal();
 		action.getVariation().setLife(0);
+		this.state.setTurns(this.state.getTurns()-1);
 		return action;
 	}
 	protected void standard() {
