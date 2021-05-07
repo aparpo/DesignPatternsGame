@@ -3,12 +3,8 @@ package strategyPattern.bossStrategies;
 import java.util.ArrayList;
 import java.util.List;
 
-import base.ActionType;
-import base.Character;
-import base.Enemy;
-import base.EquipmentTier;
-import base.Player;
-import decoratorPattern.ActiveItemDecorator;
+import base.*;
+import decoratorPattern.*;
 import strategyPattern.DecisionTemplate;
 
 public class HardStrategy extends DecisionTemplate{
@@ -35,13 +31,13 @@ public class HardStrategy extends DecisionTemplate{
 				
 				//Despues comprobamos que el tier que es el item, siempre teniendo en cuenta que no haya ya uno tier s, en ese caso no hace falta
 				if(tierListEnemyItem < 3) {
-					if(list.get(i).getEquipmentTier() == Tier.S) {
+					if(list.get(i).getTier() == Tier.S) {
 						tierListEnemyItem = 3;
 						posBestActiveItem = i;
-					}else if(list.get(i).getEquipmentTier() == Tier.A && tierListEnemyItem < 2) {
+					}else if(list.get(i).getTier() == Tier.A && tierListEnemyItem < 2) {
 						tierListEnemyItem = 2;
 						posBestActiveItem = i;
-					}else if(list.get(i).getEquipmentTier() == Tier.B && tierListEnemyItem < 1) {
+					}else if(list.get(i).getTier() == Tier.B && tierListEnemyItem < 1) {
 						tierListEnemyItem = 1;
 						posBestActiveItem = i;
 					}
@@ -61,13 +57,13 @@ public class HardStrategy extends DecisionTemplate{
 				//Despues comprobamos que el tier que es el item, siempre teniendo en cuenta que no haya ya uno tier s, en ese caso no hace falta
 				if(tierListPlayerItem < 3) {
 					//Despues almacenamos la defensa del mejor objeto defensivo, dando por hecho que lo normal es que use lo mejor que tenga
-					if(listPlayer.get(i).getEquipmentTier() == Tier.S) {
+					if(listPlayer.get(i).getTier() == Tier.S) {
 						tierListPlayerItem = 2;
 						extraDefensePlayer = listPlayer.get(i).getDefense();
-					}else if(listPlayer.get(i).getEquipmentTier() == Tier.A && tierListPlayerItem < 2) {
+					}else if(listPlayer.get(i).getTier() == Tier.A && tierListPlayerItem < 2) {
 						tierListPlayerItem = 1;
 						extraDefensePlayer = listPlayer.get(i).getDefense();
-					}else if(listPlayer.get(i).getEquipmentTier() == Tier.B && tierListPlayerItem < 1) {
+					}else if(listPlayer.get(i).getTier() == Tier.B && tierListPlayerItem < 1) {
 						tierListPlayerItem = 0;
 						extraDefensePlayer = listPlayer.get(i).getDefense();
 					}else {
@@ -113,13 +109,13 @@ public class HardStrategy extends DecisionTemplate{
 				probability = 0;				
 				//Despues comprobamos que el tier que es el item, siempre teniendo en cuenta que no haya ya uno tier s, en ese caso no hace falta
 				if(tierListEnemyItem < 3) {
-					if(list.get(i).getEquipmentTier() == Tier.S) {
+					if(list.get(i).getTier() == Tier.S) {
 						tierListEnemyItem = 3;
 						posBestActiveItem = i;
-					}else if(list.get(i).getEquipmentTier() == Tier.A && tierListEnemyItem < 2) {
+					}else if(list.get(i).getTier() == Tier.A && tierListEnemyItem < 2) {
 						tierListEnemyItem = 2;
 						posBestActiveItem = i;
-					}else if(list.get(i).getEquipmentTier() == Tier.B && tierListEnemyItem < 1) {
+					}else if(list.get(i).getTier() == Tier.B && tierListEnemyItem < 1) {
 						tierListEnemyItem = 1;
 						posBestActiveItem = i;
 					}
@@ -139,13 +135,13 @@ public class HardStrategy extends DecisionTemplate{
 				//Despues comprobamos que el tier que es el item, siempre teniendo en cuenta que no haya ya uno tier s, en ese caso no hace falta
 				if(tierListPlayerItem < 3) {
 					//Despues almacenamos la defensa del mejor objeto defensivo, dando por hecho que lo normal es que use lo mejor que tenga
-					if(listPlayer.get(i).getEquipmentTier() == Tier.S) {
+					if(listPlayer.get(i).getTier() == Tier.S) {
 						tierListPlayerItem = 2;
 						extraAttackPlayer = listPlayer.get(i).getAttack();
-					}else if(listPlayer.get(i).getEquipmentTier() == Tier.A && tierListPlayerItem < 2) {
+					}else if(listPlayer.get(i).getTier() == Tier.A && tierListPlayerItem < 2) {
 						tierListPlayerItem = 1;
 						extraAttackPlayer = listPlayer.get(i).getAttack();
-					}else if(listPlayer.get(i).getEquipmentTier() == Tier.B && tierListPlayerItem < 1) {
+					}else if(listPlayer.get(i).getTier() == Tier.B && tierListPlayerItem < 1) {
 						tierListPlayerItem = 0;
 						extraAttackPlayer = listPlayer.get(i).getAttack();
 					}else {
@@ -179,7 +175,7 @@ public class HardStrategy extends DecisionTemplate{
 		return 1;
 	}
 	
-	public void attack(Enemy user, Character player, List<ActiveItemDecorator> skills) {
+	public void attack(Enemy user, Player player, List<ActiveItemDecorator> skills) {
 		int[]attacks = new int[3];
 		int savedAttacks = 0;
 		boolean haveDeathStaff = false;
@@ -187,7 +183,7 @@ public class HardStrategy extends DecisionTemplate{
 		//Recorremos el array buscando objetos ofensivos y del mejor tier
 		for(int i =0; i < skills.size(); i++) {
 			if(skills.get(i).getActionType() == ActionType.OFFENSIVE) {
-				if(skills.get(i).getEquipmentTier() == bestTier) {
+				if(skills.get(i).getTier() == bestTier) {
 					//Si tiene el death staff, als er el mejor objeto ofensivo directamente usa eso
 					if(skills.get(i).getName().equalsIgnoreCase("Death Staff")) {
 						haveDeathStaff = true;
@@ -207,13 +203,13 @@ public class HardStrategy extends DecisionTemplate{
 		
 	}
 	
-	public void defense(Enemy user, Character player, List<ActiveItemDecorator> skills) {
+	public void defense(Enemy user, Player player, List<ActiveItemDecorator> skills) {
 		int[]defenses = new int[3];
 		int savedDefenses = 0;
 		Tier bestTier = bestDefensiveItemTier(skills);
 		for(int i =0; i < skills.size(); i++) {
 			if(skills.get(i).getActionType() == ActionType.DEFENSIVE) {
-				if(skills.get(i).getEquipmentTier() == bestTier) {
+				if(skills.get(i).getTier() == bestTier) {
 					defenses[savedDefenses] = i;
 					savedDefenses++;
 				}
@@ -222,7 +218,7 @@ public class HardStrategy extends DecisionTemplate{
 		skills.get((int)Math.random()*savedDefenses).useSkill(user, player);
 	}
 	
-	public void neutral(Character user, Character player) {
+	public void neutral(Enemy user, Player player) {
 		
 	}
 
@@ -251,16 +247,16 @@ public class HardStrategy extends DecisionTemplate{
 		//Recorre la lista buscando el tier mas alto
 		for(int i =0; i < list.size(); i++) {
 			if(list.get(i).getActionType() == ActionType.DEFENSIVE) {
-				if(list.get(i).getEquipmentTier() == Tier.S) {
+				if(list.get(i).getTier() == Tier.S) {
 					tier = Tier.S;
 					break;
-				}else if(list.get(i).getEquipmentTier() == Tier.A && tierValue < 3) {
+				}else if(list.get(i).getTier() == Tier.A && tierValue < 3) {
 					tierValue =3;
 					tier = Tier.A;
-				}else if(list.get(i).getEquipmentTier() == Tier.B && tierValue < 2) {
+				}else if(list.get(i).getTier() == Tier.B && tierValue < 2) {
 					tierValue =2;
 					tier = Tier.B;
-				}else if(list.get(i).getEquipmentTier() == Tier.C && tierValue < 1) {
+				}else if(list.get(i).getTier() == Tier.C && tierValue < 1) {
 					tierValue =1;
 					tier = Tier.C;
 				}
@@ -275,16 +271,16 @@ public class HardStrategy extends DecisionTemplate{
 		int tierValue = 0;
 		for(int i =0; i < list.size(); i++) {
 			if(list.get(i).getActionType() == ActionType.OFFENSIVE) {
-				if(list.get(i).getEquipmentTier() == Tier.S) {
+				if(list.get(i).getTier() == Tier.S) {
 					tier = Tier.S;
 					break;
-				}else if(list.get(i).getEquipmentTier() == Tier.A && tierValue < 3) {
+				}else if(list.get(i).getTier() == Tier.A && tierValue < 3) {
 					tierValue =3;
 					tier = Tier.A;
-				}else if(list.get(i).getEquipmentTier() == Tier.B && tierValue < 2) {
+				}else if(list.get(i).getTier() == Tier.B && tierValue < 2) {
 					tierValue =2;
 					tier = Tier.B;
-				}else if(list.get(i).getEquipmentTier() == Tier.C && tierValue < 1) {
+				}else if(list.get(i).getTier() == Tier.C && tierValue < 1) {
 					tierValue =1;
 					tier = Tier.C;
 				}
