@@ -12,7 +12,7 @@ import decoratorPattern.ActiveItemDecorator;
 
 public class HardStrategy extends DecisionTemplate implements StrategyTemplate{
 
-
+	//Funcion que comprueba que tan "rentable" es atacar
 	public int worthAttack(Character enemy, Character player) {
 		int probability = -1;
 		int tierListEnemyItem = 0;
@@ -58,19 +58,19 @@ public class HardStrategy extends DecisionTemplate implements StrategyTemplate{
 			// Si tiene algun objeto defensivo
 			if(listPlayer.get(i).getActionType() == ActionType.DEFENSIVE) {
 				//Despues comprobamos que el tier que es el item, siempre teniendo en cuenta que no haya ya uno tier s, en ese caso no hace falta
-				if(tierListEnemyItem < 3) {
+				if(tierListPlayerItem < 3) {
 					//Despues almacenamos la defensa del mejor objeto defensivo, dando por hecho que lo normal es que use lo mejor que tenga
 					if(listPlayer.get(i).getEquipmentTier() == EquipmentTier.S) {
-						tierListEnemyItem = 2;
+						tierListPlayerItem = 2;
 						extraDefensePlayer = listPlayer.get(i).getDefense();
-					}else if(listPlayer.get(i).getEquipmentTier() == EquipmentTier.A && tierListEnemyItem < 2) {
-						tierListEnemyItem = 1;
+					}else if(listPlayer.get(i).getEquipmentTier() == EquipmentTier.A && tierListPlayerItem < 2) {
+						tierListPlayerItem = 1;
 						extraDefensePlayer = listPlayer.get(i).getDefense();
-					}else if(listPlayer.get(i).getEquipmentTier() == EquipmentTier.B && tierListEnemyItem < 1) {
-						tierListEnemyItem = 0;
+					}else if(listPlayer.get(i).getEquipmentTier() == EquipmentTier.B && tierListPlayerItem < 1) {
+						tierListPlayerItem = 0;
 						extraDefensePlayer = listPlayer.get(i).getDefense();
 					}else {
-						tierListEnemyItem = -1;
+						tierListPlayerItem = -1;
 						extraDefensePlayer = listPlayer.get(i).getDefense();
 					}
 				}
@@ -96,41 +96,199 @@ public class HardStrategy extends DecisionTemplate implements StrategyTemplate{
 			return i + tierListEnemyItem - tierListEnemyItem;
 		}
 	}
-	public int worthDefense(Character enemy, Character player) {
-		return 0;
-	}
-	public void attack(Enemy user, Character player) {
+	
+	//Funcion que comprueba que tan "rentable" es defender
+	public int worthDefend(Character enemy, Character player) {
+		int probability = -1;
+		int tierListEnemyItem = 0;
+		int posBestActiveItem = -1;
+		List<ActiveItemDecorator> list = new ArrayList<ActiveItemDecorator>(); 
+		list = enemy.getEquipment().areThereAnyActives(list);
+		// Con este for recorremos toda la lista de objetos activos
+		for(int i = 0; i < list.size(); i++) {
+			//Comprobamos si alguno de los objetos es ofensivo
+			if(list.get(i).getActionType() == ActionType.DEFENSIVE) {
+				//Si lo es ponemos probability a 0, en caso de que esta no se modifique a 0 despues de recorrer la lista entera, devolvera 0 psobilidades de atacar
+				probability = 0;				
+				//Despues comprobamos que el tier que es el item, siempre teniendo en cuenta que no haya ya uno tier s, en ese caso no hace falta
+				if(tierListEnemyItem < 3) {
+					if(list.get(i).getEquipmentTier() == EquipmentTier.S) {
+						tierListEnemyItem = 3;
+						posBestActiveItem = i;
+					}else if(list.get(i).getEquipmentTier() == EquipmentTier.A && tierListEnemyItem < 2) {
+						tierListEnemyItem = 2;
+						posBestActiveItem = i;
+					}else if(list.get(i).getEquipmentTier() == EquipmentTier.B && tierListEnemyItem < 1) {
+						tierListEnemyItem = 1;
+						posBestActiveItem = i;
+					}
+				}
+				
+			}
+		}
+		//Creamos una lista con los items del jugador (el target del ataque)
+		List<ActiveItemDecorator> listPlayer = new ArrayList<ActiveItemDecorator>(); 
+		listPlayer = player.getEquipment().areThereAnyActives(listPlayer);
+		int tierListPlayerItem = 0;
+		int extraAttackPlayer = 0 ;
+		//Recorremos la lista
+		for(int i = 0; i < list.size(); i++) {
+			// Si tiene algun objeto defensivo
+			if(listPlayer.get(i).getActionType() == ActionType.OFFENSIVE) {
+				//Despues comprobamos que el tier que es el item, siempre teniendo en cuenta que no haya ya uno tier s, en ese caso no hace falta
+				if(tierListPlayerItem < 3) {
+					//Despues almacenamos la defensa del mejor objeto defensivo, dando por hecho que lo normal es que use lo mejor que tenga
+					if(listPlayer.get(i).getEquipmentTier() == EquipmentTier.S) {
+						tierListPlayerItem = 2;
+						extraAttackPlayer = listPlayer.get(i).getAttack();
+					}else if(listPlayer.get(i).getEquipmentTier() == EquipmentTier.A && tierListPlayerItem < 2) {
+						tierListPlayerItem = 1;
+						extraAttackPlayer = listPlayer.get(i).getAttack();
+					}else if(listPlayer.get(i).getEquipmentTier() == EquipmentTier.B && tierListPlayerItem < 1) {
+						tierListPlayerItem = 0;
+						extraAttackPlayer = listPlayer.get(i).getAttack();
+					}else {
+						tierListPlayerItem = -1;
+						extraAttackPlayer = listPlayer.get(i).getAttack();
+					}
+				}
+			}
+				
+		}
 		
+		if(probability == -1) {
+			return 0;
+		}else {
+			int i = 0;
+			// Este if compara el dano, mas el dano del mejor item del enemigo contra la defensa del jugador mas la defensa de su mejor item
+			if(enemy.getEquipment().getAttack()+list.get(posBestActiveItem).getDefense() > player.getEquipment().getDefense() + extraAttackPlayer) {
+				i += 2;
+			}
+			// Comprobamos si el enemigo es capaz de matarlo en unos 3 turnos teniendo en cuenta los mismos datos que el if anterior
+			if(player.getEquipment().getAttack() + extraAttackPlayer - player.getEquipment().getDefense()+list.get(posBestActiveItem).getDefense()*3 > 
+			enemy.getEquipment().getLife()) {
+				
+				i+=3;
+			}
+			
+			return i + tierListEnemyItem - tierListPlayerItem;
+		}
 	}
-	public void defense(Enemy user, Character player) {
-		
+	protected int worthNeutral(Character user, Character player) {
+		return 1;
 	}
-	public void neutral(Character user, Character player) {
-		
-	}
-	protected int worthAttack() {
-		return 0;
-	}
-	protected int worthDeffend() {
-
-		return 0;
-	}
-	protected int worthNeutral() {
-		return 0;
-	}
-	protected void selectSkill(int[] options, List<ActiveItemDecorator> skills, Enemy user, Player target) {
-		
+	
+	public void attack(Enemy user, Character player, List<ActiveItemDecorator> skills) {
+		int[]attacks = new int[3];
+		int savedAttacks = 0;
+		boolean haveDeathStaff = false;
+		EquipmentTier bestTier = bestOffensiveItemTier(skills);
+		//Recorremos el array buscando objetos ofensivos y del mejor tier
+		for(int i =0; i < skills.size(); i++) {
+			if(skills.get(i).getActionType() == ActionType.OFFENSIVE) {
+				if(skills.get(i).getEquipmentTier() == bestTier) {
+					//Si tiene el death staff, als er el mejor objeto ofensivo directamente usa eso
+					if(skills.get(i).getName().equalsIgnoreCase("Death Staff")) {
+						haveDeathStaff = true;
+						attacks[0] = i;
+						break;
+					}
+					attacks[savedAttacks] = i;
+					savedAttacks++;
+				}
+			}
+		}
+		if(haveDeathStaff) {
+			skills.get(attacks[0]).useSkill(user, player);
+		}else {
+			skills.get((int)Math.random()*savedAttacks).useSkill(user, player);
+		}
 		
 	}
 	
-	public int objectType(ActionType style, Character user) {
-		List<ActiveItemDecorator> list = new ArrayList<ActiveItemDecorator>(); 
-		list = user.getEquipment().areThereAnyActives(list);
-		for(int i = 0; i < list.size(); i++) {
-			if(list.get(i).getActionType() == style) {
-				return 0;
+	public void defense(Enemy user, Character player, List<ActiveItemDecorator> skills) {
+		int[]defenses = new int[3];
+		int savedDefenses = 0;
+		EquipmentTier bestTier = bestDefensiveItemTier(skills);
+		for(int i =0; i < skills.size(); i++) {
+			if(skills.get(i).getActionType() == ActionType.DEFENSIVE) {
+				if(skills.get(i).getEquipmentTier() == bestTier) {
+					defenses[savedDefenses] = i;
+					savedDefenses++;
+				}
 			}
 		}
-		return -1;
+		skills.get((int)Math.random()*savedDefenses).useSkill(user, player);
+	}
+	
+	public void neutral(Character user, Character player) {
+		
+	}
+
+	
+	protected void selectSkill(int[] options, List<ActiveItemDecorator> skills, Enemy user, Player target) {
+		int total = 0;
+		for(int i =0; i < options.length; i++) {
+			total += options[i];
+		}
+		int random = (int)Math.random()*total;
+		if(random < options[0]) {
+			attack(user, target, skills);
+		}else if(random < options[0] + options[1]) {
+			defense(user, target, skills);
+		}else {
+			neutral(user, target);
+		}
+		
+	}
+
+	
+	// Esta funcion devuelve cual es el tier del objeto defensivo con mejor tier
+	public EquipmentTier bestDefensiveItemTier(List<ActiveItemDecorator> list) {
+		EquipmentTier tier = null;
+		int tierValue = 0;
+		//Recorre la lista buscando el tier mas alto
+		for(int i =0; i < list.size(); i++) {
+			if(list.get(i).getActionType() == ActionType.DEFENSIVE) {
+				if(list.get(i).getEquipmentTier() == EquipmentTier.S) {
+					tier = EquipmentTier.S;
+					break;
+				}else if(list.get(i).getEquipmentTier() == EquipmentTier.A && tierValue < 3) {
+					tierValue =3;
+					tier = EquipmentTier.A;
+				}else if(list.get(i).getEquipmentTier() == EquipmentTier.B && tierValue < 2) {
+					tierValue =2;
+					tier = EquipmentTier.B;
+				}else if(list.get(i).getEquipmentTier() == EquipmentTier.C && tierValue < 1) {
+					tierValue =1;
+					tier = EquipmentTier.C;
+				}
+			}
+		}
+		return tier;
+	}
+	
+	// Esta funcion devuelve cual es el tier del objeto ofensivo con mejor tier
+	public EquipmentTier bestOffensiveItemTier(List<ActiveItemDecorator> list) {
+		EquipmentTier tier = null;
+		int tierValue = 0;
+		for(int i =0; i < list.size(); i++) {
+			if(list.get(i).getActionType() == ActionType.OFFENSIVE) {
+				if(list.get(i).getEquipmentTier() == EquipmentTier.S) {
+					tier = EquipmentTier.S;
+					break;
+				}else if(list.get(i).getEquipmentTier() == EquipmentTier.A && tierValue < 3) {
+					tierValue =3;
+					tier = EquipmentTier.A;
+				}else if(list.get(i).getEquipmentTier() == EquipmentTier.B && tierValue < 2) {
+					tierValue =2;
+					tier = EquipmentTier.B;
+				}else if(list.get(i).getEquipmentTier() == EquipmentTier.C && tierValue < 1) {
+					tierValue =1;
+					tier = EquipmentTier.C;
+				}
+			}
+		}
+		return tier;
 	}
 }

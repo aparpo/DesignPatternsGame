@@ -19,6 +19,7 @@ public class StatePoisoned extends AbstractState implements CharacterState{
 			standard();
 		}else if(suggestion == States.POISONED) {
 			this.state.setTurnos(this.state.getTurnos()+1);
+			
 		}
 	}
 	
@@ -30,6 +31,10 @@ public class StatePoisoned extends AbstractState implements CharacterState{
 	protected void standard() {
 		System.out.println("El jugador ya no esta envenenado");
 		this.state.setState(this.state.getPossibleState(States.STANDARD));
+	}
+	protected void seriouslyPosioned() {
+		System.out.println("El jugador esta gravemente envenenado");
+		this.state.setState(this.state.getPossibleState(States.SERIOUSLYPOISONED));
 	}
 	
 }

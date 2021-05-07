@@ -3,6 +3,8 @@ package decoratorPattern;
 import java.util.ArrayList;
 import java.util.List;
 
+import base.ActionType;
+import base.EquipmentTier;
 import base.Stats;
 
 public abstract class ItemDecorator implements Equipment{

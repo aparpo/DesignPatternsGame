@@ -30,6 +30,9 @@ public class StateParalyzed extends AbstractState implements CharacterState{
 		System.out.println("El jugador ya no esta paralizado");
 		this.state.setState(this.state.getPossibleState(States.STANDARD));
 	}
-	
+	protected void seriouslyParalyzed() {
+		System.out.println("El jugador esta gravemente paralyzado");
+		this.state.setState(this.state.getPossibleState(States.SERIOUSLYPARALYZED));
+	}
 	
 }
