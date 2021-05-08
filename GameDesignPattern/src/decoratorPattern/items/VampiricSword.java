@@ -12,6 +12,11 @@ public class VampiricSword extends PassiveItemDecorator{
 	}
 	
 
+	public VampiricSword(){
+		super();
+	}
+
+
 	@Override
 	public Stats modifyStats(int life, int maxLife, int attack, int defense, int speed) {
 		life+=(int)0.1*attack; //Restaura vida en funcion del ataque

@@ -1,15 +1,15 @@
 package abstractFactoryPattern.enemies.hollow;
-import abstractFactoryPattern.*;
+import base.Enemy;
+import base.Stats;
 import decoratorPattern.*;
 import decoratorPattern.items.*;
-import strategyPattern.behaviours.*;
 
-public class HollowWorld1 extends Hollow{
+public class HollowWorld1 extends Enemy{
 
 	public HollowWorld1() {
-		super("Hollow Archer");
-		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(hollowBaseStats, World.WORLD1));
-		this.setBehaviour(new BalancedBehaviour());
-		this.equipment = new Bow(this.equipment);	
+		super("Hollow fighter");
+		this.equipment = new RegularItem(equipment, "custom",new Stats(300, 200, 80, 30 ,40));
+		this.equipment = new LongSword(this.equipment);	
+		this.equipment = new Shield(equipment);
 	}
 }

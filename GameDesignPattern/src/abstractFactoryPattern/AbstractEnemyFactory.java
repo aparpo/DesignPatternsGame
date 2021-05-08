@@ -1,13 +1,9 @@
 package abstractFactoryPattern;
 
 import base.Enemy;
+import decoratorPattern.Item;
 
 public interface AbstractEnemyFactory {
-	public Enemy createHollow();
-	public Enemy createSkeleton();
-	public Enemy createStoneGuardin();
-	public Enemy createCapraDemon();
-	public Enemy createBlackKnight();
-	public Enemy createDarkwraithKnight();
-	public Enemy createRandomEnemy();
+	public Enemy createEnemy();
+	public Item createEquipment();
 }
