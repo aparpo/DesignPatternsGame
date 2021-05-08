@@ -137,7 +137,8 @@ public class GameManager {
 	}
 	
 	private int checkEnd() {
-		return 0;
+		if(!player.isAlive())return 0;
+		else return characters.size();
 	}
 	
 	
