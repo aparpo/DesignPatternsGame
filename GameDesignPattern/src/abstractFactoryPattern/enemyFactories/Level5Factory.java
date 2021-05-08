@@ -1,5 +1,5 @@
 package abstractFactoryPattern.enemyFactories;
 
-public class EnemyFactoryLevel4 {
+public class Level5Factory {
 
 }

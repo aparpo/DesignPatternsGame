@@ -3,7 +3,7 @@ package abstractFactoryPattern;
 import base.Enemy;
 import decoratorPattern.Item;
 
-public interface AbstractEnemyFactory {
+public interface AbstractLevelFactory {
 	public Enemy createEnemy();
-	public Item createEquipment();
+	public Item createItem();
 }

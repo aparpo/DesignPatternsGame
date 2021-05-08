@@ -1,12 +1,12 @@
 package abstractFactoryPattern.enemyFactories;
 
-import abstractFactoryPattern.AbstractEnemyFactory;
+import abstractFactoryPattern.AbstractLevelFactory;
 import abstractFactoryPattern.enemies.hollow.HollowWorld3;
 import abstractFactoryPattern.enemies.skeleton.SkeletonWorld3;
 import base.Enemy;
 import decoratorPattern.Item;
 
-public class EnemyFactoryLevel3 implements AbstractEnemyFactory{
+public class Level3Factory implements AbstractLevelFactory{
 	public Enemy createEnemy() {
 		Enemy createdEnemy;
 		if((int)Math.random()*1 == 0) {
@@ -17,7 +17,7 @@ public class EnemyFactoryLevel3 implements AbstractEnemyFactory{
 		
 		return createdEnemy;
 	}
-	public Item createEquipment() {
+	public Item createItem() {
 		// TODO Auto-generated method stub
 		return null;
 	}

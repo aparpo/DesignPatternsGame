@@ -1,5 +1,5 @@
 package abstractFactoryPattern.enemyFactories;
-import abstractFactoryPattern.AbstractEnemyFactory;
+import abstractFactoryPattern.AbstractLevelFactory;
 import abstractFactoryPattern.enemies.hollow.HollowWorld1;
 import abstractFactoryPattern.enemies.skeleton.SkeletonWorld1;
 import base.Enemy;
@@ -7,7 +7,7 @@ import decoratorPattern.*;
 import decoratorPattern.Item;
 import decoratorPattern.items.*;
 
-public class EnemyFactoryLevel1 implements AbstractEnemyFactory{
+public class Level1Factory implements AbstractLevelFactory{
 
 	//Item possibleItemsWorld1[] = {new ElectricShield(new RegularItem()), new Bow(new RegularItem()), new Thornmail(new RegularItem()), new VampiricSword(new RegularItem())};
 	
@@ -22,11 +22,8 @@ public class EnemyFactoryLevel1 implements AbstractEnemyFactory{
 		return createdEnemy;
 	}
 
-	public Item createEquipment() {
+	public Item createItem() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	//new enemy
-	//enemy.setEquipment(new Bow(enemy.getEquipment());
 }

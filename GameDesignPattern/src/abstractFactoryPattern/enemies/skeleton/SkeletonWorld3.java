@@ -5,12 +5,11 @@ import base.Stats;
 import decoratorPattern.*;
 import decoratorPattern.items.*;
 
-public class SkeletonWorld3 extends Enemy{
+public class SkeletonWorld3 extends Skeleton{
 
 	public SkeletonWorld3() {
-		super("Skeleton toxico");
-		this.equipment = new RegularItem(equipment, "custom",new Stats(50, 60, 10, 10 ,5));
+		super("Toxic Skeleton");
+		this.equipment = new RegularItem(equipment, "custom",levelStats(skeletonBaseStats, World.WORLD1));
 		this.equipment =  new RatCrossbow(equipment);
-		this.equipment = new Shield(equipment);
 	}
 }

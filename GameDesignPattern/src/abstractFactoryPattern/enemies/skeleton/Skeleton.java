@@ -5,11 +5,11 @@ import base.Stats;
 import decoratorPattern.*;
 import decoratorPattern.items.*;
 
-public abstract class Skeleton extends Enemy{ //Clase modelo, a eliminar al acabar el patron
+public abstract class Skeleton extends Enemy{
+	protected final Stats skeletonBaseStats = new Stats(60, 60, 40, 10 ,1);
 	
-	public Skeleton() {
-		super("Skeleton");
-		this.equipment = new RegularItem(equipment,"custom",100, 100, 50, 30 ,2); //vida, vidaMax, ataque,defensa,velocidad
+	public Skeleton(String name) {
+		super(name);
 		this.equipment =  new Bow(equipment);
 		this.equipment = new Shield(equipment);
 	}
