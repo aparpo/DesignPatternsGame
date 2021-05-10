@@ -9,7 +9,7 @@ public class SkeletonWorld3 extends Skeleton{
 
 	public SkeletonWorld3() {
 		super("Toxic Skeleton");
-		this.equipment = new RegularItem(equipment, "custom",levelStats(skeletonBaseStats, World.WORLD1));
+		this.equipment = new RegularItem(equipment, "custom",levelStats(skeletonBaseStats, World.WORLD3));
 		this.equipment =  new RatCrossbow(equipment);
 	}
 }

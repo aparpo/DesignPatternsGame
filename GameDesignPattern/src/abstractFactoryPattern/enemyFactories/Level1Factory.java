@@ -18,7 +18,6 @@ public class Level1Factory implements AbstractLevelFactory{
 		}else {
 			createdEnemy = new HollowWorld1();
 		}
-		
 		return createdEnemy;
 	}
 
