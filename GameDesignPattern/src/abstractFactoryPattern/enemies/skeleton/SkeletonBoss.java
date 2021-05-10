@@ -1,15 +1,15 @@
 package abstractFactoryPattern.enemies.skeleton;
 import abstractFactoryPattern.*;
-import base.Enemy;
-import base.Stats;
 import decoratorPattern.*;
 import decoratorPattern.items.*;
+import strategyPattern.behaviours.*;
 
 public class SkeletonBoss extends Skeleton{
 	
 	public SkeletonBoss() {
-		super("Skeleton Boss");
-		this.equipment = new RegularItem(equipment, "Skeleton Boss",levelStats(skeletonBaseStats,World.BOSS));
-		this.equipment = new DemonSpear(this.equipment);	
+		super("Skeletor");
+		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(skeletonBaseStats, World.BOSS));
+		this.behaviour = new AgressiveBehaviour();
+		this.equipment = new VampiricSword(this.equipment);	
 	}
 }

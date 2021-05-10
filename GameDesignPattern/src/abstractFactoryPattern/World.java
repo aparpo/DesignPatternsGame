@@ -1,14 +1,14 @@
 package abstractFactoryPattern;
 
 public enum World {
-	WORLD1(1.0), WORLD2(1.2), WORLD3(1.4), WORLD4(1.6), WORLD5(1.8), BOSS(2.0);
+	WORLD1(1), WORLD2(2), WORLD3(3), WORLD4(4), WORLD5(5), BOSS(10);
 	
-	private double complexFactor;
-	public double getComplexFactor() {
+	private Integer complexFactor;
+	public Integer getComplexFactor() {
 		return complexFactor;
 	}
 	
-	private World(double complexFactor) {
+	private World(Integer complexFactor) {
 		this.complexFactor = complexFactor;
 	}
 }
