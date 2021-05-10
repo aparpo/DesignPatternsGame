@@ -12,6 +12,7 @@ public interface Item { //Interfaz general
 	public int getAttack();
 	public int getDefense();
 	public int getSpeed();
+	public String getName();
 	public String getDesc();
 	public Tier getTier();
 	

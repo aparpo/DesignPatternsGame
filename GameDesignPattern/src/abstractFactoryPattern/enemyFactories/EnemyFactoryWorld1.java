@@ -51,4 +51,11 @@ public class EnemyFactoryWorld1 implements AbstractEnemyFactory{
 		throw new IllegalStateException("Invalid Enemy Generation");
 	}
 
+	public static void main(String[] args) {
+		AbstractEnemyFactory enemyFactory = new EnemyFactoryWorld1();
+		
+		Enemy enemy = enemyFactory.generateEnemy();
+		
+		System.out.print(enemy);
+	}
 }

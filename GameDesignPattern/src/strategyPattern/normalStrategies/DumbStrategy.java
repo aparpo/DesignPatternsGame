@@ -30,4 +30,7 @@ public class DumbStrategy extends DecisionTemplate{
 		
 	}
 
+	public String toString() {
+		return "Dumb";
+	}
 }

@@ -102,4 +102,10 @@ public class Stats implements Item{ //Componente base
 	public Tier getTier() {
 		return null;
 	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

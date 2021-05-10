@@ -4,10 +4,9 @@ import base.Stats;
 
 public class Hollow extends Enemy{
 	protected final Stats hollowBaseStats = new Stats(250, 250, 50, 50, 25);
-	protected String hollowName;
 	
-	public Hollow(String hollowName) {
+	public Hollow(String enemyName) {
 		super("Hollow");
-		this.hollowName = hollowName;
+		this.enemyName = enemyName;
 	}
 }

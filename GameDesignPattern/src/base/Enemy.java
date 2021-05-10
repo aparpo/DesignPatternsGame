@@ -7,6 +7,7 @@ import strategyPattern.*;
 public class Enemy extends Character{
 	
 	protected DecisionTemplate behaviour;
+	protected String enemyName;
 	
 	public Enemy(String name) {
 		super(name);
@@ -34,5 +35,10 @@ public class Enemy extends Character{
 
 	public void setBehaviour(DecisionTemplate behaviour) {
 		this.behaviour = behaviour;
+	}
+	
+	public String toString() {
+		return this.enemyName + " [Enemy Type: " + this.name + ", Weapon: " + this.equipment.getName() + ", Behaviour: " + this.behaviour + 
+				", Stats: (Life: " + this.equipment.getLife() + ", Att: " + this.equipment.getAttack() + ", Def: " + this.equipment.getDefense() + ", Speed: " + this.equipment.getSpeed() + ")]";
 	}
 }

@@ -76,4 +76,7 @@ public class DefensiveStrategy extends DecisionTemplate{
 		
 	}
 	
+	public String toString() {
+		return "Defensive";
+	}
 }
