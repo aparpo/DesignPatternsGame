@@ -20,7 +20,13 @@ public abstract class AbstractState implements CharacterState{
 	protected  void paralyzed() throws Exception {
 		throw(new Exception("Transicion ilegal"));
 	}
+	protected  void seriouslyParalyzed() throws Exception {
+		throw(new Exception("Transicion ilegal"));
+	}
 	protected  void poisoned() throws Exception {
+		throw(new Exception("Transicion ilegal"));
+	}
+	protected  void seriouslyPoisoned() throws Exception {
 		throw(new Exception("Transicion ilegal"));
 	}
 	protected  void confused() throws Exception {

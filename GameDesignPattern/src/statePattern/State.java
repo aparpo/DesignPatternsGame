@@ -9,7 +9,7 @@ public class State {
 
 	private List<CharacterState> possibleStates = new ArrayList<CharacterState>();
 
-	private int turnos;
+	private int turns;
 	
 	public void process() {
 		this.state.process();
@@ -22,7 +22,8 @@ public class State {
 		this.possibleStates.add(new StateFurious(this));
 		this.possibleStates.add(new StateParalyzed(this));
 		this.possibleStates.add(new StatePoisoned(this));
-		this.turnos = 0;
+		this.possibleStates.add(new StateSeriouslyPosioned(this));
+		this.turns = 0;
 	}
 	
 	
@@ -32,19 +33,19 @@ public class State {
 
 	public void setState(CharacterState state) {
 		this.state = state;
-		this.turnos = 2;
+		this.turns = 2;
 	}
 	
 	public CharacterState getPossibleState(States desired) {
 		return possibleStates.get(desired.ordinal());
 	}
 
-	public int getTurnos() {
-		return turnos;
+	public int getTurns() {
+		return turns;
 	}
 
-	public void setTurnos(int turnos) {
-		this.turnos = turnos;
+	public void setTurns(int turnos) {
+		this.turns = turnos;
 	}
 	
 	public Action effect(Action action) {

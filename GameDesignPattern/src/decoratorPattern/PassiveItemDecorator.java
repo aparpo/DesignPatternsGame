@@ -4,8 +4,11 @@ import base.Stats;
 
 public abstract class PassiveItemDecorator extends ItemDecorator { //Objetos con una habilidad pasiva
 
-	public PassiveItemDecorator(Equipment equipment, String name, int life, int maxLife, int attack, int defense, int speed) {
-		super(equipment, name, life, maxLife, attack, defense, speed);
+	public PassiveItemDecorator() {
+		super();
+	}
+	public PassiveItemDecorator(Item equipment, String name, int life, int maxLife, int attack, int defense, int speed, Tier tier) {
+		super(equipment, name, life, maxLife, attack, defense, speed, tier);
 	}
 	
 	//Metodo para ejecutar la habilidad pasiva, devuelve un objeto tipo Stats con la variacion

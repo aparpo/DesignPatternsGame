@@ -5,14 +5,17 @@ import java.util.List;
 
 import base.*;
 import base.Character;
+import abstractFactoryPattern.*;
+import abstractFactoryPattern.enemyFactories.*;
 
 public class GameManager {
 	
 	private static GameManager manager = new GameManager();
 	private List<Action> actions = new ArrayList<Action>(); //Buffer de acciones durante un turno
 	private List<Character> characters = new ArrayList<Character>();
-	//la factoria
-	//puntero a jugador
+	private AbstractLevelFactory factory = new Level1Factory();
+	private Player player;
+	private World currentLevel = World.WORLD1;
 	
 	private GameManager() {}
 
@@ -24,14 +27,49 @@ public class GameManager {
 		GameManager.manager = manager;
 	}
 	
-	public void turn() {
+	public void play() {
+		
+		//Comenzar la parte grafica
+		
+		
+		//Crear al jugador
+		
+		newLevel(currentLevel);
+	}
+	
+	private void turn() {
 		orderBySpeed(); //ordenar a los personajes por su velocidad
 		
 		combat(); //Hacer calculos de combate
 		
-		prepareNext(); //Preparar el proximo turno
+		prepareNext(); //Preparar el proximo turno	
+		
+		switch(checkEnd()) {//Comprobar si se ha acabado el nivel o si ha muerto el jugador
+		case 0: //Jugador ha muerto
+			//Acabar el juego
+			break;
+		case 1: //Solo queda el jugador
+			newLevel(World.values()[currentLevel.ordinal()+1]);
+			break;
+		default:  //Queda mas de un enemigo vivo
+			turn(); //Comenzar el siguiente turno
+			break;
+		}
 		
 		
+	}
+	
+	private void newLevel(World level) {
+		currentLevel = World.values()[currentLevel.ordinal()+1];
+		
+		//Crear nuevos enemigos
+		for(int i = 0; i < (int) level.getComplexFactor()*4;i++) {
+			characters.add(factory.createEnemy());
+		}
+		
+		//Comenzar a jugar
+
+		turn();
 		
 	}
 	
@@ -65,7 +103,10 @@ public class GameManager {
 		
 		//Aplicar los efectos del estado de cada personaje a las acciones que ha lanzado
 		for(int i = 0; i < actions.size(); i++) {
-			actions.get(i).getUser().StatusEffect(actions.get(i));
+			if(actions.get(i).getUser()!=null) { //Eventos sin usuario directo (ej: envenenamiento)
+				actions.get(i).getUser().StatusEffect(actions.get(i));
+			}
+			
 		}
 		
 		//Resolver por orden
@@ -95,6 +136,11 @@ public class GameManager {
 		}
 	}
 	
+	private int checkEnd() {
+		if(!player.isAlive())return 0;
+		else return characters.size();
+	}
+	
 	
 
 	public List<Action> getActions() {
@@ -111,5 +157,21 @@ public class GameManager {
 
 	public void setCharacters(List<Character> characters) {
 		this.characters = characters;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+
+	public AbstractLevelFactory getFactory() {
+		return factory;
+	}
+
+	public void setFactory(AbstractLevelFactory factory) {
+		this.factory = factory;
 	}
 }

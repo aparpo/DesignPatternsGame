@@ -3,10 +3,10 @@ package decoratorPattern;
 import java.util.ArrayList;
 import java.util.List;
 
-import base.Stats;
+import base.*;
 
-public abstract class ItemDecorator implements Equipment{
-	protected Equipment equipment;
+public abstract class ItemDecorator implements Item{
+	protected Item equipment;
 	protected int life=0;
 	protected int maxLife=0;
 	protected int attack=0;
@@ -14,8 +14,12 @@ public abstract class ItemDecorator implements Equipment{
 	protected int speed=0;
 	protected String desc;
 	protected String name;
+	protected Tier tier;
 	
-	public ItemDecorator(Equipment equipment, String name,  int life, int maxLife, int attack, int defense, int speed) {
+	public ItemDecorator() {
+		super();
+	}
+	public ItemDecorator(Item equipment, String name,  int life, int maxLife, int attack, int defense, int speed, Tier tier) {
 		this.equipment = equipment;
 		this.life = life;
 		this.maxLife = maxLife;
@@ -23,9 +27,10 @@ public abstract class ItemDecorator implements Equipment{
 		this.defense = defense;
 		this.speed = speed;
 		this.name = name;
+		this.tier = tier;
 	}
 	
-	public Equipment isThereAny(Equipment model){
+	public Item isThereAny(Item model){
 		if(this.getClass() == model.getClass()) { //Si son de la misma clase devuelve el objeto
 			return this;
 		}else {
@@ -49,10 +54,6 @@ public abstract class ItemDecorator implements Equipment{
 		return equipment.areThereAnyPassives(list);//Llamada recursiva
 	}
 	
-	public void usePassiveItems() {
-		List<PassiveItemDecorator> list = new ArrayList<PassiveItemDecorator>();
-	}
-	
 	public void applyStats(Stats variation) { //Solo se aplican en el componente base
 		equipment.applyStats(variation);
 	}
@@ -61,10 +62,10 @@ public abstract class ItemDecorator implements Equipment{
 		equipment.backToNormal();
 	}
 	
-	public Equipment getEquipment() {
+	public Item getEquipment() {
 		return equipment;
 	}
-	public void setEquipment(Equipment equipment) {
+	public void setEquipment(Item equipment) {
 		this.equipment = equipment;
 	}
 	public int getLife() {
@@ -112,6 +113,14 @@ public abstract class ItemDecorator implements Equipment{
 
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+	
+	public Tier getTier() {
+		return tier;
+	}
+	
+	public void setTier(Tier tier) {
+		this.tier = tier;
 	}
 	
 }

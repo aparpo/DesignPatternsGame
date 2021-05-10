@@ -2,12 +2,11 @@ package statePattern;
 
 import base.Action;
 
-public class StateConfused extends AbstractState implements CharacterState{
+public class StateConfused extends AbstractState{
 	
 	public StateConfused() {}
 	public StateConfused(State state) {
 		super(state);
-		//this.state.setTurnos(2);
 	}
 	
 	public void process() {
@@ -17,15 +16,16 @@ public class StateConfused extends AbstractState implements CharacterState{
 			confused();
 		}
 		
-		if(this.state.getTurnos() <= 0) {
+		if(this.state.getTurns() <= 0) {
 			standard();
 		}
+		suggestion = null;
 	}
 	
 	@Override
 	public Action effect(Action action) {
 		System.out.println("Estas confundido, tu ataque puede fallar este turno");
-		this.state.setTurnos(this.state.getTurnos()-1);
+		this.state.setTurns(this.state.getTurns()-1);
 		
 		//Cambia el objetivo al usuario con un 60% de probabilidad
 		if(Math.random() < 0.6) { 
@@ -39,7 +39,8 @@ public class StateConfused extends AbstractState implements CharacterState{
 		this.state.setState(this.state.getPossibleState(States.STANDARD));
 	}
 	protected void confused() {
-		this.state.setTurnos(this.state.getTurnos()+1);
+		System.out.println("El jugador esta aun mas confundido");
+		this.state.setTurns(this.state.getTurns()+1);
 	}
 	
 	

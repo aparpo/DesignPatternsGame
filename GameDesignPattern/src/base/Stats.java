@@ -3,10 +3,11 @@ package base;
 import java.util.List;
 
 import decoratorPattern.ActiveItemDecorator;
-import decoratorPattern.Equipment;
+import decoratorPattern.Item;
 import decoratorPattern.PassiveItemDecorator;
+import decoratorPattern.Tier;
 
-public class Stats implements Equipment{ //Componente base 
+public class Stats implements Item{ //Componente base 
 	private int life=0;
 	private int maxLife=0;
 	private int attack=0;
@@ -47,7 +48,7 @@ public class Stats implements Equipment{ //Componente base
 		speed = 0;
 	}
 	
-	public Equipment isThereAny(Equipment model){
+	public Item isThereAny(Item model){
 		return null; //Se ha llegado al final y no se ha encontrado un model
 		
 	}
@@ -95,5 +96,10 @@ public class Stats implements Equipment{ //Componente base
 	}
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+
+	@Override
+	public Tier getTier() {
+		return null;
 	}
 }

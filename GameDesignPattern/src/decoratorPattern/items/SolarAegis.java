@@ -2,18 +2,18 @@ package decoratorPattern.items;
 
 import java.util.List;
 
-import base.Action;
-import base.ActionType;
+import base.*;
 import base.Character;
-import base.SkillType;
-import base.Stats;
 import decoratorPattern.*;
 import singletonPattern.GameManager;
 
 public class SolarAegis extends ActiveItemDecorator{ //Devuelve daño de un ataque
 
-	public SolarAegis(Equipment equipment) {
-		super(equipment, "Solar Aegis", "Aegis desire", 0, 0, 0, 20, 0, ActionType.DEFENSIVE, SkillType.PHYSICAL);
+	public SolarAegis() {
+		super();
+	}
+	public SolarAegis(Item equipment) {
+		super(equipment, "Solar Aegis", "Aegis desire", 0, 0, 0, 20, -2, ActionType.DEFENSIVE, SkillType.PHYSICAL, Tier.A);
 	}
 
 	@Override
@@ -23,9 +23,9 @@ public class SolarAegis extends ActiveItemDecorator{ //Devuelve daño de un ataqu
 			//Una accion ofensiva y fisica dirigida al jugador que usa el objeto
 			if(actions.get(i).getActionType()==ActionType.OFFENSIVE &&actions.get(i).getSkillType()==SkillType.PHYSICAL
 			&& actions.get(i).getTarget() ==user) {
-				if(actions.get(i).getVariation().getAttack()<user.getEquipment().getDefense()) { //Comprueba que haya defensa de sobra
+				if(-actions.get(i).getVariation().getLife()<user.getEquipment().getDefense()) { //Comprueba que haya defensa de sobra
 					//Devuelve un ataque con la defensa de sobra a cada enemigo
-					Stats variation = new Stats(user.getEquipment().getDefense()-actions.get(i).getVariation().getAttack(),0,0,0,0);
+					Stats variation = new Stats(user.getEquipment().getDefense()+actions.get(i).getVariation().getLife(),0,0,0,0);
 					actions.add(new Action(variation, actionType, skillType, user, target));
 				}
 			}

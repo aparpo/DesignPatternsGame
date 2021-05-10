@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import base.*;
+import base.Character;
 import decoratorPattern.ActiveItemDecorator;
 
 public abstract class DecisionTemplate {
 	
 	//Metodo plantilla para elegir la accion que realiza el enemigo
 	public final void decision(Enemy user, Player target) {
-		int[] options = analize();
+		int[] options = analize(user, target);
 		List<ActiveItemDecorator> skills = getSkills(user);
 		selectSkill(options, skills, user, target);
 	}
@@ -18,18 +19,18 @@ public abstract class DecisionTemplate {
 	//Se analiza la situacion y se devuelve un array de enteros con la prioridad de cada accion.
 	//0. Prioridad de ataque 1. Prioridad de defensa 2. Prioridad de accion neutral 3+. Otros parametros de interes 
 	//Por defecto con los metodos abstractos de la clase. Susceptible de cambio para analisis mas complejos (jefes) 
-	protected int[] analize() {
+	protected int[] analize(Enemy user, Player player) {
 		int[] options = new int[3];
-		options[0] = worthAttack();
-		options[1] = worthDeffend();
-		options[2] = worthNeutral();
+		options[0] = worthAttack(user,  player);
+		options[1] = worthDefend(user,  player);
+		options[2] = worthNeutral(user,  player);
 		return options;
 	}
 	
 	//Devuelven un entero con la prioridad de la acción, cero si no es posible o inutil
-	protected abstract int worthAttack();
-	protected abstract int worthDeffend();
-	protected abstract int worthNeutral();
+	protected abstract int worthAttack(Enemy user, Player player);
+	protected abstract int worthDefend(Enemy user, Player player);
+	protected abstract int worthNeutral(Enemy user, Player player);
 	
 	//Devuelve la lista con las habilidades del personaje. Por defecto todas. Susceptible de filtrado previo.
 	protected List<ActiveItemDecorator> getSkills(Enemy user){
