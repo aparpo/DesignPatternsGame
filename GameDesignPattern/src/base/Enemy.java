@@ -6,7 +6,8 @@ import strategyPattern.*;
 
 public class Enemy extends Character{
 	
-	private DecisionTemplate behaviour;
+	protected DecisionTemplate behaviour;
+	
 	public Enemy(String name) {
 		super(name);
 	}
