@@ -13,7 +13,7 @@ public class GameManager {
 	private static GameManager manager = new GameManager();
 	private List<Action> actions = new ArrayList<Action>(); //Buffer de acciones durante un turno
 	private List<Character> characters = new ArrayList<Character>();
-	private AbstractLevelFactory factory = new Level1Factory();
+	private AbstractEnemyFactory factory = new EnemyFactoryWorld1();
 	private Player player;
 	private World currentLevel = World.WORLD1;
 	
@@ -64,7 +64,7 @@ public class GameManager {
 		
 		//Crear nuevos enemigos
 		for(int i = 0; i < (int) level.getComplexFactor()*4;i++) {
-			characters.add(factory.createEnemy());
+			characters.add(factory.generateEnemy());
 		}
 		
 		//Comenzar a jugar
@@ -167,11 +167,11 @@ public class GameManager {
 		this.player = player;
 	}
 
-	public AbstractLevelFactory getFactory() {
+	public AbstractEnemyFactory getFactory() {
 		return factory;
 	}
 
-	public void setFactory(AbstractLevelFactory factory) {
+	public void setFactory(AbstractEnemyFactory factory) {
 		this.factory = factory;
 	}
 }
