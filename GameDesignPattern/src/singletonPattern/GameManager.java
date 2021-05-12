@@ -68,10 +68,10 @@ public class GameManager {
 		currentLevel = World.values()[currentLevel.ordinal()+1];
 		
 		//Crear nuevos enemigos
-		for(int i = 0; i < (int) level.getComplexFactor()*4;i++) {
+		for(int i = 0; i < (int) level.getComplexFactor()*2;i++) {
 			characters.add(factory.generateEnemy());
 		}
-		System.out.print("Comienza el nivel "+ currentLevel.ordinal());
+		System.out.println("Comienza el nivel "+ currentLevel.ordinal());
 		//Comenzar a jugar
 
 		turn();

@@ -3,7 +3,7 @@ import base.Enemy;
 import base.Stats;
 
 public abstract class Hollow extends Enemy{
-	protected final Stats hollowBaseStats = new Stats(250, 250, 50, 50, 25);
+	protected final Stats hollowBaseStats = new Stats(60, 60, 30, 30, 2);
 	
 	public Hollow(String enemyName) {
 		super("Hollow");
