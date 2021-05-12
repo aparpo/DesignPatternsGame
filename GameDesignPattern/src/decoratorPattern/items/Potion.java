@@ -13,7 +13,10 @@ public class Potion extends UsableItemDecorator{ //Cura 50 de vida
 	public Potion(Item equipment, int amount) {
 		super(equipment, "Potion", "Use potion", 0, 0, 0, 0, 0,ActionType.NEUTRAL, SkillType.MAGIC,Tier.C, amount);
 	}
-
+	public Potion(int amount) {
+		this(null, amount);
+	}
+	
 	@Override
 	public void useSkill(Character user, Character target) {
 		if(amount > 0) { //Quedan pociones

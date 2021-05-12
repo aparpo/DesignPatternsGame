@@ -1,5 +1,8 @@
 package abstractFactoryPattern.enemyFactories;
 import base.Enemy;
+import decoratorPattern.items.Bow;
+import decoratorPattern.items.FireStaff;
+import decoratorPattern.items.Potion;
 import abstractFactoryPattern.AbstractEnemyFactory;
 import abstractFactoryPattern.enemies.blackKnight.*;
 import abstractFactoryPattern.enemies.crystal.*;
@@ -15,31 +18,47 @@ public class EnemyFactoryWorld1 implements AbstractEnemyFactory{
 	
 	public Enemy generateEnemy() {
 		int randNum = rand.nextInt(100);
+		Enemy enemy;
 		
+		//Crear un tipo de enemigo u otro basado en la probabilidad
 		if(randNum < 55) {
-			return createHollow();
+			enemy = createHollow();
 		}
 		else if(randNum >= 55 && randNum < 90) {
-			return createCrysal();
+			enemy = createCrysal();
 		}
 		else {
-			return createBlackKnight();
+			enemy = createBlackKnight();
 		}
+		
+		//Mejorar al enemigo con habilidades del mundo 1
+		//Aqui se pueden cambiar estadisticas, estado, objetos o behaviours segun el mundo 
+		//Se crean enemigos acordes al nivel de dificultad pero los Hollow del mundo 1 no son siempre exactamente iguales p.e.
+		enemy.getEquipment().addItem(new Potion(1));
+		randNum = rand.nextInt(100);
+		
+		if(randNum < 30) {
+			enemy.getEquipment().addItem(new Bow());
+		}else {
+			enemy.getEquipment().addItem(new FireStaff());
+		}
+		
+		return enemy; //Devolver el enemigo mejorado
 	}
 
-	public Enemy createHollow() {
+	/*public*/ private Enemy createHollow() {
 		return new HollowWorld1();
 	}
 
-	public Enemy createCrysal() {
+	/*public*/ private Enemy createCrysal() {
 		return new CrystalWorld1();
 	}
 
-	public Enemy createBlackKnight() {
+	/*public*/ private Enemy createBlackKnight() {
 		return new BlackKnightWorld1();
 	}
 	
-	public Enemy createSkeleton() {
+	/*public Enemy createSkeleton() {
 		throw new IllegalStateException("Invalid Enemy Generation");
 	}
 
@@ -57,5 +76,5 @@ public class EnemyFactoryWorld1 implements AbstractEnemyFactory{
 		Enemy enemy = enemyFactory.generateEnemy();
 		
 		System.out.print(enemy);
-	}
+	}*/
 }

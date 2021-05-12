@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import decoratorPattern.*;
+import decoratorPattern.items.LongSword;
+import decoratorPattern.items.Shield;
 import singletonPattern.GameManager;
 import statePattern.*;
 
@@ -15,8 +17,12 @@ public abstract class Character {
 	public Character(String name) {
 		super();
 		this.name = name;
-		this.state = new State();
-		this.equipment = new Stats();
+		this.state = new State(); //Crea el estado, por defecto standard
+		this.equipment = new Stats(); //Inicializa el equipamiento
+		
+		//Por defecto se empieza con espada y escudo
+		this.equipment = new LongSword(this.equipment); //Necesario para atacar
+		this.equipment = new Shield(this.equipment); //Necesario para defenderse
 	}
 
 	public abstract void decision();

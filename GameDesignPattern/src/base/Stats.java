@@ -4,6 +4,7 @@ import java.util.List;
 
 import decoratorPattern.ActiveItemDecorator;
 import decoratorPattern.Item;
+import decoratorPattern.ItemDecorator;
 import decoratorPattern.PassiveItemDecorator;
 import decoratorPattern.Tier;
 
@@ -46,6 +47,12 @@ public class Stats implements Item{ //Componente base
 		attack = 0;
 		defense = 0;
 		speed = 0;
+	}
+	
+	@Override
+	public Item addItem(ItemDecorator newItem) {
+		newItem.setEquipment(this);
+		return newItem;
 	}
 	
 	public Item isThereAny(Item model){
@@ -105,7 +112,8 @@ public class Stats implements Item{ //Componente base
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return "";
 	}
+
+	
 }

@@ -30,6 +30,26 @@ public abstract class ItemDecorator implements Item{
 		this.tier = tier;
 	}
 	
+	//Metodo para añadir un item sin que haya repeticiones
+	public Item addItem(ItemDecorator newItem) { 
+		Item aux = isThereAny(newItem);
+		if(aux==null) { //No hay items del mismo tipo equipados
+			newItem.setEquipment(this); //Decorar
+			return newItem;
+		}else { //Hay un item del mismo tipo equipado
+			if(newItem instanceof UsableItemDecorator) { //El objeto es un consumible
+				((UsableItemDecorator) aux).addAmount(((UsableItemDecorator) newItem).getAmount()); //Aumentar su cantidad
+				return this;
+			}else { //En cualquier otro caso, crear una copia sin habilidades, solo estadisticas
+				Stats newItemCopy = new Stats(newItem.getLife(), newItem.getMaxLife(), newItem.getAttack(), newItem.getDefense(), newItem.getSpeed());
+				ItemDecorator regularVersion = new RegularItem(this, newItem.getName()+" Repeated", newItemCopy);
+				return regularVersion;
+			}
+			
+		}
+		
+	}
+	
 	public Item isThereAny(Item model){
 		if(this.getClass() == model.getClass()) { //Si son de la misma clase devuelve el objeto
 			return this;

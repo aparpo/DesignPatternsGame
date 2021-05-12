@@ -21,6 +21,9 @@ public abstract class UsableItemDecorator extends ActiveItemDecorator { //Objeto
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+	public void addAmount(int amount) {
+		this.amount +=amount;
+	}
 
 	
 }

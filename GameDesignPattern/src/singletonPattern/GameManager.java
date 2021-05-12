@@ -140,8 +140,7 @@ public class GameManager {
 		if(!player.isAlive())return 0;
 		else return characters.size();
 	}
-	
-	
+		
 
 	public List<Action> getActions() {
 		return actions;
