@@ -7,11 +7,7 @@ import base.*;
 
 public abstract class ItemDecorator implements Item{
 	protected Item equipment;
-	protected int life=0;
-	protected int maxLife=0;
-	protected int attack=0;
-	protected int defense=0;
-	protected int speed=0;
+	protected Stats stats;
 	protected String desc;
 	protected String name;
 	protected Tier tier;
@@ -19,13 +15,9 @@ public abstract class ItemDecorator implements Item{
 	public ItemDecorator() {
 		super();
 	}
-	public ItemDecorator(Item equipment, String name,  int life, int maxLife, int attack, int defense, int speed, Tier tier) {
+	public ItemDecorator(Item equipment, String name,  Stats stats, Tier tier) {
 		this.equipment = equipment;
-		this.life = life;
-		this.maxLife = maxLife;
-		this.attack = attack;
-		this.defense = defense;
-		this.speed = speed;
+		this.stats = stats;
 		this.name = name;
 		this.tier = tier;
 	}
@@ -90,58 +82,45 @@ public abstract class ItemDecorator implements Item{
 	}
 	public int getLife() {
 		try { //Excepcion para instancias de decoradores que aun no tienen objeto decorado
-			return equipment.getLife()+life;
+			return equipment.getLife()+stats.getLife();
 		}catch(NullPointerException e) {
-			return 0+life;
+			return 0+stats.getLife();
 		}
 		
-	}
-	public void setLife(int life) {
-		this.life = life;
 	}
 	public int getAttack() {
 		try { //Excepcion para instancias de decoradores que aun no tienen objeto decorado
-			return equipment.getAttack()+attack;
+			return equipment.getAttack()+stats.getAttack();
 		}catch(NullPointerException e) {
-			return 0+attack;
+			return 0+stats.getAttack();
 		}
 		
 	}
-	public void setAttack(int attack) {
-		this.attack = attack;
-	}
+	
 	public int getDefense() {
 		try { //Excepcion para instancias de decoradores que aun no tienen objeto decorado
-			return equipment.getDefense()+defense;
+			return equipment.getDefense()+stats.getDefense();
 		}catch(NullPointerException e) {
-			return 0+defense;
+			return 0+stats.getDefense();
 		}
 		
-	}
-	public void setDefense(int defense) {
-		this.defense = defense;
 	}
 	public int getSpeed() {
 		try { //Excepcion para instancias de decoradores que aun no tienen objeto decorado
-			return equipment.getSpeed()+speed;
+			return equipment.getSpeed()+stats.getSpeed();
 		}catch(NullPointerException e) {
-			return 0+speed;
+			return 0+stats.getSpeed();
 		}
 		
 	}
-	public void setSpeed(int speed) {
-		this.speed = speed;
-	}
+
 	public int getMaxLife() {
 		try { //Excepcion para instancias de decoradores que aun no tienen objeto decorado
-			return equipment.getMaxLife()+maxLife;
+			return equipment.getMaxLife()+stats.getMaxLife();
 		}catch(NullPointerException e) {
-			return 0+maxLife;
+			return 0+stats.getMaxLife();
 		}
 		
-	}
-	public void setMaxLife(int maxLife) {
-		this.maxLife = maxLife;
 	}
 
 	public String getName() {
@@ -166,6 +145,12 @@ public abstract class ItemDecorator implements Item{
 	
 	public void setTier(Tier tier) {
 		this.tier = tier;
+	}
+	public Stats getStats() {
+		return stats;
+	}
+	public void setStats(Stats stats) {
+		this.stats = stats;
 	}
 	
 }

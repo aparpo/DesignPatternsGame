@@ -9,10 +9,10 @@ import statePattern.States;
 public class RatCrossbow extends ActiveItemDecorator{ //Ataque que envenena
 
 	public RatCrossbow() {
-		super();
+		this(null);
 	}
 	public RatCrossbow(Item equipment) {
-		super(equipment, "Rat Crossbow", "Poisson sting", 0, 0, 10, 0, 0, ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.B);
+		super(equipment, "Rat Crossbow", "Poisson sting", new Stats(0, 0, 10, 0, 0), ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.B);
 	}
 
 	@Override
@@ -24,7 +24,8 @@ public class RatCrossbow extends ActiveItemDecorator{ //Ataque que envenena
 		Stats variation = new Stats( -aux, 0, 0, 0, 0); //Actualizar vida actual
 		
 		GameManager.getManager().getActions().add(new Action(variation, actionType, skillType,user, target));
-		user.getState().setSuggestion(States.POISONED); //Intento de envenenamiento
+		target.getState().setSuggestion(States.POISONED); //Intento de envenenamiento
+		inform(user,target);
 	}
 
 }

@@ -31,18 +31,18 @@ public class Player extends Character{
 		
 		do {
 			option = scanner.nextInt();
-		}while(option < 0 || option > skills.size());
+		}while(option < 0 || option > skills.size()-1);
 		
 		setNextSkill(skills.get(option));
 		
 		System.out.println("Select the target:");
 		for(int i = 0; i < characters.size(); i++) {
-			System.out.println(characters.get(i));
+			System.out.println(i + ":"+characters.get(i));
 		}
 		
 		do {
 			option = scanner.nextInt();
-		}while(option < 0 || option > characters.size());
+		}while(option < 0 || option > characters.size()-1);
 		
 		setTarget(characters.get(option));
 		

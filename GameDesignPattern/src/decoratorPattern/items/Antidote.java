@@ -14,19 +14,20 @@ import statePattern.States;
 public class Antidote extends UsableItemDecorator{ //Cura 50 de vida 
 	
 	public Antidote(Item equipment, int amount) {
-		super(equipment, "Antidore", "Use antidote", 0, 0, 0, 0, 0,ActionType.NEUTRAL, SkillType.MAGIC,Tier.C, amount);
+		super(equipment, "Antidore", "Use antidote", new Stats(0, 0, 0, 0, 0),ActionType.NEUTRAL, SkillType.MAGIC,Tier.C, amount);
 	}
 	public Antidote(int amount) {
 		this(null, amount);
 	}
 	public Antidote() {
-		super();
+		this(null,0);
 	}
 
 	@Override
 	public void useSkill(Character user, Character target) {
 		if(amount > 0) { //Quedan antidotos
 			target.getState().setSuggestion(States.STANDARD);	
+			inform(user,target);
 		}
 		
 	}

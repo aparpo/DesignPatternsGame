@@ -7,8 +7,8 @@ public abstract class PassiveItemDecorator extends ItemDecorator { //Objetos con
 	public PassiveItemDecorator() {
 		super();
 	}
-	public PassiveItemDecorator(Item equipment, String name, int life, int maxLife, int attack, int defense, int speed, Tier tier) {
-		super(equipment, name, life, maxLife, attack, defense, speed, tier);
+	public PassiveItemDecorator(Item equipment, String name, Stats stats, Tier tier) {
+		super(equipment, name, stats, tier);
 	}
 	
 	//Metodo para ejecutar la habilidad pasiva, devuelve un objeto tipo Stats con la variacion

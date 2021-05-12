@@ -8,10 +8,10 @@ import decoratorPattern.Tier;
 public class Thornmail extends PassiveItemDecorator{ //Aumenta pasivamente la defensa
 	
 	public Thornmail() {
-		super();
+		this(null);
 	}
 	public Thornmail(Item equipment) {
-		super(equipment, "Thornmail", 0, 5, 0, 20, -1,Tier.B);
+		super(equipment, "Thornmail", new Stats(0, 5, 0, 20, -1),Tier.B);
 	}
 	
 	@Override

@@ -8,10 +8,10 @@ import singletonPattern.GameManager;
 public class LongSword extends ActiveItemDecorator{ //Ataque basico con espada
 
 	public LongSword() {
-		super();
+		this(null);
 	}
 	public LongSword(Item equipment) {
-		super(equipment, "Long Sword", "Sword Attack", 0, 0, 10, 0, 0, ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.C);
+		super(equipment, "Long Sword", "Sword Attack", new Stats(0, 0, 10, 0, 0), ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.C);
 	}
 
 	@Override
@@ -23,6 +23,7 @@ public class LongSword extends ActiveItemDecorator{ //Ataque basico con espada
 		Stats variation = new Stats( -aux, 0, 0, 0, 0); //Actualizar vida actual
 		
 		GameManager.getManager().getActions().add(new Action(variation, actionType, skillType,user, target));
+		inform(user,target);
 	}
 
 }

@@ -10,10 +10,10 @@ import singletonPattern.GameManager;
 public class SolarAegis extends ActiveItemDecorator{ //Devuelve daño de un ataque
 
 	public SolarAegis() {
-		super();
+		this(null);
 	}
 	public SolarAegis(Item equipment) {
-		super(equipment, "Solar Aegis", "Aegis desire", 0, 0, 0, 20, -2, ActionType.DEFENSIVE, SkillType.PHYSICAL, Tier.A);
+		super(equipment, "Solar Aegis", "Aegis desire", new Stats(0, 0, 0, 20, -2), ActionType.DEFENSIVE, SkillType.PHYSICAL, Tier.A);
 	}
 
 	@Override
@@ -27,6 +27,7 @@ public class SolarAegis extends ActiveItemDecorator{ //Devuelve daño de un ataqu
 					//Devuelve un ataque con la defensa de sobra a cada enemigo
 					Stats variation = new Stats(user.getEquipment().getDefense()+actions.get(i).getVariation().getLife(),0,0,0,0);
 					actions.add(new Action(variation, actionType, skillType, user, target));
+					inform(user,target);
 				}
 			}
 		}

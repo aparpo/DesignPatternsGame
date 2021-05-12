@@ -6,12 +6,9 @@ public class RegularItem extends ItemDecorator{ //Decoradores que solo modifican
 	public RegularItem() {
 		super();
 	}
-	public RegularItem(Item equipment, String name, int life, int maxLife, int attack, int defense, int speed) {
-		super(equipment, name, life, maxLife, attack, defense, speed, Tier.C);
-	}
 	
 	public RegularItem(Item equipment, String name, Stats stats) {
-		this(equipment, name, stats.getLife(), stats.getMaxLife(), stats.getAttack(), stats.getDefense(), stats.getSpeed());
+		super(equipment, name, stats, Tier.C);
 	}
 	
 	public RegularItem(Stats stats) {

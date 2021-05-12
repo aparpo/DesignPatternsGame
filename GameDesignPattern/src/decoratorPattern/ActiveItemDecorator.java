@@ -5,7 +5,7 @@ import base.Character;
 
 public abstract class ActiveItemDecorator extends ItemDecorator { //Objetos que dotan al personaje de habilidades activas
 	
-	private String skillname; //Nombre de la habilidad
+	private String skillName; //Nombre de la habilidad
 	protected ActionType actionType;
 	protected SkillType skillType;
 	
@@ -13,22 +13,25 @@ public abstract class ActiveItemDecorator extends ItemDecorator { //Objetos que 
 		super();
 	}
 	
-	public ActiveItemDecorator(Item equipment, String name, String skillName, int life, int maxLife, int attack, int defense, int speed,
-			ActionType actionType, SkillType skillType, Tier tier) {
-		super(equipment, name, life, maxLife, attack, defense, speed, tier);
-		this.skillname = skillName;
+	public ActiveItemDecorator(Item equipment, String name, String skillName, Stats stats, ActionType actionType, SkillType skillType, Tier tier) {
+		super(equipment, name, stats, tier);
+		this.skillName = skillName;
 		this.setActionType(actionType);
 		this.setSkillType(skillType);
 	}
 	
 	public abstract void useSkill(Character user, Character target); //Efecto de la habilidad
-
-	public String getSkillname() {
-		return skillname;
+	
+	public void inform(Character user, Character target) {
+		System.out.println(user.getName()+" uses "+ skillName + " on "+ target.getName());
 	}
 
-	public void setSkillname(String skillname) {
-		this.skillname = skillname;
+	public String getSkillname() {
+		return skillName;
+	}
+
+	public void setSkillname(String skillName) {
+		this.skillName = skillName;
 	}
 
 	public SkillType getSkillType() {

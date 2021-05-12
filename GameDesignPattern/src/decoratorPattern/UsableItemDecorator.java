@@ -8,9 +8,9 @@ public abstract class UsableItemDecorator extends ActiveItemDecorator { //Objeto
 	public UsableItemDecorator() {
 		super();
 	}
-	public UsableItemDecorator(Item equipment, String name, String skillName, int life, int maxLife, int attack, int defense, int speed,
-			ActionType actionType, SkillType skillType,Tier equipmentTier, int amount) {
-		super(equipment, name, skillName, life, maxLife, attack, defense, speed, actionType, skillType, equipmentTier);
+	public UsableItemDecorator(Item equipment, String name, String skillName, Stats stats, 
+		ActionType actionType, SkillType skillType,Tier equipmentTier, int amount) {
+		super(equipment, name, skillName, stats, actionType, skillType, equipmentTier);
 		this.amount = amount;
 	}
 	

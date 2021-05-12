@@ -10,10 +10,10 @@ import singletonPattern.GameManager;
 public class Shield extends ActiveItemDecorator{ //Defiende de la primera habilidad leve recibida
 
 	public Shield() {
-		super();
+		this(null);
 	}
 	public Shield(Item equipment) {
-		super(equipment, "Shield", "Shield", 0, 0, 0, 5, 0, ActionType.DEFENSIVE, SkillType.PHYSICAL, Tier.C);
+		super(equipment, "Shield", "Shield", new Stats(0, 0, 0, 5, 0), ActionType.DEFENSIVE, SkillType.PHYSICAL, Tier.C);
 	}
 
 	@Override
@@ -25,6 +25,7 @@ public class Shield extends ActiveItemDecorator{ //Defiende de la primera habili
 				//Si va a recibir menos de 10 de daño, no le afecta la habilidad
 				if(actions.get(i).getVariation().getLife()>-10) {
 					actions.get(i).getVariation().setLife(0);
+					inform(user,target);
 					break; //Solo funciona con la primera
 				}
 			}

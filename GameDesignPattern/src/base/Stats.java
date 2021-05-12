@@ -8,13 +8,12 @@ import decoratorPattern.ItemDecorator;
 import decoratorPattern.PassiveItemDecorator;
 import decoratorPattern.Tier;
 
-public class Stats implements Item{ //Componente base 
+public class Stats{ //Componente base 
 	private int life=0;
 	private int maxLife=0;
 	private int attack=0;
 	private int defense=0;
 	private int speed=0;
-	private String desc;
 	
 	public Stats() {
 		super();
@@ -34,12 +33,20 @@ public class Stats implements Item{ //Componente base
 		
 	}
 	
-	public void applyStats(Stats variation) { //Aplicar una variacion de estadisticas
+	public void applyStats(Stats variation) { //Aplicar una variacion de estadisticas (sobrecarga del operador suma)
 		life+=variation.getLife();
 		maxLife+=variation.getMaxLife();
 		attack+=variation.getAttack();
 		defense+=variation.getDefense();
 		speed+=variation.getSpeed();
+	}
+	
+	public void substractStats(Stats variation) { //Sobrecarga del operador resta
+		life-=variation.getLife();
+		maxLife-=variation.getMaxLife();
+		attack-=variation.getAttack();
+		defense-=variation.getDefense();
+		speed-=variation.getSpeed();
 	}
 	
 	public void backToNormal() { //Devolver al estado basico todas las estadisticas menos la vida actual
@@ -49,24 +56,6 @@ public class Stats implements Item{ //Componente base
 		speed = 0;
 	}
 	
-	@Override
-	public Item addItem(ItemDecorator newItem) {
-		newItem.setEquipment(this);
-		return newItem;
-	}
-	
-	public Item isThereAny(Item model){
-		return null; //Se ha llegado al final y no se ha encontrado un model
-		
-	}
-
-	public List<ActiveItemDecorator> areThereAnyActives(List<ActiveItemDecorator> list){
-		return list; //Se ha llegado al final y se devuelve la lista de los encontrados
-	}
-
-	public List<PassiveItemDecorator> areThereAnyPassives(List<PassiveItemDecorator> list){
-		return list; //Se ha llegado al final y se devuelve la lista de los encontrados
-	}
 	
 	public int getLife() {
 		return life;
@@ -98,22 +87,7 @@ public class Stats implements Item{ //Componente base
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-	public String getDesc() {
-		return desc;
-	}
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
 
-	@Override
-	public Tier getTier() {
-		return null;
-	}
-
-	@Override
-	public String getName() {
-		return "";
-	}
 
 	
 }

@@ -18,7 +18,7 @@ public abstract class Character {
 		super();
 		this.name = name;
 		this.state = new State(); //Crea el estado, por defecto standard
-		this.equipment = new Stats(); //Inicializa el equipamiento
+		this.equipment = new Equipment(); //Inicializa el equipamiento
 		
 		//Por defecto se empieza con espada y escudo
 		this.equipment = new LongSword(this.equipment); //Necesario para atacar
@@ -38,11 +38,12 @@ public abstract class Character {
 	public Stats modifyStats() {
 		List<PassiveItemDecorator> list = new ArrayList<PassiveItemDecorator>();
 		Stats aux = new Stats(equipment.getLife(),equipment.getMaxLife(), equipment.getAttack(),equipment.getDefense(), equipment.getSpeed());
+		Stats result = new Stats();
 		list = equipment.areThereAnyPassives(list);
 		for(int i=0; i < list.size(); i++) {
-			aux = ((PassiveItemDecorator) list.get(i)).modifyStats(aux);
+			result.applyStats(((PassiveItemDecorator) list.get(i)).modifyStats(aux));
 		}
-		return aux;
+		return result;
 	}
 	
 	public void applyStats(Stats variation) {

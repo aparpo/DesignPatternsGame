@@ -8,10 +8,10 @@ import singletonPattern.GameManager;
 public class Potion extends UsableItemDecorator{ //Cura 50 de vida 
 	
 	public Potion() {
-		super();
+		this(null,0);
 	}
 	public Potion(Item equipment, int amount) {
-		super(equipment, "Potion", "Use potion", 0, 0, 0, 0, 0,ActionType.NEUTRAL, SkillType.MAGIC,Tier.C, amount);
+		super(equipment, "Potion", "Use potion", new Stats(0, 0, 0, 0, 0),ActionType.NEUTRAL, SkillType.MAGIC,Tier.C, amount);
 	}
 	public Potion(int amount) {
 		this(null, amount);
@@ -30,6 +30,7 @@ public class Potion extends UsableItemDecorator{ //Cura 50 de vida
 			Stats variation = new Stats(heal, 0, 0, 0, 0);
 			GameManager.getManager().getActions().add(new Action(variation, actionType, skillType, user, target));
 			amount--;	
+			inform(user,target);
 		}
 		
 	}

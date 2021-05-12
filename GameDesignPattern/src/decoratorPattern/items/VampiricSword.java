@@ -8,12 +8,12 @@ import decoratorPattern.Tier;
 public class VampiricSword extends PassiveItemDecorator{ 
 
 	public VampiricSword(Item equipment) {
-		super(equipment, "Vampiric Sword", 0, 0, 20, 0, 0, Tier.B);
+		super(equipment, "Vampiric Sword", new Stats(0, 0, 20, 0, 0), Tier.B);
 	}
 	
 
 	public VampiricSword(){
-		super();
+		this(null);
 	}
 
 

@@ -10,10 +10,10 @@ import singletonPattern.GameManager;
 public class MagicCoat extends ActiveItemDecorator{ //Defiende de la primera habilidad leve recibida
 
 	public MagicCoat() {
-		super();
+		this(null);
 	}
 	public MagicCoat(Item equipment) {
-		super(equipment, "MagicCoat", "Magic coat", 0, 0, 0, 5, 0, ActionType.DEFENSIVE, SkillType.MAGIC, Tier.C);
+		super(equipment, "MagicCoat", "Magic coat", new Stats(0, 0, 0, 5, 0), ActionType.DEFENSIVE, SkillType.MAGIC, Tier.C);
 	}
 
 	@Override
@@ -25,6 +25,7 @@ public class MagicCoat extends ActiveItemDecorator{ //Defiende de la primera hab
 				//Si va a recibir menos de 10 de daño, no le afecta la habilidad
 				if(actions.get(i).getVariation().getLife()>-10) {
 					actions.get(i).getVariation().setLife(0);
+					inform(user,target);
 					break; //Solo funciona con la primera
 				}
 			}
