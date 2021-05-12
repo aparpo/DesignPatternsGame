@@ -13,5 +13,9 @@ public class RegularItem extends ItemDecorator{ //Decoradores que solo modifican
 	public RegularItem(Item equipment, String name, Stats stats) {
 		this(equipment, name, stats.getLife(), stats.getMaxLife(), stats.getAttack(), stats.getDefense(), stats.getSpeed());
 	}
+	
+	public RegularItem(Stats stats) {
+		this(null,"Custom stats",stats);
+	}
 
 }

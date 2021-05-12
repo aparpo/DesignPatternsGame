@@ -5,6 +5,7 @@ import java.util.List;
 
 import base.*;
 import base.Character;
+import decoratorPattern.ActiveItemDecorator;
 import abstractFactoryPattern.*;
 import abstractFactoryPattern.enemyFactories.*;
 
@@ -33,11 +34,15 @@ public class GameManager {
 		
 		
 		//Crear al jugador
+		player = new Player("Player");
+		characters.add(player);
 		
 		newLevel(currentLevel);
 	}
 	
 	private void turn() {
+		askPlayer(); //Pedir al jugador su accion
+		
 		orderBySpeed(); //ordenar a los personajes por su velocidad
 		
 		combat(); //Hacer calculos de combate
@@ -66,18 +71,24 @@ public class GameManager {
 		for(int i = 0; i < (int) level.getComplexFactor()*4;i++) {
 			characters.add(factory.generateEnemy());
 		}
-		
+		System.out.print("Comienza el nivel "+ currentLevel.ordinal());
 		//Comenzar a jugar
 
 		turn();
 		
 	}
 	
+	private void askPlayer() {
+		List<ActiveItemDecorator> skills = new ArrayList<ActiveItemDecorator>();
+		skills = player.getEquipment().areThereAnyActives(skills);
+		player.selectItem(skills, characters);
+	}
+	
 	private void orderBySpeed() {
 		List<Character> aux = new ArrayList<Character>();
 		Character max = null;
 		while(!characters.isEmpty()) {
-			max = aux.get(0);
+			max = characters.get(0);
 			for(int i = 0; i < characters.size(); i++) {
 				if(characters.get(i).getEquipment().getSpeed() > max.getEquipment().getSpeed()) {
 					max = characters.get(i);

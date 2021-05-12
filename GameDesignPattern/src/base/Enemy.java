@@ -38,7 +38,6 @@ public class Enemy extends Character{
 	}
 	
 	public String toString() {
-		return this.enemyName + " [Enemy Type->" + this.name + ", Weapon->" + this.equipment.getName() + ", Behaviour->" + this.behaviour + 
-				", Stats->(Life: " + this.equipment.getLife() + ", Att: " + this.equipment.getAttack() + ", Def: " + this.equipment.getDefense() + ", Speed: " + this.equipment.getSpeed() + ")]";
+		return this.enemyName + super.toString();
 	}
 }

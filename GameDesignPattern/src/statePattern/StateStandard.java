@@ -10,7 +10,7 @@ public class StateStandard extends AbstractState implements CharacterState{
 		super(state);
 	}
 	public void process() {
-		if(suggestion != States.STANDARD) {
+		if(suggestion != States.STANDARD && suggestion != null) {
 			this.state.setState(this.state.getPossibleState(suggestion));
 			System.out.println("El jugador esta "+suggestion.getDesc());
 			this.state.setTurns(2);

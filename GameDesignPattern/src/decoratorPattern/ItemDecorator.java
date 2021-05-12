@@ -89,31 +89,56 @@ public abstract class ItemDecorator implements Item{
 		this.equipment = equipment;
 	}
 	public int getLife() {
-		return equipment.getLife()+life;
+		try { //Excepcion para instancias de decoradores que aun no tienen objeto decorado
+			return equipment.getLife()+life;
+		}catch(NullPointerException e) {
+			return 0+life;
+		}
+		
 	}
 	public void setLife(int life) {
 		this.life = life;
 	}
 	public int getAttack() {
-		return equipment.getAttack()+attack;
+		try { //Excepcion para instancias de decoradores que aun no tienen objeto decorado
+			return equipment.getAttack()+attack;
+		}catch(NullPointerException e) {
+			return 0+attack;
+		}
+		
 	}
 	public void setAttack(int attack) {
 		this.attack = attack;
 	}
 	public int getDefense() {
-		return equipment.getDefense()+defense;
+		try { //Excepcion para instancias de decoradores que aun no tienen objeto decorado
+			return equipment.getDefense()+defense;
+		}catch(NullPointerException e) {
+			return 0+defense;
+		}
+		
 	}
 	public void setDefense(int defense) {
 		this.defense = defense;
 	}
 	public int getSpeed() {
-		return equipment.getSpeed()+speed;
+		try { //Excepcion para instancias de decoradores que aun no tienen objeto decorado
+			return equipment.getSpeed()+speed;
+		}catch(NullPointerException e) {
+			return 0+speed;
+		}
+		
 	}
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
 	public int getMaxLife() {
-		return equipment.getMaxLife()+maxLife;
+		try { //Excepcion para instancias de decoradores que aun no tienen objeto decorado
+			return equipment.getMaxLife()+maxLife;
+		}catch(NullPointerException e) {
+			return 0+maxLife;
+		}
+		
 	}
 	public void setMaxLife(int maxLife) {
 		this.maxLife = maxLife;
