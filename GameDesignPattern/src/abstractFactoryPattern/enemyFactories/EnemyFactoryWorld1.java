@@ -38,9 +38,9 @@ public class EnemyFactoryWorld1 implements AbstractEnemyFactory{
 		randNum = rand.nextInt(100);
 		
 		if(randNum < 30) {
-			enemy.getEquipment().addItem(new Bow());
+			enemy.addItem(new Bow());
 		}else {
-			enemy.getEquipment().addItem(new FireStaff());
+			enemy.addItem(new FireStaff());
 		}
 		
 		return enemy; //Devolver el enemigo mejorado
