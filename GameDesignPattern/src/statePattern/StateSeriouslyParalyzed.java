@@ -2,7 +2,7 @@ package statePattern;
 
 import base.Action;
 
-public class StateSeriouslyParalyzed extends AbstractState implements CharacterState{
+public class StateSeriouslyParalyzed extends AbstractState{
 
 	
 	public void process() {
@@ -22,6 +22,7 @@ public class StateSeriouslyParalyzed extends AbstractState implements CharacterS
 		this.state.setTurns(this.state.getTurns()-1);
 		return action;
 	}
+	
 	protected void standard() {
 		System.out.println("El jugador ya no esta paralizado");
 		this.state.setState(this.state.getPossibleState(States.STANDARD));

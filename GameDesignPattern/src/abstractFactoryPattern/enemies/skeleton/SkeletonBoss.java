@@ -9,8 +9,6 @@ public class SkeletonBoss extends Skeleton{
 	public SkeletonBoss() {
 		super("Skeletor");
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(skeletonBaseStats, World.BOSS));
-		this.behaviour = new AgressiveStrategy();
-		this.equipment = new Bow(this.equipment);	
-		this.equipment = new Shield(this.equipment);
+		
 	}
 }

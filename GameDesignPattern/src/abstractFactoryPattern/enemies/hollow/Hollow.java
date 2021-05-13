@@ -2,6 +2,7 @@ package abstractFactoryPattern.enemies.hollow;
 import base.Enemy;
 import base.Stats;
 import decoratorPattern.items.Shield;
+import strategyPattern.normalStrategies.AgressiveStrategy;
 
 public abstract class Hollow extends Enemy{
 	protected final Stats hollowBaseStats = new Stats(60, 60, 30, 30, 2);
@@ -10,5 +11,6 @@ public abstract class Hollow extends Enemy{
 		super("Hollow");
 		this.enemyName = enemyName;
 		//equipment = equipment.addItem(new Shield());
+		this.behaviour = new AgressiveStrategy();
 	}
 }

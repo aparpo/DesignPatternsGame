@@ -2,7 +2,7 @@ package statePattern;
 
 import base.Action;
 
-public class StateStandard extends AbstractState implements CharacterState{
+public class StateStandard extends AbstractState{
 
 	
 	public StateStandard() {}
@@ -18,7 +18,8 @@ public class StateStandard extends AbstractState implements CharacterState{
 		suggestion = null;
 		
 	}
-	public Action effect(Action action) {
+	
+public Action effect(Action action) {
 		return action;
 	}
 

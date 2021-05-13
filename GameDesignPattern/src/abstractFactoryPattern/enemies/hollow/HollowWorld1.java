@@ -9,7 +9,6 @@ public class HollowWorld1 extends Hollow{
 	public HollowWorld1() {
 		super("Hollow Archer");
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(hollowBaseStats, World.WORLD1));
-		//this.behaviour = new AgressiveStrategy();
 		this.behaviour = new DefensiveStrategy();
 		
 	}

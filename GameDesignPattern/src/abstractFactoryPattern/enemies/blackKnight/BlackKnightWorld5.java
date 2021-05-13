@@ -10,7 +10,5 @@ public class BlackKnightWorld5 extends BlackKnight{
 		super("Great Sword Knight");
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(blackKnightBaseStats, World.WORLD5));
 		addItem(new DemonSpear());
-		this.equipment = new Bow(this.equipment);	
-		this.equipment = new Shield(this.equipment);
 	}
 }

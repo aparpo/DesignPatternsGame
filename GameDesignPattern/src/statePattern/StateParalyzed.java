@@ -2,7 +2,7 @@ package statePattern;
 
 import base.Action;
 
-public class StateParalyzed extends AbstractState implements CharacterState{
+public class StateParalyzed extends AbstractState{
 	
 	
 	public StateParalyzed() {}

@@ -6,7 +6,7 @@ import base.SkillType;
 import base.Stats;
 import singletonPattern.GameManager;
 
-public class StatePoisoned extends AbstractState implements CharacterState{
+public class StatePoisoned extends AbstractState{
 
 	
 	public StatePoisoned() {}

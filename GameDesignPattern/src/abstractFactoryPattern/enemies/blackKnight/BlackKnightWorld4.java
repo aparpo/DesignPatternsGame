@@ -10,7 +10,5 @@ public class BlackKnightWorld4 extends BlackKnight{
 		super("Axe Knight");
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(blackKnightBaseStats, World.WORLD4));	
 		addItem(new MagicCoat()); //Por defecto en este nivel tienen p.e. capa magica
-		this.equipment = new Bow(this.equipment);	
-		this.equipment = new Shield(this.equipment);
 	}
 }

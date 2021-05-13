@@ -32,7 +32,6 @@ public class GameManager {
 		
 		//Comenzar la parte grafica
 		
-		
 		//Crear al jugador
 		player = new Player("Player");
 		characters.add(player);
@@ -66,6 +65,7 @@ public class GameManager {
 		
 	}
 	
+	//Genera un nuevo nivel
 	private void newLevel(World level) {
 		
 		currentLevel = World.values()[currentLevel.ordinal()+1];
@@ -95,7 +95,7 @@ public class GameManager {
 		turn();
 		
 	}
-	
+	//Pregunta al jugador por su accion
 	private void askPlayer() {
 		List<ActiveItemDecorator> skills = new ArrayList<ActiveItemDecorator>();
 		skills = player.getEquipment().areThereAnyActives(skills);

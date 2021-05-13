@@ -6,7 +6,7 @@ import base.SkillType;
 import base.Stats;
 import singletonPattern.GameManager;
 
-public class StateSeriouslyPosioned extends AbstractState implements CharacterState{
+public class StateSeriouslyPosioned extends AbstractState{
 
 	public StateSeriouslyPosioned() {}
 	public StateSeriouslyPosioned(State state) {
@@ -21,7 +21,6 @@ public class StateSeriouslyPosioned extends AbstractState implements CharacterSt
 		suggestion = null;
 		
 	}
-
 	
 	public Action effect(Action action) {
 		GameManager.getManager().getActions().add(new Action(new Stats((int)(action.getTarget().getEquipment().getMaxLife()*0.1),0,0,0,0), 
@@ -29,6 +28,7 @@ public class StateSeriouslyPosioned extends AbstractState implements CharacterSt
 		this.state.setTurns(this.state.getTurns()-1);
 		return action;
 	}
+	
 	protected void standard() {
 		System.out.println("El jugador ya no esta envenenado");
 		this.state.setState(this.state.getPossibleState(States.STANDARD));

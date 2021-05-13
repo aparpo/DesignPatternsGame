@@ -3,16 +3,16 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="base.Character" project="GameDesignPattern" 
     file="/GameDesignPattern/src/base/Character.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="791" y="-39"/>    
+    <position height="-1" width="-1" x="768" y="-105"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
   <class id="2" language="java" name="base.Enemy" project="GameDesignPattern" 
     file="/GameDesignPattern/src/base/Enemy.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="785" y="295"/>    
+    <position height="-1" width="-1" x="774" y="95"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -23,7 +23,7 @@
     project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemies/blackKnight/BlackKnight.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1357" y="524"/>    
+    <position height="-1" width="-1" x="1330" y="280"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -31,9 +31,8 @@
     </display>  
   </class>  
   <class id="4" language="java" name="abstractFactoryPattern.enemies.capraDemon.CapraDemon" project="GameDesignPattern" 
-    file="/GameDesignPattern/src/abstractFactoryPattern/enemies/capraDemon/CapraDemon.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="322" y="532"/>    
+    file="/GameDesignPattern/src/com/utad/mais/CapraDemon.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="295" y="288"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -44,7 +43,7 @@
     project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemies/blackKnight/BlackKnightWorld1.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1164" y="724"/>    
+    <position height="-1" width="-1" x="1125" y="481"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -55,7 +54,7 @@
     project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemies/blackKnight/BlackKnightWorld4.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1411" y="723"/>    
+    <position height="-1" width="-1" x="1384" y="479"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +65,7 @@
     project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemies/blackKnight/BlackKnightWorld5.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1640" y="722"/>    
+    <position height="-1" width="-1" x="1637" y="478"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +74,7 @@
   </class>  
   <class id="8" language="java" name="abstractFactoryPattern.enemies.giant.Giant" project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemies/giant/Giant.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="796" y="521"/>    
+    <position height="-1" width="-1" x="769" y="277"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -85,7 +84,7 @@
   <class id="9" language="java" name="abstractFactoryPattern.enemies.giant.GiantWorld4" project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemies/giant/GiantWorld4.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="946" y="718"/>    
+    <position height="-1" width="-1" x="875" y="478"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -95,7 +94,7 @@
   <class id="10" language="java" name="abstractFactoryPattern.enemies.giant.GiantWorld5" project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemies/giant/GiantWorld5.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="672" y="724"/>    
+    <position height="-1" width="-1" x="656" y="478"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -106,7 +105,7 @@
     project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemies/capraDemon/CapraDemonBoss.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="419" y="721"/>    
+    <position height="-1" width="-1" x="392" y="477"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -117,7 +116,7 @@
     project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemies/capraDemon/CapraDemonWorld4.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="144" y="721"/>    
+    <position height="-1" width="-1" x="131" y="478"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -126,7 +125,7 @@
   </class>  
   <interface id="13" language="java" name="abstractFactoryPattern.AbstractEnemyFactory" project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/AbstractEnemyFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1332" y="-110"/>    
+    <position height="-1" width="-1" x="1372" y="-118"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -137,7 +136,7 @@
     project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemyFactories/EnemyFactoryWorld1.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1077" y="151"/>    
+    <position height="-1" width="-1" x="1111" y="43"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -148,7 +147,7 @@
     project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemyFactories/EnemyFactoryWorld2.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1349" y="176"/>    
+    <position height="-1" width="-1" x="1376" y="72"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -159,7 +158,7 @@
     project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemyFactories/EnemyFactoryWorld5.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1608" y="175"/>    
+    <position height="-1" width="-1" x="1631" y="58"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -168,7 +167,7 @@
   </class>  
   <enumeration id="17" language="java" name="abstractFactoryPattern.World" project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/World.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1071" y="-96"/>    
+    <position height="-1" width="-1" x="163" y="-50"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -176,60 +175,60 @@
     </display>  
   </enumeration>  
   <generalization id="18">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
   </generalization>  
   <generalization id="19">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="4"/>  
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
   </generalization>  
   <generalization id="20">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
-  <realization id="21">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="13"/>  
-  </realization>  
-  <generalization id="22">    
+  <generalization id="21">    
     <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
+  <generalization id="22">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="4"/>  
+  </generalization>  
   <generalization id="23">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <generalization id="24">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <generalization id="25">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <generalization id="26">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <generalization id="27">    
     <end type="SOURCE" refId="10"/>    
     <end type="TARGET" refId="8"/>  
   </generalization>  
-  <generalization id="28">    
+  <realization id="24">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="13"/>  
+  </realization>  
+  <generalization id="25">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="3"/>  
   </generalization>  
-  <realization id="29">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="13"/>  
-  </realization>  
-  <realization id="30">    
+  <realization id="26">    
     <end type="SOURCE" refId="15"/>    
     <end type="TARGET" refId="13"/>  
   </realization>  
-  <generalization id="31">    
+  <generalization id="27">    
     <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="4"/>  
+  </generalization>  
+  <realization id="28">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="13"/>  
+  </realization>  
+  <generalization id="29">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="30">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="31">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="3"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

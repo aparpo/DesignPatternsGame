@@ -41,22 +41,13 @@ public class Stats{ //Componente base
 		speed+=variation.getSpeed();
 	}
 	
-	public void substractStats(Stats variation) { //Sobrecarga del operador resta
-		life-=variation.getLife();
-		maxLife-=variation.getMaxLife();
-		attack-=variation.getAttack();
-		defense-=variation.getDefense();
-		speed-=variation.getSpeed();
-	}
-	
 	public void backToNormal() { //Devolver al estado basico todas las estadisticas menos la vida actual
 		maxLife=0;
 		attack = 0;
 		defense = 0;
 		speed = 0;
 	}
-	
-	
+		
 	public int getLife() {
 		return life;
 	}
@@ -88,6 +79,4 @@ public class Stats{ //Componente base
 		this.speed = speed;
 	}
 
-
-	
 }
