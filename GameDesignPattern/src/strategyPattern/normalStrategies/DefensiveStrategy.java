@@ -62,18 +62,16 @@ public class DefensiveStrategy extends DecisionTemplate{
 			total += options[i];
 		}
 		//Random random = new Random();
-		int chance = (int) (Math.random()*(total+1));//probabilidad de eleccion (entre 0 y total+1, esto para que el numero limite sea total)
+		int chance = (int) (Math.random()*total);//probabilidad de eleccion (entre 0 y total+1, esto para que el numero limite sea total)
 		if(chance < options[0]) action = ActionType.OFFENSIVE; //Proporicion de ataque
 		else if(chance < (options[0] +options[1])) action = ActionType.DEFENSIVE; //Proporcion de defensa
 		else action = ActionType.NEUTRAL; //Proporcion de neutral
 		
 		while(true) {
-			aux = (int)(Math.random() * skills.size()); //Habilidad aleatoria
+			aux = (int)(Math.random() *skills.size()); //Habilidad aleatoria
 			if(skills.get(aux).getActionType() == action) { //Que concuerde con la decision
 				skills.get(aux).useSkill(user, target); //Se usa la habilidad
 				return;
-			}else {
-				skills.remove(aux); //Se elimina de la lista temporal para agilizar
 			}
 		}
 		

@@ -41,9 +41,10 @@ public class GameManager {
 	}
 	
 	private void turn() {
-		askPlayer(); //Pedir al jugador su accion
-		
 		orderBySpeed(); //ordenar a los personajes por su velocidad
+		
+		askPlayer(); //Pedir al jugador su accion
+
 		
 		combat(); //Hacer calculos de combate
 		
@@ -52,6 +53,7 @@ public class GameManager {
 		switch(checkEnd()) {//Comprobar si se ha acabado el nivel o si ha muerto el jugador
 		case 0: //Jugador ha muerto
 			//Acabar el juego
+			System.out.println("You died");
 			break;
 		case 1: //Solo queda el jugador
 			newLevel(World.values()[currentLevel.ordinal()+1]);
@@ -65,7 +67,23 @@ public class GameManager {
 	}
 	
 	private void newLevel(World level) {
+		
 		currentLevel = World.values()[currentLevel.ordinal()+1];
+		
+		switch(currentLevel.ordinal()) {
+		case 1:
+			factory = new EnemyFactoryWorld1(); 
+			break;
+		case 2:
+			factory = new EnemyFactoryWorld2(); 
+			break;
+		case 3:
+			factory = new EnemyFactoryWorld3(); 
+			break;
+		case 4:
+			factory = new EnemyFactoryWorld4(); 
+			break;
+		}
 		
 		//Crear nuevos enemigos
 		for(int i = 0; i < (int) level.getComplexFactor()*2;i++) {
@@ -121,10 +139,14 @@ public class GameManager {
 		}
 		
 		//Resolver por orden
-		for(int i = 0; i < actions.size(); i++) {
-			if(actions.get(i).getUser().isAlive()) { //El actor sigue vivo
-				actions.get(i).getTarget().applyStats(actions.get(i).getVariation());
-			}
+		while(actions.size()>0) {
+			
+		if(actions.get(0).getUser().isAlive()) { //El actor sigue vivo
+			actions.get(0).getTarget().applyStats(actions.get(0).getVariation()); //Ejecutar la accion
+		}
+		
+		actions.remove(0); //Eliminar una vez ejecutada
+			
 		}
 	}
 	
