@@ -11,5 +11,6 @@ public class CapraDemonBoss extends CapraDemon{
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(capraDemonBaseStats, World.BOSS));
 		this.behaviour = new AgressiveStrategy();
 		this.equipment = new Bow(this.equipment);	
+		this.equipment = new Shield(this.equipment);
 	}
 }

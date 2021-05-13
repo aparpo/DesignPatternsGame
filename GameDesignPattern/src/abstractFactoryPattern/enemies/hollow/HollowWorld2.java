@@ -11,5 +11,6 @@ public class HollowWorld2 extends Hollow{
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(hollowBaseStats, World.WORLD2));
 		this.behaviour = new AgressiveStrategy();
 		this.equipment = new LongSword(this.equipment);	
+		this.equipment = new Shield(this.equipment);
 	}
 }

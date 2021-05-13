@@ -87,7 +87,7 @@ public class MediumStrategy extends DecisionTemplate{
 		for(int i =0; i < options.length; i++) {
 			total += options[i];
 		}
-		int random = (int)Math.random()*total;
+		int random = (int)Math.random()*(total+1);
 		if(random < options[0]) {
 			attack(user, target, skills);
 		}else if(random < options[0] + options[1]) {

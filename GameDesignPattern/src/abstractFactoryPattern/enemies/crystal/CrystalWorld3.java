@@ -11,5 +11,6 @@ public class CrystalWorld3 extends Crystal{
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(crystalBaseStats, World.WORLD3));
 		this.behaviour = new AgressiveStrategy();
 		this.equipment = new Bow(this.equipment);	
+		this.equipment = new Shield(this.equipment);
 	}
 }

@@ -10,6 +10,7 @@ public class SkeletonWorld3 extends Skeleton{
 		super("Wheel Skeleton");
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(skeletonBaseStats, World.WORLD2));
 		this.behaviour = new AgressiveStrategy();
-		this.equipment = new LongSword(this.equipment);	
+		this.equipment = new Bow(this.equipment);	
+		this.equipment = new Shield(this.equipment);
 	}
 }

@@ -11,5 +11,6 @@ public class GiantWorld5 extends Giant{
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(giantBaseStats, World.WORLD5));
 		this.behaviour = new AgressiveStrategy();
 		this.equipment = new Bow(this.equipment);	
+		this.equipment = new Shield(this.equipment);
 	}
 }

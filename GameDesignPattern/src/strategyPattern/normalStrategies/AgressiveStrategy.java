@@ -56,14 +56,15 @@ public class AgressiveStrategy extends DecisionTemplate{
 	@Override
 	protected void selectSkill(int[] options, List<ActiveItemDecorator> skills, Enemy user, Player target) {
 		int total = 0; //Total de prioridades
-		double chance = Math.random(); //probabilidad de eleccion (entre 0 y 1)
+		//double chance = Math.random(); //probabilidad de eleccion (entre 0 y 1)
 		int aux; //Accion elegida
 		ActionType action = null; //Tipo de habilidad elegido
 		for(int i = 0; i < options.length; i++) {
 			total += options[i];
 		}
-		if(chance < options[0]/total) action = ActionType.OFFENSIVE; //Proporicion de ataque
-		else if(chance < (options[0] +options[1])/total) action = ActionType.DEFENSIVE; //Proporcion de defensa
+		int chance = (int) (Math.random()*(total+1));//probabilidad de eleccion (entre 0 y total+1, esto para que el numero limite sea total)
+		if(chance < options[0]) action = ActionType.OFFENSIVE; //Proporicion de ataque
+		else if(chance < options[0]+options[1]/*(options[0] +options[1])/total*/) action = ActionType.DEFENSIVE; //Proporcion de defensa
 		else action = ActionType.NEUTRAL; //Proporcion de neutral
 		
 		while(true) {
