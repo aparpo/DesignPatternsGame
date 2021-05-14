@@ -7,7 +7,7 @@ import base.Enemy;
 public abstract class FactoryTemplate implements AbstractLevelFactory{
 	protected Random rand = new Random();
 	
-	public Enemy generateEnemy() {
+	public final Enemy generateEnemy() {
 		Enemy enemy = createEnemy();
 		decorateEnemy(enemy);
 		finishEnemy(enemy);

@@ -38,7 +38,7 @@ public class LevelFactoryWorld1 extends FactoryTemplate{
 	@Override
 	protected void decorateEnemy(Enemy enemy) {
 		//Mejorar al enemigo con habilidades del mundo 1
-		//Aqui se pueden cambiar estadisticas, estado, objetos o behaviours segun el mundo 
+		//Aqui se pueden cambiar estadisticas o habilidades segun el mundo 
 		//Se crean enemigos acordes al nivel de dificultad pero los Hollow del mundo 1 no son siempre exactamente iguales p.e.
 		int randNum = rand.nextInt(100);
 		enemy.getEquipment().addItem(new Potion(1));
