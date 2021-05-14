@@ -1,21 +1,30 @@
 package abstractFactoryPattern.enemyFactories;
 import base.Enemy;
-import abstractFactoryPattern.AbstractEnemyFactory;
+import decoratorPattern.Item;
+import abstractFactoryPattern.AbstractLevelFactory;
+import abstractFactoryPattern.FactoryTemplate;
 import abstractFactoryPattern.enemies.blackKnight.*;
 import abstractFactoryPattern.enemies.giant.*;
 import abstractFactoryPattern.enemies.capraDemon.*;
 import java.util.Random;
 
-public class EnemyFactoryWorld4 implements AbstractEnemyFactory{
-	Random rand = new Random();
+public class LevelFactoryWorld4 extends FactoryTemplate{
 	
-	public EnemyFactoryWorld4() {
+	
+	public LevelFactoryWorld4() {
 		super();
 	}
-	
-	public Enemy generateEnemy() {
+
+
+	@Override
+	public Item generateItem() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected Enemy createEnemy() {
 		int randNum = rand.nextInt(100);
-		
 		if(randNum < 40) {
 			return createCapraDemon();
 		}
@@ -25,6 +34,18 @@ public class EnemyFactoryWorld4 implements AbstractEnemyFactory{
 		else {
 			return createGiant();
 		}
+	}
+
+	@Override
+	protected void decorateEnemy(Enemy enemy) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void finishEnemy(Enemy enemy) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	public Enemy createCapraDemon() {
@@ -37,18 +58,6 @@ public class EnemyFactoryWorld4 implements AbstractEnemyFactory{
 	
 	public Enemy createBlackKnight() {
 		return new BlackKnightWorld4();
-	}
-	
-	public Enemy createCrysal() {
-		throw new IllegalStateException("Invalid Enemy Generation");
-	}
-	
-	public Enemy createSkeleton() {
-		throw new IllegalStateException("Invalid Enemy Generation");
-	}
-	
-	public Enemy createHollow() {
-		throw new IllegalStateException("Invalid Enemy Generation");
 	}
 
 }

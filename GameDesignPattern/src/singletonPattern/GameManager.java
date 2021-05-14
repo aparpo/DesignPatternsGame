@@ -14,7 +14,7 @@ public class GameManager {
 	private static GameManager manager = new GameManager();
 	private List<Action> actions = new ArrayList<Action>(); //Buffer de acciones durante un turno
 	private List<Character> characters = new ArrayList<Character>();
-	private AbstractEnemyFactory factory = new EnemyFactoryWorld1();
+	private AbstractLevelFactory factory = new LevelFactoryWorld1();
 	private Player player;
 	private World currentLevel = World.WORLD1;
 	
@@ -72,16 +72,16 @@ public class GameManager {
 		
 		switch(currentLevel.ordinal()) {
 		case 1:
-			factory = new EnemyFactoryWorld1(); 
+			factory = new LevelFactoryWorld1(); 
 			break;
 		case 2:
-			factory = new EnemyFactoryWorld2(); 
+			factory = new LevelFactoryWorld2(); 
 			break;
 		case 3:
-			factory = new EnemyFactoryWorld3(); 
+			factory = new LevelFactoryWorld3(); 
 			break;
 		case 4:
-			factory = new EnemyFactoryWorld4(); 
+			factory = new LevelFactoryWorld4(); 
 			break;
 		}
 		
@@ -199,11 +199,11 @@ public class GameManager {
 		this.player = player;
 	}
 
-	public AbstractEnemyFactory getFactory() {
+	public AbstractLevelFactory getFactory() {
 		return factory;
 	}
 
-	public void setFactory(AbstractEnemyFactory factory) {
+	public void setFactory(AbstractLevelFactory factory) {
 		this.factory = factory;
 	}
 }

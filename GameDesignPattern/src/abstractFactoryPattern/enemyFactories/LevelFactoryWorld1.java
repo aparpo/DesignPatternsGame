@@ -1,25 +1,27 @@
 package abstractFactoryPattern.enemyFactories;
 import base.Enemy;
+import decoratorPattern.Item;
 import decoratorPattern.items.Bow;
 import decoratorPattern.items.FireStaff;
 import decoratorPattern.items.Potion;
-import abstractFactoryPattern.AbstractEnemyFactory;
+import strategyPattern.normalStrategies.AgressiveStrategy;
+import strategyPattern.normalStrategies.DumbStrategy;
+import abstractFactoryPattern.AbstractLevelFactory;
+import abstractFactoryPattern.FactoryTemplate;
 import abstractFactoryPattern.enemies.blackKnight.*;
 import abstractFactoryPattern.enemies.crystal.*;
 import abstractFactoryPattern.enemies.hollow.*;
-import java.util.Random;
 
-public class EnemyFactoryWorld1 implements AbstractEnemyFactory{
-	Random rand = new Random();
+public class LevelFactoryWorld1 extends FactoryTemplate{
 	
-	public EnemyFactoryWorld1() {
+	public LevelFactoryWorld1() {
 		super();
 	}
 	
-	public Enemy generateEnemy() {
-		int randNum = rand.nextInt(100);
+	@Override
+	protected Enemy createEnemy() {
 		Enemy enemy;
-		
+		int randNum = rand.nextInt(100);
 		//Crear un tipo de enemigo u otro basado en la probabilidad
 		if(randNum < 55) {
 			enemy = createHollow();
@@ -30,10 +32,15 @@ public class EnemyFactoryWorld1 implements AbstractEnemyFactory{
 		else {
 			enemy = createBlackKnight();
 		}
-		
+		return enemy;
+	}
+
+	@Override
+	protected void decorateEnemy(Enemy enemy) {
 		//Mejorar al enemigo con habilidades del mundo 1
 		//Aqui se pueden cambiar estadisticas, estado, objetos o behaviours segun el mundo 
 		//Se crean enemigos acordes al nivel de dificultad pero los Hollow del mundo 1 no son siempre exactamente iguales p.e.
+		int randNum = rand.nextInt(100);
 		enemy.getEquipment().addItem(new Potion(1));
 		randNum = rand.nextInt(100);
 		
@@ -43,7 +50,15 @@ public class EnemyFactoryWorld1 implements AbstractEnemyFactory{
 			enemy.addItem(new FireStaff());
 		}
 		
-		return enemy; //Devolver el enemigo mejorado
+	}
+	@Override
+	protected void finishEnemy(Enemy enemy) {
+		int randNum = rand.nextInt(100);
+		if(randNum < 60) {
+			enemy.setBehaviour(new DumbStrategy());
+		}else {
+			enemy.setBehaviour(new AgressiveStrategy());
+		}
 	}
 
 	/*public*/ private Enemy createHollow() {
@@ -57,24 +72,14 @@ public class EnemyFactoryWorld1 implements AbstractEnemyFactory{
 	/*public*/ private Enemy createBlackKnight() {
 		return new BlackKnightWorld1();
 	}
+
+	@Override
+	public Item generateItem() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
-	/*public Enemy createSkeleton() {
-		throw new IllegalStateException("Invalid Enemy Generation");
-	}
 
-	public Enemy createGiant() {
-		throw new IllegalStateException("Invalid Enemy Generation");
-	}
-
-	public Enemy createCapraDemon() {
-		throw new IllegalStateException("Invalid Enemy Generation");
-	}
-
-	public static void main(String[] args) {
-		AbstractEnemyFactory enemyFactory = new EnemyFactoryWorld1();
-		
-		Enemy enemy = enemyFactory.generateEnemy();
-		
-		System.out.print(enemy);
-	}*/
+	
 }
