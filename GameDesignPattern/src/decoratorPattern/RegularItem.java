@@ -11,8 +11,12 @@ public class RegularItem extends ItemDecorator{ //Decoradores que solo modifican
 		super(equipment, name, stats, Tier.C);
 	}
 	
+	public RegularItem(String name, Stats stats) {
+		this(null, name, stats);
+	}
+	
 	public RegularItem(Stats stats) {
-		this(null,"Custom stats",stats);
+		this("Custom stats",stats);
 	}
 
 }

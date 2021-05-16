@@ -1,21 +1,28 @@
 package abstractFactoryPattern.enemyFactories;
 import base.Enemy;
-import decoratorPattern.Item;
-import decoratorPattern.items.Bow;
-import decoratorPattern.items.FireStaff;
-import decoratorPattern.items.Potion;
-import strategyPattern.normalStrategies.AgressiveStrategy;
-import strategyPattern.normalStrategies.DumbStrategy;
-import abstractFactoryPattern.AbstractLevelFactory;
-import abstractFactoryPattern.FactoryTemplate;
+import base.Stats;
+import decoratorPattern.*;
+import decoratorPattern.items.*;
+import strategyPattern.normalStrategies.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import abstractFactoryPattern.*;
 import abstractFactoryPattern.enemies.blackKnight.*;
 import abstractFactoryPattern.enemies.crystal.*;
 import abstractFactoryPattern.enemies.hollow.*;
 
 public class LevelFactoryWorld1 extends FactoryTemplate{
 	
+	private String[] names = {"sword","dagger","spear","armor"};
+	private String[] adjectives = {"iron","wood","plastic"};
+	private List<Item> items = new ArrayList<Item>();
+	private int basePower = 20;
+	
 	public LevelFactoryWorld1() {
 		super();
+		createItemList();
 	}
 	
 	@Override
@@ -34,7 +41,6 @@ public class LevelFactoryWorld1 extends FactoryTemplate{
 		}
 		return enemy;
 	}
-
 	@Override
 	protected void decorateEnemy(Enemy enemy) {
 		//Mejorar al enemigo con habilidades del mundo 1
@@ -61,22 +67,43 @@ public class LevelFactoryWorld1 extends FactoryTemplate{
 		}
 	}
 
-	/*public*/ private Enemy createHollow() {
+	private Enemy createHollow() {
 		return new HollowWorld1();
 	}
-
-	/*public*/ private Enemy createCrysal() {
+	private Enemy createCrysal() {
 		return new CrystalWorld1();
 	}
-
-	/*public*/ private Enemy createBlackKnight() {
+	private Enemy createBlackKnight() {
 		return new BlackKnightWorld1();
+	}
+	
+	//Crea una lista de objetos adecuados al nivel de la factoria
+	private void createItemList() {
+		items.add(new Bow());
+		items.add(new FireStaff());
+		items.add(new Potion(3));
+		items.add(new Antidote(1));
+		items.add(new Thornmail());
+		items.add(new SolarAegis());
 	}
 
 	@Override
 	public Item generateItem() {
-		// TODO Auto-generated method stub
-		return null;
+		int randNum = rand.nextInt(100);
+		Item item;
+		if(randNum < 60 || items.size() <= 0) { //Crear un regular item  con 60% de probabilidad
+			//Stats aleatorias
+			Stats stats = new Stats(0,rand.nextInt(basePower),rand.nextInt(basePower),rand.nextInt(basePower),rand.nextInt(2));
+			//Elaborar un nombre aleatorio
+			String name = adjectives[rand.nextInt(adjectives.length)] + " "+ names[rand.nextInt(names.length)];
+			item = new RegularItem(name,stats);
+		}else {//Devolver un item de los posibles para el mundo 1
+			if(items.size()==0) createItemList();
+			randNum = rand.nextInt(items.size());
+			item = items.get(randNum);
+			items.remove(randNum);
+		}
+		return item;
 	}
 
 	

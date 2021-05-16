@@ -122,6 +122,10 @@ public abstract class ItemDecorator implements Item{
 		}
 		
 	}
+	
+	public String toString() {
+		return name+stats+tier;
+	}
 
 	public String getName() {
 		return name;
@@ -132,7 +136,7 @@ public abstract class ItemDecorator implements Item{
 	}
 
 	public String getDesc() {
-		return equipment.getDesc()+desc;
+		return equipment.getDesc()+this;
 	}
 
 	public void setDesc(String desc) {
@@ -152,5 +156,6 @@ public abstract class ItemDecorator implements Item{
 	public void setStats(Stats stats) {
 		this.stats = stats;
 	}
+	
 	
 }

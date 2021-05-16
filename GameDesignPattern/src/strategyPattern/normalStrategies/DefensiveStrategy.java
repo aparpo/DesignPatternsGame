@@ -56,6 +56,7 @@ public class DefensiveStrategy extends DecisionTemplate{
 	protected void selectSkill(int[] options, List<ActiveItemDecorator> skills, Enemy user, Player target) {
 		int total = 0; //Total de prioridades
 		 //probabilidad de eleccion (entre 0 y 1)
+		Random random = new Random();
 		int aux; //Accion elegida
 		ActionType action = null; //Tipo de habilidad elegido
 		for(int i = 0; i < options.length; i++) {
@@ -68,8 +69,8 @@ public class DefensiveStrategy extends DecisionTemplate{
 		else action = ActionType.NEUTRAL; //Proporcion de neutral
 		
 		while(true) {
-			aux = (int)(Math.random() *skills.size()); //Habilidad aleatoria
-			if(skills.get(aux).getActionType() == action) { //Que concuerde con la decision
+			aux = random.nextInt(skills.size());
+			if(skills.get(aux).getActionType() == action) { //Habilidad aleatoria que concuerde con la decision
 				skills.get(aux).useSkill(user, target); //Se usa la habilidad
 				return;
 			}

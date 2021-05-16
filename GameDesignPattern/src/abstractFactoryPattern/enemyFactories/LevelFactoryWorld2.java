@@ -7,7 +7,8 @@ import abstractFactoryPattern.enemies.skeleton.*;
 import abstractFactoryPattern.enemies.hollow.*;
 import java.util.Random;
 
-public class LevelFactoryWorld2 extends FactoryTemplate{
+//Mundo basado en el estado envenenado
+public class LevelFactoryWorld2 extends FactoryTemplate{ 
 	
 	public LevelFactoryWorld2() {
 		super();

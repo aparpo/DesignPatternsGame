@@ -44,7 +44,6 @@ public class GameManager {
 		
 		askPlayer(); //Pedir al jugador su accion
 
-		
 		combat(); //Hacer calculos de combate
 		
 		prepareNext(); //Preparar el proximo turno	
