@@ -9,7 +9,6 @@ import decoratorPattern.ActiveItemDecorator;
 import decoratorPattern.Item;
 import decoratorPattern.Tier;
 import singletonPattern.GameManager;
-import statePattern.States;
 
 public class QuelaagWeapon extends ActiveItemDecorator{ //Resta un porcentaje de vida al usuario que utiliza la habilidad
 
@@ -22,7 +21,7 @@ public class QuelaagWeapon extends ActiveItemDecorator{ //Resta un porcentaje de
 
 	@Override
 	public void useSkill(Character user, Character target) {
-		int aux = user.getEquipment().getAttack()- target.getEquipment().getDefense(); //Resultado del combate
+		int aux = user.getEquipment().getAttack() - (target.getEquipment().getDefense() / 2); //Resultado del combate
 		if(aux <= 0) { //La defensa es mayor que el ataque
 			aux = 0; //La vida que se resta al objetivo es cero
 		}
@@ -31,9 +30,9 @@ public class QuelaagWeapon extends ActiveItemDecorator{ //Resta un porcentaje de
 		Stats variationUser = new Stats( -(aux / 4) , 0, 0, 0, 0); //Actualizar vida actual del objetivo
 		
 		GameManager.getManager().getActions().add(new Action(variationTarget, actionType, skillType, user, target));
-		inform(user,target);
 		GameManager.getManager().getActions().add(new Action(variationUser, actionType, skillType, user, user));
-		inform(user, user);
+		inform(user,target);
+
 	}
 
 }
