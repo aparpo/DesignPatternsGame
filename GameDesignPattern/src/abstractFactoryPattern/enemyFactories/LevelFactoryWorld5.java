@@ -4,6 +4,8 @@ import decoratorPattern.Item;
 import abstractFactoryPattern.AbstractLevelFactory;
 import abstractFactoryPattern.FactoryTemplate;
 import abstractFactoryPattern.enemies.blackKnight.*;
+import abstractFactoryPattern.enemies.bosses.Boss;
+import abstractFactoryPattern.enemies.bosses.Gwyn;
 import abstractFactoryPattern.enemies.giant.*;
 import java.util.Random;
 
@@ -12,6 +14,12 @@ public class LevelFactoryWorld5 extends FactoryTemplate{
 	public LevelFactoryWorld5() {
 		super();
 	}
+	
+	public Boss generateBoss() {
+		//Genera el Boss final correspondiente al nivel en el que nos encontremos
+		return new Gwyn();
+	}
+	
 	@Override
 	public Item generateItem() {
 		// TODO Auto-generated method stub
