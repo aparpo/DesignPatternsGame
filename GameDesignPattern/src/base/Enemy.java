@@ -3,6 +3,7 @@ import abstractFactoryPattern.World;
 import decoratorPattern.*;
 import singletonPattern.GameManager;
 import strategyPattern.*;
+import strategyPattern.normalStrategies.DefensiveStrategy;
 
 public class Enemy extends Character{
 	
@@ -28,11 +29,17 @@ public class Enemy extends Character{
 		
 		return modifiedStats;
 	}
-
+	
+	public void changeStrategy() {
+		if(this.getEquipment().getLife() < this.getEquipment().getMaxLife()*0.25) {
+			this.setBehaviour(new DefensiveStrategy());
+		}
+	}
+	
 	public DecisionTemplate getBehaviour() {
 		return behaviour;
 	}
-
+	
 	public void setBehaviour(DecisionTemplate behaviour) {
 		this.behaviour = behaviour;
 	}
