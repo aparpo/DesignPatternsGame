@@ -28,7 +28,7 @@ public class QuelaagWeapon extends ActiveItemDecorator{ //Resta un porcentaje de
 		
 		Stats variationUser;
 		if(target.getEquipment().getLife() > 1 && target.getEquipment().getLife() < (aux / 4)) {
-			variationUser = new Stats( target.getEquipment().getLife() - 1 , 0, 0, 0, 0); //Si el daño es superior a la vida del usuario y este tiene más de 1 de vida, 
+			variationUser = new Stats( -(target.getEquipment().getLife() - 1) , 0, 0, 0, 0); //Si el daño es superior a la vida del usuario y este tiene más de 1 de vida, 
 																							//en vez de matarle le deja a 1 de vida.
 		}
 		
