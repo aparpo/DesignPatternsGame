@@ -10,6 +10,8 @@ import java.util.List;
 
 import abstractFactoryPattern.*;
 import abstractFactoryPattern.enemies.blackKnight.*;
+import abstractFactoryPattern.enemies.bosses.Boss;
+import abstractFactoryPattern.enemies.bosses.Quelaag;
 import abstractFactoryPattern.enemies.crystal.*;
 import abstractFactoryPattern.enemies.hollow.*;
 
@@ -23,6 +25,11 @@ public class LevelFactoryWorld1 extends FactoryTemplate{
 	public LevelFactoryWorld1() {
 		super();
 		createItemList();
+	}
+	
+	public Boss generateBoss() {
+		//Genera el Boss final correspondiente al nivel en el que nos encontremos
+		return new Quelaag();
 	}
 	
 	@Override
@@ -105,8 +112,5 @@ public class LevelFactoryWorld1 extends FactoryTemplate{
 		}
 		return item;
 	}
-
-	
-
 	
 }
