@@ -97,6 +97,4 @@ public class MediumStrategy extends DecisionTemplate{
 		}
 		
 	}
-	
-	
 }

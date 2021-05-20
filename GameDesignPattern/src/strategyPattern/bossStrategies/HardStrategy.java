@@ -11,7 +11,7 @@ public class HardStrategy extends DecisionTemplate{
 
 	//Funcion que comprueba que tan "rentable" es atacar
 	protected int worthAttack(Enemy enemy, Player player) {
-		int probability = -1;
+		int probability = 0;
 		int tierListEnemyItem = 0;
 		int posBestActiveItem = 0;
 		List<ActiveItemDecorator> list = new ArrayList<ActiveItemDecorator>(); 
@@ -20,8 +20,6 @@ public class HardStrategy extends DecisionTemplate{
 		for(int i = 0; i < list.size(); i++) {
 			//Comprobamos si alguno de los objetos es ofensivo
 			if(list.get(i).getActionType() == ActionType.OFFENSIVE) {
-				//Si lo es ponemos probability a 0, en caso de que esta no se modifique a 0 despues de recorrer la lista entera, devolvera 0 psobilidades de atacar
-				probability = 0;
 				
 				//Comprobamos si tiene el mejor item del juego que hace dano en base a la vida del enemigo (100% de la vida), si lo tiene se devuelve 100(numero exageradamente alto)
 				if(list.get(i).getName().equalsIgnoreCase("DeathSpear")) {
@@ -74,29 +72,26 @@ public class HardStrategy extends DecisionTemplate{
 			}
 				
 		}
-		
-		if(probability == -1) {
-			return 0;
-		}else {
-			int i = 0;
-			// Este if compara el dano, mas el dano del mejor item del enemigo contra la defensa del jugador mas la defensa de su mejor item
-			if(enemy.getEquipment().getAttack()+list.get(posBestActiveItem).getAttack() > player.getEquipment().getDefense() + extraDefensePlayer) {
-				i += 2;
-			}
-			// Comprobamos si el enemigo es capaz de matarlo en unos 3 turnos teniendo en cuenta los mismos datos que el if anterior
-			if(enemy.getEquipment().getAttack()+list.get(posBestActiveItem).getAttack()*3 - player.getEquipment().getDefense() + extraDefensePlayer > 
-			player.getEquipment().getLife()) {
-				
-				i+=3;
-			}
-			
-			return i + tierListEnemyItem - tierListEnemyItem;
+
+		int i = 0;
+		// Este if compara el dano, mas el dano del mejor item del enemigo contra la defensa del jugador mas la defensa de su mejor item
+		if(enemy.getEquipment().getAttack()+list.get(posBestActiveItem).getAttack() > player.getEquipment().getDefense() + extraDefensePlayer) {
+			i += 2;
 		}
+		// Comprobamos si el enemigo es capaz de matarlo en unos 3 turnos teniendo en cuenta los mismos datos que el if anterior
+		if(enemy.getEquipment().getAttack()+list.get(posBestActiveItem).getAttack()*3 - player.getEquipment().getDefense() + extraDefensePlayer > 
+		player.getEquipment().getLife()) {
+			
+			i+=3;
+		}
+		
+		return i + tierListEnemyItem - tierListEnemyItem;
+
 	}
 	
 	//Funcion que comprueba que tan "rentable" es defender
 	protected int worthDefend(Enemy enemy, Player player) {
-		int probability = -1;
+		int probability = 0;
 		int tierListEnemyItem = 0;
 		int posBestActiveItem = -1;
 		List<ActiveItemDecorator> list = new ArrayList<ActiveItemDecorator>(); 
@@ -105,8 +100,7 @@ public class HardStrategy extends DecisionTemplate{
 		for(int i = 0; i < list.size(); i++) {
 			//Comprobamos si alguno de los objetos es ofensivo
 			if(list.get(i).getActionType() == ActionType.DEFENSIVE) {
-				//Si lo es ponemos probability a 0, en caso de que esta no se modifique a 0 despues de recorrer la lista entera, devolvera 0 psobilidades de atacar
-				probability = 0;				
+			
 				//Despues comprobamos que el tier que es el item, siempre teniendo en cuenta que no haya ya uno tier s, en ese caso no hace falta
 				if(tierListEnemyItem < 3) {
 					if(list.get(i).getTier() == Tier.S) {
@@ -152,77 +146,97 @@ public class HardStrategy extends DecisionTemplate{
 			}
 				
 		}
-		
-		if(probability == -1) {
-			return 0;
-		}else {
-			int i = 0;
-			// Este if compara el dano, mas el dano del mejor item del enemigo contra la defensa del jugador mas la defensa de su mejor item
-			if(enemy.getEquipment().getAttack()+list.get(posBestActiveItem).getDefense() > player.getEquipment().getDefense() + extraAttackPlayer) {
-				i += 2;
-			}
-			// Comprobamos si el enemigo es capaz de matarlo en unos 3 turnos teniendo en cuenta los mismos datos que el if anterior
-			if(player.getEquipment().getAttack() + extraAttackPlayer - player.getEquipment().getDefense()+list.get(posBestActiveItem).getDefense()*3 > 
-			enemy.getEquipment().getLife()) {
-				
-				i+=3;
-			}
-			
-			return i + tierListEnemyItem - tierListPlayerItem;
+
+		int i = 0;
+		// Este if compara el dano, mas el dano del mejor item del enemigo contra la defensa del jugador mas la defensa de su mejor item
+		if(enemy.getEquipment().getAttack()+list.get(posBestActiveItem).getDefense() > player.getEquipment().getDefense() + extraAttackPlayer) {
+			i += 2;
 		}
+		// Comprobamos si el enemigo es capaz de matarlo en unos 3 turnos teniendo en cuenta los mismos datos que el if anterior
+		if(player.getEquipment().getAttack() + extraAttackPlayer - player.getEquipment().getDefense()+list.get(posBestActiveItem).getDefense()*3 > 
+		enemy.getEquipment().getLife()) {
+			
+			i+=3;
+		}
+		
+		return i + tierListEnemyItem - tierListPlayerItem;
+
 	}
+	
 	protected int worthNeutral(Enemy enemy, Player player) {
 		return 1;
 	}
 	
+	// Esta funcion realiza una accion aleatoria ofensiva de entre los items ofensivos con mejor rango (tierList) que tenga
 	public void attack(Enemy user, Player player, List<ActiveItemDecorator> skills) {
-		int[]attacks = new int[3];
-		int savedAttacks = 0;
+		ArrayList<Integer>attacks = new ArrayList<Integer>();
 		boolean haveDeathStaff = false;
+		//Obtenemos el mejor Tier de los items que tiene el jugador
 		Tier bestTier = bestOffensiveItemTier(skills);
 		//Recorremos el array buscando objetos ofensivos y del mejor tier
 		for(int i =0; i < skills.size(); i++) {
 			if(skills.get(i).getActionType() == ActionType.OFFENSIVE) {
 				if(skills.get(i).getTier() == bestTier) {
-					//Si tiene el death staff, als er el mejor objeto ofensivo directamente usa eso
+					//Si tiene el death staff, al ser el mejor objeto ofensivo directamente usa eso
 					if(skills.get(i).getName().equalsIgnoreCase("Death Staff")) {
 						haveDeathStaff = true;
-						attacks[0] = i;
+						attacks.add(0, i);
 						break;
 					}
-					attacks[savedAttacks] = i;
-					savedAttacks++;
+					attacks.add(i);
 				}
 			}
 		}
+		//Si tiene el Death Staff que es el mejor item ofensivo lo usa directamente sino realiza una acion ofensiva
 		if(haveDeathStaff) {
-			skills.get(attacks[0]).useSkill(user, player);
+			skills.get(attacks.get(0)).useSkill(user, player);
 		}else {
-			skills.get((int)Math.random()*savedAttacks).useSkill(user, player);
+			boolean correctAbilitySelected = false;
+			int skill;
+			//Con este bucle nos aseguramos que la accion que se realiza sea una de las que se han almacenado como las mejores ofensivas
+			do {
+				skill = (int)Math.random()*skills.size();
+				for(int i =0; i < attacks.size(); i++) {
+					if(skill == attacks.get(i)) {
+						correctAbilitySelected = true;
+					}
+				}
+			}while(correctAbilitySelected == false);
+			skills.get(skill).useSkill(user, player);
 		}
 		
 	}
 	
+	// Esta funcion realiza una accion aleatoria defensiva de entre los items ofensivos con mejor rango (tierList) que tenga
 	public void defense(Enemy user, Player player, List<ActiveItemDecorator> skills) {
-		int[]defenses = new int[3];
-		int savedDefenses = 0;
+		ArrayList<Integer>defenses = new ArrayList<Integer>();
 		Tier bestTier = bestDefensiveItemTier(skills);
 		for(int i =0; i < skills.size(); i++) {
 			if(skills.get(i).getActionType() == ActionType.DEFENSIVE) {
 				if(skills.get(i).getTier() == bestTier) {
-					defenses[savedDefenses] = i;
-					savedDefenses++;
+					defenses.add(i);
 				}
 			}
 		}
-		skills.get((int)Math.random()*savedDefenses).useSkill(user, player);
+		boolean correctAbilitySelected = false;
+		int skill;
+		//Con este bucle nos aseguramos que la accion que se realiza sea una de las que se han almacenado como las mejores defensivas
+		do {
+			skill = (int)Math.random()*skills.size();
+			for(int i =0; i < defenses.size(); i++) {
+				if(skill == defenses.get(i)) {
+					correctAbilitySelected = true;
+				}
+			}
+		}while(correctAbilitySelected == false);
+		skills.get(skill).useSkill(user, player);	
 	}
 	
 	public void neutral(Enemy user, Player player) {
 		
 	}
 
-	
+	// Esta funcion elige de que tipo va a ser la accion que va a realizar
 	protected void selectSkill(int[] options, List<ActiveItemDecorator> skills, Enemy user, Player target) {
 		int total = 0;
 		for(int i =0; i < options.length; i++) {
