@@ -1,25 +1,20 @@
 package abstractFactoryPattern.enemyFactories;
 import base.Enemy;
 import decoratorPattern.Item;
-import abstractFactoryPattern.AbstractLevelFactory;
+import decoratorPattern.items.*;
+import strategyPattern.normalStrategies.*;
 import abstractFactoryPattern.FactoryTemplate;
 import abstractFactoryPattern.enemies.skeleton.*;
 import abstractFactoryPattern.enemies.bosses.Boss;
 import abstractFactoryPattern.enemies.bosses.OrsteinAndSmough;
 import abstractFactoryPattern.enemies.crystal.*;
 import abstractFactoryPattern.enemies.hollow.*;
-import java.util.Random;
 
 public class LevelFactoryWorld3 extends FactoryTemplate{
 	int randNum = rand.nextInt(100);
 	
 	public LevelFactoryWorld3() {
 		super();
-	}
-	@Override
-	public Item generateItem() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public Boss generateBoss() {
@@ -40,16 +35,35 @@ public class LevelFactoryWorld3 extends FactoryTemplate{
 		}
 	}
 
-	@Override
 	protected void decorateEnemy(Enemy enemy) {
-		// TODO Auto-generated method stub
-		
+		//Mejorar al enemigo con habilidades del mundo 1
+		//Aqui se pueden cambiar estadisticas o habilidades segun el mundo 
+		//Se crean enemigos acordes al nivel de dificultad pero los Hollow del mundo 1 no son siempre exactamente iguales p.e.
+		int randNum = rand.nextInt(100);
+		enemy.getEquipment().addItem(new Potion(2));
+		randNum = rand.nextInt(100);
+		if(randNum < 20) {
+			enemy.addItem(new Shield());
+		}
+		else if (randNum >= 20 && randNum < 60) {
+			enemy.addItem(new FireStaff());
+		}
+		else {
+			enemy.addItem(new SolarAegis());
+		}
 	}
 
-	@Override
 	protected void finishEnemy(Enemy enemy) {
-		// TODO Auto-generated method stub
-		
+		int randNum = rand.nextInt(100);
+		if(randNum < 15) {
+			enemy.setBehaviour(new DumbStrategy());
+		}
+		else if (randNum >= 15 && randNum < 40) {
+			enemy.setBehaviour(new DefensiveStrategy());
+		}
+		else {
+			enemy.setBehaviour(new AgressiveStrategy());
+		}
 	}
 
 	private Enemy createCrysal() {
@@ -64,7 +78,11 @@ public class LevelFactoryWorld3 extends FactoryTemplate{
 		return new HollowWorld3();
 	}
 
-
+	@Override
+	public Item generateItem() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
 

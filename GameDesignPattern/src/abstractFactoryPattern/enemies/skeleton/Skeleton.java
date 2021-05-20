@@ -9,6 +9,5 @@ public abstract class Skeleton extends Enemy{
 	public Skeleton(String enemyName) {
 		super("Skeleton");
 		this.enemyName = enemyName;
-		this.behaviour = new AgressiveStrategy();
 	}
 }

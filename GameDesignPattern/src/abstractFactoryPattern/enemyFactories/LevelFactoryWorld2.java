@@ -1,6 +1,13 @@
 package abstractFactoryPattern.enemyFactories;
 import base.Enemy;
 import decoratorPattern.Item;
+import decoratorPattern.items.Bow;
+import decoratorPattern.items.FireStaff;
+import decoratorPattern.items.LongSword;
+import decoratorPattern.items.Potion;
+import decoratorPattern.items.RatCrossbow;
+import strategyPattern.normalStrategies.AgressiveStrategy;
+import strategyPattern.normalStrategies.DumbStrategy;
 import abstractFactoryPattern.AbstractLevelFactory;
 import abstractFactoryPattern.FactoryTemplate;
 import abstractFactoryPattern.enemies.skeleton.*;
@@ -20,13 +27,6 @@ public class LevelFactoryWorld2 extends FactoryTemplate{
 		//Genera el Boss final correspondiente al nivel en el que nos encontremos
 		return new Sif();
 	}
-	
-	@Override
-	public Item generateItem() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 	@Override
 	protected Enemy createEnemy() {
@@ -39,16 +39,28 @@ public class LevelFactoryWorld2 extends FactoryTemplate{
 		}
 	}
 
-	@Override
 	protected void decorateEnemy(Enemy enemy) {
-		// TODO Auto-generated method stub
+		//Mejorar al enemigo con habilidades del mundo 1
+		//Aqui se pueden cambiar estadisticas o habilidades segun el mundo 
+		//Se crean enemigos acordes al nivel de dificultad pero los Hollow del mundo 1 no son siempre exactamente iguales p.e.
+		int randNum = rand.nextInt(100);
+		enemy.getEquipment().addItem(new Potion(1));
+		randNum = rand.nextInt(100);
+		if(randNum < 40) {
+			enemy.addItem(new RatCrossbow());
+		}else {
+			enemy.addItem(new LongSword());
+		}
 		
 	}
 
-	@Override
 	protected void finishEnemy(Enemy enemy) {
-		// TODO Auto-generated method stub
-		
+		int randNum = rand.nextInt(100);
+		if(randNum < 30) {
+			enemy.setBehaviour(new DumbStrategy());
+		}else {
+			enemy.setBehaviour(new AgressiveStrategy());
+		}
 	}
 
 	private Enemy createSkeleton() {
@@ -59,6 +71,10 @@ public class LevelFactoryWorld2 extends FactoryTemplate{
 		return new HollowWorld2();
 	}
 
-	
+	@Override
+	public Item generateItem() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

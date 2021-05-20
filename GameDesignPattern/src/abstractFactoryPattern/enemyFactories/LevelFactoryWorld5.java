@@ -1,13 +1,14 @@
 package abstractFactoryPattern.enemyFactories;
 import base.Enemy;
 import decoratorPattern.Item;
-import abstractFactoryPattern.AbstractLevelFactory;
+import decoratorPattern.items.*;
+import strategyPattern.normalStrategies.AgressiveStrategy;
+import strategyPattern.normalStrategies.DefensiveStrategy;
 import abstractFactoryPattern.FactoryTemplate;
 import abstractFactoryPattern.enemies.blackKnight.*;
 import abstractFactoryPattern.enemies.bosses.Boss;
 import abstractFactoryPattern.enemies.bosses.Gwyn;
 import abstractFactoryPattern.enemies.giant.*;
-import java.util.Random;
 
 public class LevelFactoryWorld5 extends FactoryTemplate{
 	
@@ -20,13 +21,6 @@ public class LevelFactoryWorld5 extends FactoryTemplate{
 		return new Gwyn();
 	}
 	
-	@Override
-	public Item generateItem() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	protected Enemy createEnemy() {
 		int randNum = rand.nextInt(100);
 		
@@ -38,16 +32,33 @@ public class LevelFactoryWorld5 extends FactoryTemplate{
 		}
 	}
 
-	@Override
 	protected void decorateEnemy(Enemy enemy) {
-		// TODO Auto-generated method stub
-		
+		//Mejorar al enemigo con habilidades del mundo 1
+		//Aqui se pueden cambiar estadisticas o habilidades segun el mundo 
+		//Se crean enemigos acordes al nivel de dificultad pero los Hollow del mundo 1 no son siempre exactamente iguales p.e.
+		int randNum = rand.nextInt(100);
+		enemy.getEquipment().addItem(new Potion(3));
+		randNum = rand.nextInt(100);
+		if(randNum < 30) {
+			enemy.addItem(new DemonSpear());
+		}
+		else if (randNum >= 30 && randNum < 60) {
+			enemy.addItem(new RatCrossbow());
+		}
+		else {
+			enemy.addItem(new SolarAegis());
+		}
 	}
 
-	@Override
 	protected void finishEnemy(Enemy enemy) {
-		// TODO Auto-generated method stub
-		
+		int randNum = rand.nextInt(100);
+
+		if (randNum < 65) {
+			enemy.setBehaviour(new AgressiveStrategy());
+		}
+		else {
+			enemy.setBehaviour(new DefensiveStrategy());
+		}
 	}
 	
 	
@@ -59,6 +70,9 @@ public class LevelFactoryWorld5 extends FactoryTemplate{
 		return new BlackKnightWorld4();
 	}
 
-	
+	public Item generateItem() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

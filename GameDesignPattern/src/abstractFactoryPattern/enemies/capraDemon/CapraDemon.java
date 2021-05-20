@@ -9,6 +9,5 @@ public abstract class CapraDemon extends Enemy{
 	public CapraDemon(String enemyName) {
 		super("Capra Demon");
 		this.enemyName = enemyName;
-		this.behaviour = new AgressiveStrategy();
 	}
 }

@@ -1,14 +1,15 @@
 package abstractFactoryPattern.enemyFactories;
 import base.Enemy;
 import decoratorPattern.Item;
-import abstractFactoryPattern.AbstractLevelFactory;
+import decoratorPattern.items.*;
+import strategyPattern.normalStrategies.AgressiveStrategy;
+import strategyPattern.normalStrategies.DefensiveStrategy;
 import abstractFactoryPattern.FactoryTemplate;
 import abstractFactoryPattern.enemies.blackKnight.*;
 import abstractFactoryPattern.enemies.bosses.Boss;
 import abstractFactoryPattern.enemies.bosses.Nito;
 import abstractFactoryPattern.enemies.giant.*;
 import abstractFactoryPattern.enemies.capraDemon.*;
-import java.util.Random;
 
 public class LevelFactoryWorld4 extends FactoryTemplate{
 	
@@ -20,12 +21,6 @@ public class LevelFactoryWorld4 extends FactoryTemplate{
 	public Boss generateBoss() {
 		//Genera el Boss final correspondiente al nivel en el que nos encontremos
 		return new Nito();
-	}
-
-	@Override
-	public Item generateItem() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -42,16 +37,33 @@ public class LevelFactoryWorld4 extends FactoryTemplate{
 		}
 	}
 
-	@Override
 	protected void decorateEnemy(Enemy enemy) {
-		// TODO Auto-generated method stub
-		
+		//Mejorar al enemigo con habilidades del mundo 1
+		//Aqui se pueden cambiar estadisticas o habilidades segun el mundo 
+		//Se crean enemigos acordes al nivel de dificultad pero los Hollow del mundo 1 no son siempre exactamente iguales p.e.
+		int randNum = rand.nextInt(100);
+		enemy.getEquipment().addItem(new Potion(2));
+		randNum = rand.nextInt(100);
+		if(randNum < 30) {
+			enemy.addItem(new Thornmail());
+		}
+		else if (randNum >= 30 && randNum < 60) {
+			enemy.addItem(new ElectricShield());
+		}
+		else {
+			enemy.addItem(new VampiricSword());
+		}
 	}
 
-	@Override
 	protected void finishEnemy(Enemy enemy) {
-		// TODO Auto-generated method stub
-		
+		int randNum = rand.nextInt(100);
+
+		if (randNum < 50) {
+			enemy.setBehaviour(new AgressiveStrategy());
+		}
+		else {
+			enemy.setBehaviour(new DefensiveStrategy());
+		}
 	}
 
 	public Enemy createCapraDemon() {
@@ -65,5 +77,10 @@ public class LevelFactoryWorld4 extends FactoryTemplate{
 	public Enemy createBlackKnight() {
 		return new BlackKnightWorld4();
 	}
-
+	
+	@Override
+	public Item generateItem() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -9,6 +9,5 @@ public class Crystal extends Enemy{
 	public Crystal(String enemyName) {
 		super("Crystal Enemy");
 		this.enemyName = enemyName;
-		this.behaviour = new AgressiveStrategy();
 	}
 }

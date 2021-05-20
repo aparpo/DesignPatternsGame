@@ -10,7 +10,5 @@ public abstract class Hollow extends Enemy{
 	public Hollow(String enemyName) {
 		super("Hollow");
 		this.enemyName = enemyName;
-		//equipment = equipment.addItem(new Shield());
-		this.behaviour = new AgressiveStrategy();
 	}
 }

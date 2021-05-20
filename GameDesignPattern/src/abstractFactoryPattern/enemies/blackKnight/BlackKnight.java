@@ -11,6 +11,5 @@ public abstract class BlackKnight extends Enemy{
 	public BlackKnight(String enemyName) {
 		super("Black Knight");
 		this.enemyName = enemyName;
-		this.behaviour = new AgressiveStrategy();
 	}
 }
