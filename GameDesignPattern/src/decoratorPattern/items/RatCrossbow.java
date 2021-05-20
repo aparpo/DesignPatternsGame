@@ -25,7 +25,7 @@ public class RatCrossbow extends ActiveItemDecorator{ //Ataque que envenena
 		
 		GameManager.getManager().getActions().add(new Action(variation, actionType, skillType,user, target));
 		target.getState().setSuggestion(States.POISONED); //Intento de envenenamiento
-		inform(user,target);
+		informPlayer(user,target);
 	}
 
 }

@@ -29,7 +29,7 @@ public class ElectricShield extends ActiveItemDecorator{ //Paraliza a los atacan
 				}else { //La defensa del usuario es mayor que su ataque
 					actions.get(i).getUser().getState().setSuggestion(States.SERIOUSLYPARALYZED); //Intento de paralisis grave
 				}
-				inform(user,target);
+				informPlayer(user,target);
 			}
 		}
 	}

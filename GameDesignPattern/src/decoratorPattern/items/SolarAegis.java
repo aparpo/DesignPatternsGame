@@ -27,7 +27,7 @@ public class SolarAegis extends ActiveItemDecorator{ //Devuelve daño de un ataqu
 					//Devuelve un ataque con la defensa de sobra a cada enemigo
 					Stats variation = new Stats(user.getEquipment().getDefense()+actions.get(i).getVariation().getLife(),0,0,0,0);
 					actions.add(new Action(variation, actionType, skillType, user, target));
-					inform(user,target);
+					informPlayer(user,target);
 				}
 			}
 		}

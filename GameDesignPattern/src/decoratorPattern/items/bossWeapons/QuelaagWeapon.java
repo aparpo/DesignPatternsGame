@@ -38,7 +38,7 @@ public class QuelaagWeapon extends ActiveItemDecorator{ //Resta un porcentaje de
 		
 		GameManager.getManager().getActions().add(new Action(variationTarget, actionType, skillType, user, target));
 		GameManager.getManager().getActions().add(new Action(variationUser, actionType, skillType, user, user));
-		inform(user,target);
+		informPlayer(user,target);
 
 	}
 

@@ -25,7 +25,7 @@ public class MagicCoat extends ActiveItemDecorator{ //Defiende de la primera hab
 				//Si va a recibir menos de 10 de daño, no le afecta la habilidad
 				if(actions.get(i).getVariation().getLife()>-10) {
 					actions.get(i).getVariation().setLife(0);
-					inform(user,target);
+					informPlayer(user,target);
 					break; //Solo funciona con la primera
 				}
 			}

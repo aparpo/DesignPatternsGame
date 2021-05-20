@@ -18,6 +18,9 @@ public class GameManager {
 	private Player player;
 	private World currentLevel = World.WORLD1;
 	
+	private DisplayStrategy displayManager;
+	
+
 	private GameManager() {}
 
 	public static GameManager getManager() {
@@ -31,6 +34,7 @@ public class GameManager {
 	public void play() {
 		
 		//Comenzar la parte grafica
+		displayManager = new ConsoleDisplay();
 		
 		//Crear al jugador
 		player = new Player("Player");
@@ -98,7 +102,8 @@ public class GameManager {
 	private void askPlayer() {
 		List<ActiveItemDecorator> skills = new ArrayList<ActiveItemDecorator>();
 		skills = player.getEquipment().areThereAnyActives(skills);
-		player.selectItem(skills, characters);
+		//player.selectItem(skills, characters);
+		displayManager.askPlayer(player, skills, characters);
 	}
 	
 	private void orderBySpeed() {
@@ -172,6 +177,10 @@ public class GameManager {
 		if(!player.isAlive())return 0;
 		else return characters.size();
 	}
+	
+	public void informPlayer(String data) {
+		displayManager.informPlayer(data);
+	}
 		
 
 	public List<Action> getActions() {
@@ -204,5 +213,13 @@ public class GameManager {
 
 	public void setFactory(AbstractLevelFactory factory) {
 		this.factory = factory;
+	}
+	
+	public DisplayStrategy getDisplayManager() {
+		return displayManager;
+	}
+
+	public void setDisplayManager(DisplayStrategy displayManager) {
+		this.displayManager = displayManager;
 	}
 }

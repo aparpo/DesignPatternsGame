@@ -18,7 +18,7 @@ public class DeathStaff extends ActiveItemDecorator{ //Mata al enemigo a cambio 
 	public void useSkill(Character user, Character target) {
 		Stats variation = new Stats(-target.getEquipment().getLife(), 0, 0, 0, 0); //Actualizar vida actual a cero
 		GameManager.getManager().getActions().add(new Action(variation, actionType, skillType,user, target));
-		inform(user,target);
+		informPlayer(user,target);
 	}
 
 }

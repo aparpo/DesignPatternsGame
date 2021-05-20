@@ -27,7 +27,7 @@ public class Antidote extends UsableItemDecorator{ //Cura 50 de vida
 	public void useSkill(Character user, Character target) {
 		if(amount > 0) { //Quedan antidotos
 			target.getState().setSuggestion(States.STANDARD);	
-			inform(user,target);
+			informPlayer(user,target);
 		}
 		
 	}

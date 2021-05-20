@@ -30,7 +30,7 @@ public class Potion extends UsableItemDecorator{ //Cura 50 de vida
 			Stats variation = new Stats(heal, 0, 0, 0, 0);
 			GameManager.getManager().getActions().add(new Action(variation, actionType, skillType, user, target));
 			amount--;	
-			inform(user,target);
+			informPlayer(user,target);
 		}
 		
 	}

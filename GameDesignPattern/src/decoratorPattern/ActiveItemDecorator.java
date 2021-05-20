@@ -2,6 +2,7 @@ package decoratorPattern;
 
 import base.*;
 import base.Character;
+import singletonPattern.GameManager;
 
 public abstract class ActiveItemDecorator extends ItemDecorator { //Objetos que dotan al personaje de habilidades activas
 	
@@ -22,8 +23,8 @@ public abstract class ActiveItemDecorator extends ItemDecorator { //Objetos que 
 	
 	public abstract void useSkill(Character user, Character target); //Efecto de la habilidad
 	
-	public void inform(Character user, Character target) {
-		System.out.println(user.getName()+" uses "+ skillName + " on "+ target.getName());
+	public void informPlayer(Character user, Character target) {
+		GameManager.getManager().informPlayer(user.getName()+" uses "+ skillName + " on "+ target.getName());
 	}
 
 	public String getSkillname() {

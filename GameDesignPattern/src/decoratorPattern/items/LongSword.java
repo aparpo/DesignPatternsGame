@@ -23,7 +23,7 @@ public class LongSword extends ActiveItemDecorator{ //Ataque basico con espada
 		Stats variation = new Stats( -aux, 0, 0, 0, 0); //Actualizar vida actual
 		
 		GameManager.getManager().getActions().add(new Action(variation, actionType, skillType,user, target));
-		inform(user,target);
+		informPlayer(user,target);
 	}
 
 }
