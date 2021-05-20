@@ -1,117 +1,118 @@
 package display;
 
 import javax.swing.*;
+
+import base.*;
+import singletonPattern.GameManager;
+
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class Ventana extends JFrame{
+	
 	
 	private static final long serialVersionUID = 1L;
 	
 	private JTextArea creencias, historia;
-	private JPanel panelLateral, panelOpciones, panelResumen, panelTitulo, panelSala, items, puertas;
+	private JPanel panelLateral, optionPanel, panelResumen, panelTitulo, worldPanel, items, enemySection;
 	private JScrollPane sbrText;
-	private JLabel estado,titulo;
-	private JLabel personajes[], objetos[], adyacencias[];
+	private JLabel estado,titulo, playerInfo, objetos[], enemiesInfo[];
 	private JButton botones[];
 	
+	private GameManager manager = GameManager.getManager();
+	
 	//Constructor de la Interfaz
-	public Ventana(String cosas[], GestorJuego gestor, Jugador jugador) {
-		botones = new JButton[cosas.length];
+	public Ventana(String data[], ActionListener listener, Player player) {
+		botones = new JButton[data.length];
 		
 		//Creamos los paneles
-		panelOpciones = new JPanel();
-		panelSala = new JPanel();
+		optionPanel = new JPanel();
+		worldPanel = new JPanel();
 		panelResumen = new JPanel();
 		panelTitulo = new JPanel();
 		panelLateral = new JPanel();
 		items = new JPanel();
-		puertas = new JPanel();
+		enemySection = new JPanel();
 		
 		//Diseñamos panelTitulo
 		panelTitulo.setLayout(new GridLayout(0,1));
-		titulo = new JLabel("Debes acabar en "+jugador.getObjetivo().getLugar()+" y tener "+ jugador.getObjetivo().getNombre());
+		titulo = new JLabel("You are in the Level "+manager.getCurrentLevel().ordinal());
 		titulo.setFont(new Font("Sans-Serif", Font.BOLD, 25));
 		panelTitulo.add(titulo);
-		if(jugador.getObjeto()==null) {
-			estado= new JLabel("Estas en " + jugador.getLocalizacion().getNombre()+" y no tienes nada");
+		/*if(player.getObjeto()==null) {
+			estado= new JLabel("Estas en " + player.getLocalizacion().getNombre()+" y no tienes nada");
 		}else {
-			estado = new JLabel("Estas en " + jugador.getLocalizacion().getNombre()+" y tienes "+ jugador.getObjeto().getNombre());
+			estado = new JLabel("Estas en " + player.getLocalizacion().getNombre()+" y tienes "+ player.getObjeto().getNombre());
 			
 		}
 		estado.setFont(new Font("Sans-Serif", Font.BOLD, 25));
-		panelTitulo.add(estado);
+		panelTitulo.add(estado);*/
 		
 		
 		//Diseñamos panelOpciones
 		
-		panelOpciones.setBackground(Color.gray);
-		panelOpciones.setBorder(BorderFactory.createEmptyBorder(30,30,10,30));
-		panelOpciones.setLayout(new GridLayout(0,1));
+		optionPanel.setBackground(Color.gray);
+		optionPanel.setBorder(BorderFactory.createEmptyBorder(30,30,10,30));
+		optionPanel.setLayout(new GridLayout(0,1));
 		
 		
-		for(int i = 0; i < cosas.length; i++) {
-			botones[i] = new JButton(cosas[i]);
+		for(int i = 0; i < data.length; i++) {
+			botones[i] = new JButton(data[i]);
 			botones[i].setPreferredSize(new Dimension(200,50));
-			botones[i].addActionListener(gestor);
-			panelOpciones.add(botones[i]);
+			botones[i].addActionListener(listener);
+			optionPanel.add(botones[i]);
 		}
 		
-		//Diseñamos panelSala
-		panelSala.setBackground(Color.WHITE);
-		panelSala.setBorder(BorderFactory.createTitledBorder("Informacion de la Sala"));
-		panelSala.setLayout(new BorderLayout());
-		personajes = new JLabel[jugador.getLocalizacion().getPersonajes().size()];
-		objetos = new JLabel[jugador.getLocalizacion().getObjetos().size()];
-		adyacencias = new JLabel[jugador.getLocalizacion().getAdyacencias().length];
-		if(jugador.getLocalizacion().getPersonajes().size() >= jugador.getLocalizacion().getObjetos().size()) {
-			items.setLayout(new GridLayout(2,jugador.getLocalizacion().getPersonajes().size()));
-			
-		}else {
-			items.setLayout(new GridLayout(2,jugador.getLocalizacion().getObjetos().size()));
+		//Diseñamos worldPanel
+		worldPanel.setBackground(Color.WHITE);
+		worldPanel.setBorder(BorderFactory.createTitledBorder("World information"));
+		worldPanel.setLayout(new BorderLayout());
+		
+		
+		playerInfo = new JLabel(player.getName(),new ImageIcon("personaje.jpg"), JLabel.CENTER);
+		playerInfo.setVerticalTextPosition(JLabel.BOTTOM);
+		playerInfo.setHorizontalTextPosition(JLabel.CENTER);
+		
+		worldPanel.add(playerInfo,BorderLayout.CENTER);
+		enemiesInfo = new JLabel[manager.getCharacters().size()-1];
+
+		
+		enemySection.setLayout(new GridLayout(0,1));
+		enemySection.setBackground(Color.WHITE);
+		
+		
+		for(int i = 0, j = 0; i <manager.getCharacters().size()-1; i++) {
+			if(!(manager.getCharacters().get(i) instanceof Enemy)) {
+				continue;
+			}
+			Enemy enemy = (Enemy) manager.getCharacters().get(i);
+			String info = enemy.getName() + "\n" + enemy.getEquipment().getLife()+ "/"+ enemy.getEquipment().getMaxLife();
+			enemiesInfo[j] = new JLabel( info,new ImageIcon("puerta.png"), JLabel.LEFT);
+			enemySection.add(enemiesInfo[j]);
+			j++;
 		}
 		
-		items.setBackground(Color.WHITE);
-		puertas.setLayout(new GridLayout(0,1));
-		puertas.setBackground(Color.WHITE);
-		
-		for(int i = 0; i <jugador.getLocalizacion().getPersonajes().size(); i++) {
-			personajes[i] = new JLabel(jugador.getLocalizacion().getPersonajes().get(i).getNombre(),new ImageIcon("personaje.jpg"), JLabel.CENTER);
-			personajes[i].setVerticalTextPosition(JLabel.BOTTOM);
-			personajes[i].setHorizontalTextPosition(JLabel.CENTER);
-			items.add(personajes[i]);
-		}
-		for(int i = 0; i <jugador.getLocalizacion().getObjetos().size(); i++) {
-			objetos[i] = new JLabel(jugador.getLocalizacion().getObjetos().get(i).getNombre(),new ImageIcon("objeto.png"), JLabel.CENTER);
-			objetos[i].setVerticalTextPosition(JLabel.BOTTOM);
-			objetos[i].setHorizontalTextPosition(JLabel.CENTER);
-			items.add(objetos[i]);
-		}
-		for(int i = 0; i <jugador.getLocalizacion().getAdyacencias().length; i++) {
-			adyacencias[i] = new JLabel(jugador.getLocalizacion().getAdyacencias()[i].getNombre(),new ImageIcon("puerta.png"), JLabel.LEFT);
-			puertas.add(adyacencias[i]);
-		}
-		
-		panelSala.add(items, BorderLayout.CENTER);
-		panelSala.add(puertas, BorderLayout.EAST);
+		worldPanel.add(items, BorderLayout.CENTER);
+		worldPanel.add(enemySection, BorderLayout.EAST);
 		
 		//Diseñamos panelLateral
 		panelLateral.setLayout(new GridLayout(0,1));
 		panelLateral.setPreferredSize(new Dimension(300,700));
-		panelLateral.add(panelSala);
-		panelLateral.add(panelOpciones);
+		panelLateral.add(worldPanel);
+		panelLateral.add(optionPanel);
 		
 		
 		//Diseñamos panelResumen
 		panelResumen.setBackground(Color.white);
 		panelResumen.setLayout(new GridLayout(0,1));
 		
-		historia = new JTextArea("Historial de acciones de los personajes:\n"); //Esto será el historial de las acciones
+		historia = new JTextArea("Action history:\n"); //Esto será el historial de las acciones
 		historia.setEditable(false);
 		historia.setBackground(Color.LIGHT_GRAY);
 		
 		sbrText = new JScrollPane(historia, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		
-		creencias = new JTextArea("Últimas ubicaciones conocidas:\n" + jugador.getCreencias()); //Esto serán las creencias del jugador
+		creencias = new JTextArea("Inventory:\n" + player); //Esto serán las creencias del jugador
 		creencias.setPreferredSize(new Dimension(100,100));
 		
 		panelResumen.add(sbrText);
@@ -128,7 +129,7 @@ public class Ventana extends JFrame{
 		setSize(700,700);
 	}
 	
-	public Ventana(String cosas[], GestorJuego gestor, Jugador jugador, boolean disponibles[]) {
+	/*public Ventana(String cosas[], GestorJuego gestor, Jugador jugador, boolean disponibles[]) {
 		this(cosas, gestor,jugador);
 		cambiarBotones(cosas, gestor, disponibles);
 	}
@@ -137,7 +138,7 @@ public class Ventana extends JFrame{
 	}
 	public void cambiarBotones(Elemento cosas[], GestorJuego listener) {
 		for(int i = 0; i < botones.length; i++) {
-			panelOpciones.remove(botones[i]);
+			optionPanel.remove(botones[i]);
 		}
 		
 		for(int i = 0; i<cosas.length; i++) {
@@ -145,7 +146,7 @@ public class Ventana extends JFrame{
 				botones[i] = new JButton(cosas[i].getNombre());
 				botones[i].setPreferredSize(new Dimension(200,50));
 				botones[i].addActionListener(listener);
-				panelOpciones.add(botones[i]);
+				optionPanel.add(botones[i]);
 			}
 			
 		}
@@ -156,14 +157,14 @@ public class Ventana extends JFrame{
 	
 	public void cambiarBotones(String cosas[], GestorJuego listener) {
 		for(int i = 0; i < botones.length; i++) {
-			panelOpciones.remove(botones[i]);
+			optionPanel.remove(botones[i]);
 		}
 		
 		for(int i = 0; i < cosas.length; i++) {
 				botones[i] = new JButton(cosas[i]);
 				botones[i].setPreferredSize(new Dimension(200,50));
 				botones[i].addActionListener(listener);
-				panelOpciones.add(botones[i]);
+				optionPanel.add(botones[i]);
 			
 		}
 	
@@ -193,22 +194,22 @@ public class Ventana extends JFrame{
 		estado.setFont(new Font("Sans-Serif", Font.BOLD, 25));
 		panelTitulo.add(estado);
 		
-		panelSala.remove(items);
+		worldPanel.remove(items);
 		if(jugador.getLocalizacion().getPersonajes().size() >= jugador.getLocalizacion().getObjetos().size()) {
 			items.setLayout(new GridLayout(2,jugador.getLocalizacion().getPersonajes().size()));
 		}else {
 			items.setLayout(new GridLayout(2,jugador.getLocalizacion().getObjetos().size()));
 		}
-		for(int i = 0; i <personajes.length; i++) {
-			items.remove(personajes[i]);
+		for(int i = 0; i <playerInfo.length; i++) {
+			items.remove(playerInfo[i]);
 		}
-		personajes = new JLabel[jugador.getLocalizacion().getPersonajes().size()];
+		playerInfo = new JLabel[jugador.getLocalizacion().getPersonajes().size()];
 		
 		for(int i = 0; i <jugador.getLocalizacion().getPersonajes().size(); i++) {
-			personajes[i] = new JLabel(jugador.getLocalizacion().getPersonajes().get(i).getNombre(),new ImageIcon("personaje.jpg"), JLabel.CENTER);
-			personajes[i].setVerticalTextPosition(JLabel.BOTTOM);
-			personajes[i].setHorizontalTextPosition(JLabel.CENTER);
-			items.add(personajes[i]);
+			playerInfo[i] = new JLabel(jugador.getLocalizacion().getPersonajes().get(i).getNombre(),new ImageIcon("personaje.jpg"), JLabel.CENTER);
+			playerInfo[i].setVerticalTextPosition(JLabel.BOTTOM);
+			playerInfo[i].setHorizontalTextPosition(JLabel.CENTER);
+			items.add(playerInfo[i]);
 		}
 		for(int i = 0; i <objetos.length; i++) {
 			items.remove(objetos[i]);
@@ -221,23 +222,23 @@ public class Ventana extends JFrame{
 			items.add(objetos[i]);
 		}
 		
-		panelSala.add(items,BorderLayout.CENTER);
+		worldPanel.add(items,BorderLayout.CENTER);
 		
-		panelSala.remove(puertas);
+		worldPanel.remove(enemySection);
 		
-		for(int i = 0; i <adyacencias.length; i++) {
-			puertas.remove(adyacencias[i]);
+		for(int i = 0; i <enemiesInfo.length; i++) {
+			enemySection.remove(enemiesInfo[i]);
 		}
-		adyacencias = new JLabel[jugador.getLocalizacion().getAdyacencias().length];
+		enemiesInfo = new JLabel[jugador.getLocalizacion().getAdyacencias().length];
 		for(int i = 0; i <jugador.getLocalizacion().getAdyacencias().length; i++) {
-			adyacencias[i] = new JLabel(jugador.getLocalizacion().getAdyacencias()[i].getNombre(),new ImageIcon("puerta.png"), JLabel.LEFT);
-			puertas.add(adyacencias[i]);
+			enemiesInfo[i] = new JLabel(jugador.getLocalizacion().getAdyacencias()[i].getNombre(),new ImageIcon("puerta.png"), JLabel.LEFT);
+			enemySection.add(enemiesInfo[i]);
 		}
 		
-		panelSala.add(puertas,BorderLayout.EAST);
+		worldPanel.add(enemySection,BorderLayout.EAST);
 		
 		
 		validate();
 		repaint();
-	}
+	}*/
 }

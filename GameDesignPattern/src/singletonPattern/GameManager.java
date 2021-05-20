@@ -18,6 +18,7 @@ public class GameManager {
 	private Player player;
 	private World currentLevel = World.WORLD1;
 	
+
 	private DisplayStrategy displayManager;
 	private CombatManager combatManager;
 	
@@ -35,7 +36,8 @@ public class GameManager {
 	public void play() {
 		
 		//Comenzar la parte grafica
-		displayManager = new ConsoleDisplay();
+		displayManager = new WindowDisplay();
+		combatManager = new CombatManager();
 		
 		//Crear al jugador
 		player = new Player("Player");
@@ -93,7 +95,8 @@ public class GameManager {
 		for(int i = 0; i < (int) level.getComplexFactor()*2;i++) {
 			characters.add(factory.generateEnemy());
 		}
-		System.out.println("Comienza el nivel "+ currentLevel.ordinal());
+		displayManager.paint(player, characters);
+		informPlayer("Comienza el nivel "+ currentLevel.ordinal());
 		//Comenzar a jugar
 
 		turn();
@@ -183,5 +186,13 @@ public class GameManager {
 
 	public void setCombatManager(CombatManager combatManager) {
 		this.combatManager = combatManager;
+	}
+	
+	public World getCurrentLevel() {
+		return currentLevel;
+	}
+
+	public void setCurrentLevel(World currentLevel) {
+		this.currentLevel = currentLevel;
 	}
 }
