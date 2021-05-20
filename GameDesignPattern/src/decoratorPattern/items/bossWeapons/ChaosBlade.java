@@ -10,12 +10,12 @@ import decoratorPattern.Item;
 import decoratorPattern.Tier;
 import singletonPattern.GameManager;
 
-public class QuelaagWeapon extends ActiveItemDecorator{ //Resta un porcentaje de vida al usuario que utiliza la habilidad
+public class ChaosBlade extends ActiveItemDecorator{ //Resta un porcentaje de vida al usuario que utiliza la habilidad
 
-	public QuelaagWeapon() {
+	public ChaosBlade() {
 		this(null);
 	}
-	public QuelaagWeapon(Item equipment) {
+	public ChaosBlade(Item equipment) {
 		super(equipment, "Chaos Blade", "Black Fire Slash", new Stats(0, 0, 35, 0, 0), ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.A);
 	}
 
