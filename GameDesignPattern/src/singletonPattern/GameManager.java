@@ -2,6 +2,7 @@ package singletonPattern;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import base.*;
 import base.Character;
@@ -36,7 +37,25 @@ public class GameManager {
 	public void play() {
 		
 		//Comenzar la parte grafica
-		displayManager = new WindowDisplay();
+		
+		Scanner scanner = new Scanner(System.in);
+		int option; 
+		
+		System.out.println("How do you want to play:\n1.Console\n2.Graphic Interface");
+		
+		do {
+			option = scanner.nextInt();
+		}while(option < 1 || option > 2);
+		
+		switch(option) {
+		case 1:
+			displayManager = new ConsoleDisplay();
+			break;
+		case 2:
+			displayManager = new WindowDisplay();
+			break;
+		}
+		
 		combatManager = new CombatManager();
 		
 		//Crear al jugador
@@ -47,8 +66,8 @@ public class GameManager {
 	}
 	
 	private void turn() {
-		combatManager.orderBySpeed(characters); //ordenar a los personajes por su velocidad
-		
+		characters = combatManager.orderBySpeed(characters); //ordenar a los personajes por su velocidad
+
 		askPlayer(); //Pedir al jugador su accion
 
 		combatManager.combat(characters, actions); //Hacer calculos de combate
@@ -106,7 +125,6 @@ public class GameManager {
 	private void askPlayer() {
 		List<ActiveItemDecorator> skills = new ArrayList<ActiveItemDecorator>();
 		skills = player.getEquipment().areThereAnyActives(skills);
-		//player.selectItem(skills, characters);
 		displayManager.askPlayer(player, skills, characters);
 	}
 	

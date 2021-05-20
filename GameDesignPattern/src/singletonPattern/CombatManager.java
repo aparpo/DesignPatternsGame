@@ -7,7 +7,7 @@ import base.*;
 import base.Character;
 
 public class CombatManager {
-	public void orderBySpeed(List<Character> characters) {
+	public List<Character> orderBySpeed(List<Character> characters) {
 		List<Character> aux = new ArrayList<Character>();
 		Character max = null;
 		while(!characters.isEmpty()) {
@@ -20,8 +20,8 @@ public class CombatManager {
 			aux.add(max);
 			characters.remove(max);
 		}
+		return aux;
 		
-		characters = aux;
 	}
 	
 	public void combat(List<Character> characters, List<Action> actions) {

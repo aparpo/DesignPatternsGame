@@ -30,7 +30,7 @@ public class ConsoleDisplay implements DisplayStrategy{
 		
 		player.setNextSkill(skills.get(option));
 		
-		System.out.println("Select the target:");
+		System.out.println("Select the target:"+characters.size());
 		for(int i = 0; i < characters.size(); i++) {
 			System.out.println(i + ":"+characters.get(i));
 		}
@@ -45,7 +45,10 @@ public class ConsoleDisplay implements DisplayStrategy{
 
 	@Override
 	public void paint(Player player, List<Character> characters) {
-		// TODO Auto-generated method stub
+		for(int i = 0; i < characters.size(); i++) {
+			System.out.println(characters.get(i));
+		}
+		
 		
 	}
 
