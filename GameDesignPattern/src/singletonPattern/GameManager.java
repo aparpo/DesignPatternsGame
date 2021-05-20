@@ -19,6 +19,7 @@ public class GameManager {
 	private World currentLevel = World.WORLD1;
 	
 	private DisplayStrategy displayManager;
+	private CombatManager combatManager;
 	
 
 	private GameManager() {}
@@ -44,11 +45,11 @@ public class GameManager {
 	}
 	
 	private void turn() {
-		orderBySpeed(); //ordenar a los personajes por su velocidad
+		combatManager.orderBySpeed(characters); //ordenar a los personajes por su velocidad
 		
 		askPlayer(); //Pedir al jugador su accion
 
-		combat(); //Hacer calculos de combate
+		combatManager.combat(characters, actions); //Hacer calculos de combate
 		
 		prepareNext(); //Preparar el proximo turno	
 		
@@ -106,53 +107,6 @@ public class GameManager {
 		displayManager.askPlayer(player, skills, characters);
 	}
 	
-	private void orderBySpeed() {
-		List<Character> aux = new ArrayList<Character>();
-		Character max = null;
-		while(!characters.isEmpty()) {
-			max = characters.get(0);
-			for(int i = 0; i < characters.size(); i++) {
-				if(characters.get(i).getEquipment().getSpeed() > max.getEquipment().getSpeed()) {
-					max = characters.get(i);
-				}
-			}
-			aux.add(max);
-			characters.remove(max);
-		}
-		
-		characters = aux;
-	}
-	
-	private void combat() {
-		//Calcular las estadisticas modificadas este turno
-		for(int i = 0; i < characters.size();i++) {
-			characters.get(i).applyStats(characters.get(i).modifyStats()); 
-		}
-		
-		//Pedir las acciones a cada personaje y almacenarlas en el buffer para tratarlas
-		for(int i = 0; i < characters.size();i++) {
-			characters.get(i).decision(); 
-		}
-		
-		//Aplicar los efectos del estado de cada personaje a las acciones que ha lanzado
-		for(int i = 0; i < actions.size(); i++) {
-			if(actions.get(i).getUser()!=null) { //Eventos sin usuario directo (ej: envenenamiento)
-				actions.get(i).getUser().StatusEffect(actions.get(i));
-			}
-			
-		}
-		
-		//Resolver por orden
-		while(actions.size()>0) {
-			
-		if(actions.get(0).getUser().isAlive()) { //El actor sigue vivo
-			actions.get(0).getTarget().applyStats(actions.get(0).getVariation()); //Ejecutar la accion
-		}
-		
-		actions.remove(0); //Eliminar una vez ejecutada
-			
-		}
-	}
 	
 	private void prepareNext() {
 		//process de los estados
@@ -221,5 +175,13 @@ public class GameManager {
 
 	public void setDisplayManager(DisplayStrategy displayManager) {
 		this.displayManager = displayManager;
+	}
+
+	public CombatManager getCombatManager() {
+		return combatManager;
+	}
+
+	public void setCombatManager(CombatManager combatManager) {
+		this.combatManager = combatManager;
 	}
 }
