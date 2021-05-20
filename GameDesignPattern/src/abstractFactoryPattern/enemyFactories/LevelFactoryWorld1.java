@@ -27,12 +27,12 @@ public class LevelFactoryWorld1 extends FactoryTemplate{
 		createItemList();
 	}
 	
+	//Genera el Boss final correspondiente al nivel en el que nos encontremos
 	public Boss generateBoss() {
-		//Genera el Boss final correspondiente al nivel en el que nos encontremos
 		return new Quelaag();
 	}
 	
-	@Override
+	//Genera un enemigo.
 	protected Enemy createEnemy() {
 		Enemy enemy;
 		int randNum = rand.nextInt(100);
@@ -48,7 +48,8 @@ public class LevelFactoryWorld1 extends FactoryTemplate{
 		}
 		return enemy;
 	}
-	@Override
+
+	//Selecciona un arma para el enemigo generado.
 	protected void decorateEnemy(Enemy enemy) {
 		//Mejorar al enemigo con habilidades del mundo 1
 		//Aqui se pueden cambiar estadisticas o habilidades segun el mundo 
@@ -64,7 +65,8 @@ public class LevelFactoryWorld1 extends FactoryTemplate{
 		}
 		
 	}
-	@Override
+	
+	//Selecciona un comportamiento para el enemigo generado.
 	protected void finishEnemy(Enemy enemy) {
 		int randNum = rand.nextInt(100);
 		if(randNum < 60) {

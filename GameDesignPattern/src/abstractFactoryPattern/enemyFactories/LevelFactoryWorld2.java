@@ -1,20 +1,14 @@
 package abstractFactoryPattern.enemyFactories;
 import base.Enemy;
 import decoratorPattern.Item;
-import decoratorPattern.items.Bow;
-import decoratorPattern.items.FireStaff;
-import decoratorPattern.items.LongSword;
-import decoratorPattern.items.Potion;
-import decoratorPattern.items.RatCrossbow;
+import decoratorPattern.items.*;
 import strategyPattern.normalStrategies.AgressiveStrategy;
 import strategyPattern.normalStrategies.DumbStrategy;
-import abstractFactoryPattern.AbstractLevelFactory;
 import abstractFactoryPattern.FactoryTemplate;
 import abstractFactoryPattern.enemies.skeleton.*;
 import abstractFactoryPattern.enemies.bosses.Boss;
 import abstractFactoryPattern.enemies.bosses.Sif;
 import abstractFactoryPattern.enemies.hollow.*;
-import java.util.Random;
 
 //Mundo basado en el estado envenenado
 public class LevelFactoryWorld2 extends FactoryTemplate{ 
@@ -23,12 +17,12 @@ public class LevelFactoryWorld2 extends FactoryTemplate{
 		super();
 	}
 	
+	//Genera el Boss final correspondiente al nivel en el que nos encontremos
 	public Boss generateBoss() {
-		//Genera el Boss final correspondiente al nivel en el que nos encontremos
 		return new Sif();
 	}
 
-	@Override
+	//Genera un enemigo.
 	protected Enemy createEnemy() {
 		int randNum = rand.nextInt(100);
 		if(randNum < 65) {
@@ -39,6 +33,7 @@ public class LevelFactoryWorld2 extends FactoryTemplate{
 		}
 	}
 
+	//Selecciona un arma para el enemigo generado.
 	protected void decorateEnemy(Enemy enemy) {
 		//Mejorar al enemigo con habilidades del mundo 1
 		//Aqui se pueden cambiar estadisticas o habilidades segun el mundo 
@@ -54,6 +49,7 @@ public class LevelFactoryWorld2 extends FactoryTemplate{
 		
 	}
 
+	//Selecciona un comportamiento para el enemigo generado.
 	protected void finishEnemy(Enemy enemy) {
 		int randNum = rand.nextInt(100);
 		if(randNum < 30) {

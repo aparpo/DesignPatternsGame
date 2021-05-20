@@ -16,14 +16,14 @@ public class LevelFactoryWorld5 extends FactoryTemplate{
 		super();
 	}
 	
+	//Genera el Boss final correspondiente al nivel en el que nos encontremos
 	public Boss generateBoss() {
-		//Genera el Boss final correspondiente al nivel en el que nos encontremos
 		return new Gwyn();
 	}
 	
+	//Genera un enemigo.
 	protected Enemy createEnemy() {
 		int randNum = rand.nextInt(100);
-		
 		if(randNum < 55) {
 			return createGiant();
 		}
@@ -32,6 +32,7 @@ public class LevelFactoryWorld5 extends FactoryTemplate{
 		}
 	}
 
+	//Selecciona un arma para el enemigo generado.
 	protected void decorateEnemy(Enemy enemy) {
 		//Mejorar al enemigo con habilidades del mundo 1
 		//Aqui se pueden cambiar estadisticas o habilidades segun el mundo 
@@ -50,6 +51,7 @@ public class LevelFactoryWorld5 extends FactoryTemplate{
 		}
 	}
 
+	//Selecciona un comportamiento para el enemigo generado.
 	protected void finishEnemy(Enemy enemy) {
 		int randNum = rand.nextInt(100);
 

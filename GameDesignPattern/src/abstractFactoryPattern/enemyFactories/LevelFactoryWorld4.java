@@ -12,18 +12,17 @@ import abstractFactoryPattern.enemies.giant.*;
 import abstractFactoryPattern.enemies.capraDemon.*;
 
 public class LevelFactoryWorld4 extends FactoryTemplate{
-	
-	
+		
 	public LevelFactoryWorld4() {
 		super();
 	}
 
+	//Genera el Boss final correspondiente al nivel en el que nos encontremos
 	public Boss generateBoss() {
-		//Genera el Boss final correspondiente al nivel en el que nos encontremos
 		return new Nito();
 	}
 
-	@Override
+	//Genera un enemigo.
 	protected Enemy createEnemy() {
 		int randNum = rand.nextInt(100);
 		if(randNum < 40) {
@@ -37,6 +36,7 @@ public class LevelFactoryWorld4 extends FactoryTemplate{
 		}
 	}
 
+	//Selecciona un arma para el enemigo generado.
 	protected void decorateEnemy(Enemy enemy) {
 		//Mejorar al enemigo con habilidades del mundo 1
 		//Aqui se pueden cambiar estadisticas o habilidades segun el mundo 
@@ -55,6 +55,7 @@ public class LevelFactoryWorld4 extends FactoryTemplate{
 		}
 	}
 
+	//Selecciona un comportamiento para el enemigo generado.
 	protected void finishEnemy(Enemy enemy) {
 		int randNum = rand.nextInt(100);
 

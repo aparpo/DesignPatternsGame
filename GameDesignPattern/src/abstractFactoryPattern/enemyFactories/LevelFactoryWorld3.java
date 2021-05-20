@@ -11,19 +11,19 @@ import abstractFactoryPattern.enemies.crystal.*;
 import abstractFactoryPattern.enemies.hollow.*;
 
 public class LevelFactoryWorld3 extends FactoryTemplate{
-	int randNum = rand.nextInt(100);
 	
 	public LevelFactoryWorld3() {
 		super();
 	}
 
+	//Genera el Boss final correspondiente al nivel en el que nos encontremos
 	public Boss generateBoss() {
-		//Genera el Boss final correspondiente al nivel en el que nos encontremos
 		return new OrsteinAndSmough();
 	}
 	
-	@Override
+	//Genera un enemigo.
 	protected Enemy createEnemy() {
+		int randNum = rand.nextInt(100);
 		if(randNum < 35) {
 			return createSkeleton();
 		}
@@ -35,6 +35,7 @@ public class LevelFactoryWorld3 extends FactoryTemplate{
 		}
 	}
 
+	//Selecciona un arma para el enemigo generado.
 	protected void decorateEnemy(Enemy enemy) {
 		//Mejorar al enemigo con habilidades del mundo 1
 		//Aqui se pueden cambiar estadisticas o habilidades segun el mundo 
@@ -53,6 +54,7 @@ public class LevelFactoryWorld3 extends FactoryTemplate{
 		}
 	}
 
+	//Selecciona un comportamiento para el enemigo generado.
 	protected void finishEnemy(Enemy enemy) {
 		int randNum = rand.nextInt(100);
 		if(randNum < 15) {
