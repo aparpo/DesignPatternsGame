@@ -139,9 +139,9 @@ public class Ventana extends JFrame{
 		this(cosas, gestor,jugador);
 		cambiarBotones(cosas, gestor, disponibles);
 	}*/
-	/*public JTextArea getHistoria() {
-		return historia;
-	}*/
+	public JTextArea getHistory() {
+		return history;
+	}
 	
 	public void cambiarBotones(String cosas[], ActionListener listener) {
 		for(int i = 0; i < botones.length; i++) {

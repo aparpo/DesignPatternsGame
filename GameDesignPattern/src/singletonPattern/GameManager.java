@@ -65,10 +65,7 @@ public class GameManager {
 		newLevel(currentLevel);
 	}
 	
-	private void turn() {
-		characters = combatManager.orderBySpeed(characters); //ordenar a los personajes por su velocidad
-
-		askPlayer(); //Pedir al jugador su accion
+	public void turn() {
 
 		combatManager.combat(characters, actions); //Hacer calculos de combate
 		
@@ -83,7 +80,7 @@ public class GameManager {
 			newLevel(World.values()[currentLevel.ordinal()+1]);
 			break;
 		default:  //Queda mas de un enemigo vivo
-			turn(); //Comenzar el siguiente turno
+			askPlayer(); //Pedir al jugador su proxima accion
 			break;
 		}
 		
@@ -118,7 +115,7 @@ public class GameManager {
 		informPlayer("Comienza el nivel "+ currentLevel.ordinal());
 		//Comenzar a jugar
 
-		turn();
+		askPlayer();
 		
 	}
 	//Pregunta al jugador por su accion
@@ -143,9 +140,13 @@ public class GameManager {
 		//Eliminar a los muertos de la lista
 		for(int i = 0; i < characters.size();i++) {
 			if(!characters.get(i).isAlive()) {
+				informPlayer(characters.get(i).getName()+" died");
 				characters.remove(i);
+				
 			}
 		}
+		
+		characters = combatManager.orderBySpeed(characters); //ordenar a los personajes por su velocidad
 	}
 	
 	private int checkEnd() {

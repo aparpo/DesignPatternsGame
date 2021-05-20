@@ -21,31 +21,35 @@ public class WindowDisplay implements DisplayStrategy, ActionListener{
 
 	@Override
 	public void informPlayer(String data) {
-		// TODO Auto-generated method stub
-		
+		window.getHistory().append(data);
 	}
 
 	@Override
 	public void askPlayer(Player player, List<ActiveItemDecorator> skills, List<Character> characters) {
-		// TODO Auto-generated method stub
-		
+		window.cambiarBotones(getData(player),this);
 	}
 
 	@Override
 	public void paint(Player player, List<Character> characters) {
 		if(window==null) {
-			List<ActiveItemDecorator> skills = new ArrayList<ActiveItemDecorator>();
-			skills = player.getEquipment().areThereAnyActives(skills);
-			String data[] = new String[skills.size()];
-			for(int i = 0; i < skills.size(); i++) {
-				data[i] = skills.get(i).getSkillname();
-			}
+			String data[] = getData(player);
 			window = new Ventana(data,this,player);
 			window.setVisible(true);
 		}else {
-			
+			window.actualizarVentana(player);
 		}
 		
+	}
+	
+	private String[] getData(Player player) {
+		List<ActiveItemDecorator> skills = new ArrayList<ActiveItemDecorator>();
+		skills = player.getEquipment().areThereAnyActives(skills);
+		String data[] = new String[skills.size()];
+		for(int i = 0; i < skills.size(); i++) {
+			data[i] = skills.get(i).getSkillname();
+		}
+		
+		return data;
 	}
 
 }

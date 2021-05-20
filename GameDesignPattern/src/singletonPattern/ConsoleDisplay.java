@@ -41,6 +41,8 @@ public class ConsoleDisplay implements DisplayStrategy{
 		
 		player.setTarget(characters.get(option));
 		
+		GameManager.getManager().turn();
+		
 	}
 
 	@Override
