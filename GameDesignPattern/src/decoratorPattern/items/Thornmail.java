@@ -16,9 +16,10 @@ public class Thornmail extends PassiveItemDecorator{ //Aumenta pasivamente la de
 	
 	@Override
 	public Stats modifyStats(int life, int maxLife, int attack, int defense, int speed) {
+		int newDefense = 0;
 		if(life <= maxLife/2) { //Mejora la defensa si la vida esta por debajo de la mitad
-			defense*=2; 
+			newDefense= defense*2; 
 		}
-		return new Stats(life, maxLife, attack, defense, speed);
+		return new Stats(0,0,0,newDefense,0);
 	}
 }
