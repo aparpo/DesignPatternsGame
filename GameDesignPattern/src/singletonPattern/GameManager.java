@@ -146,10 +146,11 @@ public class GameManager {
 		}
 		
 		characters = combatManager.orderBySpeed(characters); //ordenar a los personajes por su velocidad
+
+		displayManager.paint(player, characters);
 	}
 	
 	private int checkEnd() {
-		displayManager.paint(player, characters);
 		if(!player.isAlive())return 0;
 		else return characters.size();
 	}
