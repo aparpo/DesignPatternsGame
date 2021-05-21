@@ -75,7 +75,7 @@
   </class>  
   <class id="8" language="java" name="abstractFactoryPattern.enemies.giant.Giant" project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemies/giant/Giant.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="769" y="277"/>    
+    <position height="-1" width="-1" x="767" y="300"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,18 +102,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="abstractFactoryPattern.enemies.capraDemon.CapraDemonBoss" 
-    project="GameDesignPattern" 
-    file="/GameDesignPattern/src/abstractFactoryPattern/enemies/capraDemon/CapraDemonBoss.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="392" y="477"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="12" language="java" name="abstractFactoryPattern.enemies.capraDemon.CapraDemonWorld4" 
+  <class id="11" language="java" name="abstractFactoryPattern.enemies.capraDemon.CapraDemonWorld4" 
     project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemies/capraDemon/CapraDemonWorld4.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -124,7 +113,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="13" language="java" name="abstractFactoryPattern.AbstractLevelFactory" project="GameDesignPattern" 
+  <interface id="12" language="java" name="abstractFactoryPattern.AbstractLevelFactory" project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/AbstractLevelFactory.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1372" y="-118"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -133,7 +122,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="14" language="java" name="abstractFactoryPattern.enemyFactories.LevelFactoryWorld1" 
+  <class id="13" language="java" name="abstractFactoryPattern.enemyFactories.LevelFactoryWorld1" 
     project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemyFactories/LevelFactoryWorld1.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -144,7 +133,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="abstractFactoryPattern.enemyFactories.LevelFactoryWorld2" 
+  <class id="14" language="java" name="abstractFactoryPattern.enemyFactories.LevelFactoryWorld2" 
     project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemyFactories/LevelFactoryWorld2.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -155,7 +144,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="abstractFactoryPattern.enemyFactories.LevelFactoryWorld5" 
+  <class id="15" language="java" name="abstractFactoryPattern.enemyFactories.LevelFactoryWorld5" 
     project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/enemyFactories/LevelFactoryWorld5.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -166,7 +155,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <enumeration id="17" language="java" name="abstractFactoryPattern.World" project="GameDesignPattern" 
+  <enumeration id="16" language="java" name="abstractFactoryPattern.World" project="GameDesignPattern" 
     file="/GameDesignPattern/src/abstractFactoryPattern/World.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="153" y="-17"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -175,16 +164,20 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <generalization id="18">    
+  <generalization id="17">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="18">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="3"/>  
   </generalization>  
   <generalization id="19">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="3"/>  
   </generalization>  
   <generalization id="20">    
-    <end type="SOURCE" refId="10"/>    
+    <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="8"/>  
   </generalization>  
   <generalization id="21">    
@@ -196,20 +189,16 @@
     <end type="TARGET" refId="2"/>  
   </generalization>  
   <generalization id="23">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <generalization id="24">    
     <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
-  <generalization id="25">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <generalization id="26">    
+  <generalization id="24">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="25">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="8"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

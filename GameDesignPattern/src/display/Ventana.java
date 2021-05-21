@@ -147,7 +147,7 @@ public class Ventana extends JFrame{
 		for(int i = 0; i < botones.length; i++) {
 			optionPanel.remove(botones[i]);
 		}
-		
+		botones = new JButton[cosas.length];
 		for(int i = 0; i < cosas.length; i++) {
 				botones[i] = new JButton(cosas[i]);
 				botones[i].setPreferredSize(new Dimension(200,50));

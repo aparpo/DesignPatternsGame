@@ -75,7 +75,7 @@ public class GameManager {
 		case 0: //Jugador ha muerto
 			//Acabar el juego
 			System.out.println("You died");
-			break;
+			return;
 		case 1: //Solo queda el jugador
 			newLevel(World.values()[currentLevel.ordinal()+1]);
 			break;
@@ -83,6 +83,8 @@ public class GameManager {
 			askPlayer(); //Pedir al jugador su proxima accion
 			break;
 		}
+		
+		displayManager.paint(player, characters);
 		
 		
 	}
