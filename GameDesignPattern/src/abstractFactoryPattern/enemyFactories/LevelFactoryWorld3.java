@@ -1,6 +1,7 @@
 package abstractFactoryPattern.enemyFactories;
 import base.Enemy;
 import decoratorPattern.Item;
+import decoratorPattern.ItemDecorator;
 import decoratorPattern.items.*;
 import strategyPattern.normalStrategies.*;
 import abstractFactoryPattern.FactoryTemplate;
@@ -81,7 +82,7 @@ public class LevelFactoryWorld3 extends FactoryTemplate{
 	}
 
 	@Override
-	public Item generateItem() {
+	public ItemDecorator generateItem() {
 		// TODO Auto-generated method stub
 		return null;
 	}

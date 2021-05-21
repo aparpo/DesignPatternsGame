@@ -6,9 +6,13 @@ import java.util.Scanner;
 import base.Character;
 import base.Player;
 import decoratorPattern.ActiveItemDecorator;
+import decoratorPattern.Item;
+import decoratorPattern.ItemDecorator;
 
 public class ConsoleDisplay implements DisplayStrategy{
 
+	Scanner scanner = new Scanner(System.in);
+	
 	@Override
 	public void informPlayer(String data) {
 		System.out.println(data);
@@ -16,7 +20,6 @@ public class ConsoleDisplay implements DisplayStrategy{
 
 	@Override
 	public void askPlayer(Player player, List<ActiveItemDecorator> skills, List<Character> characters) {
-		Scanner scanner = new Scanner(System.in);
 		int option; 
 		
 		System.out.println("Select a skill to use:");
@@ -53,5 +56,26 @@ public class ConsoleDisplay implements DisplayStrategy{
 		
 		
 	}
+
+	@Override
+	public void askPlayer(Player player, List<ItemDecorator> items) {
+		int option; 
+		
+		System.out.println("Pick an item:");
+		for(int i = 0; i < items.size(); i++) {
+			System.out.println(i + ":"+items.get(i).getName());
+		}
+		
+		do {
+			option = scanner.nextInt();
+		}while(option < 0 || option > items.size()-1);
+		
+		GameManager.getManager().giveItem(items.get(option));
+		
+		GameManager.getManager().askPlayer();
+		
+	}
+
+	
 
 }

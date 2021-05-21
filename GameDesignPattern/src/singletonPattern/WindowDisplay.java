@@ -8,6 +8,8 @@ import java.util.List;
 import base.Character;
 import base.Player;
 import decoratorPattern.ActiveItemDecorator;
+import decoratorPattern.Item;
+import decoratorPattern.ItemDecorator;
 import display.Ventana;
 
 public class WindowDisplay implements DisplayStrategy, ActionListener{
@@ -84,6 +86,12 @@ public class WindowDisplay implements DisplayStrategy, ActionListener{
 		}
 		
 		return data;
+	}
+
+	@Override
+	public void askPlayer(Player player, List<ItemDecorator> items) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

@@ -19,7 +19,7 @@ public class LevelFactoryWorld1 extends FactoryTemplate{
 	
 	private String[] names = {"sword","dagger","spear","armor"};
 	private String[] adjectives = {"iron","wood","plastic"};
-	private List<Item> items = new ArrayList<Item>();
+	private List<ItemDecorator> items = new ArrayList<ItemDecorator>();
 	private int basePower = 20;
 	
 	public LevelFactoryWorld1() {
@@ -97,9 +97,9 @@ public class LevelFactoryWorld1 extends FactoryTemplate{
 	}
 
 	@Override
-	public Item generateItem() {
+	public ItemDecorator generateItem() {
 		int randNum = rand.nextInt(100);
-		Item item;
+		ItemDecorator item;
 		if(randNum < 60 || items.size() <= 0) { //Crear un regular item  con 60% de probabilidad
 			//Stats aleatorias
 			Stats stats = new Stats(0,rand.nextInt(basePower),rand.nextInt(basePower),rand.nextInt(basePower),rand.nextInt(2));

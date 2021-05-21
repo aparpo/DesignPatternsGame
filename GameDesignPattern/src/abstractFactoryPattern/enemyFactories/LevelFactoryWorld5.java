@@ -1,6 +1,7 @@
 package abstractFactoryPattern.enemyFactories;
 import base.Enemy;
 import decoratorPattern.Item;
+import decoratorPattern.ItemDecorator;
 import decoratorPattern.items.*;
 import strategyPattern.normalStrategies.AgressiveStrategy;
 import strategyPattern.normalStrategies.DefensiveStrategy;
@@ -72,7 +73,7 @@ public class LevelFactoryWorld5 extends FactoryTemplate{
 		return new BlackKnightWorld4();
 	}
 
-	public Item generateItem() {
+	public ItemDecorator generateItem() {
 		// TODO Auto-generated method stub
 		return null;
 	}

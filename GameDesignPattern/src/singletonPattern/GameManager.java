@@ -7,6 +7,7 @@ import java.util.Scanner;
 import base.*;
 import base.Character;
 import decoratorPattern.ActiveItemDecorator;
+import decoratorPattern.ItemDecorator;
 import abstractFactoryPattern.*;
 import abstractFactoryPattern.enemyFactories.*;
 
@@ -15,6 +16,7 @@ public class GameManager {
 	private static GameManager manager = new GameManager();
 	private List<Action> actions = new ArrayList<Action>(); //Buffer de acciones durante un turno
 	private List<Character> characters = new ArrayList<Character>();
+	private List<ItemDecorator> items;
 	private AbstractLevelFactory factory = new LevelFactoryWorld1();
 	private Player player;
 	private World currentLevel = World.WORLD1;
@@ -36,13 +38,16 @@ public class GameManager {
 	
 	public void play() {
 		
-		//Comenzar la parte grafica
-		
 		Scanner scanner = new Scanner(System.in);
 		int option; 
 		
-		System.out.println("How do you want to play:\n1.Console\n2.Graphic Interface");
+		//Crear al jugador
+		System.out.println("What is your name?");
+		player = new Player(scanner.next());
+		characters.add(player);
 		
+		//Comenzar la parte grafica
+		System.out.println("How do you want to play:\n1.Console\n2.Graphic Interface");
 		do {
 			option = scanner.nextInt();
 		}while(option < 1 || option > 2);
@@ -57,10 +62,6 @@ public class GameManager {
 		}
 		
 		combatManager = new CombatManager();
-		
-		//Crear al jugador
-		player = new Player("Player");
-		characters.add(player);
 		
 		newLevel(currentLevel);
 	}
@@ -111,20 +112,30 @@ public class GameManager {
 			characters.add(factory.generateEnemy());
 		}
 		displayManager.paint(player, characters);
-		informPlayer("Comienza el nivel "+ currentLevel.ordinal());
-		//Comenzar a jugar
-
-		askPlayer();
+		informPlayer("The level "+ currentLevel.ordinal()+ " is starting");
+		
+		//Borrar el buffer de items
+		items = new ArrayList<ItemDecorator>();
+		for(int i = 0; i < (int) level.getComplexFactor()*3;i++) {
+			items.add(factory.generateItem());
+		}
+		
+		displayManager.askPlayer(player, items);
 		
 	}
 	//Pregunta al jugador por su accion
-	private void askPlayer() {
+	public void askPlayer() {
 		List<ActiveItemDecorator> skills = new ArrayList<ActiveItemDecorator>();
 		skills = player.getEquipment().areThereAnyActives(skills);
 		displayManager.askPlayer(player, skills, characters);
 	}
 	
-	
+	public void giveItem(ItemDecorator item) {
+		player.addItem(item);
+	}
+	public void giveItem(String name) {
+		
+	}
 	private void prepareNext() {
 		//process de los estados
 		for(int i = 0; i < characters.size();i++) {
@@ -214,5 +225,13 @@ public class GameManager {
 
 	public void setCurrentLevel(World currentLevel) {
 		this.currentLevel = currentLevel;
+	}
+
+	public List<ItemDecorator> getItems() {
+		return items;
+	}
+
+	public void setItems(List<ItemDecorator> items) {
+		this.items = items;
 	}
 }
