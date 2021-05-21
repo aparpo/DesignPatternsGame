@@ -3,6 +3,9 @@ import base.Enemy;
 import base.Stats;
 import decoratorPattern.*;
 import decoratorPattern.items.*;
+import strategyPattern.bossStrategies.HardStrategy;
+import strategyPattern.bossStrategies.HealerStrategy;
+import strategyPattern.bossStrategies.MediumStrategy;
 import strategyPattern.normalStrategies.*;
 
 import java.util.ArrayList;
