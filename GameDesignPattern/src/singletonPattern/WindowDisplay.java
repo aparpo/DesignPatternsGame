@@ -28,7 +28,7 @@ public class WindowDisplay implements DisplayStrategy, ActionListener{
 			}
 			if(state == 0) informPlayer("Warning: Something went wrong");
 		}else if(state == 1) {
-			for(int i = 0; i < currentSkills.size(); i++) {
+			for(int i = 0; i < currentCharacters.size(); i++) {
 				if(event.getActionCommand().equals(currentCharacters.get(i).getName())) {
 					GameManager.getManager().getPlayer().setTarget(currentCharacters.get(i));
 					state = 0;

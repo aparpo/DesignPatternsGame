@@ -82,10 +82,7 @@ public class GameManager {
 		default:  //Queda mas de un enemigo vivo
 			askPlayer(); //Pedir al jugador su proxima accion
 			break;
-		}
-		
-		displayManager.paint(player, characters);
-		
+		}		
 		
 	}
 	
@@ -152,6 +149,7 @@ public class GameManager {
 	}
 	
 	private int checkEnd() {
+		displayManager.paint(player, characters);
 		if(!player.isAlive())return 0;
 		else return characters.size();
 	}
