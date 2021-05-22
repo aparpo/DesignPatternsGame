@@ -8,9 +8,27 @@ import decoratorPattern.*;
 import strategyPattern.DecisionTemplate;
 
 public class HardStrategy extends DecisionTemplate{
+	
+	// Declaramos las items donde se almacenaran los items de cada accion posible
 	ActiveItemDecorator offensive;
 	ActiveItemDecorator defensive;
 	ActiveItemDecorator neutral;
+	
+	// Esta funcion elige de que tipo va a ser la accion que va a realizar
+	protected void selectSkill(int[] options, List<ActiveItemDecorator> skills, Enemy user, Player target) {
+		int total = 0;
+		for(int i =0; i < options.length; i++) {
+			total += options[i];
+		}
+		int random = (int)Math.random()*(total+1);
+		if(random < options[0]) {
+			offensive.useSkill(user, target);
+		}else if(random < options[0] + options[1]) {
+			defensive.useSkill(user, target);
+		}else {
+			neutral.useSkill(user, target);
+		}
+	}
 	
 	//Funcion que comprueba que tan "rentable" es atacar
 	protected int worthAttack(Enemy enemy, Player player) {
@@ -59,34 +77,21 @@ public class HardStrategy extends DecisionTemplate{
 		}
 		return i + defensive.getTier().ordinal() - playerItem.getTier().ordinal();
 	}
-	
+	//Esta funcion devuelve la posibilidad de que use un item neutral basandose en el tier del item
 	protected int worthNeutral(Enemy enemy, Player player) {
 		List<ActiveItemDecorator> list = new ArrayList<ActiveItemDecorator>(); 
 		list = enemy.getEquipment().areThereAnyActives(list);
 		neutral = saveBestItem(list, ActionType.NEUTRAL);
+		// Si no tiene devuelve 0 de probabilidad
 		if(neutral == null) {
 			return 0;
 		}
-		return neutral.getTier().ordinal()/2;
+		return neutral.getTier().ordinal();
 	}
 	
-	// Esta funcion elige de que tipo va a ser la accion que va a realizar
-	protected void selectSkill(int[] options, List<ActiveItemDecorator> skills, Enemy user, Player target) {
-		int total = 0;
-		for(int i =0; i < options.length; i++) {
-			total += options[i];
-		}
-		int random = (int)Math.random()*(total+1);
-		if(random < options[0]) {
-			offensive.useSkill(user, target);
-		}else if(random < options[0] + options[1]) {
-			defensive.useSkill(user, target);
-		}else {
-			neutral.useSkill(user, target);
-		}
-	}
+	// Esta funcion devuelve unoo de los mejores items que tenga el enemigo, del tipo de accion que se solicita
 	private ActiveItemDecorator saveBestItem(List<ActiveItemDecorator> skills, ActionType action){
-		// Esto localica la mejor tier de un item		
+		// Esto guarda el valor de la mejor tier de sus items
 		int tierValue = 0;
 		//Recorre la lista buscando el tier mas alto
 		for(int i =0; i < skills.size(); i++) {
@@ -100,7 +105,7 @@ public class HardStrategy extends DecisionTemplate{
 		if(tierValue == 0) {
 			return null;
 		}
-		// se crea una lista con los items de mejor nivel
+		// se crea una lista con la posicion de los items de mejor nivel
 		ArrayList<Integer>bestItems = new ArrayList<Integer>();
 		for(int i =0; i < skills.size(); i++) {
 			if(skills.get(i).getActionType() == action) {
@@ -109,7 +114,7 @@ public class HardStrategy extends DecisionTemplate{
 				}
 			}
 		}
-		// elige un item de forma aleatoria
+		// Elige un item de forma aleatoria de la lista
 		boolean correctAbilitySelected = false;
 		int skill = 0;
 		int numberofSkills = skills.size();
@@ -121,6 +126,7 @@ public class HardStrategy extends DecisionTemplate{
 				}
 			}
 		}while(correctAbilitySelected == false);
+		// retorna el item
 		return skills.get(skill);
 	}
 

@@ -1,70 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="statePattern.StateConfused" project="GameDesignPattern" 
-    file="/GameDesignPattern/src/statePattern/StateConfused.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="712" y="591"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="statePattern.StateParalyzed" project="GameDesignPattern" 
-    file="/GameDesignPattern/src/statePattern/StateParalyzed.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1372" y="601"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="statePattern.StateStandard" project="GameDesignPattern" 
-    file="/GameDesignPattern/src/statePattern/StateStandard.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="920" y="596"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="statePattern.StateFurious" project="GameDesignPattern" 
-    file="/GameDesignPattern/src/statePattern/StateFurious.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="502" y="603"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="statePattern.StatePoisoned" project="GameDesignPattern" 
-    file="/GameDesignPattern/src/statePattern/StatePoisoned.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1149" y="586"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="statePattern.AbstractState" project="GameDesignPattern" 
+  <class id="1" language="java" name="statePattern.AbstractState" project="GameDesignPattern" 
     file="/GameDesignPattern/src/statePattern/AbstractState.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="546" y="342"/>    
+    <position height="-1" width="-1" x="591" y="345"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="7" language="java" name="statePattern.CharacterState" project="GameDesignPattern" 
+  <interface id="2" language="java" name="statePattern.CharacterState" project="GameDesignPattern" 
     file="/GameDesignPattern/src/statePattern/CharacterState.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="599" y="79"/>    
+    <position height="-1" width="-1" x="587" y="82"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <enumeration id="8" language="java" name="statePattern.States" project="GameDesignPattern" 
+  <enumeration id="3" language="java" name="statePattern.States" project="GameDesignPattern" 
     file="/GameDesignPattern/src/statePattern/States.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="147" y="163"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -73,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <class id="9" language="java" name="statePattern.State" project="GameDesignPattern" 
+  <class id="4" language="java" name="statePattern.State" project="GameDesignPattern" 
     file="/GameDesignPattern/src/statePattern/State.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1070" y="253"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -82,91 +37,136 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="statePattern.StateSeriouslyPosioned" project="GameDesignPattern" 
+  <class id="5" language="java" name="statePattern.StateSeriouslyPosioned" project="GameDesignPattern" 
     file="/GameDesignPattern/src/statePattern/StateSeriouslyPosioned.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="64" width="173" x="127" y="567"/>    
+    <position height="194" width="194" x="17" y="563"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="11">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
+  <class id="6" language="java" name="statePattern.StateFurious" project="GameDesignPattern" 
+    file="/GameDesignPattern/src/statePattern/StateFurious.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="587" y="654"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="statePattern.StateSeriouslyParalyzed" project="GameDesignPattern" 
+    file="/GameDesignPattern/src/statePattern/StateSeriouslyParalyzed.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="352" y="640"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="statePattern.StatePoisoned" project="GameDesignPattern" 
+    file="/GameDesignPattern/src/statePattern/StatePoisoned.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="818" y="647"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="statePattern.StateStandard" project="GameDesignPattern" 
+    file="/GameDesignPattern/src/statePattern/StateStandard.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1014" y="634"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="statePattern.StateParalyzed" project="GameDesignPattern" 
+    file="/GameDesignPattern/src/statePattern/StateParalyzed.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1291" y="649"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="11">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
   <generalization id="12">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="6"/>  
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="1"/>  
   </generalization>  
   <association id="13">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="14" name="suggestion">        
-        <position height="0" width="0" x="0" y="0"/>      
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="14" name="state">        
+        <position height="0" width="0" x="184" y="102"/>      
       </attribute>      
       <multiplicity id="15" minimum="0" maximum="1">        
+        <position height="0" width="0" x="184" y="102"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="16">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="17">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="18" name="possibleStates">        
+        <position height="0" width="0" x="-660" y="-7"/>      
+      </attribute>      
+      <multiplicity id="19" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-660" y="-7"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="21" name="suggestion">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="22" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="16">    
+  <generalization id="23">    
     <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="7"/>  
-  </realization>  
-  <generalization id="17">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="6"/>  
+    <end type="TARGET" refId="1"/>  
   </generalization>  
-  <generalization id="18">    
+  <generalization id="24">    
     <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="6"/>  
+    <end type="TARGET" refId="1"/>  
   </generalization>  
-  <generalization id="19">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="6"/>  
+  <generalization id="25">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="1"/>  
   </generalization>  
-  <association id="20">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="21" name="state">        
-        <position height="0" width="0" x="184" y="102"/>      
-      </attribute>      
-      <multiplicity id="22" minimum="0" maximum="1">        
-        <position height="0" width="0" x="184" y="102"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="23">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="24" name="possibleStates">        
-        <position height="0" width="0" x="-648" y="-10"/>      
-      </attribute>      
-      <multiplicity id="25" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-648" y="-10"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="26">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="27" name="state">        
-        <position height="0" width="0" x="-648" y="-10"/>      
-      </attribute>      
-      <multiplicity id="28" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-648" y="-10"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="29">    
+  <generalization id="26">    
     <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="6"/>  
+    <end type="TARGET" refId="1"/>  
   </generalization>  
+  <association id="27">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="28" name="state">        
+        <position height="0" width="0" x="-660" y="-7"/>      
+      </attribute>      
+      <multiplicity id="29" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-660" y="-7"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

@@ -22,7 +22,6 @@ public class StateConfused extends AbstractState{
 		suggestion = null;
 	}
 	
-	@Override
 	public Action effect(Action action) {
 		System.out.println("Estas confundido, tu ataque puede fallar este turno");
 		this.state.setTurns(this.state.getTurns()-1);
@@ -42,7 +41,5 @@ public class StateConfused extends AbstractState{
 		System.out.println("El jugador esta aun mas confundido");
 		this.state.setTurns(this.state.getTurns()+1);
 	}
-	
-	
 	
 }

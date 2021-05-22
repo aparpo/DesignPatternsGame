@@ -45,5 +45,4 @@ public class StateFurious extends AbstractState{
 		this.state.setTurns(2);
 	}
 	
-	
 }

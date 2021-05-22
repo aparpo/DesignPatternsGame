@@ -10,9 +10,29 @@ import decoratorPattern.Item;
 import strategyPattern.DecisionTemplate;
 
 public class MediumStrategy extends DecisionTemplate{
+	
+	// Declaramos las items donde se almacenaran los items de cada accion posible
 	ActiveItemDecorator offensive;
 	ActiveItemDecorator defensive;
 	ActiveItemDecorator neutral;
+	
+	// Esta funcion elige de que tipo va a ser la accion que va a realizar
+	protected void selectSkill(int[] options, List<ActiveItemDecorator> skills, Enemy user, Player target) {
+		int total = 0;
+		options[0] *=1.5;	// Este multiplicador hace ms agresivo a la IA
+		for(int i =0; i < options.length; i++) {
+			total += options[i];
+		}
+		int random = (int)Math.random()*(total);
+		if(random < options[0]) {
+			offensive.useSkill(user, target);
+		}else if(random < options[0] + options[1]) {
+			defensive.useSkill(user, target);
+		}else {
+			neutral.useSkill(user, target);
+		}
+		
+	}
 	
 	//Funcion que comprueba que tan "rentable" es defender (no tiene en cuenta objetos al contrario del HardStrategy)
 	protected int worthDefend(Enemy user, Player player) {
@@ -63,21 +83,5 @@ public class MediumStrategy extends DecisionTemplate{
 			}
 		}
 		return null;
-	}
-	protected void selectSkill(int[] options, List<ActiveItemDecorator> skills, Enemy user, Player target) {
-		int total = 0;
-		options[0] *=1.5;	// Este multiplicador hace ms agresivo a la IA
-		for(int i =0; i < options.length; i++) {
-			total += options[i];
-		}
-		int random = (int)Math.random()*(total);
-		if(random < options[0]) {
-			offensive.useSkill(user, target);
-		}else if(random < options[0] + options[1]) {
-			defensive.useSkill(user, target);
-		}else {
-			neutral.useSkill(user, target);
-		}
-		
 	}
 }

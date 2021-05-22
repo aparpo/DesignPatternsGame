@@ -26,7 +26,6 @@ public class State {
 		this.turns = 0;
 	}
 	
-	
 	public CharacterState getState() {
 		return state;
 	}
