@@ -16,7 +16,7 @@ public class Ventana extends JFrame{
 	private JTextArea inventory, history;
 	private JPanel panelLateral, optionPanel, panelResumen, panelTitulo, worldPanel, playerSection, enemySection;
 	private JScrollPane sbrText;
-	private JLabel estado,titulo, playerInfo, objetos[], enemiesInfo[];
+	private JLabel titulo, playerInfo, enemiesInfo[];
 	private JButton botones[];
 	
 	private GameManager manager = GameManager.getManager();
@@ -84,7 +84,7 @@ public class Ventana extends JFrame{
 			}
 			Enemy enemy = (Enemy) manager.getCharacters().get(i);
 			String info ="<html>"+ enemy.getName() + " <br>" + enemy.getEquipment().getLife()+ "/"+ enemy.getEquipment().getMaxLife()+"</html>";
-			enemiesInfo[j] = new JLabel( info,new ImageIcon("puerta.png"), JLabel.LEFT);
+			enemiesInfo[j] = new JLabel( info,new ImageIcon(enemy.getSprite()), JLabel.LEFT);
 			enemySection.add(enemiesInfo[j]);
 			j++;
 		}
@@ -92,7 +92,7 @@ public class Ventana extends JFrame{
 		worldPanel.add(playerSection, BorderLayout.CENTER);
 		worldPanel.add(enemySection, BorderLayout.EAST);
 		
-		//Diseñamos panelLateral
+		//Construimos el panelLateral
 		panelLateral.setLayout(new GridLayout(0,1));
 		panelLateral.setPreferredSize(new Dimension(300,700));
 		panelLateral.add(worldPanel);
