@@ -84,6 +84,14 @@ public abstract class Character {
 		return state;
 	}
 	
+	public String getSprite() {
+		return sprite;
+	}
+
+	public void setSprite(String sprite) {
+		this.sprite = sprite;
+	}
+	
 	public String toString() {
 		return "[Name->" + this.name + ", Stats->(Life: " + this.equipment.getLife() +
 			", Att: " + this.equipment.getAttack() + ", Def: " + this.equipment.getDefense() + ", Speed: " + this.equipment.getSpeed() + ")]";

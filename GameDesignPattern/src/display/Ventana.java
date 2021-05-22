@@ -38,16 +38,7 @@ public class Ventana extends JFrame{
 		panelTitulo.setLayout(new GridLayout(0,1));
 		titulo = new JLabel("You are in the Level "+manager.getCurrentLevel().ordinal());
 		titulo.setFont(new Font("Sans-Serif", Font.BOLD, 25));
-		panelTitulo.add(titulo);
-		/*if(player.getObjeto()==null) {
-			estado= new JLabel("Estas en " + player.getLocalizacion().getNombre()+" y no tienes nada");
-		}else {
-			estado = new JLabel("Estas en " + player.getLocalizacion().getNombre()+" y tienes "+ player.getObjeto().getNombre());
-			
-		}
-		estado.setFont(new Font("Sans-Serif", Font.BOLD, 25));
-		panelTitulo.add(estado);*/
-		
+		panelTitulo.add(titulo);		
 		
 		//Diseñamos panelOpciones
 		
@@ -71,8 +62,8 @@ public class Ventana extends JFrame{
 		playerSection.setLayout(new GridLayout(0,1));
 		playerSection.setBackground(Color.WHITE);
 		
-		String playerDesc = player.getName() + " \n" + player.getEquipment().getLife()+ "/"+ player.getEquipment().getMaxLife();
-		playerInfo = new JLabel(playerDesc,new ImageIcon("src/display/puerta.png"), JLabel.CENTER);
+		String playerDesc = player.getName() + " " + player.getEquipment().getLife()+ "/"+ player.getEquipment().getMaxLife();
+		playerInfo = new JLabel(playerDesc,new ImageIcon(player.getSprite()), JLabel.CENTER);
 		playerInfo.setVerticalTextPosition(JLabel.BOTTOM);
 		playerInfo.setHorizontalTextPosition(JLabel.CENTER);
 		
@@ -92,7 +83,7 @@ public class Ventana extends JFrame{
 				continue;
 			}
 			Enemy enemy = (Enemy) manager.getCharacters().get(i);
-			String info = enemy.getName() + " \n" + enemy.getEquipment().getLife()+ "/"+ enemy.getEquipment().getMaxLife();
+			String info ="<html>"+ enemy.getName() + " <br>" + enemy.getEquipment().getLife()+ "/"+ enemy.getEquipment().getMaxLife()+"</html>";
 			enemiesInfo[j] = new JLabel( info,new ImageIcon("puerta.png"), JLabel.LEFT);
 			enemySection.add(enemiesInfo[j]);
 			j++;
@@ -135,10 +126,7 @@ public class Ventana extends JFrame{
 		setSize(700,700);
 	}
 	
-	/*public Ventana(String cosas[], GestorJuego gestor, Jugador jugador, boolean disponibles[]) {
-		this(cosas, gestor,jugador);
-		cambiarBotones(cosas, gestor, disponibles);
-	}*/
+	
 	public JTextArea getHistory() {
 		return history;
 	}
