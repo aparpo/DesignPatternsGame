@@ -17,27 +17,39 @@ public class WindowDisplay implements DisplayStrategy, ActionListener{
 	private int state = 0;
 	private List<Character> currentCharacters;
 	private List<ActiveItemDecorator> currentSkills;
+	private List<ItemDecorator> currentItems;
 	
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		if(state == 0) {
-			for(int i = 0; i < currentSkills.size(); i++) {
-				if(event.getActionCommand().equals(currentSkills.get(i).getSkillname())) {
-					GameManager.getManager().getPlayer().setNextSkill(currentSkills.get(i));
-					state = 1;
-					window.cambiarBotones(getCharactersString(currentCharacters), this);
-				}
+		String button = event.getActionCommand();
+		if(state ==0) {
+			for(int i = 0; i < currentItems.size(); i++) {
+				if(button.contains(currentItems.get(i).getName())) {
+					GameManager.getManager().giveItem(currentItems.get(i));
+					GameManager.getManager().askPlayer();
+					break;
+				}if(state == 2) informPlayer("Warning: Something went wrong");
 			}
-			if(state == 0) informPlayer("Warning: Something went wrong");
 		}else if(state == 1) {
-			for(int i = 0; i < currentCharacters.size(); i++) {
-				if(event.getActionCommand().equals(currentCharacters.get(i).getName())) {
-					GameManager.getManager().getPlayer().setTarget(currentCharacters.get(i));
-					state = 0;
-					GameManager.getManager().turn();
+			for(int i = 0; i < currentSkills.size(); i++) {
+				if(button.equals(currentSkills.get(i).getSkillname())) {
+					GameManager.getManager().getPlayer().setNextSkill(currentSkills.get(i));
+					state = 2;
+					window.cambiarBotones(getCharactersString(currentCharacters), this);
+					break;
 				}
 			}
 			if(state == 1) informPlayer("Warning: Something went wrong");
+		}else if(state == 2) {
+			for(int i = 0; i < currentCharacters.size(); i++) {
+				if(button.equals(currentCharacters.get(i).getName())) {
+					GameManager.getManager().getPlayer().setTarget(currentCharacters.get(i));
+					state = 0;
+					GameManager.getManager().turn();
+					break;
+				}
+			}
+			if(state == 2) informPlayer("Warning: Something went wrong");
 		}
 		
 	}
@@ -49,9 +61,16 @@ public class WindowDisplay implements DisplayStrategy, ActionListener{
 
 	@Override
 	public void askPlayer(Player player, List<ActiveItemDecorator> skills, List<Character> characters) {
+		state = 1;
 		currentCharacters = characters;
 		currentSkills = skills;
 		window.cambiarBotones(getSkillsString(skills),this);
+	}
+	@Override
+	public void askPlayer(Player player, List<ItemDecorator> items) {
+		state = 0;
+		currentItems = items;
+		window.cambiarBotones(getItemsString(items),this);
 	}
 
 	@Override
@@ -87,12 +106,17 @@ public class WindowDisplay implements DisplayStrategy, ActionListener{
 		
 		return data;
 	}
-
-	@Override
-	public void askPlayer(Player player, List<ItemDecorator> items) {
-		// TODO Auto-generated method stub
+	private String[] getItemsString(List<ItemDecorator> list) {
+		String data[] = new String[list.size()];
+		for(int i = 0; i < list.size(); i++) {
+			data[i] = "<html>"+list.get(i).getName()+" " + list.get(i).getTier()
+					+"<br>"+list.get(i).getStats();
+		}
 		
+		return data;
 	}
+
+	
 	
 
 }

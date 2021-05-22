@@ -14,6 +14,9 @@ import abstractFactoryPattern.enemies.hollow.*;
 //Mundo basado en el estado envenenado
 public class LevelFactoryWorld2 extends FactoryTemplate{ 
 	
+	int skeletonCount=0;
+	int hollowCount =0;
+	
 	public LevelFactoryWorld2() {
 		super();
 	}
@@ -61,11 +64,13 @@ public class LevelFactoryWorld2 extends FactoryTemplate{
 	}
 
 	private Enemy createSkeleton() {
-		return new SkeletonWorld2();
+		skeletonCount++;
+		return new SkeletonWorld2(skeletonCount);
 	}
 	
 	private Enemy createHollow() {
-		return new HollowWorld2();
+		hollowCount++;
+		return new HollowWorld2(hollowCount);
 	}
 
 	@Override

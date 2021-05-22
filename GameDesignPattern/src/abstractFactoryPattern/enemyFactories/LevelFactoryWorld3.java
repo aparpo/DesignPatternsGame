@@ -13,6 +13,10 @@ import abstractFactoryPattern.enemies.hollow.*;
 
 public class LevelFactoryWorld3 extends FactoryTemplate{
 	
+	int skeletonCount=0;
+	int hollowCount = 0;
+	int crystalCount = 0;
+	
 	public LevelFactoryWorld3() {
 		super();
 	}
@@ -70,15 +74,18 @@ public class LevelFactoryWorld3 extends FactoryTemplate{
 	}
 
 	private Enemy createCrysal() {
-		return new CrystalWorld3();
+		crystalCount++;
+		return new CrystalWorld3(crystalCount);
 	}
 	
 	private Enemy createSkeleton() {
-		return new SkeletonWorld3();
+		skeletonCount++;
+		return new SkeletonWorld3(skeletonCount);
 	}
 	
 	private Enemy createHollow() {
-		return new HollowWorld3();
+		hollowCount++;
+		return new HollowWorld3(hollowCount);
 	}
 
 	@Override

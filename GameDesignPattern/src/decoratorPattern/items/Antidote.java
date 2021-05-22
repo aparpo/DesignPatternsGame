@@ -11,10 +11,10 @@ import decoratorPattern.UsableItemDecorator;
 import singletonPattern.GameManager;
 import statePattern.States;
 
-public class Antidote extends UsableItemDecorator{ //Cura 50 de vida 
+public class Antidote extends UsableItemDecorator{ //Cambia a estado standard si es posible 
 	
 	public Antidote(Item equipment, int amount) {
-		super(equipment, "Antidore", "Use antidote", new Stats(0, 0, 0, 0, 0),ActionType.NEUTRAL, SkillType.MAGIC,Tier.C, amount);
+		super(equipment, "Antidote", "Use antidote", new Stats(0, 0, 0, 0, 0),ActionType.NEUTRAL, SkillType.MAGIC,Tier.C, amount);
 	}
 	public Antidote(int amount) {
 		this(null, amount);

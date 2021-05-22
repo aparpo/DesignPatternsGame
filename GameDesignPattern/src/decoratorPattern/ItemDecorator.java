@@ -124,7 +124,7 @@ public abstract class ItemDecorator implements Item{
 	}
 	
 	public String toString() {
-		return name+stats+tier;
+		return name+" "+tier+"\n"+stats;
 	}
 
 	public String getName() {

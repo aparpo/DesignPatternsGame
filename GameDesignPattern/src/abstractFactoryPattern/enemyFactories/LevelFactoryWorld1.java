@@ -20,10 +20,14 @@ import abstractFactoryPattern.enemies.hollow.*;
 
 public class LevelFactoryWorld1 extends FactoryTemplate{
 	
-	private String[] names = {"sword","dagger","spear","armor"};
-	private String[] adjectives = {"iron","wood","plastic"};
+	private String[] names = {"axe","dagger","spear","armor"};
+	private String[] adjectives = {"Iron","Wood","Plastic"};
 	private List<ItemDecorator> items = new ArrayList<ItemDecorator>();
 	private int basePower = 20;
+	
+	int hollowCount = 0;
+	int crystalCount = 0;
+	int knightCount = 0;
 	
 	public LevelFactoryWorld1() {
 		super();
@@ -80,13 +84,16 @@ public class LevelFactoryWorld1 extends FactoryTemplate{
 	}
 
 	private Enemy createHollow() {
-		return new HollowWorld1();
+		hollowCount++;
+		return new HollowWorld1(hollowCount);
 	}
 	private Enemy createCrysal() {
-		return new CrystalWorld1();
+		crystalCount++;
+		return new CrystalWorld1(crystalCount);
 	}
 	private Enemy createBlackKnight() {
-		return new BlackKnightWorld1();
+		knightCount++;
+		return new BlackKnightWorld1(knightCount);
 	}
 	
 	//Crea una lista de objetos adecuados al nivel de la factoria

@@ -4,7 +4,6 @@ import base.Enemy;
 public abstract class Boss extends Enemy{
 
 	public Boss(String bossName) {
-		super("Boss");
-		this.enemyName = bossName;
+		super(bossName);
 	}
 }

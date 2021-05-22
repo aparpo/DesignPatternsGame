@@ -13,6 +13,9 @@ import abstractFactoryPattern.enemies.giant.*;
 
 public class LevelFactoryWorld5 extends FactoryTemplate{
 	
+	int giantCount = 0;
+	int knightCount = 0;
+	
 	public LevelFactoryWorld5() {
 		super();
 	}
@@ -66,11 +69,13 @@ public class LevelFactoryWorld5 extends FactoryTemplate{
 	
 	
 	private Enemy createGiant() {
-		return new GiantWorld4();
+		giantCount++;
+		return new GiantWorld4(giantCount);
 	}
 	
 	private Enemy createBlackKnight() {
-		return new BlackKnightWorld4();
+		knightCount++;
+		return new BlackKnightWorld4(knightCount);
 	}
 
 	public ItemDecorator generateItem() {

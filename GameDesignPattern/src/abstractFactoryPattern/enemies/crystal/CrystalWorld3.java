@@ -6,8 +6,8 @@ import strategyPattern.normalStrategies.*;
 
 public class CrystalWorld3 extends Crystal{
 
-	public CrystalWorld3() {
-		super("Crystal Knight");
+	public CrystalWorld3(int id) {
+		super("Crystal Knight"+id);
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(crystalBaseStats, World.WORLD3));
 	}
 }

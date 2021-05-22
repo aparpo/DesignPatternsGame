@@ -6,8 +6,8 @@ import strategyPattern.normalStrategies.*;
 
 public class CapraDemonWorld4 extends CapraDemon{
 
-	public CapraDemonWorld4() {
-		super("Dark Capra Demon");
+	public CapraDemonWorld4(int id) {
+		super("Capra Demon"+id);
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(capraDemonBaseStats, World.WORLD4));	
 	}
 }

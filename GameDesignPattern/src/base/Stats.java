@@ -29,7 +29,7 @@ public class Stats{ //Componente base
 	}
 	
 	public String toString() {
-		return "(Life: " + life + ", Att: " + attack + ", Def: " + defense + ", Speed: " + speed + ")";
+		return "(Life: " + life + ", MaxLife: " + maxLife +", Att: " + attack + ", Def: " + defense + ", Speed: " + speed + ")";
 		
 	}
 	

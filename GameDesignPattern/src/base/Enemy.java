@@ -8,7 +8,6 @@ import strategyPattern.normalStrategies.*;
 public class Enemy extends Character{
 	
 	protected DecisionTemplate behaviour;
-	protected String enemyName;
 	
 	public Enemy(String name) {
 		super(name);
@@ -64,9 +63,5 @@ public class Enemy extends Character{
 	
 	public void setBehaviour(DecisionTemplate behaviour) {
 		this.behaviour = behaviour;
-	}
-	
-	public String toString() {
-		return this.enemyName + super.toString();
 	}
 }

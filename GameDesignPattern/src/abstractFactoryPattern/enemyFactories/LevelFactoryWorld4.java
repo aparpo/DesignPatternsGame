@@ -13,6 +13,10 @@ import abstractFactoryPattern.enemies.giant.*;
 import abstractFactoryPattern.enemies.capraDemon.*;
 
 public class LevelFactoryWorld4 extends FactoryTemplate{
+	
+	int demonCount =0;
+	int giantCount = 0;
+	int knightCount = 0;
 		
 	public LevelFactoryWorld4() {
 		super();
@@ -69,15 +73,18 @@ public class LevelFactoryWorld4 extends FactoryTemplate{
 	}
 
 	public Enemy createCapraDemon() {
-		return new CapraDemonWorld4();
+		demonCount++;
+		return new CapraDemonWorld4(demonCount);
 	}
 	
 	public Enemy createGiant() {
-		return new GiantWorld4();
+		giantCount++;
+		return new GiantWorld4(giantCount);
 	}
 	
 	public Enemy createBlackKnight() {
-		return new BlackKnightWorld4();
+		knightCount++;
+		return new BlackKnightWorld4(knightCount);
 	}
 	
 	@Override
