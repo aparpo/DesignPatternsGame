@@ -20,7 +20,7 @@ public class HealerStrategy extends DecisionTemplate{
 	ActiveItemDecorator defensive;
 	ActiveItemDecorator neutral;
 	ActiveItemDecorator heal;
-	int targetPos = 0;
+	int targetPos = -1;
 	
 	//Modifica el metodo analize para tener en cuenta si puede curar
 	protected int[] analize(Enemy user, Player player) {
