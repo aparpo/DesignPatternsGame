@@ -96,6 +96,7 @@ public class LevelFactoryWorld3 extends FactoryTemplate{
 	public ItemDecorator generateItem() {
 		//Genera items (de tres en tres) pertenencientes a una clase concreta
 		int randNum = rand.nextInt(100);
+		itemCount++;
 		if(itemCount%3==0) { //Regulares
 			//Estadisticas desequilibradas
 			Stats stats = new Stats(0,rand.nextInt(20),rand.nextInt(50),rand.nextInt(20),rand.nextInt(2));
@@ -113,6 +114,7 @@ public class LevelFactoryWorld3 extends FactoryTemplate{
 				return new Thornmail();
 			}
 		}
+		
 	}
 
 }

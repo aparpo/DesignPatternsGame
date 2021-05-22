@@ -28,6 +28,7 @@ public class Antidote extends UsableItemDecorator{ //Cambia a estado standard si
 		if(amount > 0) { //Quedan antidotos
 			target.getState().setSuggestion(States.STANDARD);	
 			informPlayer(user,target);
+			amount--;
 		}
 		
 	}

@@ -19,6 +19,7 @@ public interface Item { //Interfaz general
 	public void applyStats(Stats variation); //Suma de estadisticas
 	public void backToNormal(); //Devolver a valores por defecto
 	public Item addItem(ItemDecorator newItem); //Añadir un nuevo item al equipamiento sin que este repetido
+	public Item deleteItem(ItemDecorator component);//Elimina un item de la jerarquia
 	
 	//Busca un item en la jerarquia, lo devuelve si lo encuentra y si no devuelve null
 	public Item isThereAny(Item model); 
@@ -26,4 +27,6 @@ public interface Item { //Interfaz general
 	public List<ActiveItemDecorator> areThereAnyActives(List<ActiveItemDecorator> list);
 	//Crea una lista con todos los items con pasiva en la jerarquia
 	public List<PassiveItemDecorator> areThereAnyPassives(List<PassiveItemDecorator> list);
+	//Crea una lista con todos los items usables en la jerarquia
+	public List<UsableItemDecorator> areThereAnyUsables(List<UsableItemDecorator> list);
 }

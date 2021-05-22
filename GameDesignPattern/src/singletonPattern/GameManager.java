@@ -8,6 +8,7 @@ import base.*;
 import base.Character;
 import decoratorPattern.ActiveItemDecorator;
 import decoratorPattern.ItemDecorator;
+import decoratorPattern.UsableItemDecorator;
 import abstractFactoryPattern.*;
 import abstractFactoryPattern.enemyFactories.*;
 
@@ -153,8 +154,21 @@ public class GameManager {
 		for(int i = 0; i < characters.size();i++) {
 			if(!characters.get(i).isAlive()) {
 				informPlayer(characters.get(i).getName()+" died");
+				if(!(characters.get(i) instanceof Player))
 				characters.remove(i);
 				
+			}
+		}
+		
+		//Eliminar objetos inutiles
+		for(int i = 0; i < characters.size();i++) {
+			List<UsableItemDecorator> list = new ArrayList<UsableItemDecorator>();
+			list = characters.get(i).getEquipment().areThereAnyUsables(list);
+			for(int j = 0; j < list.size(); j++) {
+				System.out.println(list.get(j));
+				if(list.get(j).getAmount()<=0) {
+					characters.get(i).deleteItem(list.get(j));
+				}
 			}
 		}
 		

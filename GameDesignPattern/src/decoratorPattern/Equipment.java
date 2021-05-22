@@ -10,11 +10,11 @@ public class Equipment implements Item{ //Componente base
 	public Equipment() {
 		setStats(new Stats(0,0,0,0,0));
 	}
-	
+	@Override
 	public void applyStats(Stats variation) { //Aplicar una variacion de estadisticas
 		stats.applyStats(variation);
 	}
-	
+	@Override
 	public void backToNormal() { //Devolver al estado basico todas las estadisticas menos la vida actual
 		stats.backToNormal();
 	}
@@ -24,20 +24,29 @@ public class Equipment implements Item{ //Componente base
 		newItem.setEquipment(this);
 		return newItem;
 	}
-	
+	@Override
 	public Item isThereAny(Item model){
 		return null; //Se ha llegado al final y no se ha encontrado un model
 		
 	}
-
+	@Override
 	public List<ActiveItemDecorator> areThereAnyActives(List<ActiveItemDecorator> list){
 		return list; //Se ha llegado al final y se devuelve la lista de los encontrados
 	}
-
+	@Override
 	public List<PassiveItemDecorator> areThereAnyPassives(List<PassiveItemDecorator> list){
 		return list; //Se ha llegado al final y se devuelve la lista de los encontrados
 	}
-	
+	@Override
+	public Item deleteItem(ItemDecorator component) {
+		return this;
+	}
+
+	@Override
+	public List<UsableItemDecorator> areThereAnyUsables(List<UsableItemDecorator> list) {
+		// TODO Auto-generated method stub
+		return list;
+	}
 	public int getLife() {
 		return stats.getLife();
 	}
@@ -81,7 +90,6 @@ public class Equipment implements Item{ //Componente base
 
 	@Override
 	public String getDesc() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	public Stats getStats() {

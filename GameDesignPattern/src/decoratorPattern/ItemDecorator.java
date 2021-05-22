@@ -42,6 +42,15 @@ public abstract class ItemDecorator implements Item{
 		
 	}
 	
+	public Item deleteItem(ItemDecorator component) {
+		if(component.getClass().equals(this.getClass())) {
+			return equipment;
+		}else {
+			equipment = equipment.deleteItem(component);
+			return this;
+		}
+	}
+	
 	public Item isThereAny(Item model){
 		if(this.getClass() == model.getClass()) { //Si son de la misma clase devuelve el objeto
 			return this;
@@ -57,6 +66,13 @@ public abstract class ItemDecorator implements Item{
 		}
 		
 		return equipment.areThereAnyActives(list); //Llamada recursiva
+	}
+	public List<UsableItemDecorator> areThereAnyUsables(List<UsableItemDecorator> list){
+		if(this instanceof UsableItemDecorator) { //Si es un objeto usable lo añade a la lista
+			list.add((UsableItemDecorator) this);
+		}
+		
+		return equipment.areThereAnyUsables(list); //Llamada recursiva
 	}
 	public List<PassiveItemDecorator> areThereAnyPassives(List<PassiveItemDecorator> list){
 		if(this instanceof PassiveItemDecorator) {//Si es un objeto con pasiva lo añade a la lista
@@ -89,42 +105,42 @@ public abstract class ItemDecorator implements Item{
 		
 	}
 	public int getAttack() {
-		try { //Excepcion para instancias de decoradores que aun no tienen objeto decorado
+		if(equipment!=null) {
 			return equipment.getAttack()+stats.getAttack();
-		}catch(NullPointerException e) {
+		}else {
 			return 0+stats.getAttack();
 		}
 		
 	}
 	
 	public int getDefense() {
-		try { //Excepcion para instancias de decoradores que aun no tienen objeto decorado
+		if(equipment!=null) {
 			return equipment.getDefense()+stats.getDefense();
-		}catch(NullPointerException e) {
+		}else {
 			return 0+stats.getDefense();
 		}
 		
 	}
 	public int getSpeed() {
-		try { //Excepcion para instancias de decoradores que aun no tienen objeto decorado
+		if(equipment!=null) {
 			return equipment.getSpeed()+stats.getSpeed();
-		}catch(NullPointerException e) {
+		}else {
 			return 0+stats.getSpeed();
 		}
 		
 	}
 
 	public int getMaxLife() {
-		try { //Excepcion para instancias de decoradores que aun no tienen objeto decorado
+		if(equipment!=null) {
 			return equipment.getMaxLife()+stats.getMaxLife();
-		}catch(NullPointerException e) {
+		}else {
 			return 0+stats.getMaxLife();
 		}
 		
 	}
 	
 	public String toString() {
-		return name+" "+tier+"\n"+stats;
+		return name+" "+tier+" "+stats;
 	}
 
 	public String getName() {
@@ -136,7 +152,7 @@ public abstract class ItemDecorator implements Item{
 	}
 
 	public String getDesc() {
-		return equipment.getDesc()+this;
+		return equipment.getDesc()+"\n"+this;
 	}
 
 	public void setDesc(String desc) {

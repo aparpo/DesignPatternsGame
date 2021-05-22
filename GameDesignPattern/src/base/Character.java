@@ -37,6 +37,10 @@ public abstract class Character {
 		this.equipment = this.equipment.addItem(newItem);
 	}
 	
+	public void deleteItem(ItemDecorator component) {
+		this.equipment = this.equipment.deleteItem(component);
+	}
+	
 	public Stats modifyStats() {
 		List<PassiveItemDecorator> list = new ArrayList<PassiveItemDecorator>();
 		Stats aux = new Stats(equipment.getLife(),equipment.getMaxLife(), equipment.getAttack(),equipment.getDefense(), equipment.getSpeed());

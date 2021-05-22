@@ -14,7 +14,7 @@ public class Ventana extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	private JTextArea inventory, history;
-	private JPanel panelLateral, optionPanel, panelResumen, panelTitulo, worldPanel, playerSection, enemySection;
+	private JPanel panelLateral, optionPanel, panelResumen, panelTitulo, worldPanel, playerSection, enemySection, inventoryPanel;
 	private JScrollPane sbrText;
 	private JLabel titulo, playerInfo, enemiesInfo[];
 	private JButton botones[];
@@ -33,6 +33,7 @@ public class Ventana extends JFrame{
 		panelLateral = new JPanel();
 		playerSection = new JPanel();
 		enemySection = new JPanel();
+		inventoryPanel = new JPanel();
 		
 		//Diseñamos panelTitulo
 		panelTitulo.setLayout(new GridLayout(0,1));
