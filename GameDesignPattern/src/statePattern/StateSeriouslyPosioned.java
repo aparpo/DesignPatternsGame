@@ -24,7 +24,8 @@ public class StateSeriouslyPosioned extends AbstractState{
 	
 	public Action effect(Action action) {
 		GameManager.getManager().getActions().add(new Action(new Stats((int)(action.getTarget().getEquipment().getMaxLife()*0.1),0,0,0,0), 
-				ActionType.NEUTRAL,SkillType.MAGIC, action.getUser(),action.getUser()));
+				ActionType.NEUTRAL,SkillType.MAGIC,null,action.getUser()));
+		GameManager.getManager().informPlayer(action.getUser()+" is damaged by poison");
 		this.state.setTurns(this.state.getTurns()-1);
 		return action;
 	}

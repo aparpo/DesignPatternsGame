@@ -45,8 +45,9 @@ public class CombatManager {
 		
 		//Resolver por orden
 		while(actions.size()>0) {
-			
-		if(actions.get(0).getUser().isAlive()) { //El actor sigue vivo
+		
+		//El actor es el sistema (user null) o el actor concreto sigue vivo
+		if(actions.get(0).getUser() == null || actions.get(0).getUser().isAlive()) { 
 			actions.get(0).getTarget().applyStats(actions.get(0).getVariation()); //Ejecutar la accion
 		}
 		

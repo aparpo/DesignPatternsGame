@@ -12,7 +12,7 @@ public class StateStandard extends AbstractState{
 	public void process() {
 		if(suggestion != States.STANDARD && suggestion != null) {
 			this.state.setState(this.state.getPossibleState(suggestion));
-			System.out.println("El jugador esta "+suggestion.getDesc());
+			System.out.println("El jugador esta "+suggestion);
 			this.state.setTurns(2);
 		}
 		suggestion = null;
