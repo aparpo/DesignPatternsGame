@@ -67,6 +67,8 @@ public class GameManager {
 	}
 	
 	public void turn() {
+		
+		informPlayer("New turn");
 
 		combatManager.combat(characters, actions); //Hacer calculos de combate
 		
@@ -79,6 +81,7 @@ public class GameManager {
 			return;
 		case 1: //Solo queda el jugador
 			newLevel(World.values()[currentLevel.ordinal()+1]);
+			
 			break;
 		default:  //Queda mas de un enemigo vivo
 			askPlayer(); //Pedir al jugador su proxima accion
@@ -119,7 +122,6 @@ public class GameManager {
 		for(int i = 0; i < (int) level.getComplexFactor()*3;i++) {
 			items.add(factory.generateItem());
 		}
-		
 		displayManager.askPlayer(player, items);
 		
 	}
@@ -157,13 +159,14 @@ public class GameManager {
 		}
 		
 		characters = combatManager.orderBySpeed(characters); //ordenar a los personajes por su velocidad
-
 		displayManager.paint(player, characters);
 	}
 	
 	private int checkEnd() {
 		if(!player.isAlive())return 0;
-		else return characters.size();
+		else {
+			return characters.size();
+		}
 	}
 	
 	public void informPlayer(String data) {

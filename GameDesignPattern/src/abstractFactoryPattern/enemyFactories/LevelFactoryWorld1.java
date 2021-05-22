@@ -113,9 +113,11 @@ public class LevelFactoryWorld1 extends FactoryTemplate{
 		if(randNum < 60 || items.size() <= 0) { //Crear un regular item  con 60% de probabilidad
 			//Stats aleatorias
 			Stats stats = new Stats(0,rand.nextInt(basePower),rand.nextInt(basePower),rand.nextInt(basePower),rand.nextInt(2));
+			
 			//Elaborar un nombre aleatorio
 			String name = adjectives[rand.nextInt(adjectives.length)] + " "+ names[rand.nextInt(names.length)];
 			item = new RegularItem(name,stats);
+			
 		}else {//Devolver un item de los posibles para el mundo 1
 			if(items.size()==0) createItemList();
 			randNum = rand.nextInt(items.size());

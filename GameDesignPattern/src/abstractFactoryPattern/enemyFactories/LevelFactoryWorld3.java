@@ -1,7 +1,9 @@
 package abstractFactoryPattern.enemyFactories;
 import base.Enemy;
+import base.Stats;
 import decoratorPattern.Item;
 import decoratorPattern.ItemDecorator;
+import decoratorPattern.RegularItem;
 import decoratorPattern.items.*;
 import strategyPattern.normalStrategies.*;
 import abstractFactoryPattern.FactoryTemplate;
@@ -11,11 +13,13 @@ import abstractFactoryPattern.enemies.bosses.OrsteinAndSmough;
 import abstractFactoryPattern.enemies.crystal.*;
 import abstractFactoryPattern.enemies.hollow.*;
 
+
 public class LevelFactoryWorld3 extends FactoryTemplate{
 	
 	int skeletonCount=0;
 	int hollowCount = 0;
 	int crystalCount = 0;
+	int itemCount = 0;
 	
 	public LevelFactoryWorld3() {
 		super();
@@ -49,7 +53,7 @@ public class LevelFactoryWorld3 extends FactoryTemplate{
 		enemy.getEquipment().addItem(new Potion(2));
 		randNum = rand.nextInt(100);
 		if(randNum < 20) {
-			enemy.addItem(new Shield());
+			enemy.addItem(new DemonSpear());
 		}
 		else if (randNum >= 20 && randNum < 60) {
 			enemy.addItem(new FireStaff());
@@ -90,8 +94,25 @@ public class LevelFactoryWorld3 extends FactoryTemplate{
 
 	@Override
 	public ItemDecorator generateItem() {
-		// TODO Auto-generated method stub
-		return null;
+		//Genera items (de tres en tres) pertenencientes a una clase concreta
+		int randNum = rand.nextInt(100);
+		if(itemCount%3==0) { //Regulares
+			//Estadisticas desequilibradas
+			Stats stats = new Stats(0,rand.nextInt(20),rand.nextInt(50),rand.nextInt(20),rand.nextInt(2));
+			return new RegularItem("Forgotten sword",stats);
+		}else if (itemCount%3 == 1) { //Con Activa
+			if(randNum < 40) {
+				return new SolarAegis();
+			}else {
+				return new ElectricShield();
+			}
+		}else { //Con Pasiva
+			if(randNum < 40) {
+				return new VampiricSword();
+			}else {
+				return new Thornmail();
+			}
+		}
 	}
 
 }
