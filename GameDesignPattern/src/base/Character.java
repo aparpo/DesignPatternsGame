@@ -11,12 +11,14 @@ import statePattern.*;
 
 public abstract class Character {
 	protected String name;
+	protected String sprite;
 	protected State state;
 	protected Item equipment;
 	
-	public Character(String name) {
+	public Character(String name, String sprite) {
 		super();
 		this.name = name;
+		this.sprite = sprite;
 		this.state = new State(); //Crea el estado, por defecto standard
 		this.equipment = new Equipment(); //Inicializa el equipamiento
 		

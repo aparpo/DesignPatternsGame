@@ -72,7 +72,7 @@ public class Ventana extends JFrame{
 		playerSection.setBackground(Color.WHITE);
 		
 		String playerDesc = player.getName() + " \n" + player.getEquipment().getLife()+ "/"+ player.getEquipment().getMaxLife();
-		playerInfo = new JLabel(playerDesc,new ImageIcon("demon.png"), JLabel.CENTER);
+		playerInfo = new JLabel(playerDesc,new ImageIcon("src/display/puerta.png"), JLabel.CENTER);
 		playerInfo.setVerticalTextPosition(JLabel.BOTTOM);
 		playerInfo.setHorizontalTextPosition(JLabel.CENTER);
 		

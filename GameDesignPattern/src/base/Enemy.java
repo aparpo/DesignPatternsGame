@@ -9,8 +9,8 @@ public class Enemy extends Character{
 	
 	protected DecisionTemplate behaviour;
 	
-	public Enemy(String name) {
-		super(name);
+	public Enemy(String name, String sprite) {
+		super(name,sprite);
 	}
 
 	public void decision() {
