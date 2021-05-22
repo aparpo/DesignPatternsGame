@@ -27,7 +27,7 @@ public class StatePoisoned extends AbstractState{
 		//Nueva accion que afecta al usuario restandole vida
 		GameManager.getManager().getActions().add(new Action(new Stats(-2,0,0,0,0), 
 				ActionType.NEUTRAL,SkillType.MAGIC, null,action.getUser()));
-		GameManager.getManager().informPlayer(action.getUser()+" is damaged by poison");
+		GameManager.getManager().informPlayer(action.getUser().getName()+" is damaged by poison");
 		this.state.setTurns(this.state.getTurns()-1);
 		return action;
 	}

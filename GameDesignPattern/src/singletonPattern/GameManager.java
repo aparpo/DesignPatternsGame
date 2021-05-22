@@ -77,7 +77,7 @@ public class GameManager {
 		switch(checkEnd()) {//Comprobar si se ha acabado el nivel o si ha muerto el jugador
 		case 0: //Jugador ha muerto
 			//Acabar el juego
-			System.out.println("You died");
+			System.out.println("You lose, start again?");
 			return;
 		case 1: //Solo queda el jugador
 			newLevel(World.values()[currentLevel.ordinal()+1]);
