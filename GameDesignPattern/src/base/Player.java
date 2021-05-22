@@ -12,7 +12,7 @@ public class Player extends Character{
 	private Character target;
 
 	public Player(String name) {
-		super(name,"src/display/player.png");
+		super(name,"src/display/warrior.png");
 		addItem(new RegularItem(new Stats(100,100,50,40,2)));
 	}
 

@@ -29,7 +29,7 @@ public class MediumStrategy extends DecisionTemplate{
 		}else if(random < options[0] + options[1]) {
 			defensive.useSkill(user, target);
 		}else {
-			neutral.useSkill(user, target);
+			neutral.useSkill(user, user);
 		}
 		
 	}

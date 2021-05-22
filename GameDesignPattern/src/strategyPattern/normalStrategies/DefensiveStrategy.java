@@ -7,13 +7,14 @@ import base.ActionType;
 import base.Enemy;
 import base.Player;
 import decoratorPattern.ActiveItemDecorator;
+import decoratorPattern.items.Antidote;
 import decoratorPattern.items.Potion;
 import singletonPattern.GameManager;
 import strategyPattern.DecisionTemplate;
 
 public class DefensiveStrategy extends DecisionTemplate{
 
-	
+	int targetNeutral = 1;
 	protected int worthAttack(Enemy user, Player player) {
 		int worth = 1;
 		
@@ -45,10 +46,16 @@ public class DefensiveStrategy extends DecisionTemplate{
 	protected int worthNeutral(Enemy user, Player player) {
 		int worth = 0;
 		
-		if(user.getEquipment().isThereAny(new Potion())==null) return worth; //No quedan pociones para curarse
+		//No quedan pociones ni antidotos para curarse, para diferenciarlo del agresivo y ya que es defensivo tambien compruba los antidotos
+		if(user.getEquipment().isThereAny(new Potion())==null && user.getEquipment().isThereAny(new Antidote())==null) return worth; 
 		//Le queda poca vida
 		if(user.getEquipment().getLife() < user.getEquipment().getMaxLife()*0.5) worth++;
-		
+		for(int i =0; i < GameManager.getManager().getCharacters().size(); i++) {
+			if(GameManager.getManager().getCharacters().get(i) == user) {
+				targetNeutral = i;
+				break;
+			}
+		}
 		return worth;
 	}
 
@@ -71,6 +78,9 @@ public class DefensiveStrategy extends DecisionTemplate{
 		while(true) {
 			aux = random.nextInt(skills.size());
 			if(skills.get(aux).getActionType() == action) { //Habilidad aleatoria que concuerde con la decision
+				if(action == ActionType.NEUTRAL) {
+					skills.get(aux).useSkill(user, GameManager.getManager().getCharacters().get(targetNeutral));
+				}
 				skills.get(aux).useSkill(user, target); //Se usa la habilidad
 				return;
 			}
