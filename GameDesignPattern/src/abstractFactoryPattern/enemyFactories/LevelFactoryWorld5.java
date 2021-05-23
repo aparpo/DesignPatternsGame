@@ -1,7 +1,9 @@
 package abstractFactoryPattern.enemyFactories;
 import base.Enemy;
+import base.Stats;
 import decoratorPattern.Item;
 import decoratorPattern.ItemDecorator;
+import decoratorPattern.RegularItem;
 import decoratorPattern.items.*;
 import strategyPattern.normalStrategies.AgressiveStrategy;
 import strategyPattern.normalStrategies.DefensiveStrategy;
@@ -15,6 +17,7 @@ public class LevelFactoryWorld5 extends FactoryTemplate{
 	
 	int giantCount = 0;
 	int knightCount = 0;
+	private int itemCount;
 	
 	public LevelFactoryWorld5() {
 		super();
@@ -79,8 +82,24 @@ public class LevelFactoryWorld5 extends FactoryTemplate{
 	}
 
 	public ItemDecorator generateItem() {
-		// TODO Auto-generated method stub
-		return null;
+		//Genera items (de tres en tres) pertenencientes a una clase concreta
+		int randNum = rand.nextInt(100);
+		itemCount++;
+		if(itemCount%3==0) { //Regulares
+			//Estadisticas desequilibradas
+			Stats stats = new Stats(0,rand.nextInt(30),rand.nextInt(60),rand.nextInt(30),rand.nextInt(3));
+			return new RegularItem("Bloody axe",stats);
+		}else if (itemCount%3 == 1) { //Con Activa
+			if(randNum < 40) {
+				return new Thornmail();
+			}else {
+				return new RatCrossbow();
+			}
+		}else { //Con Pasiva
+			return new DemonSpear();
+
+		}
+		
 	}
 
 }

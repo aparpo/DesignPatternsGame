@@ -1,8 +1,11 @@
 package abstractFactoryPattern.enemyFactories;
 import base.Enemy;
+import base.Stats;
 import decoratorPattern.Item;
 import decoratorPattern.ItemDecorator;
+import decoratorPattern.RegularItem;
 import decoratorPattern.items.*;
+import statePattern.States;
 import strategyPattern.normalStrategies.AgressiveStrategy;
 import strategyPattern.normalStrategies.DefensiveStrategy;
 import abstractFactoryPattern.FactoryTemplate;
@@ -13,11 +16,12 @@ import abstractFactoryPattern.enemies.giant.*;
 import abstractFactoryPattern.enemies.capraDemon.*;
 
 public class LevelFactoryWorld4 extends FactoryTemplate{
-	
+	//Furios world
 	int demonCount =0;
 	int giantCount = 0;
 	int knightCount = 0;
-		
+	int itemCount = 0;
+
 	public LevelFactoryWorld4() {
 		super();
 	}
@@ -33,7 +37,7 @@ public class LevelFactoryWorld4 extends FactoryTemplate{
 		if(randNum < 40) {
 			return createCapraDemon();
 		}
-		else if(randNum >= 40 && randNum < 70) {
+		else if(randNum >= 40 && randNum < 70 || giantCount > 0) {
 			return createBlackKnight();
 		}
 		else {
@@ -43,33 +47,26 @@ public class LevelFactoryWorld4 extends FactoryTemplate{
 
 	//Selecciona un arma para el enemigo generado.
 	protected void decorateEnemy(Enemy enemy) {
-		//Mejorar al enemigo con habilidades del mundo 1
-		//Aqui se pueden cambiar estadisticas o habilidades segun el mundo 
-		//Se crean enemigos acordes al nivel de dificultad pero los Hollow del mundo 1 no son siempre exactamente iguales p.e.
 		int randNum = rand.nextInt(100);
-		enemy.getEquipment().addItem(new Potion(2));
-		randNum = rand.nextInt(100);
-		if(randNum < 30) {
+
+		if(randNum < 80) {
+			enemy.addItem(new DemonSpear());
+		}else {
 			enemy.addItem(new Thornmail());
-		}
-		else if (randNum >= 30 && randNum < 60) {
-			enemy.addItem(new ElectricShield());
-		}
-		else {
-			enemy.addItem(new VampiricSword());
 		}
 	}
 
 	//Selecciona un comportamiento para el enemigo generado.
 	protected void finishEnemy(Enemy enemy) {
 		int randNum = rand.nextInt(100);
-
-		if (randNum < 50) {
+		if(randNum < 80) {
+			enemy.getState().setSuggestion(States.FURIOUS);
 			enemy.setBehaviour(new AgressiveStrategy());
-		}
-		else {
+		}else {
+			enemy.getState().setSuggestion(States.CONFUSED);
 			enemy.setBehaviour(new DefensiveStrategy());
 		}
+		
 	}
 
 	public Enemy createCapraDemon() {
@@ -88,7 +85,28 @@ public class LevelFactoryWorld4 extends FactoryTemplate{
 	}
 	
 	public ItemDecorator generateItem() {
-		// TODO Auto-generated method stub
-		return null;
+		//Genera items (de tres en tres) pertenencientes a una clase concreta
+		int randNum = rand.nextInt(100);
+		itemCount++;
+		if(itemCount%3==0) { //Regulares
+			//Estadisticas desequilibradas
+			Stats stats = new Stats(0,rand.nextInt(30),rand.nextInt(60),rand.nextInt(30),rand.nextInt(3));
+			return new RegularItem("Bloody axe",stats);
+		}else if (itemCount%3 == 1) { //Con Activa
+			if(randNum < 40) {
+				return new Thornmail();
+			}else {
+				return new ElectricShield();
+			}
+		}else { //Con Pasiva
+			if(randNum < 70) {
+				return new Antidote();
+			}else {
+				return new Bow();
+			}
+
+		}
+		
 	}
+
 }
