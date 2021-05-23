@@ -72,12 +72,12 @@ public class LevelFactoryWorld5 extends FactoryTemplate{
 	
 	private Enemy createGiant() {
 		giantCount++;
-		return new GiantWorld4(giantCount);
+		return new GiantWorld5(giantCount);
 	}
 	
 	private Enemy createBlackKnight() {
 		knightCount++;
-		return new BlackKnightWorld4(knightCount);
+		return new BlackKnightWorld5(knightCount);
 	}
 
 	public ItemDecorator generateItem() {

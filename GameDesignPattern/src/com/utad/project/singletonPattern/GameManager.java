@@ -20,7 +20,7 @@ public class GameManager {
 	private List<ItemDecorator> items;
 	private AbstractLevelFactory factory = new LevelFactoryWorld1();
 	private Player player;
-	private World currentLevel = World.WORLD1;
+	private World currentLevel = World.WORLD5;
 	
 
 	private DisplayStrategy displayManager;
@@ -81,7 +81,13 @@ public class GameManager {
 			System.out.println("You lose, start again?");
 			return;
 		case 1: //Solo queda el jugador
-			newLevel(World.values()[currentLevel.ordinal()+1]);
+			if(currentLevel.ordinal() < 5) {
+				newLevel(World.values()[currentLevel.ordinal()+1]);
+			}else {
+				informPlayer("You win");
+			}
+			
+			
 			
 			break;
 		default:  //Queda mas de un enemigo vivo
@@ -93,6 +99,8 @@ public class GameManager {
 	
 	//Genera un nuevo nivel
 	private void newLevel(World level) {
+		
+		player.getEquipment().setLife(0);
 		
 		currentLevel = World.values()[currentLevel.ordinal()+1];
 		System.out.println(currentLevel.ordinal());
@@ -109,8 +117,10 @@ public class GameManager {
 		case 4:
 			factory = new LevelFactoryWorld4(); 
 			break;
+		case 5:
+			factory = new LevelFactoryWorld5();
+			break;
 		}
-		
 		//Crear nuevos enemigos
 		for(int i = 0; i < currentLevel.ordinal();i++) {
 			characters.add(factory.generateEnemy());
@@ -124,6 +134,9 @@ public class GameManager {
 			items.add(factory.generateItem());
 		}
 		displayManager.askPlayer(player, items);
+
+		
+		
 		
 	}
 	//Pregunta al jugador por su accion

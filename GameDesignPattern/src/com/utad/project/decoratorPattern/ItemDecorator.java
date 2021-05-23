@@ -104,6 +104,10 @@ public abstract class ItemDecorator implements Item{
 		}
 		
 	}
+	
+	public void setLife(int life) {
+		equipment.setLife(life);
+	}
 	public int getAttack() {
 		if(equipment!=null) {
 			return equipment.getAttack()+stats.getAttack();

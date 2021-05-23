@@ -32,6 +32,9 @@ public class CombatManager {
 		
 		//Pedir las acciones a cada personaje y almacenarlas en el buffer para tratarlas
 		for(int i = 0; i < characters.size();i++) {
+			if(characters.get(i) instanceof Enemy) {
+				((Enemy) characters.get(i)).changeStrategy();
+			}
 			characters.get(i).decision(); 
 		}
 		

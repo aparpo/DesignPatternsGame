@@ -8,6 +8,7 @@ public interface Item { //Interfaz general
 	
 	//Obtener los atributo basicos
 	public int getLife();
+	public void setLife(int life);
 	public int getMaxLife();
 	public int getAttack();
 	public int getDefense();

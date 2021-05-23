@@ -12,8 +12,8 @@ public class Player extends Character{
 	private Character target;
 
 	public Player(String name) {
-		super(name,"src/display/warrior.png");
-		addItem(new RegularItem(new Stats(100,100,50,40,2)));
+		super(name,"src/com/utad/project/display/Player.png");
+		addItem(new RegularItem(new Stats(1000,1000,5000,4000,20)));
 	}
 
 	public void decision() {

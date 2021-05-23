@@ -31,7 +31,7 @@ public class SolarAegis extends ActiveItemDecorator{ //Devuelve daño de un ataqu
 							actions.get(i).getVariation().getLife()+
 							actions.get(i).getUser().getEquipment().getDefense()/2
 							,0,0,0,0);
-					actions.add(new Action(variation, actionType, skillType, user, target));
+					actions.add(new Action(variation, actionType, skillType, user, actions.get(i).getUser()));
 					
 				}
 			}
