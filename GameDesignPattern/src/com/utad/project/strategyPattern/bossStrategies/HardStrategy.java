@@ -92,7 +92,7 @@ public class HardStrategy extends DecisionTemplate{
 	// Esta funcion devuelve unoo de los mejores items que tenga el enemigo, del tipo de accion que se solicita
 	private ActiveItemDecorator saveBestItem(List<ActiveItemDecorator> skills, ActionType action){
 		// Esto guarda el valor de la mejor tier de sus items
-		int tierValue = 0;
+		int tierValue = -1;
 		//Recorre la lista buscando el tier mas alto
 		for(int i =0; i < skills.size(); i++) {
 			if(skills.get(i).getActionType() == action) {
@@ -102,7 +102,7 @@ public class HardStrategy extends DecisionTemplate{
 			}
 		}
 		// Como puede ser que no tenga objetos neutrales, si el tier list no ha cambiado y sigue siendo 0 significa que no tiene
-		if(tierValue == 0) {
+		if(tierValue == -1) {
 			return null;
 		}
 		// se crea una lista con la posicion de los items de mejor nivel
