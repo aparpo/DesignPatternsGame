@@ -38,6 +38,9 @@ public class State {
 	public CharacterState getPossibleState(States desired) {
 		return possibleStates.get(desired.ordinal());
 	}
+	public String getStateName() {
+		return state.getStateName();
+	}
 
 	public int getTurns() {
 		return turns;

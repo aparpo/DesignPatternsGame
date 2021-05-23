@@ -4,6 +4,9 @@ import base.Action;
 
 public class StateSeriouslyParalyzed extends AbstractState{
 
+	public StateSeriouslyParalyzed(State state) {
+		super(state,"Seriously paralyzed");
+	}
 	
 	public void process() {
 		if(suggestion == States.STANDARD) {

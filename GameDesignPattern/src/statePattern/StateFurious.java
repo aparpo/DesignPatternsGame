@@ -6,7 +6,7 @@ public class StateFurious extends AbstractState{
 	
 	public StateFurious() {}
 	public StateFurious(State state) {
-		super(state);
+		super(state,"Furious");
 	}
 	
 	public void process() {		
@@ -29,18 +29,15 @@ public class StateFurious extends AbstractState{
 	}
 
 	protected void confused() {
-		System.out.println("El jugador acaba cansado y queda confundido");
 		this.state.setState(this.state.getPossibleState(States.CONFUSED));
 		this.state.setTurns(1);
 	}
 
 	protected void standard() {
-		System.out.println("El jugador ya no esta furioso");
 		this.state.setState(this.state.getPossibleState(States.STANDARD));
 	}
 	
 	protected  void seriouslyParalyzed() {
-		System.out.println("Furia interrumpida, el jugador esta seriamente paralizado");
 		this.state.setState(this.state.getPossibleState(States.STANDARD));
 		this.state.setTurns(2);
 	}

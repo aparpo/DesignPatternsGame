@@ -7,7 +7,7 @@ public class StateParalyzed extends AbstractState{
 	
 	public StateParalyzed() {}
 	public StateParalyzed(State state) {
-		super(state);
+		super(state,"Paralyzed");
 	}
 	
 	public void process() {
@@ -29,11 +29,9 @@ public class StateParalyzed extends AbstractState{
 	}
 	
 	protected void standard() {
-		System.out.println("El jugador ya no esta paralizado");
 		this.state.setState(this.state.getPossibleState(States.STANDARD));
 	}
 	protected void seriouslyParalyzed() {
-		System.out.println("El jugador esta gravemente paralizado");
 		this.state.setState(this.state.getPossibleState(States.SERIOUSLYPARALYZED));
 		this.state.setTurns(this.state.getTurns()+1);
 	}

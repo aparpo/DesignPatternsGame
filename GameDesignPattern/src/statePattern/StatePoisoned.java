@@ -11,7 +11,7 @@ public class StatePoisoned extends AbstractState{
 	
 	public StatePoisoned() {}
 	public StatePoisoned(State state) {
-		super(state);
+		super(state,"Poisoned");
 	}
 	
 	public void process() {

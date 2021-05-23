@@ -5,11 +5,13 @@ import base.Action;
 public abstract class AbstractState implements CharacterState{
 	
 	protected State state;
-	protected States suggestion = null; //proximo estado recomendado
+	protected States suggestion; //proximo estado recomendado
+	protected String stateName;
 	
 	public AbstractState() {}
-	public AbstractState(State state) {
+	public AbstractState(State state,String stateName) {
 		this.state = state;
+		this.stateName = stateName;
 	}
 	
 	public abstract void process();
@@ -49,5 +51,11 @@ public abstract class AbstractState implements CharacterState{
 	}
 	public void setSuggestion(States suggestion) {
 		this.suggestion = suggestion;
+	}
+	public String getStateName() {
+		return stateName;
+	}
+	public void setStateName(String stateName) {
+		this.stateName = stateName;
 	}
 }

@@ -25,7 +25,7 @@ public class VampiricSword extends PassiveItemDecorator{
 		if(life >= maxLife) { //Su vida sobrepasa su vida maxima 
 			newLife=maxLife-life; 
 		}else {
-			newLife=(int)0.1*attack;
+			newLife=attack/10;
 		}
 		return new Stats(newLife, 0, 0, 0, 0);
 	}

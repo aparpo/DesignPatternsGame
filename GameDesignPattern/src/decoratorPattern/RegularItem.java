@@ -16,7 +16,7 @@ public class RegularItem extends ItemDecorator{ //Decoradores que solo modifican
 	}
 	
 	public RegularItem(Stats stats) {
-		this("Custom stats",stats);
+		this("Basic equipment",stats);
 	}
 
 }
