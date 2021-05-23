@@ -50,6 +50,7 @@ public class ConsoleDisplay implements DisplayStrategy{
 
 	@Override
 	public void paint(Player player, List<Character> characters) {
+		System.out.println("Characters alive:");
 		for(int i = 0; i < characters.size(); i++) {
 			System.out.println(characters.get(i));
 		}
@@ -63,7 +64,7 @@ public class ConsoleDisplay implements DisplayStrategy{
 		
 		System.out.println("Pick an item:");
 		for(int i = 0; i < items.size(); i++) {
-			System.out.println(i + ":"+items.get(i).getName());
+			System.out.println(i + ":"+items.get(i));
 		}
 		
 		do {
