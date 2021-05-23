@@ -101,7 +101,6 @@ public class GameManager {
 		player.getEquipment().setLife(0);
 		
 		currentLevel = World.values()[currentLevel.ordinal()+1];
-		System.out.println(currentLevel.ordinal());
 		switch(currentLevel.ordinal()) {
 		case 1:
 			factory = new LevelFactoryWorld1(); 
