@@ -18,7 +18,7 @@ public class StatePoisoned extends AbstractState{
 		if(suggestion == States.STANDARD || this.state.getTurns() <= 0) {
 			standard();
 		}else if(suggestion == States.POISONED) {
-			seriouslyPosioned();
+			this.state.setTurns(this.state.getTurns()+1);
 		}
 		suggestion = null;
 	}
