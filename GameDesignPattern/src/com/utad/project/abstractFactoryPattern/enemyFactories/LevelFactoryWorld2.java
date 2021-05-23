@@ -4,18 +4,16 @@ import java.util.List;
 
 import com.utad.project.abstractFactoryPattern.FactoryTemplate;
 import com.utad.project.abstractFactoryPattern.enemies.bosses.Boss;
-import com.utad.project.abstractFactoryPattern.enemies.bosses.Sif;
+import com.utad.project.abstractFactoryPattern.enemies.bosses.SifWorld2;
 import com.utad.project.abstractFactoryPattern.enemies.hollow.*;
 import com.utad.project.abstractFactoryPattern.enemies.skeleton.*;
 import com.utad.project.base.Enemy;
 import com.utad.project.base.Stats;
-import com.utad.project.decoratorPattern.Item;
 import com.utad.project.decoratorPattern.ItemDecorator;
 import com.utad.project.decoratorPattern.RegularItem;
 import com.utad.project.decoratorPattern.items.*;
 import com.utad.project.statePattern.States;
 import com.utad.project.strategyPattern.bossStrategies.HealerStrategy;
-import com.utad.project.strategyPattern.normalStrategies.AgressiveStrategy;
 import com.utad.project.strategyPattern.normalStrategies.DumbStrategy;
 
 //Mundo basado en el estado envenenado
@@ -34,7 +32,7 @@ public class LevelFactoryWorld2 extends FactoryTemplate{
 	
 	//Genera el Boss final correspondiente al nivel en el que nos encontremos
 	public Boss generateBoss() {
-		return new Sif();
+		return new SifWorld2();
 	}
 
 	//Genera un enemigo.

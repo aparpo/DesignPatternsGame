@@ -4,10 +4,10 @@ import com.utad.project.decoratorPattern.RegularItem;
 import com.utad.project.decoratorPattern.items.bossWeapons.ArtoriasSword;
 import com.utad.project.strategyPattern.normalStrategies.AgressiveStrategy;
 
-public class Sif extends Boss{
+public class SifWorld2 extends Boss{
 			
-	public Sif() {
-		super("Great Grey Wolf Sif");
+	public SifWorld2() {
+		super("Great Grey Wolf Sif", "src/com/utad/project/display/sif.png");
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", new Stats(120,120,30,20,3));	
 		this.addItem(new ArtoriasSword());
 		this.behaviour = new AgressiveStrategy();

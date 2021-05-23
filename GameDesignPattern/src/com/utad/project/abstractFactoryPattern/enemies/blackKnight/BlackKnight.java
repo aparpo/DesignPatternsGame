@@ -7,6 +7,6 @@ public abstract class BlackKnight extends Enemy{
 	protected static final Stats blackKnightBaseStats = new Stats(60, 60, 20, 20, 2);
 	
 	public BlackKnight(String enemyName) {
-		super(enemyName,"");
+		super(enemyName,"src/com/utad/project/display/blackknight.png");
 	}
 }
