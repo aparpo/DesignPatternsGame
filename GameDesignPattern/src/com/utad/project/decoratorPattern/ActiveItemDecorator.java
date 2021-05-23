@@ -26,6 +26,9 @@ public abstract class ActiveItemDecorator extends ItemDecorator { //Objetos que 
 	public void informPlayer(Character user, Character target) {
 		GameManager.getManager().informPlayer(user.getName()+" uses "+ skillName + " on "+ target.getName());
 	}
+	public void informPlayer(String data) {
+		GameManager.getManager().informPlayer(data);
+	}
 
 	public String getSkillname() {
 		return skillName;
