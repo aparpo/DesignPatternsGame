@@ -33,7 +33,7 @@ public class ConsoleDisplay implements DisplayStrategy{
 		
 		player.setNextSkill(skills.get(option));
 		
-		System.out.println("Select the target:"+characters.size());
+		System.out.println("Select the target:");
 		for(int i = 0; i < characters.size(); i++) {
 			System.out.println(i + ":"+characters.get(i));
 		}
