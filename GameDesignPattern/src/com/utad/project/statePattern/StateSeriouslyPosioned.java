@@ -15,6 +15,8 @@ public class StateSeriouslyPosioned extends AbstractState{
 	public void process() {
 		if(suggestion == States.STANDARD) {
 			standard();
+		}else if(suggestion == States.POISONED){
+			this.state.setTurns(this.state.getTurns()+1);
 		}else if(this.state.getTurns() <= 0) {
 			poisoned();
 		}
