@@ -24,6 +24,7 @@ public class State {
 		this.possibleStates.add(new StateParalyzed(this));
 		this.possibleStates.add(new StatePoisoned(this));
 		this.possibleStates.add(new StateSeriouslyPosioned(this));
+		this.possibleStates.add(new StateSeriouslyParalyzed(this));
 		this.turns = 0;
 	}
 	
