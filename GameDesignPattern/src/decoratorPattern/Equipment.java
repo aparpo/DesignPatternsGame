@@ -90,7 +90,7 @@ public class Equipment implements Item{ //Componente base
 
 	@Override
 	public String getDesc() {
-		return null;
+		return "";
 	}
 	public Stats getStats() {
 		return stats;

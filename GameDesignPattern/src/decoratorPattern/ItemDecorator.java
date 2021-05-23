@@ -152,7 +152,7 @@ public abstract class ItemDecorator implements Item{
 	}
 
 	public String getDesc() {
-		return equipment.getDesc()+"\n"+this;
+		return equipment.getDesc()+"<br>"+this.getName();
 	}
 
 	public void setDesc(String desc) {

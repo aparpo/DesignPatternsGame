@@ -95,7 +95,7 @@ public class GameManager {
 	private void newLevel(World level) {
 		
 		currentLevel = World.values()[currentLevel.ordinal()+1];
-		
+		System.out.println(currentLevel.ordinal());
 		switch(currentLevel.ordinal()) {
 		case 1:
 			factory = new LevelFactoryWorld1(); 
@@ -112,7 +112,7 @@ public class GameManager {
 		}
 		
 		//Crear nuevos enemigos
-		for(int i = 0; i < (int) level.getComplexFactor()*2;i++) {
+		for(int i = 0; i < currentLevel.ordinal();i++) {
 			characters.add(factory.generateEnemy());
 		}
 		displayManager.paint(player, characters);
@@ -165,7 +165,6 @@ public class GameManager {
 			List<UsableItemDecorator> list = new ArrayList<UsableItemDecorator>();
 			list = characters.get(i).getEquipment().areThereAnyUsables(list);
 			for(int j = 0; j < list.size(); j++) {
-				System.out.println(list.get(j));
 				if(list.get(j).getAmount()<=0) {
 					characters.get(i).deleteItem(list.get(j));
 				}

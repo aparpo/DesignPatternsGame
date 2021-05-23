@@ -16,7 +16,7 @@ public class Ventana extends JFrame{
 	private JTextArea inventory, history;
 	private JPanel panelLateral, optionPanel, panelResumen, panelTitulo, worldPanel, playerSection, enemySection, inventoryPanel;
 	private JScrollPane sbrText;
-	private JLabel titulo, playerInfo, enemiesInfo[];
+	private JLabel titulo, playerInfo, playerItems, playerState, enemiesInfo[];
 	private JButton botones[];
 	
 	private GameManager manager = GameManager.getManager();
@@ -110,11 +110,30 @@ public class Ventana extends JFrame{
 		
 		sbrText = new JScrollPane(history, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		
-		inventory = new JTextArea("Inventory:\n" + player); //Esto serán las creencias del jugador
-		inventory.setPreferredSize(new Dimension(100,100));
+		//Disñamos el inventario
+		inventoryPanel.setBackground(Color.WHITE);
+		inventoryPanel.setBorder(BorderFactory.createTitledBorder("Inventory:"));
+		inventoryPanel.setLayout(new GridLayout(0,2));
+		
+		
+		inventory = new JTextArea("\nName:"+player.getName()+"\n"
+				+"Life:"+player.getEquipment().getLife()+"\n"
+				+"Max Life:"+player.getEquipment().getMaxLife()+"\n"
+				+"Attack:"+player.getEquipment().getAttack()+"\n"
+				+"Defense:"+player.getEquipment().getDefense()+"\n"
+				+"Speed:"+player.getEquipment().getSpeed()+"\n");
+		
+		
+		playerItems= new JLabel("<html>Equiped Items:"+player.getEquipment().getDesc()+"</html>");
+		playerState = new JLabel("Current State:"+player.getState().getStateName());
+		
+		
+		inventoryPanel.add(inventory);
+		inventoryPanel.add(playerItems);
+		inventoryPanel.add(playerState);
 		
 		panelResumen.add(sbrText);
-		panelResumen.add(inventory);
+		panelResumen.add(inventoryPanel);
 		
 		//Construimos la ventana
 		
@@ -152,10 +171,27 @@ public class Ventana extends JFrame{
 	public void actualizarVentana(Player player) { //Añadir la nueva informacion de cada turno
 		
 		//Abajo izquierda
-		panelResumen.remove(inventory);
-		inventory = new JTextArea("Inventory:\n" + player); //Esto serán las creencias del jugador
-		inventory.setPreferredSize(new Dimension(100,100));
-		panelResumen.add(inventory);
+		panelResumen.remove(inventoryPanel);
+		inventoryPanel.remove(inventory);
+		inventoryPanel.remove(playerItems);
+		inventoryPanel.remove(playerState);
+		inventory = new JTextArea("\nName:"+player.getName()+"\n"
+				+"Life:"+player.getEquipment().getLife()+"\n"
+				+"Max Life:"+player.getEquipment().getMaxLife()+"\n"
+				+"Attack:"+player.getEquipment().getAttack()+"\n"
+				+"Defense:"+player.getEquipment().getDefense()+"\n"
+				+"Speed:"+player.getEquipment().getSpeed()+"\n");
+		
+		
+		playerItems= new JLabel("<html>Equiped Items:"+player.getEquipment().getDesc()+"</html>");
+		playerState = new JLabel("Current State:"+player.getState().getStateName());
+		
+		
+		inventoryPanel.add(inventory);
+		inventoryPanel.add(playerItems);
+		inventoryPanel.add(playerState);
+		
+		panelResumen.add(inventoryPanel);
 		
 		//Arriba izquierda
 		panelTitulo.remove(titulo);
