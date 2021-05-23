@@ -10,10 +10,10 @@ import com.utad.project.base.Player;
 import com.utad.project.decoratorPattern.ActiveItemDecorator;
 import com.utad.project.decoratorPattern.Item;
 import com.utad.project.decoratorPattern.ItemDecorator;
-import com.utad.project.display.Ventana;
+import com.utad.project.display.Window;
 
 public class WindowDisplay implements DisplayStrategy, ActionListener{
-	private Ventana window;
+	private Window window;
 	private int state = 0;
 	private List<Character> currentCharacters;
 	private List<ActiveItemDecorator> currentSkills;
@@ -77,7 +77,7 @@ public class WindowDisplay implements DisplayStrategy, ActionListener{
 	public void paint(Player player, List<Character> characters) {
 		if(window==null) {
 			String data[] = getSkillsString(player);
-			window = new Ventana(data,this,player);
+			window = new Window(data,this,player);
 			window.setVisible(true);
 		}else {
 			window.actualizarVentana(player);

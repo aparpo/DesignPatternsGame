@@ -8,40 +8,40 @@ import com.utad.project.singletonPattern.GameManager;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class Ventana extends JFrame{
+public class Window extends JFrame{
 	
 	
 	private static final long serialVersionUID = 1L;
 	
 	private JTextArea inventory, history;
-	private JPanel panelLateral, optionPanel, panelResumen, panelTitulo, worldPanel, playerSection, enemySection, inventoryPanel;
+	private JPanel lateralPanel, optionPanel, logPanel, titlePanel, worldPanel, playerSection, enemySection, inventoryPanel;
 	private JScrollPane sbrText;
-	private JLabel titulo, playerInfo, playerItems, playerState, enemiesInfo[];
-	private JButton botones[];
+	private JLabel title, playerInfo, playerItems, playerState, enemiesInfo[];
+	private JButton buttons[];
 	
 	private GameManager manager = GameManager.getManager();
 	
 	//Constructor de la Interfaz
-	public Ventana(String data[], ActionListener listener, Player player) {
-		botones = new JButton[data.length];
+	public Window(String data[], ActionListener listener, Player player) {
+		buttons = new JButton[data.length];
 		
 		//Creamos los paneles
 		optionPanel = new JPanel();
 		worldPanel = new JPanel();
-		panelResumen = new JPanel();
-		panelTitulo = new JPanel();
-		panelLateral = new JPanel();
+		logPanel = new JPanel();
+		titlePanel = new JPanel();
+		lateralPanel = new JPanel();
 		playerSection = new JPanel();
 		enemySection = new JPanel();
 		inventoryPanel = new JPanel();
 		
-		//Diseñamos panelTitulo
-		panelTitulo.setLayout(new GridLayout(0,1));
-		titulo = new JLabel("World "+manager.getCurrentLevel().ordinal());
-		titulo.setFont(new Font("Sans-Serif", Font.BOLD, 25));
-		panelTitulo.add(titulo);		
+		//Diseñamos panel Titulo
+		titlePanel.setLayout(new GridLayout(0,1));
+		title = new JLabel("World "+manager.getCurrentLevel().ordinal());
+		title.setFont(new Font("Sans-Serif", Font.BOLD, 25));
+		titlePanel.add(title);		
 		
-		//Diseñamos panelOpciones
+		//Diseñamos panel de opciones
 		
 		optionPanel.setBackground(Color.gray);
 		optionPanel.setBorder(BorderFactory.createEmptyBorder(30,30,10,30));
@@ -49,10 +49,10 @@ public class Ventana extends JFrame{
 		
 		
 		for(int i = 0; i < data.length; i++) {
-			botones[i] = new JButton(data[i]);
-			botones[i].setPreferredSize(new Dimension(200,50));
-			botones[i].addActionListener(listener);
-			optionPanel.add(botones[i]);
+			buttons[i] = new JButton(data[i]);
+			buttons[i].setPreferredSize(new Dimension(200,50));
+			buttons[i].addActionListener(listener);
+			optionPanel.add(buttons[i]);
 		}
 		
 		//Diseñamos worldPanel
@@ -93,16 +93,16 @@ public class Ventana extends JFrame{
 		worldPanel.add(playerSection, BorderLayout.CENTER);
 		worldPanel.add(enemySection, BorderLayout.EAST);
 		
-		//Construimos el panelLateral
-		panelLateral.setLayout(new GridLayout(0,1));
-		panelLateral.setPreferredSize(new Dimension(300,700));
-		panelLateral.add(worldPanel);
-		panelLateral.add(optionPanel);
+		//Construimos el panel Lateral
+		lateralPanel.setLayout(new GridLayout(0,1));
+		lateralPanel.setPreferredSize(new Dimension(300,700));
+		lateralPanel.add(worldPanel);
+		lateralPanel.add(optionPanel);
 		
 		
-		//Diseñamos panelResumen
-		panelResumen.setBackground(Color.white);
-		panelResumen.setLayout(new GridLayout(0,1));
+		//Diseñamos panel Resumen
+		logPanel.setBackground(Color.white);
+		logPanel.setLayout(new GridLayout(0,1));
 		
 		history = new JTextArea("Action history:\n"); //Esto será el historial de las acciones
 		history.setEditable(false);
@@ -132,14 +132,14 @@ public class Ventana extends JFrame{
 		inventoryPanel.add(playerItems);
 		inventoryPanel.add(playerState);
 		
-		panelResumen.add(sbrText);
-		panelResumen.add(inventoryPanel);
+		logPanel.add(sbrText);
+		logPanel.add(inventoryPanel);
 		
 		//Construimos la ventana
 		
-		add(panelTitulo, BorderLayout.NORTH);
-		add(panelLateral, BorderLayout.EAST);
-		add(panelResumen, BorderLayout.CENTER);
+		add(titlePanel, BorderLayout.NORTH);
+		add(lateralPanel, BorderLayout.EAST);
+		add(logPanel, BorderLayout.CENTER);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Decision Jugador");
 		pack();
@@ -152,15 +152,15 @@ public class Ventana extends JFrame{
 	}
 	
 	public void cambiarBotones(String cosas[], ActionListener listener) {
-		for(int i = 0; i < botones.length; i++) {
-			optionPanel.remove(botones[i]);
+		for(int i = 0; i < buttons.length; i++) {
+			optionPanel.remove(buttons[i]);
 		}
-		botones = new JButton[cosas.length];
+		buttons = new JButton[cosas.length];
 		for(int i = 0; i < cosas.length; i++) {
-				botones[i] = new JButton(cosas[i]);
-				botones[i].setPreferredSize(new Dimension(200,50));
-				botones[i].addActionListener(listener);
-				optionPanel.add(botones[i]);
+				buttons[i] = new JButton(cosas[i]);
+				buttons[i].setPreferredSize(new Dimension(200,50));
+				buttons[i].addActionListener(listener);
+				optionPanel.add(buttons[i]);
 			
 		}
 	
@@ -171,7 +171,7 @@ public class Ventana extends JFrame{
 	public void actualizarVentana(Player player) { //Añadir la nueva informacion de cada turno
 		
 		//Abajo izquierda
-		panelResumen.remove(inventoryPanel);
+		logPanel.remove(inventoryPanel);
 		inventoryPanel.remove(inventory);
 		inventoryPanel.remove(playerItems);
 		inventoryPanel.remove(playerState);
@@ -191,13 +191,13 @@ public class Ventana extends JFrame{
 		inventoryPanel.add(playerItems);
 		inventoryPanel.add(playerState);
 		
-		panelResumen.add(inventoryPanel);
+		logPanel.add(inventoryPanel);
 		
 		//Arriba izquierda
-		panelTitulo.remove(titulo);
-		titulo = new JLabel("World "+manager.getCurrentLevel().ordinal());
-		titulo.setFont(new Font("Sans-Serif", Font.BOLD, 25));
-		panelTitulo.add(titulo);
+		titlePanel.remove(title);
+		title = new JLabel("World "+manager.getCurrentLevel().ordinal());
+		title.setFont(new Font("Sans-Serif", Font.BOLD, 25));
+		titlePanel.add(title);
 		
 		
 		
