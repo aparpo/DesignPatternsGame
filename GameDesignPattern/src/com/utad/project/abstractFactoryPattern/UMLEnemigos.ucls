@@ -109,9 +109,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="com.utad.project.abstractFactoryPattern.enemies.bosses.GwynWorld5" 
+  <class id="11" language="java" name="com.utad.project.abstractFactoryPattern.enemies.bosses.BossWorld5" 
     project="GameDesignPattern" 
-    file="/GameDesignPattern/src/com/utad/project/abstractFactoryPattern/enemies/bosses/GwynWorld5.java" binary="false" 
+    file="/GameDesignPattern/src/com/utad/project/abstractFactoryPattern/enemies/bosses/BossWorld5.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1059" y="741"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -120,9 +120,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="com.utad.project.abstractFactoryPattern.enemies.bosses.NitoWorld4" 
+  <class id="12" language="java" name="com.utad.project.abstractFactoryPattern.enemies.bosses.BossWorld4" 
     project="GameDesignPattern" 
-    file="/GameDesignPattern/src/com/utad/project/abstractFactoryPattern/enemies/bosses/NitoWorld4.java" binary="false" 
+    file="/GameDesignPattern/src/com/utad/project/abstractFactoryPattern/enemies/bosses/BossWorld4.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1246" y="501"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -131,10 +131,10 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="com.utad.project.abstractFactoryPattern.enemies.bosses.OrsteinAndSmoughWorld3" 
+  <class id="13" language="java" name="com.utad.project.abstractFactoryPattern.enemies.bosses.BossWorld3" 
     project="GameDesignPattern" 
-    file="/GameDesignPattern/src/com/utad/project/abstractFactoryPattern/enemies/bosses/OrsteinAndSmoughWorld3.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+    file="/GameDesignPattern/src/com/utad/project/abstractFactoryPattern/enemies/bosses/BossWorld3.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="876" y="617"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -142,10 +142,10 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="com.utad.project.abstractFactoryPattern.enemies.bosses.QuelaagWorld1" 
+  <class id="14" language="java" name="com.utad.project.abstractFactoryPattern.enemies.bosses.BossWorld1" 
     project="GameDesignPattern" 
-    file="/GameDesignPattern/src/com/utad/project/abstractFactoryPattern/enemies/bosses/QuelaagWorld1.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+    file="/GameDesignPattern/src/com/utad/project/abstractFactoryPattern/enemies/bosses/BossWorld1.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="877" y="501"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -153,9 +153,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="com.utad.project.abstractFactoryPattern.enemies.bosses.SifWorld2" 
+  <class id="15" language="java" name="com.utad.project.abstractFactoryPattern.enemies.bosses.BossWorld2" 
     project="GameDesignPattern" 
-    file="/GameDesignPattern/src/com/utad/project/abstractFactoryPattern/enemies/bosses/SifWorld2.java" binary="false" 
+    file="/GameDesignPattern/src/com/utad/project/abstractFactoryPattern/enemies/bosses/BossWorld2.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1242" y="618"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -257,71 +257,71 @@
     <end type="TARGET" refId="2"/>  
   </generalization>  
   <generalization id="25">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="10"/>  
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
   </generalization>  
   <generalization id="26">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="1"/>  
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="2"/>  
   </generalization>  
   <generalization id="27">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="6"/>  
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="10"/>  
   </generalization>  
   <generalization id="28">    
     <end type="SOURCE" refId="16"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
   <generalization id="29">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="10"/>  
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="6"/>  
   </generalization>  
   <generalization id="30">    
-    <end type="SOURCE" refId="14"/>    
+    <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="10"/>  
   </generalization>  
   <generalization id="31">    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="22"/>  
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="1"/>  
   </generalization>  
   <generalization id="32">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="1"/>  
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="10"/>  
   </generalization>  
   <generalization id="33">    
     <end type="SOURCE" refId="15"/>    
     <end type="TARGET" refId="10"/>  
   </generalization>  
   <generalization id="34">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <generalization id="35">    
     <end type="SOURCE" refId="18"/>    
     <end type="TARGET" refId="16"/>  
   </generalization>  
-  <generalization id="36">    
+  <generalization id="35">    
     <end type="SOURCE" refId="21"/>    
     <end type="TARGET" refId="19"/>  
   </generalization>  
-  <generalization id="37">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="1"/>  
+  <generalization id="36">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="6"/>  
   </generalization>  
-  <generalization id="38">    
+  <generalization id="37">    
     <end type="SOURCE" refId="17"/>    
     <end type="TARGET" refId="16"/>  
   </generalization>  
+  <generalization id="38">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
   <generalization id="39">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="19"/>  
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="22"/>  
   </generalization>  
   <generalization id="40">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="2"/>  
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
   </generalization>  
   <generalization id="41">    
-    <end type="SOURCE" refId="13"/>    
+    <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="10"/>  
   </generalization>  
   <generalization id="42">    
@@ -329,16 +329,16 @@
     <end type="TARGET" refId="1"/>  
   </generalization>  
   <generalization id="43">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="44">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <generalization id="45">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="44">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="19"/>  
+  </generalization>  
+  <generalization id="45">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="1"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

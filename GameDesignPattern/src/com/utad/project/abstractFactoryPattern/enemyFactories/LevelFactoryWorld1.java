@@ -5,7 +5,7 @@ import java.util.List;
 import com.utad.project.abstractFactoryPattern.*;
 import com.utad.project.abstractFactoryPattern.enemies.blackKnight.*;
 import com.utad.project.abstractFactoryPattern.enemies.bosses.Boss;
-import com.utad.project.abstractFactoryPattern.enemies.bosses.QuelaagWorld1;
+import com.utad.project.abstractFactoryPattern.enemies.bosses.BossWorld1;
 import com.utad.project.abstractFactoryPattern.enemies.crystal.*;
 import com.utad.project.abstractFactoryPattern.enemies.hollow.*;
 import com.utad.project.base.Enemy;
@@ -32,7 +32,7 @@ public class LevelFactoryWorld1 extends FactoryTemplate{
 	
 	//Genera el Boss final correspondiente al nivel en el que nos encontremos
 	public Boss generateBoss() {
-		return new QuelaagWorld1();
+		return new BossWorld1();
 	}
 	
 	//Genera un enemigo.

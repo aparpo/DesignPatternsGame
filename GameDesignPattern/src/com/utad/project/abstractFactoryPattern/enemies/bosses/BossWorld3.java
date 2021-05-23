@@ -4,9 +4,9 @@ import com.utad.project.decoratorPattern.RegularItem;
 import com.utad.project.decoratorPattern.items.bossWeapons.SunlightSpear;
 import com.utad.project.strategyPattern.normalStrategies.AgressiveStrategy;
 
-public class OrsteinAndSmoughWorld3 extends Boss{
+public class BossWorld3 extends Boss{
 	
-	public OrsteinAndSmoughWorld3() {
+	public BossWorld3() {
 		super("Orstein & Smough", "src/com/utad/project/display/orsteinsmough.png");
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", new Stats(140,140,35,35,2));	
 		this.addItem(new SunlightSpear()); 

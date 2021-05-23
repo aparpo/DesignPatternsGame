@@ -2,7 +2,7 @@ package com.utad.project.abstractFactoryPattern.enemyFactories;
 
 import com.utad.project.abstractFactoryPattern.FactoryTemplate;
 import com.utad.project.abstractFactoryPattern.enemies.bosses.Boss;
-import com.utad.project.abstractFactoryPattern.enemies.bosses.OrsteinAndSmoughWorld3;
+import com.utad.project.abstractFactoryPattern.enemies.bosses.BossWorld3;
 import com.utad.project.abstractFactoryPattern.enemies.crystal.*;
 import com.utad.project.abstractFactoryPattern.enemies.hollow.*;
 import com.utad.project.abstractFactoryPattern.enemies.skeleton.*;
@@ -27,7 +27,7 @@ public class LevelFactoryWorld3 extends FactoryTemplate{
 
 	//Genera el Boss final correspondiente al nivel en el que nos encontremos
 	public Boss generateBoss() {
-		return new OrsteinAndSmoughWorld3();
+		return new BossWorld3();
 	}
 	
 	//Genera un enemigo.

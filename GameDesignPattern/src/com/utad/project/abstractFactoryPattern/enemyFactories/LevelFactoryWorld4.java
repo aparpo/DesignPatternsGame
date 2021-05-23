@@ -2,7 +2,7 @@ package com.utad.project.abstractFactoryPattern.enemyFactories;
 import com.utad.project.abstractFactoryPattern.FactoryTemplate;
 import com.utad.project.abstractFactoryPattern.enemies.blackKnight.*;
 import com.utad.project.abstractFactoryPattern.enemies.bosses.Boss;
-import com.utad.project.abstractFactoryPattern.enemies.bosses.NitoWorld4;
+import com.utad.project.abstractFactoryPattern.enemies.bosses.BossWorld4;
 import com.utad.project.abstractFactoryPattern.enemies.capraDemon.*;
 import com.utad.project.abstractFactoryPattern.enemies.giant.*;
 import com.utad.project.base.Enemy;
@@ -27,7 +27,7 @@ public class LevelFactoryWorld4 extends FactoryTemplate{
 
 	//Genera el Boss final correspondiente al nivel en el que nos encontremos
 	public Boss generateBoss() {
-		return new NitoWorld4();
+		return new BossWorld4();
 	}
 
 	//Genera un enemigo.

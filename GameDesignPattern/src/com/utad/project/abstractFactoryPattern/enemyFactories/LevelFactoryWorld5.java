@@ -2,7 +2,7 @@ package com.utad.project.abstractFactoryPattern.enemyFactories;
 import com.utad.project.abstractFactoryPattern.FactoryTemplate;
 import com.utad.project.abstractFactoryPattern.enemies.blackKnight.*;
 import com.utad.project.abstractFactoryPattern.enemies.bosses.Boss;
-import com.utad.project.abstractFactoryPattern.enemies.bosses.GwynWorld5;
+import com.utad.project.abstractFactoryPattern.enemies.bosses.BossWorld5;
 import com.utad.project.abstractFactoryPattern.enemies.giant.*;
 import com.utad.project.base.Enemy;
 import com.utad.project.base.Stats;
@@ -24,7 +24,7 @@ public class LevelFactoryWorld5 extends FactoryTemplate{
 	
 	//Genera el Boss final correspondiente al nivel en el que nos encontremos
 	public Boss generateBoss() {
-		return new GwynWorld5();
+		return new BossWorld5();
 	}
 	
 	//Genera un enemigo.

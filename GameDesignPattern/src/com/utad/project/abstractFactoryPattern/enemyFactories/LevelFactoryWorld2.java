@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.utad.project.abstractFactoryPattern.FactoryTemplate;
 import com.utad.project.abstractFactoryPattern.enemies.bosses.Boss;
-import com.utad.project.abstractFactoryPattern.enemies.bosses.SifWorld2;
+import com.utad.project.abstractFactoryPattern.enemies.bosses.BossWorld2;
 import com.utad.project.abstractFactoryPattern.enemies.hollow.*;
 import com.utad.project.abstractFactoryPattern.enemies.skeleton.*;
 import com.utad.project.base.Enemy;
@@ -32,7 +32,7 @@ public class LevelFactoryWorld2 extends FactoryTemplate{
 	
 	//Genera el Boss final correspondiente al nivel en el que nos encontremos
 	public Boss generateBoss() {
-		return new SifWorld2();
+		return new BossWorld2();
 	}
 
 	//Genera un enemigo.
