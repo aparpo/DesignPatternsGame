@@ -19,7 +19,7 @@ public class SunlightSpear extends ActiveItemDecorator{ //Puede inflingir un gol
 		this(null);
 	}
 	public SunlightSpear(Item equipment) {
-		super(equipment, "Sunlight Spear", "Thunder Spike", new Stats(0, 0, 50, 0, 0), ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.S);
+		super(equipment, "Sunlight Spear", "Thunder Spike", new Stats(0, 0, 10, 0, 0), ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.S);
 	}
 
 	public void useSkill(Character user, Character target) {

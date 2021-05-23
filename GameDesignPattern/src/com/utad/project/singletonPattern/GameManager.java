@@ -20,7 +20,7 @@ public class GameManager {
 	private List<ItemDecorator> items;
 	private AbstractLevelFactory factory = new LevelFactoryWorld1();
 	private Player player;
-	private World currentLevel = World.WORLD5;
+	private World currentLevel = World.WORLD1;
 	
 
 	private DisplayStrategy displayManager;

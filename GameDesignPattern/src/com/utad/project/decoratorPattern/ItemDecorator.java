@@ -25,7 +25,7 @@ public abstract class ItemDecorator implements Item{
 	//Metodo para añadir un item sin que haya repeticiones
 	public Item addItem(ItemDecorator newItem) { 
 		Item aux = isThereAny(newItem);
-		if(aux==null) { //No hay items del mismo tipo equipados
+		if(aux==null || newItem instanceof RegularItem) { //No hay items del mismo tipo equipados
 			newItem.setEquipment(this); //Decorar
 			return newItem;
 		}else { //Hay un item del mismo tipo equipado

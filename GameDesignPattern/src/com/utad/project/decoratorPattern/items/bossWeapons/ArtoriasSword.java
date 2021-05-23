@@ -17,11 +17,11 @@ public class ArtoriasSword extends ActiveItemDecorator{ //Ignora toda la defensa
 		this(null);
 	}
 	public ArtoriasSword(Item equipment) {
-		super(equipment, "Artorias Sword", "Dark Void", new Stats(0, 0, 40, 0, 0), ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.S);
+		super(equipment, "Artorias Sword", "Dark Void", new Stats(0, 0, 10, 0, 0), ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.S);
 	}
 
 	public void useSkill(Character user, Character target) {
-		int aux = user.getEquipment().getAttack(); //Resultado del combate, ignorando toda la defensa del objetivo.
+		int aux = user.getEquipment().getAttack()/2; //Resultado del combate, ignorando toda la defensa del objetivo.
 		
 		Stats variationTarget = new Stats( -aux, 0, 0, 0, 0); //Actualizar vida actual del objetivo.
 

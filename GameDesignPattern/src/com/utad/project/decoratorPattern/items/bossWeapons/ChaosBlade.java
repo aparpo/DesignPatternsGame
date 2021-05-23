@@ -16,7 +16,7 @@ public class ChaosBlade extends ActiveItemDecorator{ //Resta un porcentaje de vi
 		this(null);
 	}
 	public ChaosBlade(Item equipment) {
-		super(equipment, "Chaos Blade", "Black Fire Slash", new Stats(0, 0, 35, 0, 0), ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.A);
+		super(equipment, "Chaos Blade", "Black Fire Slash", new Stats(0, 0, 5, 0, 0), ActionType.OFFENSIVE, SkillType.PHYSICAL, Tier.S);
 	}
 
 	public void useSkill(Character user, Character target) {
@@ -28,7 +28,7 @@ public class ChaosBlade extends ActiveItemDecorator{ //Resta un porcentaje de vi
 		
 		Stats variationUser;
 		if(target.getEquipment().getLife() > 1 && target.getEquipment().getLife() < (aux / 4)) {
-			variationUser = new Stats( -(target.getEquipment().getLife() - 1) , 0, 0, 0, 0); //Si el daño es superior a la vida del usuario y este tiene más de 1 de vida, 
+			variationUser = new Stats( -(user.getEquipment().getMaxLife() - 1) , 0, 0, 0, 0); //Si el daño es superior a la vida del usuario y este tiene más de 1 de vida, 
 																							//en vez de matarle le deja a 1 de vida.
 		}
 		

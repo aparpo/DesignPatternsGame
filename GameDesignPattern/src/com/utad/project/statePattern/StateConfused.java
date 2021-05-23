@@ -27,7 +27,7 @@ public class StateConfused extends AbstractState{
 		this.state.setTurns(this.state.getTurns()-1);
 		
 		//Cambia el objetivo al usuario con un 60% de probabilidad
-		if(Math.random() < 0.6) { 
+		if(Math.random() < 0.4) { 
 			action.setTarget(action.getUser());
 			GameManager.getManager().informPlayer(action.getUser().getName()+" is confused and deals himself the damage");
 		}

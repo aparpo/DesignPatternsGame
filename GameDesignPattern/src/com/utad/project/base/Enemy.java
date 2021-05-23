@@ -32,7 +32,6 @@ public class Enemy extends Character{
 	public void changeStrategy() {
 		if(this.getEquipment().getLife() < this.getEquipment().getMaxLife()*0.25) {
 			this.setBehaviour(new DefensiveStrategy());
-			System.out.println("La estrategia del enemigo a pasado a ser defensiva");
 		}else {
 			int random = (int)(Math.random()*10);
 			if(random < 2) {
@@ -40,17 +39,14 @@ public class Enemy extends Character{
 				if(random == 1) {
 					if(!(this.getBehaviour() instanceof DefensiveStrategy)) {
 						this.setBehaviour(new DefensiveStrategy());
-						System.out.println("La estrategia del enemigo a pasado a ser defensiva");
 					}
 				}else if(random == 2) {
 					if(!(this.getBehaviour() instanceof AgressiveStrategy)) {
 						this.setBehaviour(new AgressiveStrategy());
-						System.out.println("La estrategia del enemigo a pasado a ser agresiva");
 					}
 				}else if(random == 3) {
 					if(!(this.getBehaviour() instanceof DumbStrategy)) {
 						this.setBehaviour(new DumbStrategy());
-						System.out.println("La estrategia del enemigo a pasado a ser aleatoria");
 					}
 				}
 			}
