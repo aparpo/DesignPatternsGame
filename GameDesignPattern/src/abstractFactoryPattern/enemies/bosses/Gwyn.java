@@ -8,7 +8,7 @@ public class Gwyn extends Boss{
 	
 	public Gwyn() {
 		super("Gwyn Lord of Cinder");
-		this.equipment = new RegularItem(this.equipment, "Base Equipment", new Stats(0,0,0,0,0));	
+		this.equipment = new RegularItem(this.equipment, "Base Equipment", new Stats(200,200,70,60,3));	
 		this.addItem(new SunlightSpear()); 
 		this.behaviour = new AgressiveStrategy();
 	}

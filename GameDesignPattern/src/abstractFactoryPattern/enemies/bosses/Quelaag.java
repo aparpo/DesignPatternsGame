@@ -8,7 +8,7 @@ public class Quelaag extends Boss{
 	
 	public Quelaag() {
 		super("Chaos Witch Quelaag");
-		this.equipment = new RegularItem(this.equipment, "Base Equipment", new Stats(0,0,0,0,0));
+		this.equipment = new RegularItem(this.equipment, "Base Equipment", new Stats(90,90,20,25,2));
 		this.addItem(new ChaosBlade()); 
 		this.behaviour = new DefensiveStrategy();
 	}

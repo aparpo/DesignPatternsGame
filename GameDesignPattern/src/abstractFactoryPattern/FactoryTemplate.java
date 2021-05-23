@@ -7,6 +7,7 @@ import base.Enemy;
 public abstract class FactoryTemplate implements AbstractLevelFactory{
 	protected Random rand = new Random();
 	
+	//Método para generar un enemigo completo con equipamiento y comportamiento.
 	public final Enemy generateEnemy() {
 		Enemy enemy = createEnemy();
 		decorateEnemy(enemy);

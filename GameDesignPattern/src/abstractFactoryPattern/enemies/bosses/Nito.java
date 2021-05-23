@@ -8,7 +8,7 @@ public class Nito extends Boss{
 	
 	public Nito() {
 		super("Gravelord Nito");
-		this.equipment = new RegularItem(this.equipment, "Base Equipment", new Stats(0,0,0,0,0));
+		this.equipment = new RegularItem(this.equipment, "Base Equipment", new Stats(170,170,40,50,1));
 		this.addItem(new ChaosBlade()); 
 		this.behaviour = new DefensiveStrategy();
 	}

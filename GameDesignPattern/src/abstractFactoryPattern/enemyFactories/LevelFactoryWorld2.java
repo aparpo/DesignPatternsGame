@@ -93,7 +93,6 @@ public class LevelFactoryWorld2 extends FactoryTemplate{
 		items.add(new SolarAegis());
 	}
 
-	@Override
 	public ItemDecorator generateItem() {
 		int randNum = rand.nextInt(100);
 		ItemDecorator item;

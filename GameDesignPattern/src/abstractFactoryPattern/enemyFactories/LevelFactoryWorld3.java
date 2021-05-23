@@ -92,7 +92,6 @@ public class LevelFactoryWorld3 extends FactoryTemplate{
 		return new HollowWorld3(hollowCount);
 	}
 
-	@Override
 	public ItemDecorator generateItem() {
 		//Genera items (de tres en tres) pertenencientes a una clase concreta
 		int randNum = rand.nextInt(100);

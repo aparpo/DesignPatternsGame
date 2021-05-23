@@ -87,7 +87,6 @@ public class LevelFactoryWorld4 extends FactoryTemplate{
 		return new BlackKnightWorld4(knightCount);
 	}
 	
-	@Override
 	public ItemDecorator generateItem() {
 		// TODO Auto-generated method stub
 		return null;

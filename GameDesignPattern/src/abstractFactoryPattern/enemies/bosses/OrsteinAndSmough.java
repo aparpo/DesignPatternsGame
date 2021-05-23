@@ -8,7 +8,7 @@ public class OrsteinAndSmough extends Boss{
 	
 	public OrsteinAndSmough() {
 		super("Orstein & Smough");
-		this.equipment = new RegularItem(this.equipment, "Base Equipment", new Stats(0,0,0,0,0));	
+		this.equipment = new RegularItem(this.equipment, "Base Equipment", new Stats(140,140,35,35,2));	
 		this.addItem(new SunlightSpear()); 
 		this.behaviour = new AgressiveStrategy();
 	}
