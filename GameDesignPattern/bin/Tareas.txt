@@ -1,0 +1,44 @@
+Tareas:
+-Hacer un Strategy mas (normal o hard)
+	Que sobreescriba el metodo analize() del template y que analice de otra forma
+	ej: Support strategy que analice a sus aliados, les cure, les eche antidotos si 
+	tiene, paralice al jugador si puede, etc.
+
+-Reducir el tamaño de las clases 
+	Hard Strategies (más tontas o hacer más eficientes)
+	GameManager (delegar en otros objetos más pequeños o hacer más eficiente)
+
+-Reducir el numero de clases (menos que comentar en las memorias)
+	Menos items
+	Menos tipos de enemigos
+	Menos niveles (sugiero 3)
+
+-Darle algoritmos concretos a las factorias
+	Que cada factoria haga enemigos de formas distintas
+
+-Terminar el GameManager
+	Completar la transición entre niveles
+	Darle al jugador items cuando los acabe
+	Implementar los boses
+	Hacer un final de juego
+
+-Interfaz gráfica
+	He subido mi clase ventana como inspiración, tiene un constructor de más
+	de 100 lineas, asi que habria que mejorarla un poco
+
+	Conseguir sprites para enemigos, jugador e items (sugiero que todos los
+	enemigos de una clase lleven el mismo sprite o si no cambiado de color
+	y un solo sprite para todos los items o en todo caso uno para defensivos,
+	ofensivos y neutrales)
+
+-Hacer clases test para probar todos los métodos del patron
+	Excepto para los patrones de Singleton (el test es la clase main) y Template
+
+-Hacer memorias de cada uno de los patrones 
+	Como si cada patrón fuera un caso de estudio
+
+-COMENTAR EL CODIGO!!!
+	No hace falta que lo comenteis linea a linea, pero estaria bien como en algoritmos
+	encima de cada funcion que hace o que devuelve
+
+	

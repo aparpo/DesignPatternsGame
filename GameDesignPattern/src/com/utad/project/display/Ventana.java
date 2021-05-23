@@ -206,7 +206,7 @@ public class Ventana extends JFrame{
 		playerSection.remove(playerInfo);
 		
 		String playerDesc = player.getName() + " \n" + player.getEquipment().getLife()+ "/"+ player.getEquipment().getMaxLife();
-		playerInfo = new JLabel(playerDesc,new ImageIcon("personaje.jpg"), JLabel.CENTER);
+		playerInfo = new JLabel(playerDesc,new ImageIcon(player.getSprite()), JLabel.CENTER);
 		playerInfo.setVerticalTextPosition(JLabel.BOTTOM);
 		playerInfo.setHorizontalTextPosition(JLabel.CENTER);
 		
@@ -226,7 +226,7 @@ public class Ventana extends JFrame{
 			}
 			Enemy enemy = (Enemy) manager.getCharacters().get(i);
 			String info = enemy.getName() + " \n" + enemy.getEquipment().getLife()+ "/"+ enemy.getEquipment().getMaxLife();
-			enemiesInfo[j] = new JLabel( info,new ImageIcon("puerta.png"), JLabel.LEFT);
+			enemiesInfo[j] = new JLabel( info,new ImageIcon(enemy.getSprite()), JLabel.LEFT);
 			enemySection.add(enemiesInfo[j]);
 			j++;
 		}
