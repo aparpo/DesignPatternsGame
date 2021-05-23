@@ -1,6 +1,7 @@
 package com.utad.project.statePattern;
 
 import com.utad.project.base.Action;
+import com.utad.project.singletonPattern.GameManager;
 
 public class StateFurious extends AbstractState{
 	
@@ -24,6 +25,7 @@ public class StateFurious extends AbstractState{
 	
 	public Action effect(Action action) {
 		action.getVariation().setAttack(action.getVariation().getAttack()*2);
+		GameManager.getManager().informPlayer(action.getUser().getName()+" is furious and deals doble damage");
 		this.state.setTurns(this.state.getTurns()-1);
 		return action;
 	}

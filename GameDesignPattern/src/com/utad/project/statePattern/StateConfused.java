@@ -1,6 +1,7 @@
 package com.utad.project.statePattern;
 
 import com.utad.project.base.Action;
+import com.utad.project.singletonPattern.GameManager;
 
 public class StateConfused extends AbstractState{
 	
@@ -28,6 +29,7 @@ public class StateConfused extends AbstractState{
 		//Cambia el objetivo al usuario con un 60% de probabilidad
 		if(Math.random() < 0.6) { 
 			action.setTarget(action.getUser());
+			GameManager.getManager().informPlayer(action.getUser().getName()+" is confused and deals himself the damage");
 		}
 		return action;
 	}

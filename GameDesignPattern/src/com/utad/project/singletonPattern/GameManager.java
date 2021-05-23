@@ -85,10 +85,7 @@ public class GameManager {
 				newLevel(World.values()[currentLevel.ordinal()+1]);
 			}else {
 				informPlayer("You win");
-			}
-			
-			
-			
+			}			
 			break;
 		default:  //Queda mas de un enemigo vivo
 			askPlayer(); //Pedir al jugador su proxima accion
@@ -100,6 +97,7 @@ public class GameManager {
 	//Genera un nuevo nivel
 	private void newLevel(World level) {
 		
+		//Curar al juador cuando empieza un nivel nuevo
 		player.getEquipment().setLife(0);
 		
 		currentLevel = World.values()[currentLevel.ordinal()+1];
@@ -125,6 +123,7 @@ public class GameManager {
 		for(int i = 0; i < currentLevel.ordinal();i++) {
 			characters.add(factory.generateEnemy());
 		}
+		characters.add(factory.generateBoss());
 		displayManager.paint(player, characters);
 		informPlayer("The level "+ currentLevel.ordinal()+ " is starting");
 		
@@ -149,9 +148,7 @@ public class GameManager {
 	public void giveItem(ItemDecorator item) {
 		player.addItem(item);
 	}
-	public void giveItem(String name) {
-		
-	}
+	
 	private void prepareNext() {
 		//process de los estados
 		for(int i = 0; i < characters.size();i++) {

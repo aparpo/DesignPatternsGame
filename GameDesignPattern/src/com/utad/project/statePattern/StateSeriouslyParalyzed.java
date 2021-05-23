@@ -1,6 +1,7 @@
 package com.utad.project.statePattern;
 
 import com.utad.project.base.Action;
+import com.utad.project.singletonPattern.GameManager;
 
 public class StateSeriouslyParalyzed extends AbstractState{
 
@@ -22,16 +23,15 @@ public class StateSeriouslyParalyzed extends AbstractState{
 		//Devuelve una accion inutilizada
 		action.getVariation().backToNormal();
 		action.getVariation().setLife(0);
+		GameManager.getManager().informPlayer(action.getUser().getName()+" is paralyzed and cant perform any action");
 		this.state.setTurns(this.state.getTurns()-1);
 		return action;
 	}
 	
 	protected void standard() {
-		System.out.println("El jugador ya no esta paralizado");
 		this.state.setState(this.state.getPossibleState(States.STANDARD));
 	}
 	protected void paralyzed() {
-		System.out.println("El jugador ya no esta seriamente paralizado, pero sigue paralizado");
 		this.state.setState(this.state.getPossibleState(States.PARALYZED));
 		this.state.setTurns(1);
 	}

@@ -1,6 +1,7 @@
 package com.utad.project.statePattern;
 
 import com.utad.project.base.Action;
+import com.utad.project.singletonPattern.GameManager;
 
 public class StateParalyzed extends AbstractState{
 	
@@ -23,6 +24,7 @@ public class StateParalyzed extends AbstractState{
 		if((int) Math.random()*1 == 0) {
 			action.getVariation().backToNormal();
 			action.getVariation().setLife(0);
+			GameManager.getManager().informPlayer(action.getUser().getName()+" is paralyzed and cant perform any action");
 		}
 		this.state.setTurns(this.state.getTurns()-1);
 		return action;

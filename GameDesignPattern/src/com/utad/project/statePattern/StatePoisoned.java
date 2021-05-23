@@ -33,11 +33,9 @@ public class StatePoisoned extends AbstractState{
 	}
 
 	protected void standard() {
-		System.out.println("El jugador ya no esta envenenado");
 		this.state.setState(this.state.getPossibleState(States.STANDARD));
 	}
 	protected void seriouslyPosioned() {
-		System.out.println("El jugador esta gravemente envenenado");
 		this.state.setState(this.state.getPossibleState(States.SERIOUSLYPOISONED));
 		this.state.setTurns(this.state.getTurns()+1);
 		
