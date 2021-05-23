@@ -37,7 +37,7 @@ public class Ventana extends JFrame{
 		
 		//Diseñamos panelTitulo
 		panelTitulo.setLayout(new GridLayout(0,1));
-		titulo = new JLabel("You are in the Level "+manager.getCurrentLevel().ordinal());
+		titulo = new JLabel("World "+manager.getCurrentLevel().ordinal());
 		titulo.setFont(new Font("Sans-Serif", Font.BOLD, 25));
 		panelTitulo.add(titulo);		
 		
