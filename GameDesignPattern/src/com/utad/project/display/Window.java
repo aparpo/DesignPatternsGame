@@ -179,21 +179,17 @@ public class Window extends JFrame{
 		inventoryPanel.remove(playerState);
 		
 		if(player.getEquipment().getLife() > 0) {
-			inventory = new JTextArea("\nName:"+player.getName()+"\n"
-					+"Life:"+player.getEquipment().getLife()+"\n"
-					+"Max Life:"+player.getEquipment().getMaxLife()+"\n"
-					+"Attack:"+player.getEquipment().getAttack()+"\n"
-					+"Defense:"+player.getEquipment().getDefense()+"\n"
-					+"Speed:"+player.getEquipment().getSpeed()+"\n");
+			inventory = new JTextArea("\nName:"+player.getName()+"\n" +"Life:"+player.getEquipment().getLife()+"\n");
+					
 		}
 		else {
-			inventory = new JTextArea("\nName:"+player.getName()+"\n"
-					+"Life:0\n"
-					+"Max Life:"+player.getEquipment().getMaxLife()+"\n"
-					+"Attack:"+player.getEquipment().getAttack()+"\n"
-					+"Defense:"+player.getEquipment().getDefense()+"\n"
-					+"Speed:"+player.getEquipment().getSpeed()+"\n");
+			inventory = new JTextArea("\nName:"+player.getName()+"\n"+"Life:0\n");
 		}
+		
+		inventory.append("Max Life:"+player.getEquipment().getMaxLife()+"\n"
+				+"Attack:"+player.getEquipment().getAttack()+"\n"
+				+"Defense:"+player.getEquipment().getDefense()+"\n"
+				+"Speed:"+player.getEquipment().getSpeed()+"\n");
 		
 		playerItems= new JLabel("<html>Equiped Items:"+player.getEquipment().getDesc()+"</html>");
 		playerState = new JLabel("Current State:"+player.getState().getStateName());
