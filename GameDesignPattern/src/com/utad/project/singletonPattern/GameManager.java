@@ -22,14 +22,15 @@ public class GameManager {
 	private Player player; //Referencia concreta al jugador
 	private World currentLevel = World.WORLD1;
 	
-	private AbstractLevelFactory factory = new LevelFactoryWorld1();
-	private DisplayStrategy displayManager;
-	private CombatManager combatManager;
+	//Subsistemas
+	private AbstractLevelFactory factory = new LevelFactoryWorld1(); //Creacion de instancias
+	private DisplayStrategy displayManager; //Interaccion con el jugador
+	private CombatManager combatManager; //Logica del combate
 	
-
+	//Implementacion del patron Singleton
 	private GameManager() {}
 
-	public static GameManager getManager() {
+	public static GameManager getManager() { 
 		return manager;
 	}
 
@@ -81,9 +82,9 @@ public class GameManager {
 			System.out.println("You lose, start again?");
 			return;
 		case 1: //Solo queda el jugador
-			if(currentLevel.ordinal() < 5) {
+			if(currentLevel.ordinal() < 5) { //No se ha acabado el juego
 				newLevel(World.values()[currentLevel.ordinal()+1]);
-			}else {
+			}else { //Se acabaron los niveles
 				informPlayer("You win");
 			}			
 			break;
@@ -122,12 +123,14 @@ public class GameManager {
 		for(int i = 0; i < currentLevel.ordinal();i++) {
 			characters.add(factory.generateEnemy());
 		}
+		//Generar un Boss
 		characters.add(factory.generateBoss());
 		displayManager.paint(player, characters);
 		informPlayer("The level "+ currentLevel.ordinal()+ " is starting");
 		
 		//Borrar el buffer de items
 		items = new ArrayList<ItemDecorator>();
+		//Generar nuevos
 		for(int i = 0; i < (int) level.getComplexFactor()*3;i++) {
 			items.add(factory.generateItem());
 		}

@@ -5,10 +5,10 @@ import java.util.List;
 
 import com.utad.project.base.*;
 
-public class State {
-	private CharacterState state;
+public class State {//Contexto del patron de estados
+	private CharacterState state; //estado concreto
 
-	private List<CharacterState> possibleStates = new ArrayList<CharacterState>();
+	private List<CharacterState> possibleStates = new ArrayList<CharacterState>(); //Posibles estados
 
 	private int turns;
 	
@@ -16,7 +16,7 @@ public class State {
 		this.state.process();
 	}
 	
-	public State() {
+	public State() { //inicializacion de los posibles estados coincidiendo con el orden del enumerado States
 		this.state = new StateStandard(this);
 		this.possibleStates.add(state);
 		this.possibleStates.add(new StateConfused(this));
@@ -37,6 +37,7 @@ public class State {
 		this.turns = 2;
 	}
 	
+	//Obtencion del estado deseado sabiendo solo el tipo enumerado al que se quiere cambiar
 	public CharacterState getPossibleState(States desired) {
 		return possibleStates.get(desired.ordinal());
 	}

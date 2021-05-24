@@ -23,7 +23,7 @@ public class StateFurious extends AbstractState{
 		suggestion = null;
 	}
 	
-	public Action effect(Action action) {
+	public Action effect(Action action) { //Duplica la fuerza de un ataque
 		action.getVariation().setAttack(action.getVariation().getAttack()*2);
 		GameManager.getManager().informPlayer(action.getUser().getName()+" is furious and deals doble damage");
 		this.state.setTurns(this.state.getTurns()-1);

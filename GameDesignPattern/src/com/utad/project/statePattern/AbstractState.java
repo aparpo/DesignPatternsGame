@@ -14,11 +14,13 @@ public abstract class AbstractState implements CharacterState{
 		this.stateName = stateName;
 	}
 	
-	public abstract void process();
+	//Logica con la posibles transiciones entre estados
+	public abstract void process(); 
+	//Efecto que caracteriza a cada estado
 	public abstract Action effect(Action action);
 	
 	
-	//private
+	//Metodos de transicion inicializados por defecto con transiciones ilegales
 	protected  void paralyzed() throws Exception {
 		throw(new Exception("Transicion ilegal"));
 	}

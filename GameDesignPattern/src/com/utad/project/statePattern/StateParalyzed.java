@@ -20,7 +20,7 @@ public class StateParalyzed extends AbstractState{
 		suggestion = null;
 	}
 	
-	public Action effect(Action action) {
+	public Action effect(Action action) { //Niega una accion, todos sus valores a cero
 		if((int) Math.random()*1 == 0) {
 			action.getVariation().backToNormal();
 			action.getVariation().setLife(0);

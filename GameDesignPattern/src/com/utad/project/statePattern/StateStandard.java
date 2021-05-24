@@ -18,7 +18,7 @@ public class StateStandard extends AbstractState{
 		
 	}
 	
-public Action effect(Action action) {
+public Action effect(Action action) { //No hace nada
 		return action;
 	}
 
