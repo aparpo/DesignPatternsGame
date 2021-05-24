@@ -18,11 +18,14 @@ import com.utad.project.strategyPattern.normalStrategies.DumbStrategy;
 
 //Mundo basado en el estado envenenado
 public class LevelFactoryWorld2 extends FactoryTemplate{ 
+	
+	//Atributos necesarios para la creacion de objetos tipo Item
 	private String[] names = {"pickaxe","sword","spear","armor"};
 	private String[] adjectives = {"Poisonous","Mushroom","Snake"};
 	private List<ItemDecorator> items = new ArrayList<ItemDecorator>();
 	private int basePower = 20;
 	
+	//Contadores necesarios para la creacion de objetos tipo Enemy
 	int skeletonCount=0;
 	int hollowCount =0;
 	
@@ -44,11 +47,13 @@ public class LevelFactoryWorld2 extends FactoryTemplate{
 		}
 	}
 
-	//Selecciona un arma para el enemigo generado.
+	//Decora con armas el enemigo generado.
 	protected void decorateEnemy(Enemy enemy) {
 		int randNum = rand.nextInt(100);
-		enemy.getEquipment().addItem(new Potion(1));
-		enemy.getEquipment().addItem(new Antidote(1));
+		
+		enemy.addItem(new Potion(1));
+		enemy.addItem(new Antidote(1));
+		
 		randNum = rand.nextInt(100);
 		if(randNum < 40) {
 			enemy.addItem(new RatCrossbow());
@@ -59,7 +64,7 @@ public class LevelFactoryWorld2 extends FactoryTemplate{
 		
 	}
 
-	//Selecciona un comportamiento para el enemigo generado.
+	//Selecciona un comportamiento (y/o un estado inicial) para el enemigo generado.
 	protected void finishEnemy(Enemy enemy) {
 		int randNum = rand.nextInt(100);
 		if(randNum < 30) {
@@ -90,6 +95,7 @@ public class LevelFactoryWorld2 extends FactoryTemplate{
 		items.add(new SolarAegis());
 	}
 
+	//Crea una lista de objetos adecuados al nivel de la factoria
 	public ItemDecorator generateItem() {
 		int randNum = rand.nextInt(100);
 		ItemDecorator item;
@@ -102,10 +108,10 @@ public class LevelFactoryWorld2 extends FactoryTemplate{
 			item = new RegularItem(name,stats);
 			
 		}else {//Devolver un item de los posibles para el mundo 2
-			if(items.size()==0) createItemList();
+			if(items.size()==0) createItemList(); //Asegurar que se pueden obtener objetos de la lista de manera indefinida
 			randNum = rand.nextInt(items.size());
 			item = items.get(randNum);
-			items.remove(randNum);
+			items.remove(randNum); //De esta manera es más probable obtener todos los items de la lista al menos una vez
 		}
 		return item;
 	}

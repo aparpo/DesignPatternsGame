@@ -16,6 +16,7 @@ import com.utad.project.strategyPattern.normalStrategies.*;
 
 public class LevelFactoryWorld3 extends FactoryTemplate{
 	
+	//Contadores
 	int skeletonCount=0;
 	int hollowCount = 0;
 	int crystalCount = 0;
@@ -44,11 +45,8 @@ public class LevelFactoryWorld3 extends FactoryTemplate{
 		}
 	}
 
-	//Selecciona un arma para el enemigo generado.
+	//Decora con armas el enemigo generado.
 	protected void decorateEnemy(Enemy enemy) {
-		//Mejorar al enemigo con habilidades del mundo 1
-		//Aqui se pueden cambiar estadisticas o habilidades segun el mundo 
-		//Se crean enemigos acordes al nivel de dificultad pero los Hollow del mundo 1 no son siempre exactamente iguales p.e.
 		int randNum = rand.nextInt(100);
 		enemy.getEquipment().addItem(new Potion(2));
 		randNum = rand.nextInt(100);

@@ -6,6 +6,7 @@ public class GiantWorld5 extends Giant{
 
 	public GiantWorld5(int id) {
 		super("Royal Giant Nº"+id);
+		//Estadisticas basicas aplicadas al nivel
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(giantBaseStats, World.WORLD5));
 	}
 }

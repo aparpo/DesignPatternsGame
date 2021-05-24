@@ -8,7 +8,7 @@ import com.utad.project.decoratorPattern.ItemDecorator;
 import com.utad.project.decoratorPattern.PassiveItemDecorator;
 import com.utad.project.decoratorPattern.Tier;
 
-public class Stats{ //Componente base 
+public class Stats{ //Wrapper de atributos 
 	private int life=0;
 	private int maxLife=0;
 	private int attack=0;
@@ -33,7 +33,7 @@ public class Stats{ //Componente base
 		
 	}
 	
-	public void applyStats(Stats variation) { //Aplicar una variacion de estadisticas (sobrecarga del operador suma)
+	public void applyStats(Stats variation) { //Aplicar una variacion de estadisticas (suma de objetos tipo Stats)
 		life+=variation.getLife();
 		maxLife+=variation.getMaxLife();
 		attack+=variation.getAttack();

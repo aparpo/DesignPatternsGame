@@ -6,6 +6,7 @@ public class CapraDemonWorld4 extends CapraDemon{
 
 	public CapraDemonWorld4(int id) {
 		super("Capra Demon Nº"+id);
+		//Estadisticas basicas aplicadas al nivel
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(capraDemonBaseStats, World.WORLD4));	
 	}
 }

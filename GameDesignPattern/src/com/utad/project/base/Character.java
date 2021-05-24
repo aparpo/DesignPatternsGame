@@ -10,6 +10,7 @@ import com.utad.project.singletonPattern.GameManager;
 import com.utad.project.statePattern.*;
 
 public abstract class Character {
+	
 	protected String name;
 	protected String sprite;
 	protected State state;
@@ -26,21 +27,26 @@ public abstract class Character {
 		this.equipment = new LongSword(this.equipment); //Necesario para atacar
 		this.equipment = new Shield(this.equipment); //Necesario para defenderse
 	}
-
+	
+	//Metodo que las clases hijas deben sobreescribir para comunicarse con el GameManager
 	public abstract void decision();
 	
+	//Modificar la accion en funcion del estado
 	public Action StatusEffect(Action action) {
 		return state.effect(action);
 	}
 	
+	//Decorar el equipamiento filtrando posibles errores
 	public void addItem(ItemDecorator newItem) {
 		this.equipment = this.equipment.addItem(newItem);
 	}
 	
+	//Eliminar un item de la jerarquia
 	public void deleteItem(ItemDecorator component) {
 		this.equipment = this.equipment.deleteItem(component);
 	}
 	
+	//Modificar el componente base Equipment con estadisticas temporales
 	public Stats modifyStats() {
 		List<PassiveItemDecorator> list = new ArrayList<PassiveItemDecorator>();
 		Stats aux = new Stats(equipment.getLife(),equipment.getMaxLife(), equipment.getAttack(),equipment.getDefense(), equipment.getSpeed());
@@ -72,7 +78,6 @@ public abstract class Character {
 	}
 	
 	public void setEquipment(Item equipment) {
-		System.out.println("Actual equipment" + equipment.getClass());
 		this.equipment = equipment;
 	}
 	

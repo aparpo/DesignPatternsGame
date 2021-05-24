@@ -13,9 +13,12 @@ import com.utad.project.decoratorPattern.items.*;
 import com.utad.project.statePattern.States;
 import com.utad.project.strategyPattern.normalStrategies.AgressiveStrategy;
 import com.utad.project.strategyPattern.normalStrategies.DefensiveStrategy;
+import com.utad.project.strategyPattern.normalStrategies.DumbStrategy;
 
+//Mundo basado en el estado furioso 
 public class LevelFactoryWorld4 extends FactoryTemplate{
-	//Furios world
+	
+	//Contadores
 	int demonCount =0;
 	int giantCount = 0;
 	int knightCount = 0;
@@ -55,7 +58,7 @@ public class LevelFactoryWorld4 extends FactoryTemplate{
 		}
 	}
 
-	//Selecciona un comportamiento para el enemigo generado.
+	//Selecciona un comportamiento (y/o un estado inicial) para el enemigo generado.
 	protected void finishEnemy(Enemy enemy) {
 		int randNum = rand.nextInt(100);
 		if(randNum < 80) {
@@ -63,8 +66,9 @@ public class LevelFactoryWorld4 extends FactoryTemplate{
 			enemy.setBehaviour(new AgressiveStrategy());
 		}else {
 			enemy.getState().setSuggestion(States.CONFUSED);
-			enemy.setBehaviour(new DefensiveStrategy());
+			enemy.setBehaviour(new DumbStrategy());
 		}
+		enemy.getState().process(); //Hace efectivo el cambio de estado
 		
 	}
 
@@ -91,17 +95,17 @@ public class LevelFactoryWorld4 extends FactoryTemplate{
 			//Estadisticas desequilibradas
 			Stats stats = new Stats(0,rand.nextInt(30),rand.nextInt(60),rand.nextInt(30),rand.nextInt(3));
 			return new RegularItem("Bloody axe",stats);
-		}else if (itemCount%3 == 1) { //Con Activa
+		}else if (itemCount%3 == 1) { //Defensivos
 			if(randNum < 40) {
 				return new Thornmail();
 			}else {
 				return new ElectricShield();
 			}
-		}else { //Con Pasiva
+		}else { //Neutrales
 			if(randNum < 70) {
-				return new Antidote();
+				return new Antidote(2);
 			}else {
-				return new Bow();
+				return new Potion(3);
 			}
 
 		}

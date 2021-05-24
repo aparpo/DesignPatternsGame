@@ -13,7 +13,7 @@ import com.utad.project.strategyPattern.normalStrategies.AgressiveStrategy;
 import com.utad.project.strategyPattern.normalStrategies.DefensiveStrategy;
 
 public class LevelFactoryWorld5 extends FactoryTemplate{
-	
+	//Contadores
 	int giantCount = 0;
 	int knightCount = 0;
 	private int itemCount;
@@ -40,9 +40,6 @@ public class LevelFactoryWorld5 extends FactoryTemplate{
 
 	//Selecciona un arma para el enemigo generado.
 	protected void decorateEnemy(Enemy enemy) {
-		//Mejorar al enemigo con habilidades del mundo 1
-		//Aqui se pueden cambiar estadisticas o habilidades segun el mundo 
-		//Se crean enemigos acordes al nivel de dificultad pero los Hollow del mundo 1 no son siempre exactamente iguales p.e.
 		int randNum = rand.nextInt(100);
 		enemy.getEquipment().addItem(new Potion(3));
 		randNum = rand.nextInt(100);
@@ -90,7 +87,7 @@ public class LevelFactoryWorld5 extends FactoryTemplate{
 			return new RegularItem("Bloody axe",stats);
 		}else if (itemCount%3 == 1) { //Con Activa
 			if(randNum < 40) {
-				return new Thornmail();
+				return new FireStaff();
 			}else {
 				return new RatCrossbow();
 			}

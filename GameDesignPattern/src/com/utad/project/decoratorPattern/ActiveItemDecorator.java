@@ -23,9 +23,11 @@ public abstract class ActiveItemDecorator extends ItemDecorator { //Objetos que 
 	
 	public abstract void useSkill(Character user, Character target); //Efecto de la habilidad
 	
+	//Mostrar al jugador los efectos de las habilidades
 	public void informPlayer(Character user, Character target) {
 		GameManager.getManager().informPlayer(user.getName()+" uses "+ skillName + " on "+ target.getName());
 	}
+	//Mostrar otro tipo de informacion relevante
 	public void informPlayer(String data) {
 		GameManager.getManager().informPlayer(data);
 	}

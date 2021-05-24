@@ -6,6 +6,7 @@ public class HollowWorld2 extends Hollow{
 
 	public HollowWorld2(int id) {
 		super("Hollow Knight Nº"+id);
+		//Estadisticas basicas aplicadas al nivel
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(hollowBaseStats, World.WORLD2));
 	}
 }

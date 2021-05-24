@@ -4,8 +4,8 @@ public class Action {
 	private Stats variation; //variacion de las estadisticas como consecuencia de la accion
 	private ActionType actionType; 
 	private SkillType skillType;
-	private Character user;
-	private Character target;
+	private Character user; //Personaje que lanza la accion
+	private Character target; //Personaje que sufre la accion
 	
 	public Action(Stats variation, ActionType actionType, SkillType skillType, Character user, Character target) {
 		this.variation = variation;

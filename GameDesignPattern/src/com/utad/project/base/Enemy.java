@@ -13,10 +13,12 @@ public class Enemy extends Character{
 		super(name,sprite);
 	}
 
+	//Las decisiones se realizan generalmente contra el jugador
 	public void decision() {
 		behaviour.decision(this, GameManager.getManager().getPlayer());
 	}
 
+	//Metodo para modificar estadisticas en funcion del nivel
 	public Stats levelStats(Stats stats, World world) {
 		Stats modifiedStats = new Stats();
 		
@@ -29,6 +31,7 @@ public class Enemy extends Character{
 		return modifiedStats;
 	}
 	
+	//Metodo para adaptar la estrategia de comportamiento en tiempo de ejecucion
 	public void changeStrategy() {
 		if(this.getEquipment().getLife() < this.getEquipment().getMaxLife()*0.25) {
 			this.setBehaviour(new DefensiveStrategy());

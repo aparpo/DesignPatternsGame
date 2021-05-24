@@ -11,6 +11,7 @@ public abstract class Boss extends Enemy{
 		super(bossName, sprite);
 	}
 	
+	//Metodo changeStrategy sobreescrito especialemente para determinar el comportamiento de los objetos Boss
 	@Override
 	public void changeStrategy() {
 		if(this.getEquipment().getLife() < this.getEquipment().getMaxLife()*0.3 && !(this.getBehaviour()instanceof HardStrategy)) {

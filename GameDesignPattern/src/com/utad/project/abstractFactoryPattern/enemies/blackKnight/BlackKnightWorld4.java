@@ -6,6 +6,7 @@ public class BlackKnightWorld4 extends BlackKnight{
 	
 	public BlackKnightWorld4(int id) {
 		super("Axe Knight Nº"+id);
+		//Estadisticas basicas aplicadas al nivel
 		this.equipment = new RegularItem(this.equipment, "Base Equipment", levelStats(blackKnightBaseStats, World.WORLD4));	
 	}
 }

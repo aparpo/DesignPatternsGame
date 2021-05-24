@@ -16,11 +16,13 @@ import com.utad.project.strategyPattern.normalStrategies.*;
 
 public class LevelFactoryWorld1 extends FactoryTemplate{
 	
+	//Atributos necesarios para la creacion de objetos tipo Item
 	private String[] names = {"axe","dagger","spear","armor"};
 	private String[] adjectives = {"Iron","Wood","Plastic"};
 	private List<ItemDecorator> items = new ArrayList<ItemDecorator>();
 	private int basePower = 20;
 	
+	//Contadores necesarios para la creacion de objetos tipo Enemy
 	int hollowCount = 0;
 	int crystalCount = 0;
 	int knightCount = 0;
@@ -101,23 +103,26 @@ public class LevelFactoryWorld1 extends FactoryTemplate{
 		items.add(new Thornmail());
 		items.add(new SolarAegis());
 	}
-
+	
+	//Genera un Item acorde con el nivel del mundo
 	public ItemDecorator generateItem() {
 		int randNum = rand.nextInt(100);
 		ItemDecorator item;
-		if(randNum < 60 || items.size() <= 0) { //Crear un regular item  con 60% de probabilidad
+		if(randNum < 60) { //Crear un regular item  con 60% de probabilidad
 			//Stats aleatorias
 			Stats stats = new Stats(0,rand.nextInt(basePower),rand.nextInt(basePower),rand.nextInt(basePower),rand.nextInt(2));
 			
 			//Elaborar un nombre aleatorio
 			String name = adjectives[rand.nextInt(adjectives.length)] + " "+ names[rand.nextInt(names.length)];
+			
+			//Crea el item
 			item = new RegularItem(name,stats);
 			
-		}else {//Devolver un item de los posibles para el mundo 1
-			if(items.size()==0) createItemList();
+		}else {//Devolver un item de entre la lista de posibles para el mundo 1
+			if(items.size()==0) createItemList(); //Asegurar que se pueden obtener objetos de la lista de manera indefinida
 			randNum = rand.nextInt(items.size());
 			item = items.get(randNum);
-			items.remove(randNum);
+			items.remove(randNum); //De esta manera es más probable obtener todos los items de la lista al menos una vez
 		}
 		return item;
 	}

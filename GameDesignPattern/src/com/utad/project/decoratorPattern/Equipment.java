@@ -39,38 +39,44 @@ public class Equipment implements Item{ //Componente base
 	}
 	@Override
 	public Item deleteItem(ItemDecorator component) {
-		return this;
+		return this;//Se ha llegado al final y no se ha encontrado un component
 	}
 
 	@Override
 	public List<UsableItemDecorator> areThereAnyUsables(List<UsableItemDecorator> list) {
-		// TODO Auto-generated method stub
-		return list;
+		return list; //Se ha llegado al final y se devuelve la lista de los encontrados
 	}
+	
+	@Override
 	public int getLife() {
 		return stats.getLife();
 	}
+	@Override
 	public void setLife(int life) {
 		stats.setLife(life);
 	}
+	@Override
 	public int getMaxLife() {
 		return stats.getMaxLife();
 	}
 	public void setMaxLife(int maxLife) {
 		stats.setMaxLife(maxLife);
 	}
+	@Override
 	public int getAttack() {
 		return stats.getAttack();
 	}
 	public void setAttack(int attack) {
 		stats.setAttack(attack);;
 	}
+	@Override
 	public int getDefense() {
 		return stats.getDefense();
 	}
 	public void setDefense(int defense) {
 		stats.setDefense(defense);;
 	}
+	@Override
 	public int getSpeed() {
 		return stats.getSpeed();
 	}
@@ -95,7 +101,6 @@ public class Equipment implements Item{ //Componente base
 	public Stats getStats() {
 		return stats;
 	}
-
 	public void setStats(Stats stats) {
 		this.stats = stats;
 	}

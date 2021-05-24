@@ -1,5 +1,5 @@
 package com.utad.project.decoratorPattern;
 
-public enum Tier {
-	S,A,B,C;
+public enum Tier { //Grupos de Items segun fuerza
+	C,B,A,S;
 }

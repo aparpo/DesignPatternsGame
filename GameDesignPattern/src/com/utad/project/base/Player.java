@@ -8,44 +8,18 @@ import com.utad.project.decoratorPattern.RegularItem;
 
 public class Player extends Character{
 	
+	//Variables para almacenar la decision desde que se decide hasta que se ejecuta
 	private ActiveItemDecorator nextSkill;
 	private Character target;
 
 	public Player(String name) {
 		super(name,"src/com/utad/project/display/Player.png");
-		addItem(new RegularItem(new Stats(100,100,50,40,2)));
+		addItem(new RegularItem(new Stats(100,100,50,40,2))); //valores por defecto para las Stats del jugador
 	}
 
+	//Utilizar la habilidad previamente seleccionada
 	public void decision() {
-		nextSkill.useSkill(this, target);
-	}
-	
-	public void selectItem(List<ActiveItemDecorator> skills, List<Character> characters) {
-		Scanner scanner = new Scanner(System.in);
-		int option; 
-		
-		System.out.println("Select a skill to use:");
-		for(int i = 0; i < skills.size(); i++) {
-			System.out.println(i + ":"+skills.get(i).getSkillname());
-		}
-		
-		do {
-			option = scanner.nextInt();
-		}while(option < 0 || option > skills.size()-1);
-		
-		setNextSkill(skills.get(option));
-		
-		System.out.println("Select the target:");
-		for(int i = 0; i < characters.size(); i++) {
-			System.out.println(i + ":"+characters.get(i));
-		}
-		
-		do {
-			option = scanner.nextInt();
-		}while(option < 0 || option > characters.size()-1);
-		
-		setTarget(characters.get(option));
-		
+		nextSkill.useSkill(this, target); 
 	}
 
 	public ActiveItemDecorator getNextSkill() {

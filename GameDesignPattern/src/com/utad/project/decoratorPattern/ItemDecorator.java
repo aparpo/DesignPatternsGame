@@ -6,11 +6,10 @@ import java.util.List;
 import com.utad.project.base.*;
 
 public abstract class ItemDecorator implements Item{
-	protected Item equipment;
-	protected Stats stats;
-	protected String desc;
+	protected Item equipment; //Objeto decorado
+	protected Stats stats; //Estadisticas con las que decora
 	protected String name;
-	protected Tier tier;
+	protected Tier tier; //Categoria del item
 	
 	public ItemDecorator() {
 		super();
@@ -23,6 +22,7 @@ public abstract class ItemDecorator implements Item{
 	}
 	
 	//Metodo para añadir un item sin que haya repeticiones
+	//Evita errores producidos por varios items con la misma activa
 	public Item addItem(ItemDecorator newItem) { 
 		Item aux = isThereAny(newItem);
 		if(aux==null || newItem instanceof RegularItem) { //No hay items del mismo tipo equipados
@@ -44,9 +44,9 @@ public abstract class ItemDecorator implements Item{
 	
 	public Item deleteItem(ItemDecorator component) {
 		if(component.getClass().equals(this.getClass())) {
-			return equipment;
+			return equipment; //Se elimina a si mismo de la lista devolviendo el componente que decora
 		}else {
-			equipment = equipment.deleteItem(component);
+			equipment = equipment.deleteItem(component); //Llamada recursiva
 			return this;
 		}
 	}
@@ -55,7 +55,7 @@ public abstract class ItemDecorator implements Item{
 		if(this.getClass() == model.getClass()) { //Si son de la misma clase devuelve el objeto
 			return this;
 		}else {
-			return equipment.isThereAny(model);	
+			return equipment.isThereAny(model);	//Llamada recursiva
 		}
 		
 	}
@@ -97,9 +97,9 @@ public abstract class ItemDecorator implements Item{
 		this.equipment = equipment;
 	}
 	public int getLife() {
-		try { //Excepcion para instancias de decoradores que aun no tienen objeto decorado
+		if(equipment!=null) {//Filtrar para instancias de decoradores que aun no tienen objeto decorado
 			return equipment.getLife()+stats.getLife();
-		}catch(NullPointerException e) {
+		}else {
 			return 0+stats.getLife();
 		}
 		
@@ -109,7 +109,7 @@ public abstract class ItemDecorator implements Item{
 		equipment.setLife(life);
 	}
 	public int getAttack() {
-		if(equipment!=null) {
+		if(equipment!=null) {//Filtrar para instancias de decoradores que aun no tienen objeto decorado
 			return equipment.getAttack()+stats.getAttack();
 		}else {
 			return 0+stats.getAttack();
@@ -118,7 +118,7 @@ public abstract class ItemDecorator implements Item{
 	}
 	
 	public int getDefense() {
-		if(equipment!=null) {
+		if(equipment!=null) {//Filtrar para instancias de decoradores que aun no tienen objeto decorado
 			return equipment.getDefense()+stats.getDefense();
 		}else {
 			return 0+stats.getDefense();
@@ -126,7 +126,7 @@ public abstract class ItemDecorator implements Item{
 		
 	}
 	public int getSpeed() {
-		if(equipment!=null) {
+		if(equipment!=null) {//Filtrar para instancias de decoradores que aun no tienen objeto decorado
 			return equipment.getSpeed()+stats.getSpeed();
 		}else {
 			return 0+stats.getSpeed();
@@ -135,7 +135,7 @@ public abstract class ItemDecorator implements Item{
 	}
 
 	public int getMaxLife() {
-		if(equipment!=null) {
+		if(equipment!=null) {//Filtrar para instancias de decoradores que aun no tienen objeto decorado
 			return equipment.getMaxLife()+stats.getMaxLife();
 		}else {
 			return 0+stats.getMaxLife();
@@ -155,12 +155,8 @@ public abstract class ItemDecorator implements Item{
 		this.name = name;
 	}
 
-	public String getDesc() {
+	public String getDesc() { //Uso de lenguaje html
 		return equipment.getDesc()+"<br>"+this.getName();
-	}
-
-	public void setDesc(String desc) {
-		this.desc = desc;
 	}
 	
 	public Tier getTier() {
