@@ -177,6 +177,7 @@ public class Window extends JFrame{
 		inventoryPanel.remove(inventory);
 		inventoryPanel.remove(playerItems);
 		inventoryPanel.remove(playerState);
+		
 		inventory = new JTextArea("\nName:"+player.getName()+"\n"
 				+"Life:"+player.getEquipment().getLife()+"\n"
 				+"Max Life:"+player.getEquipment().getMaxLife()+"\n"
@@ -206,7 +207,7 @@ public class Window extends JFrame{
 		//Arriba derecha
 		worldPanel.remove(playerSection);
 		playerSection.remove(playerInfo);
-		
+
 		String playerDesc = player.getName() + " \n" + player.getEquipment().getLife()+ "/"+ player.getEquipment().getMaxLife();
 		playerInfo = new JLabel(playerDesc,new ImageIcon(player.getSprite()), JLabel.CENTER);
 		playerInfo.setVerticalTextPosition(JLabel.BOTTOM);

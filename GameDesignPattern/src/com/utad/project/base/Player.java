@@ -1,8 +1,5 @@
 package com.utad.project.base;
 
-import java.util.List;
-import java.util.Scanner;
-
 import com.utad.project.decoratorPattern.ActiveItemDecorator;
 import com.utad.project.decoratorPattern.RegularItem;
 
@@ -14,7 +11,7 @@ public class Player extends Character{
 
 	public Player(String name) {
 		super(name,"src/com/utad/project/display/Player.png");
-		addItem(new RegularItem(new Stats(100,100,50,40,2))); //valores por defecto para las Stats del jugador
+		addItem(new RegularItem(new Stats(300,300,50,40,2))); //valores por defecto para las Stats del jugador
 	}
 
 	//Utilizar la habilidad previamente seleccionada

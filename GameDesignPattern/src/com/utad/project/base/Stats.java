@@ -1,13 +1,5 @@
 package com.utad.project.base;
 
-import java.util.List;
-
-import com.utad.project.decoratorPattern.ActiveItemDecorator;
-import com.utad.project.decoratorPattern.Item;
-import com.utad.project.decoratorPattern.ItemDecorator;
-import com.utad.project.decoratorPattern.PassiveItemDecorator;
-import com.utad.project.decoratorPattern.Tier;
-
 public class Stats{ //Wrapper de atributos 
 	private int life=0;
 	private int maxLife=0;

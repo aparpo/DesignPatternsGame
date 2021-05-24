@@ -6,7 +6,6 @@ import java.util.List;
 import com.utad.project.decoratorPattern.*;
 import com.utad.project.decoratorPattern.items.LongSword;
 import com.utad.project.decoratorPattern.items.Shield;
-import com.utad.project.singletonPattern.GameManager;
 import com.utad.project.statePattern.*;
 
 public abstract class Character {

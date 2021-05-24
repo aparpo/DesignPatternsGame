@@ -1,6 +1,5 @@
 package com.utad.project.base;
 import com.utad.project.abstractFactoryPattern.World;
-import com.utad.project.decoratorPattern.*;
 import com.utad.project.singletonPattern.GameManager;
 import com.utad.project.strategyPattern.*;
 import com.utad.project.strategyPattern.normalStrategies.*;
