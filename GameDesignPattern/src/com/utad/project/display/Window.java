@@ -178,13 +178,22 @@ public class Window extends JFrame{
 		inventoryPanel.remove(playerItems);
 		inventoryPanel.remove(playerState);
 		
-		inventory = new JTextArea("\nName:"+player.getName()+"\n"
-				+"Life:"+player.getEquipment().getLife()+"\n"
-				+"Max Life:"+player.getEquipment().getMaxLife()+"\n"
-				+"Attack:"+player.getEquipment().getAttack()+"\n"
-				+"Defense:"+player.getEquipment().getDefense()+"\n"
-				+"Speed:"+player.getEquipment().getSpeed()+"\n");
-		
+		if(player.getEquipment().getLife() > 0) {
+			inventory = new JTextArea("\nName:"+player.getName()+"\n"
+					+"Life:"+player.getEquipment().getLife()+"\n"
+					+"Max Life:"+player.getEquipment().getMaxLife()+"\n"
+					+"Attack:"+player.getEquipment().getAttack()+"\n"
+					+"Defense:"+player.getEquipment().getDefense()+"\n"
+					+"Speed:"+player.getEquipment().getSpeed()+"\n");
+		}
+		else {
+			inventory = new JTextArea("\nName:"+player.getName()+"\n"
+					+"Life:0\n"
+					+"Max Life:"+player.getEquipment().getMaxLife()+"\n"
+					+"Attack:"+player.getEquipment().getAttack()+"\n"
+					+"Defense:"+player.getEquipment().getDefense()+"\n"
+					+"Speed:"+player.getEquipment().getSpeed()+"\n");
+		}
 		
 		playerItems= new JLabel("<html>Equiped Items:"+player.getEquipment().getDesc()+"</html>");
 		playerState = new JLabel("Current State:"+player.getState().getStateName());
@@ -208,7 +217,13 @@ public class Window extends JFrame{
 		worldPanel.remove(playerSection);
 		playerSection.remove(playerInfo);
 
-		String playerDesc = player.getName() + " \n" + player.getEquipment().getLife()+ "/"+ player.getEquipment().getMaxLife();
+		String playerDesc;
+		if(player.getEquipment().getLife() > 0) {
+			playerDesc = player.getName() + " \n" + player.getEquipment().getLife()+ "/"+ player.getEquipment().getMaxLife();
+		}
+		else {
+			playerDesc = player.getName() + " \n0/"+ player.getEquipment().getMaxLife();
+		}
 		playerInfo = new JLabel(playerDesc,new ImageIcon(player.getSprite()), JLabel.CENTER);
 		playerInfo.setVerticalTextPosition(JLabel.BOTTOM);
 		playerInfo.setHorizontalTextPosition(JLabel.CENTER);
