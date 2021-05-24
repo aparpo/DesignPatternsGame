@@ -75,11 +75,12 @@ public class HealerStrategy extends DecisionTemplate{
 			}
 		}else {
 			//si tiene cura busca alguien que necesita la cura
-			boolean firtEnemy = false;
+			boolean firtEnemy = true;
 			for(int i =0; i < GameManager.getManager().getCharacters().size(); i++) {
 				if(GameManager.getManager().getCharacters().get(i) instanceof Enemy) {
 					if(firtEnemy) {
 						targetPos = i;
+						firtEnemy = false;
 					}else if(GameManager.getManager().getCharacters().get(i).getEquipment().getLife() < GameManager.getManager().getCharacters().get(targetPos).getEquipment().getLife()) {
 						targetPos = i;
 					}
