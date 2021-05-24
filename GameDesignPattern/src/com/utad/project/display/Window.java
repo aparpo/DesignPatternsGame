@@ -13,12 +13,14 @@ public class Window extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	
+	//Variables necesarias para el diseño de la ventana
 	private JTextArea inventory, history;
 	private JPanel lateralPanel, optionPanel, logPanel, titlePanel, worldPanel, playerSection, enemySection, inventoryPanel;
 	private JScrollPane sbrText;
 	private JLabel title, playerInfo, playerItems, playerState, enemiesInfo[];
 	private JButton buttons[];
 	
+	//Referencia al manager para agilizar las llamadas
 	private GameManager manager = GameManager.getManager();
 	
 	//Constructor de la Interfaz

@@ -14,15 +14,15 @@ import com.utad.project.decoratorPattern.UsableItemDecorator;
 
 public class GameManager {
 	
-	private static GameManager manager = new GameManager();
+	private static GameManager manager = new GameManager(); 
 	private List<Action> actions = new ArrayList<Action>(); //Buffer de acciones durante un turno
-	private List<Character> characters = new ArrayList<Character>();
+	private List<Character> characters = new ArrayList<Character>(); //Lista de personajes
 	private List<ItemDecorator> items;
-	private AbstractLevelFactory factory = new LevelFactoryWorld1();
-	private Player player;
+	 
+	private Player player; //Referencia concreta al jugador
 	private World currentLevel = World.WORLD1;
 	
-
+	private AbstractLevelFactory factory = new LevelFactoryWorld1();
 	private DisplayStrategy displayManager;
 	private CombatManager combatManager;
 	

@@ -27,7 +27,7 @@ public class ChaosBlade extends ActiveItemDecorator{ //Resta un porcentaje de vi
 		Stats variationTarget = new Stats( -aux, 0, 0, 0, 0); //Actualizar vida actual del objetivo.
 		
 		Stats variationUser;
-		if(target.getEquipment().getLife() > 1 && target.getEquipment().getLife() < (aux / 4)) {
+		if(user.getEquipment().getLife() > 1 && user.getEquipment().getLife() < (aux / 4)) {
 			variationUser = new Stats( -(user.getEquipment().getMaxLife() - 1) , 0, 0, 0, 0); //Si el daño es superior a la vida del usuario y este tiene más de 1 de vida, 
 																							//en vez de matarle le deja a 1 de vida.
 		}

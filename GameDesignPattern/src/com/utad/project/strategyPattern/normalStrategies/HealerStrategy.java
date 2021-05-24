@@ -1,4 +1,4 @@
-package com.utad.project.strategyPattern.bossStrategies;
+package com.utad.project.strategyPattern.normalStrategies;
 
 import java.util.ArrayList;
 import java.util.List;

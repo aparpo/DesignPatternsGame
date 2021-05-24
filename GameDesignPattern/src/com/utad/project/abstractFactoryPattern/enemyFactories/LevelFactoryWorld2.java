@@ -13,8 +13,8 @@ import com.utad.project.decoratorPattern.ItemDecorator;
 import com.utad.project.decoratorPattern.RegularItem;
 import com.utad.project.decoratorPattern.items.*;
 import com.utad.project.statePattern.States;
-import com.utad.project.strategyPattern.bossStrategies.HealerStrategy;
 import com.utad.project.strategyPattern.normalStrategies.DumbStrategy;
+import com.utad.project.strategyPattern.normalStrategies.HealerStrategy;
 
 //Mundo basado en el estado envenenado
 public class LevelFactoryWorld2 extends FactoryTemplate{ 

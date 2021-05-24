@@ -3,7 +3,8 @@ package com.utad.project.decoratorPattern;
 import com.utad.project.base.*;
 
 public abstract class UsableItemDecorator extends ActiveItemDecorator { //Objeto con activa que se puede usar un numero finito de veces
-	protected int amount;
+	
+	protected int amount; //Cantidad de veces que se puede llamar a useSkill
 	
 	public UsableItemDecorator() {
 		super();

@@ -7,6 +7,7 @@ import com.utad.project.base.*;
 import com.utad.project.base.Character;
 
 public class CombatManager {
+	//Algoritmo para ordenar a los personajes de la lista por nivel de velocidad
 	public List<Character> orderBySpeed(List<Character> characters) {
 		List<Character> aux = new ArrayList<Character>();
 		Character max = null;

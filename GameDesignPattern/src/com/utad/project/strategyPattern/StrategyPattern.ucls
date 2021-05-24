@@ -66,9 +66,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="com.utad.project.strategyPattern.bossStrategies.HealerStrategy" 
+  <class id="7" language="java" name="com.utad.project.strategyPattern.normalStrategies.HealerStrategy" 
     project="GameDesignPattern" 
-    file="/GameDesignPattern/src/com/utad/project/strategyPattern/bossStrategies/HealerStrategy.java" binary="false" 
+    file="/GameDesignPattern/src/com/utad/project/strategyPattern/normalStrategies/HealerStrategy.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1248" y="200"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -87,23 +87,27 @@
     </display>  
   </class>  
   <generalization id="9">    
-    <end type="SOURCE" refId="6"/>    
+    <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="4"/>  
   </generalization>  
   <association id="10">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="11" name="behaviour"/>      
-      <multiplicity id="12" minimum="0" maximum="1"/>    
+      <attribute id="11" name="behaviour">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="12" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <generalization id="13">    
-    <end type="SOURCE" refId="3"/>    
+    <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="4"/>  
   </generalization>  
   <generalization id="14">    
-    <end type="SOURCE" refId="1"/>    
+    <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="4"/>  
   </generalization>  
   <generalization id="15">    
@@ -111,11 +115,11 @@
     <end type="TARGET" refId="4"/>  
   </generalization>  
   <generalization id="16">    
-    <end type="SOURCE" refId="2"/>    
+    <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="4"/>  
   </generalization>  
   <generalization id="17">    
-    <end type="SOURCE" refId="7"/>    
+    <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="4"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
